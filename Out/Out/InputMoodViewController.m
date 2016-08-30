@@ -11,7 +11,15 @@
 // ?2.去除空格失败
 // ?3. 主页面进入该页面是会有点卡顿
 
+// TODO:
+// 1. TextView里有文本就显示导航栏勾选，无则不显示
+// 2. TextView明明设置距离上边是2，运行后则调到下面去了。字数多的时候又会顶到之前设置的约束上
+// 3. 主页面进入该页面是会有点卡顿
+// 4. 上网看到资料说在textViewDidChange统计会导致输入时卡卡的，有待进一步测试看看是否这样
+// 5.[done] 计算字数时特殊情况处理: 1) emoji 使用length为2 ,通过[str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4 为1； 2) 英文字母字符数字为两个代表一个长度。
 #import "InputMoodViewController.h"
+
+#define LIMIT_TEXT_LENGTH 100
 
 #define YLog(formatString, ...) NSLog((@"%s" formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
 
@@ -53,44 +61,43 @@
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     UITextRange *selectedRange = [textView markedTextRange];
-    NSString *newText = [textView textInRange:selectedRange];// print: "S s"
+    NSString *newText = [textView textInRange:selectedRange];
     // ?2. 去除空格失败
-    NSString *failedStrip = [newText stringByReplacingOccurrencesOfString:@" " withString:@""];// print "S s"
-    NSLog(@"failedStrip:%@", failedStrip);
+//    NSString *failedStrip = [newText stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *textStr = newText;
     NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-    self.textLengthLB.text = [NSString stringWithFormat:@"%lu/100", (unsigned long)textView.text.length - newText.length + stripSpaceStr.length];
-}
-
-// 键盘弹出,进入该回调1.
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-//    YLog();
-    return YES;
+    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
+    self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
+    YLog();
 }
 
 // 点击键盘上的
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    
+    UITextRange *selectedRange = [textView markedTextRange];
+    NSString *selectedText = [textView textInRange:selectedRange];
+    NSLog(@"rose: %@, %@, %@", textView.text, selectedText, text);
     return YES;
 }
 
-// 输入字符
-- (void)textViewDidChangeSelection:(UITextView *)textView {
-    YLog(@"changeSelection:%@", textView.text);
-}
-
-
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
-    YLog();
+- (int)strLength:(NSString *)str {
+    NSUInteger length = [str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4;
+    int len = (int)length;
     
-    return YES;
-}
-- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange {
-    YLog();
+    int blankCount = 0, asciiCount = 0, otherCount = 0;
+    unichar c;
+    for (int i = 0; i < len; i++) {
+        c = [str characterAtIndex:i];
+        if (isblank(c)) {
+            blankCount++;
+        } else if (isascii(c)) {
+            asciiCount++;
+        } else {
+            otherCount++;
+        }
+    }
+    len = (int)ceilf((float)(blankCount+asciiCount)/2.0) + otherCount;
     
-    return YES;
+    return len;
 }
-
-
 
 @end
