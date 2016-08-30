@@ -12,11 +12,13 @@
 // ?3. 主页面进入该页面是会有点卡顿
 
 // TODO:
-// 1. TextView里有文本就显示导航栏勾选，无则不显示
+// 1.[done] #隐藏导航栏右边按钮#TextView里有文本就显示导航栏勾选，无则不显示 1) 第一次进入界面是默认隐藏还是等输入后再添加导航栏右边按钮呢
 // 2. TextView明明设置距离上边是2，运行后则调到下面去了。字数多的时候又会顶到之前设置的约束上
 // 3. 主页面进入该页面是会有点卡顿
 // 4. 上网看到资料说在textViewDidChange统计会导致输入时卡卡的，有待进一步测试看看是否这样
 // 5.[done] 计算字数时特殊情况处理: 1) emoji 使用length为2 ,通过[str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4 为1； 2) 英文字母字符数字为两个代表一个长度。
+// 6.[done] 输入文字后去除placeholder
+// 7. 输入文字时textView是垂直居中左对齐，而不是顶部左对齐
 #import "InputMoodViewController.h"
 
 #define LIMIT_TEXT_LENGTH 100
@@ -26,7 +28,9 @@
 @interface InputMoodViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UILabel *textLengthLB;
+@property (weak, nonatomic) IBOutlet UILabel *textViewPlaceHolderLB;
 
+@property (nonatomic, assign) BOOL hasAddedNavRight; // 是否已添加过导航栏右边按钮
 @end
 
 @implementation InputMoodViewController
@@ -36,12 +40,10 @@
     // Do any additional setup after loading the view.
     self.inputTextView.delegate = self;
     self.navigationItem.title = @"InputMood";
-    // 设置导航栏右边按钮
-    UIBarButtonItem *checkItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_check"] style:UIBarButtonItemStylePlain target:self action:@selector(didEndEdit)];
-    self.navigationItem.rightBarButtonItem = checkItem;
     // 设置导航栏返回(左边)按钮
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backItem;
+    self.inputTextView.contentMode = UIViewContentModeTop;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,21 +66,36 @@
     NSString *newText = [textView textInRange:selectedRange];
     // ?2. 去除空格失败
 //    NSString *failedStrip = [newText stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *textStr = newText;
-    NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
+    
+    // m1
+//    NSString *textStr = newText;
+//    NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
+    // m2--取巧
+    int length = [self strLength:textView.text] - (floor)(newText.length/2.0);
     self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
+    if (length == 0) {
+        // 隐藏导航栏右边按钮
+        [self hideNavRightItem: YES];
+        self.textViewPlaceHolderLB.hidden = NO;
+    }
     YLog();
 }
 
 // 点击键盘上的
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    UITextRange *selectedRange = [textView markedTextRange];
-    NSString *selectedText = [textView textInRange:selectedRange];
-    NSLog(@"rose: %@, %@, %@", textView.text, selectedText, text);
+    // 空textView，点击清除键 text.length==0，不显示
+    if (textView.text.length == 0 && text.length > 0) {
+        // 显示导航栏右边按钮
+        [self hideNavRightItem:NO];
+        self.textViewPlaceHolderLB.hidden = YES;
+    }
+    
     return YES;
 }
 
+#pragma mark Tool
+// 计算字符长度，进行特殊处理：emoji 当作一个长度  ascii吗与数字 两个当做一个长度
 - (int)strLength:(NSString *)str {
     NSUInteger length = [str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4;
     int len = (int)length;
@@ -98,6 +115,23 @@
     len = (int)ceilf((float)(blankCount+asciiCount)/2.0) + otherCount;
     
     return len;
+}
+// 隐藏或显示导航栏右边按钮
+- (void)hideNavRightItem:(BOOL)hide {
+    // 显示导航栏右边按钮
+    if (hide == NO && !self.hasAddedNavRight) {
+        [self addNavRightItem];
+    }
+    NSArray *subviews = self.navigationController.navigationBar.subviews;
+    UIView *navRightItem = [subviews objectAtIndex:3];// 0 1 是固定的 ,然后显示UINavigationButton，根据加入的顺序，viewDidload中添加了导航栏左边按钮(index为2), 添加了右边按钮则index为3
+    [navRightItem setHidden:hide];
+}
+
+// 设置导航栏右边按钮
+- (void)addNavRightItem {
+    UIBarButtonItem *checkItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_check"] style:UIBarButtonItemStylePlain target:self action:@selector(didEndEdit)];
+    self.navigationItem.rightBarButtonItem = checkItem;
+    self.hasAddedNavRight = YES;
 }
 
 @end

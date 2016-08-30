@@ -18,9 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-36-oVV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-36-oVV">
                                 <rect key="frame" x="111" y="269" width="98" height="30"/>
                                 <color key="backgroundColor" red="0.17647058823529413" green="0.18431372549019609" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="QaR-xN-ibQ"/>
+                                </constraints>
                                 <state key="normal" title="Out">
                                     <color key="titleColor" red="0.84705882352941175" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -30,6 +33,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oHW-36-oVV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7D5-FY-qza"/>
+                            <constraint firstItem="oHW-36-oVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="psa-oh-T4d"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="efH-jf-cZp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -50,10 +57,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
                                 <rect key="frame" x="16" y="72" width="288" height="208"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="Q4c-7u-uxz"/>
                                     <constraint firstAttribute="height" constant="255" id="rLP-Gu-akU"/>
                                 </constraints>
                                 <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,6 +69,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="Q4c-7u-uxz"/>
                                         <exclude reference="rLP-Gu-akU"/>
                                     </mask>
                                 </variation>
@@ -82,36 +91,35 @@
                                     <constraint firstAttribute="trailing" secondItem="YMN-Yk-xkl" secondAttribute="trailing" constant="8" id="eZR-Us-qnj"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="想说点什么呢?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTO-bv-R0G">
+                                <rect key="frame" x="16" y="72" width="288" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="oSp-mL-SCa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="b8R-64-Ubd" secondAttribute="trailing" id="6dm-e4-Pba"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="top" secondItem="d5F-BU-5C3" secondAttribute="bottom" constant="8" id="Dhb-VD-nDZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b8R-64-Ubd" secondAttribute="trailing" constant="-20" id="IGp-C2-ssB"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="trailing" secondItem="1yM-qr-RiJ" secondAttribute="trailingMargin" id="IWI-aM-gyw"/>
                             <constraint firstItem="b8R-64-Ubd" firstAttribute="top" secondItem="wSo-Jp-zxK" secondAttribute="bottom" id="TAJ-lY-20P"/>
-                            <constraint firstItem="b8R-64-Ubd" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" constant="-20" id="cW8-md-Ue8"/>
-                            <constraint firstItem="b8R-64-Ubd" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" id="fNc-tZ-rt1"/>
+                            <constraint firstItem="wSo-Jp-zxK" firstAttribute="top" secondItem="rTO-bv-R0G" secondAttribute="bottom" constant="-17" id="cmu-u0-1aA"/>
                             <constraint firstItem="b8R-64-Ubd" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" constant="-20" id="gBV-Ut-lYw"/>
-                            <constraint firstItem="b8R-64-Ubd" firstAttribute="trailing" secondItem="1yM-qr-RiJ" secondAttribute="trailingMargin" id="gR9-3B-mGq"/>
                             <constraint firstItem="1tM-1Q-M8j" firstAttribute="top" secondItem="b8R-64-Ubd" secondAttribute="bottom" constant="254" id="i0g-hJ-oT2"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" id="kCU-3Y-gXT"/>
-                            <constraint firstItem="b8R-64-Ubd" firstAttribute="top" secondItem="wSo-Jp-zxK" secondAttribute="bottom" id="znN-MA-eYe"/>
+                            <constraint firstItem="rTO-bv-R0G" firstAttribute="leading" secondItem="wSo-Jp-zxK" secondAttribute="trailing" constant="-288" id="kQE-P1-jbA"/>
+                            <constraint firstItem="rTO-bv-R0G" firstAttribute="top" secondItem="wSo-Jp-zxK" secondAttribute="top" id="lNb-En-8xw"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="6dm-e4-Pba"/>
-                                <exclude reference="cW8-md-Ue8"/>
-                                <exclude reference="fNc-tZ-rt1"/>
-                                <exclude reference="gR9-3B-mGq"/>
-                                <exclude reference="znN-MA-eYe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="inputTextView" destination="wSo-Jp-zxK" id="qOS-Jr-Hd0"/>
                         <outlet property="textLengthLB" destination="YMN-Yk-xkl" id="eCh-IZ-cTk"/>
+                        <outlet property="textViewPlaceHolderLB" destination="rTO-bv-R0G" id="ie5-76-yi2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQG-36-bCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
