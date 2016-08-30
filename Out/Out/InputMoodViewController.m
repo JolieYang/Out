@@ -28,7 +28,7 @@
 @interface InputMoodViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UILabel *textLengthLB;
-@property (weak, nonatomic) IBOutlet UILabel *textViewPlaceHolderLB;
+@property (nonatomic, strong) UILabel *placeHolderLB;
 
 @property (nonatomic, assign) BOOL hasAddedNavRight; // 是否已添加过导航栏右边按钮
 @end
@@ -44,11 +44,22 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backItem;
     self.inputTextView.contentMode = UIViewContentModeTop;
+    [self addInputTextViewPlaceHolder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.inputTextView becomeFirstResponder];
+}
+
+- (void)addInputTextViewPlaceHolder {
+    self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(5, 8, [[UIScreen mainScreen] bounds].size.width - 20, 36)];
+    self.placeHolderLB.text = @"想说点什么呢?";
+    self.placeHolderLB.textColor = [UIColor grayColor];
+    self.placeHolderLB.alpha = 0.5f;
+    self.placeHolderLB.font = self.inputTextView.font;
+    [self.placeHolderLB sizeToFit];
+    [self.inputTextView addSubview: self.placeHolderLB];
 }
 
 - (void)back {
@@ -77,9 +88,9 @@
     if (length == 0) {
         // 隐藏导航栏右边按钮
         [self hideNavRightItem: YES];
-        self.textViewPlaceHolderLB.hidden = NO;
+//        self.textViewPlaceHolderLB.hidden = NO;
+        self.placeHolderLB.hidden = NO;
     }
-    YLog();
 }
 
 // 点击键盘上的
@@ -88,7 +99,8 @@
     if (textView.text.length == 0 && text.length > 0) {
         // 显示导航栏右边按钮
         [self hideNavRightItem:NO];
-        self.textViewPlaceHolderLB.hidden = YES;
+//        self.textViewPlaceHolderLB.hidden = YES;
+        self.placeHolderLB.hidden = YES;
     }
     
     return YES;

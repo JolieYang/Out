@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-36-oVV">
-                                <rect key="frame" x="111" y="269" width="98" height="30"/>
+                                <rect key="frame" x="111" y="468" width="98" height="30"/>
                                 <color key="backgroundColor" red="0.17647058823529413" green="0.18431372549019609" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="QaR-xN-ibQ"/>
@@ -31,12 +32,42 @@
                                     <segue destination="LAp-dC-7My" kind="show" id="tXq-L3-Gij"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="M2D-rv-lq3">
+                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="6yC-34-ZIo"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" editable="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
+                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oHW-36-oVV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7D5-FY-qza"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8g0-K9-JL5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M2D-rv-lq3" secondAttribute="trailing" id="CEa-t2-wOX"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="HzE-Qd-tOF"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="width" secondItem="XEK-lu-LW3" secondAttribute="width" id="MCA-t8-n2s"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oHW-36-oVV" secondAttribute="bottom" constant="70" id="OeT-5s-aZO"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Xu0-sk-MxF"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="height" secondItem="XEK-lu-LW3" secondAttribute="height" id="ZaT-2I-nj9"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="bDd-RU-w36"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M2D-rv-lq3" secondAttribute="trailing" constant="-16" id="gFT-VG-Uhq"/>
+                            <constraint firstItem="M2D-rv-lq3" firstAttribute="top" secondItem="XEK-lu-LW3" secondAttribute="top" id="k2p-Zu-lfb"/>
                             <constraint firstItem="oHW-36-oVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="psa-oh-T4d"/>
+                            <constraint firstItem="XEK-lu-LW3" firstAttribute="leading" secondItem="M2D-rv-lq3" secondAttribute="leading" id="xZ3-8y-Cla"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8g0-K9-JL5"/>
+                                <exclude reference="CEa-t2-wOX"/>
+                                <exclude reference="Xu0-sk-MxF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="efH-jf-cZp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -57,23 +88,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
-                                <rect key="frame" x="16" y="72" width="288" height="208"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="Q4c-7u-uxz"/>
-                                    <constraint firstAttribute="height" constant="255" id="rLP-Gu-akU"/>
-                                </constraints>
-                                <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Q4c-7u-uxz"/>
-                                        <exclude reference="rLP-Gu-akU"/>
-                                    </mask>
-                                </variation>
-                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-64-Ubd">
                                 <rect key="frame" x="-4" y="280" width="328" height="34"/>
                                 <subviews>
@@ -91,15 +105,23 @@
                                     <constraint firstAttribute="trailing" secondItem="YMN-Yk-xkl" secondAttribute="trailing" constant="8" id="eZR-Us-qnj"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="想说点什么呢?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTO-bv-R0G">
-                                <rect key="frame" x="16" y="72" width="288" height="17"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
+                                <rect key="frame" x="16" y="72" width="288" height="208"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="oSp-mL-SCa"/>
+                                    <constraint firstAttribute="height" constant="208" id="Q4c-7u-uxz"/>
+                                    <constraint firstAttribute="height" constant="255" id="rLP-Gu-akU"/>
                                 </constraints>
+                                <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Q4c-7u-uxz"/>
+                                        <exclude reference="rLP-Gu-akU"/>
+                                    </mask>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,19 +129,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="b8R-64-Ubd" secondAttribute="trailing" constant="-20" id="IGp-C2-ssB"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="trailing" secondItem="1yM-qr-RiJ" secondAttribute="trailingMargin" id="IWI-aM-gyw"/>
                             <constraint firstItem="b8R-64-Ubd" firstAttribute="top" secondItem="wSo-Jp-zxK" secondAttribute="bottom" id="TAJ-lY-20P"/>
-                            <constraint firstItem="wSo-Jp-zxK" firstAttribute="top" secondItem="rTO-bv-R0G" secondAttribute="bottom" constant="-17" id="cmu-u0-1aA"/>
                             <constraint firstItem="b8R-64-Ubd" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" constant="-20" id="gBV-Ut-lYw"/>
                             <constraint firstItem="1tM-1Q-M8j" firstAttribute="top" secondItem="b8R-64-Ubd" secondAttribute="bottom" constant="254" id="i0g-hJ-oT2"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" id="kCU-3Y-gXT"/>
-                            <constraint firstItem="rTO-bv-R0G" firstAttribute="leading" secondItem="wSo-Jp-zxK" secondAttribute="trailing" constant="-288" id="kQE-P1-jbA"/>
-                            <constraint firstItem="rTO-bv-R0G" firstAttribute="top" secondItem="wSo-Jp-zxK" secondAttribute="top" id="lNb-En-8xw"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="inputTextView" destination="wSo-Jp-zxK" id="qOS-Jr-Hd0"/>
                         <outlet property="textLengthLB" destination="YMN-Yk-xkl" id="eCh-IZ-cTk"/>
-                        <outlet property="textViewPlaceHolderLB" destination="rTO-bv-R0G" id="ie5-76-yi2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQG-36-bCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,4 +170,7 @@
             <point key="canvasLocation" x="899" y="411"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="yellow_girl" width="450" height="531"/>
+    </resources>
 </document>
