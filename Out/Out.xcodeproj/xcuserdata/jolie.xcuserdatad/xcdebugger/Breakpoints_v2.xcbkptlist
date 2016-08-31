@@ -10,45 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Out/HomeViewController.m"
-            timestampString = "494307490.567266"
+            timestampString = "494324512.882333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-inputMoodAction:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HomeViewController inputMoodAction:]"
-                  moduleName = "Out"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jolie/Developer/Out/Out/Out/HomeViewController.m"
-                  timestampString = "494307490.569656"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "143">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__38-[HomeViewController inputMoodAction:]_block_invoke"
-                  moduleName = "Out"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jolie/Developer/Out/Out/Out/HomeViewController.m"
-                  timestampString = "494307490.569791"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
