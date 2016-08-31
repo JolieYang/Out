@@ -10,4 +10,6 @@
 
 @interface InputMoodViewController : UIViewController
 
+@property (nonatomic, strong) void (^finishMoodBlock)(NSString *date);
+
 @end

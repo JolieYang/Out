@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -29,48 +28,29 @@
                                     <color key="titleColor" red="0.84705882352941175" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LAp-dC-7My" kind="show" id="tXq-L3-Gij"/>
+                                    <action selector="inputMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KRT-pj-3ne"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="M2D-rv-lq3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="6yC-34-ZIo"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" editable="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
-                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8g0-K9-JL5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="M2D-rv-lq3" secondAttribute="trailing" id="CEa-t2-wOX"/>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="HzE-Qd-tOF"/>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="width" secondItem="XEK-lu-LW3" secondAttribute="width" id="MCA-t8-n2s"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oHW-36-oVV" secondAttribute="bottom" constant="70" id="OeT-5s-aZO"/>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Xu0-sk-MxF"/>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="height" secondItem="XEK-lu-LW3" secondAttribute="height" id="ZaT-2I-nj9"/>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="bDd-RU-w36"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="M2D-rv-lq3" secondAttribute="trailing" constant="-16" id="gFT-VG-Uhq"/>
-                            <constraint firstItem="M2D-rv-lq3" firstAttribute="top" secondItem="XEK-lu-LW3" secondAttribute="top" id="k2p-Zu-lfb"/>
                             <constraint firstItem="oHW-36-oVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="psa-oh-T4d"/>
-                            <constraint firstItem="XEK-lu-LW3" firstAttribute="leading" secondItem="M2D-rv-lq3" secondAttribute="leading" id="xZ3-8y-Cla"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="8g0-K9-JL5"/>
-                                <exclude reference="CEa-t2-wOX"/>
-                                <exclude reference="Xu0-sk-MxF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="efH-jf-cZp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="otherMoodTextView" destination="XEK-lu-LW3" id="jbS-pW-UMd"/>
+                        <segue destination="LAp-dC-7My" kind="show" identifier="jumpToInputMood" id="Q6N-jP-l6x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,7 +59,7 @@
         <!--Input Mood View Controller-->
         <scene sceneID="KvC-lh-PkZ">
             <objects>
-                <viewController id="LAp-dC-7My" customClass="InputMoodViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InputMoodViewController" id="LAp-dC-7My" customClass="InputMoodViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d5F-BU-5C3"/>
                         <viewControllerLayoutGuide type="bottom" id="1tM-1Q-M8j"/>
@@ -112,7 +92,7 @@
                                     <constraint firstAttribute="height" constant="208" id="Q4c-7u-uxz"/>
                                     <constraint firstAttribute="height" constant="255" id="rLP-Gu-akU"/>
                                 </constraints>
-                                <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
@@ -170,7 +150,4 @@
             <point key="canvasLocation" x="899" y="411"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="yellow_girl" width="450" height="531"/>
-    </resources>
 </document>

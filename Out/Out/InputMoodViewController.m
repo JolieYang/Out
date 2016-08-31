@@ -7,7 +7,7 @@
 //
 
 // 问题列表:
-// ?1.预输入时打印textView s s s。 字符为ssss时，打印长度为4，而微博是按2来算。
+// ?1.[ok] 预输入时打印textView s s s。 字符为ssss时，打印长度为4，而微博是按2来算。Reply: 只是一个约定而已，将字母，数字等按两个字符为一个长度而已。
 // ?2.去除空格失败
 // ?3. 主页面进入该页面是会有点卡顿
 
@@ -18,7 +18,8 @@
 // 4. 上网看到资料说在textViewDidChange统计会导致输入时卡卡的，有待进一步测试看看是否这样
 // 5.[done] 计算字数时特殊情况处理: 1) emoji 使用length为2 ,通过[str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4 为1； 2) 英文字母字符数字为两个代表一个长度。
 // 6.[done] 输入文字后去除placeholder
-// 7. 输入文字时textView是垂直居中左对齐，而不是顶部左对齐
+// 7.[done] 输入文字时textView是垂直居中左对齐，而不是顶部左对齐  [new]默认为顶部左对齐，之前在textView区域拖了一个Label，设置完约束后就是这样了。
+// 8. 更改导航栏返回图标和右边图标
 #import "InputMoodViewController.h"
 
 #define LIMIT_TEXT_LENGTH 100
@@ -67,7 +68,10 @@
 }
 
 - (void)didEndEdit {
-    NSLog(@"show:%@", self.inputTextView.text);
+    NSString *date = @"Jolie";
+    if (_finishMoodBlock) {
+        _finishMoodBlock(date);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
