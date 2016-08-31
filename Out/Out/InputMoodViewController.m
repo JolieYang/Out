@@ -21,6 +21,7 @@
 // 7.[done] 输入文字时textView是垂直居中左对齐，而不是顶部左对齐  [new]默认为顶部左对齐，之前在textView区域拖了一个Label，设置完约束后就是这样了。
 // 8. 更改导航栏返回图标和右边图标
 // 9.[done] 字数统计时超过100字符时统计的字符数显示为红色
+// 10.[done]  字数统计超过100字符弹框显示“超出100字限制”
 #import "InputMoodViewController.h"
 
 #define LIMIT_TEXT_LENGTH 100
@@ -70,11 +71,20 @@
 
 - (void)didEndEdit {
     NSString *date = @"Jolie";
+    // 超出100字限制
+    if ([self strLength:self.inputTextView.text] > 100) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"超出100字限制" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
     if (_finishMoodBlock) {
         _finishMoodBlock(date);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
@@ -92,16 +102,14 @@
     if (length > 100) {
         NSString *limitStr = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:limitStr];
-        [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, 3)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, limitStr.length - 4)];
         self.textLengthLB.attributedText = attStr;
     } else {
         self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
     }
-    
     if (length == 0) {
         // 隐藏导航栏右边按钮
         [self hideNavRightItem: YES];
-//        self.textViewPlaceHolderLB.hidden = NO;
         self.placeHolderLB.hidden = NO;
     }
 }
@@ -112,7 +120,6 @@
     if (textView.text.length == 0 && text.length > 0) {
         // 显示导航栏右边按钮
         [self hideNavRightItem:NO];
-//        self.textViewPlaceHolderLB.hidden = YES;
         self.placeHolderLB.hidden = YES;
     }
     

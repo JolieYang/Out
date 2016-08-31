@@ -38,8 +38,12 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     self.navigationItem.title = @" ";
     [self setupMoodTextView];
     self.otherMoodTextView.hidden = YES;
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
 
 - (void)setupMoodTextView {
     // 设置背景图片
@@ -60,6 +64,18 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //    timeLB.textColor = self.otherMoodTextView.textColor;
     timeLB.textColor = [UIColor whiteColor];
     [self.otherMoodTextView addSubview:timeLB];
+    
+    // 设置文本的绘制区域
+    CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [self.otherMoodTextView contentSize].height;
+    CGFloat inset = MAX(0, deadSpace/2.0);
+    CGFloat leadingInset = 30;
+    [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
+    
+    // m2
+//    UITextView *tv = self.otherMoodTextView;
+//    CGFloat leadingInset = 30;
+//    CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height*[tv zoomScale])/2.0;
+//    [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(topCorrect, leadingInset, 0, leadingInset)];
 }
 
 - (void)didReceiveMemoryWarning {
