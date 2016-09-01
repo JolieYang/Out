@@ -111,6 +111,7 @@
     if (length == 0) {
         // 隐藏导航栏右边按钮
         [self hideNavRightItem: YES];
+        // 显示placeHolder
         self.placeHolderLB.hidden = NO;
     }
 }

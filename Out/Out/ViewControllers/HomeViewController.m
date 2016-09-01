@@ -42,10 +42,19 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @" ";
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self setupMoodTextView];
     self.otherMoodTextView.hidden = YES;
     self.otherMoodBgImage.hidden = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
@@ -63,10 +72,6 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [self.navigationController pushViewController:inputPictureVC animated:YES];
 //    [self.navigationController presentViewController:inputPictureVC animated:YES completion:nil];
 //    [self.navigationController showViewController:inputPictureVC sender:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (void)setupMoodTextView {

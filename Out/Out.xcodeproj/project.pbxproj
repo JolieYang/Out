@@ -105,10 +105,10 @@
 			children = (
 				A068C2F71D7820B200E844F1 /* HomeViewController.h */,
 				A068C2F81D7820B200E844F1 /* HomeViewController.m */,
-				A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */,
-				A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */,
 				A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */,
 				A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */,
+				A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */,
+				A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
