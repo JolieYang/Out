@@ -14,6 +14,7 @@
 		A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067F0631D741FFB003140D6 /* Assets.xcassets */; };
 		A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */; };
 		A067F0701D74284F003140D6 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F06F1D74284F003140D6 /* InputMoodViewController.m */; };
+		A067F0771D77D1DD003140D6 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0761D77D1DD003140D6 /* InputMoodPictureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		A067F0681D741FFB003140D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A067F06E1D74284F003140D6 /* InputMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMoodViewController.h; sourceTree = "<group>"; };
 		A067F06F1D74284F003140D6 /* InputMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMoodViewController.m; sourceTree = "<group>"; };
+		A067F0751D77D1DD003140D6 /* InputMoodPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMoodPictureViewController.h; sourceTree = "<group>"; };
+		A067F0761D77D1DD003140D6 /* InputMoodPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMoodPictureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				A067F05E1D741FFB003140D6 /* HomeViewController.m */,
 				A067F06E1D74284F003140D6 /* InputMoodViewController.h */,
 				A067F06F1D74284F003140D6 /* InputMoodViewController.m */,
+				A067F0751D77D1DD003140D6 /* InputMoodPictureViewController.h */,
+				A067F0761D77D1DD003140D6 /* InputMoodPictureViewController.m */,
 				A067F0601D741FFB003140D6 /* Main.storyboard */,
 				A067F0631D741FFB003140D6 /* Assets.xcassets */,
 				A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */,
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A067F05F1D741FFB003140D6 /* HomeViewController.m in Sources */,
+				A067F0771D77D1DD003140D6 /* InputMoodPictureViewController.m in Sources */,
 				A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */,
 				A067F0701D74284F003140D6 /* InputMoodViewController.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,

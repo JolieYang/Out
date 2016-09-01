@@ -48,7 +48,7 @@
                                     <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iVd-yz-MON" kind="show" id="8gh-lS-0vu"/>
+                                    <segue destination="iVd-yz-MON" kind="showDetail" id="jWi-MD-hxT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -163,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="899" y="411"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Input Mood Picture View Controller-->
         <scene sceneID="O2k-Qp-aRh">
             <objects>
-                <viewController id="iVd-yz-MON" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController id="iVd-yz-MON" customClass="InputMoodPictureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8g0-Ev-CSR"/>
                         <viewControllerLayoutGuide type="bottom" id="Qe4-k6-cEq"/>
@@ -176,20 +176,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-aG-9m8">
-                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
-                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                 <color key="backgroundColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p70-lW-ilM">
+                                <rect key="frame" x="20" y="20" width="34" height="30"/>
+                                <state key="normal" title="back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="seu-dL-Kjz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-bS-AYk">
+                                <rect key="frame" x="270" y="20" width="30" height="30"/>
+                                <state key="normal" title="out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didEndEditAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="9n9-Ou-rVK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-qF-C77">
+                                <rect key="frame" x="249" y="269" width="51" height="30"/>
+                                <state key="normal" title="camera">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePictureAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="rwo-cy-mPI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="LJO-7r-tNN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="inputTextView" destination="tZi-ap-wvg" id="y3U-dW-9lK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iag-cs-cqH" sceneMemberID="firstResponder"/>
             </objects>
