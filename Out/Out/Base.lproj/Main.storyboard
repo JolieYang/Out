@@ -31,13 +31,26 @@
                                     <action selector="inputMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KRT-pj-3ne"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
-                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
+                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <color key="backgroundColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-YK-lHv">
+                                <rect key="frame" x="111" y="506" width="98" height="30"/>
+                                <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Out Picture">
+                                    <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iVd-yz-MON" kind="show" id="8gh-lS-0vu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -48,8 +61,9 @@
                     <navigationItem key="navigationItem" id="efH-jf-cZp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="otherMoodBgImage" destination="Ill-Xz-7iU" id="sbK-Ue-WUt"/>
                         <outlet property="otherMoodTextView" destination="XEK-lu-LW3" id="jbS-pW-UMd"/>
-                        <segue destination="LAp-dC-7My" kind="show" identifier="jumpToInputMood" id="Q6N-jP-l6x"/>
+                        <segue destination="LAp-dC-7My" kind="show" id="iY2-dK-2YR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -149,5 +163,40 @@
             </objects>
             <point key="canvasLocation" x="899" y="411"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="O2k-Qp-aRh">
+            <objects>
+                <viewController id="iVd-yz-MON" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8g0-Ev-CSR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qe4-k6-cEq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RnX-kT-nNF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-aG-9m8">
+                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
+                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <color key="backgroundColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LJO-7r-tNN"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iag-cs-cqH" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1688" y="1153"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="yellow_girl" width="450" height="531"/>
+    </resources>
 </document>

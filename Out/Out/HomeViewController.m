@@ -11,12 +11,16 @@
 // Work LIST:
 // 1.[done] 在inputmood中写完mood后，在该页面显示一条别人的mood。
 // 2. 该mood在离开该页面1分钟后消失
-// 3. 调整文本的显示位置 ,左右各距离20px,垂直居中，水平居中显示。
+// 3.[done] 调整文本的显示位置 ,左右各距离20px,垂直居中，水平居中显示。
 // 4.[done] 在textView的右下角显示mood写下的时间
+// 5. 文字显示动画
+// 6. 文本也有alpha值，感觉字不是很清晰。 预想解决方案： 海报文字是一个label，而不是设置textView的文本。
+// 7.[done] 图片背景遮罩效果。 r: 一开始是设置textView通过addSubview添加背景图片，但是无法实现遮罩效果。所以应该是设置image,textView设置背景颜色，再设置alpha值0.5。
 
 // Questin LIST:
 // 1. 该页面的获取otherMoodTextView的textColor和font为nil,尝试了下inputmoodViewController的textView能够获取到啊。为何啊
 
+// 开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。
 
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
@@ -26,6 +30,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *otherMoodTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *otherMoodBgImage;
 @property (nonatomic, strong) InputMoodViewController *inputMoodVC;
 
 @end
@@ -38,6 +43,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     self.navigationItem.title = @" ";
     [self setupMoodTextView];
     self.otherMoodTextView.hidden = YES;
+    self.otherMoodBgImage.hidden = YES;
     
 }
 
@@ -47,10 +53,10 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 
 - (void)setupMoodTextView {
     // 设置背景图片
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame: [self.otherMoodTextView bounds]];
-    imageView.image = [UIImage imageNamed: mood_bg_imageName];
-    [self.otherMoodTextView addSubview:imageView];
-    [self.otherMoodTextView sendSubviewToBack:imageView];
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame: [self.otherMoodTextView bounds]];
+//    imageView.image = [UIImage imageNamed: mood_bg_imageName];
+//    [self.otherMoodTextView addSubview:imageView];
+//    [self.otherMoodTextView sendSubviewToBack:imageView];
     
     // Mood时间
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
@@ -88,8 +94,8 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     __weak typeof(self) weakSelf = self;
     inputMoodVC.finishMoodBlock = ^(NSString *date) {
         weakSelf.otherMoodTextView.hidden = NO;
+        weakSelf.otherMoodBgImage.hidden = NO;
     };
-//    [self performSegueWithIdentifier:@"jumpToInputMood" sender:self];
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 }
 
