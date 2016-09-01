@@ -24,6 +24,7 @@
 
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
+#import "InputMoodPictureViewController.h"
 
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
@@ -41,10 +42,27 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @" ";
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self setupMoodTextView];
     self.otherMoodTextView.hidden = YES;
     self.otherMoodBgImage.hidden = YES;
+}
+- (IBAction)inputMoodAction:(id)sender {
+    InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
     
+    __weak typeof(self) weakSelf = self;
+    inputMoodVC.finishMoodBlock = ^(NSString *date) {
+        weakSelf.otherMoodTextView.hidden = NO;
+        weakSelf.otherMoodBgImage.hidden = NO;
+    };
+    [self.navigationController pushViewController:inputMoodVC animated:YES];
+}
+// 海报式编辑器
+- (IBAction)inputPictureMoodAction:(id)sender {
+    InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
+    [self.navigationController pushViewController:inputPictureVC animated:YES];
+//    [self.navigationController presentViewController:inputPictureVC animated:YES completion:nil];
+//    [self.navigationController showViewController:inputPictureVC sender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,15 +106,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)inputMoodAction:(id)sender {
-    InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
-    
-    __weak typeof(self) weakSelf = self;
-    inputMoodVC.finishMoodBlock = ^(NSString *date) {
-        weakSelf.otherMoodTextView.hidden = NO;
-        weakSelf.otherMoodBgImage.hidden = NO;
-    };
-    [self.navigationController pushViewController:inputMoodVC animated:YES];
-}
+
+
 
 @end

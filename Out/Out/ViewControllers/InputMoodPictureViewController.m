@@ -24,9 +24,14 @@
 // 1. 选择相册图片
 // 2. 修改背景图片
 // 3. 输入文本,文本是居中显示
+// 4.[done] 隐藏导航栏
+
+// Questin LIST:
+// ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何
 
 
 #import "InputMoodPictureViewController.h"
+#import "HomeViewController.h"
 
 @interface InputMoodPictureViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
@@ -43,12 +48,20 @@
     [self setupInputTextView];
     self.inputTextView.delegate = self;
 }
+
+// 隐藏状态栏
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 // 返回
 - (IBAction)backAction:(id)sender {
-    
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 // 完成编辑发布心情
 - (IBAction)didEndEditAction:(id)sender {
+    // 发布处理
+    
 }
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {
@@ -67,7 +80,6 @@
     self.placeHolderLB.textColor = [UIColor whiteColor];
     self.placeHolderLB.textAlignment = NSTextAlignmentCenter;
     self.placeHolderLB.font = self.inputTextView.font;
-//    [self.placeHolderLB sizeToFit];
     [self.inputTextView addSubview:self.placeHolderLB];
 }
 

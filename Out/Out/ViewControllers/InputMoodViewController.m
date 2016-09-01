@@ -23,6 +23,7 @@
 // 9.[done] 字数统计时超过100字符时统计的字符数显示为红色
 // 10.[done]  字数统计超过100字符弹框显示“超出100字限制”
 #import "InputMoodViewController.h"
+#import "StringLengthHelper.h"
 
 #define LIMIT_TEXT_LENGTH 100
 
@@ -72,7 +73,7 @@
 - (void)didEndEdit {
     NSString *date = @"Jolie";
     // 超出100字限制
-    if ([self strLength:self.inputTextView.text] > 100) {
+    if ([StringLengthHelper length:self.inputTextView.text] > 100) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"超出100字限制" message:nil preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:okAction];
@@ -98,7 +99,7 @@
 //    NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
 //    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
     // m2--取巧
-    int length = [self strLength:textView.text] - (floor)(newText.length/2.0);
+    int length = [StringLengthHelper length:textView.text] - (floor)(newText.length/2.0);
     if (length > 100) {
         NSString *limitStr = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:limitStr];
@@ -127,27 +128,7 @@
 }
 
 #pragma mark Tool
-// 计算字符长度，进行特殊处理：emoji 当作一个长度  ascii吗与数字 两个当做一个长度
-- (int)strLength:(NSString *)str {
-    NSUInteger length = [str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4;
-    int len = (int)length;
-    
-    int blankCount = 0, asciiCount = 0, otherCount = 0;
-    unichar c;
-    for (int i = 0; i < len; i++) {
-        c = [str characterAtIndex:i];
-        if (isblank(c)) {
-            blankCount++;
-        } else if (isascii(c)) {
-            asciiCount++;
-        } else {
-            otherCount++;
-        }
-    }
-    len = (int)ceilf((float)(blankCount+asciiCount)/2.0) + otherCount;
-    
-    return len;
-}
+
 // 隐藏或显示导航栏右边按钮
 - (void)hideNavRightItem:(BOOL)hide {
     // 显示导航栏右边按钮

@@ -9,7 +9,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -48,7 +48,7 @@
                                     <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iVd-yz-MON" kind="showDetail" id="jWi-MD-hxT"/>
+                                    <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccX-dx-sXi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -166,7 +166,7 @@
         <!--Input Mood Picture View Controller-->
         <scene sceneID="O2k-Qp-aRh">
             <objects>
-                <viewController id="iVd-yz-MON" customClass="InputMoodPictureViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InputPictureMoodViewController" id="iVd-yz-MON" customClass="InputMoodPictureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8g0-Ev-CSR"/>
                         <viewControllerLayoutGuide type="bottom" id="Qe4-k6-cEq"/>
@@ -178,11 +178,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-aG-9m8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                 <color key="backgroundColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p70-lW-ilM">
@@ -223,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iag-cs-cqH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="1153"/>
+            <point key="canvasLocation" x="1688" y="1037"/>
         </scene>
     </scenes>
     <resources>

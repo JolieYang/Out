@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
-		A067F05F1D741FFB003140D6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05E1D741FFB003140D6 /* HomeViewController.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
 		A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067F0631D741FFB003140D6 /* Assets.xcassets */; };
 		A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */; };
-		A067F0701D74284F003140D6 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F06F1D74284F003140D6 /* InputMoodViewController.m */; };
-		A067F0771D77D1DD003140D6 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0761D77D1DD003140D6 /* InputMoodPictureViewController.m */; };
+		A068C2F51D781F2F00E844F1 /* StringLengthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */; };
+		A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F81D7820B200E844F1 /* HomeViewController.m */; };
+		A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */; };
+		A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,16 +23,18 @@
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A067F05B1D741FFB003140D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A067F05D1D741FFB003140D6 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		A067F05E1D741FFB003140D6 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		A067F0611D741FFB003140D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A067F0631D741FFB003140D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A067F0661D741FFB003140D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A067F0681D741FFB003140D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A067F06E1D74284F003140D6 /* InputMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMoodViewController.h; sourceTree = "<group>"; };
-		A067F06F1D74284F003140D6 /* InputMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMoodViewController.m; sourceTree = "<group>"; };
-		A067F0751D77D1DD003140D6 /* InputMoodPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMoodPictureViewController.h; sourceTree = "<group>"; };
-		A067F0761D77D1DD003140D6 /* InputMoodPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMoodPictureViewController.m; sourceTree = "<group>"; };
+		A068C2F31D781F2F00E844F1 /* StringLengthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringLengthHelper.h; path = Helpers/StringLengthHelper.h; sourceTree = "<group>"; };
+		A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringLengthHelper.m; path = Helpers/StringLengthHelper.m; sourceTree = "<group>"; };
+		A068C2F71D7820B200E844F1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController.h; sourceTree = "<group>"; };
+		A068C2F81D7820B200E844F1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController.m; sourceTree = "<group>"; };
+		A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputMoodPictureViewController.h; path = ViewControllers/InputMoodPictureViewController.h; sourceTree = "<group>"; };
+		A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputMoodPictureViewController.m; path = ViewControllers/InputMoodPictureViewController.m; sourceTree = "<group>"; };
+		A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputMoodViewController.h; path = ViewControllers/InputMoodViewController.h; sourceTree = "<group>"; };
+		A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputMoodViewController.m; path = ViewControllers/InputMoodViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,17 +67,16 @@
 		A067F0561D741FFB003140D6 /* Out */ = {
 			isa = PBXGroup;
 			children = (
+				A068C3021D7820E400E844F1 /* Library */,
+				A068C3011D7820D700E844F1 /* Models */,
+				A068C2F61D78201A00E844F1 /* ViewControllers */,
+				A068C2F21D781EE300E844F1 /* Helpers */,
+				A068C3001D7820C500E844F1 /* Network */,
 				A067F05A1D741FFB003140D6 /* AppDelegate.h */,
 				A067F05B1D741FFB003140D6 /* AppDelegate.m */,
-				A067F05D1D741FFB003140D6 /* HomeViewController.h */,
-				A067F05E1D741FFB003140D6 /* HomeViewController.m */,
-				A067F06E1D74284F003140D6 /* InputMoodViewController.h */,
-				A067F06F1D74284F003140D6 /* InputMoodViewController.m */,
-				A067F0751D77D1DD003140D6 /* InputMoodPictureViewController.h */,
-				A067F0761D77D1DD003140D6 /* InputMoodPictureViewController.m */,
 				A067F0601D741FFB003140D6 /* Main.storyboard */,
-				A067F0631D741FFB003140D6 /* Assets.xcassets */,
 				A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */,
+				A067F0631D741FFB003140D6 /* Assets.xcassets */,
 				A067F0681D741FFB003140D6 /* Info.plist */,
 				A067F0571D741FFB003140D6 /* Supporting Files */,
 			);
@@ -87,6 +89,49 @@
 				A067F0581D741FFB003140D6 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A068C2F21D781EE300E844F1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A068C2F31D781F2F00E844F1 /* StringLengthHelper.h */,
+				A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A068C2F61D78201A00E844F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A068C2F71D7820B200E844F1 /* HomeViewController.h */,
+				A068C2F81D7820B200E844F1 /* HomeViewController.m */,
+				A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */,
+				A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */,
+				A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */,
+				A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A068C3001D7820C500E844F1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		A068C3011D7820D700E844F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A068C3021D7820E400E844F1 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,11 +205,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A067F05F1D741FFB003140D6 /* HomeViewController.m in Sources */,
-				A067F0771D77D1DD003140D6 /* InputMoodPictureViewController.m in Sources */,
 				A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */,
-				A067F0701D74284F003140D6 /* InputMoodViewController.m in Sources */,
+				A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */,
+				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,
+				A068C2F51D781F2F00E844F1 /* StringLengthHelper.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
+				A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
