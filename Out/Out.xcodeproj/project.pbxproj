@@ -16,6 +16,8 @@
 		A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F81D7820B200E844F1 /* HomeViewController.m */; };
 		A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */; };
 		A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */; };
+		A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C3071D7929B300E844F1 /* TextViewHelper.m */; };
+		A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C30D1D792BC700E844F1 /* OutAlertViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputMoodPictureViewController.m; path = ViewControllers/InputMoodPictureViewController.m; sourceTree = "<group>"; };
 		A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputMoodViewController.h; path = ViewControllers/InputMoodViewController.h; sourceTree = "<group>"; };
 		A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputMoodViewController.m; path = ViewControllers/InputMoodViewController.m; sourceTree = "<group>"; };
+		A068C3061D7929B300E844F1 /* TextViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewHelper.h; path = Helpers/TextViewHelper.h; sourceTree = "<group>"; };
+		A068C3071D7929B300E844F1 /* TextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewHelper.m; path = Helpers/TextViewHelper.m; sourceTree = "<group>"; };
+		A068C30C1D792BC700E844F1 /* OutAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutAlertViewController.h; path = General/Views/OutAlertViewController.h; sourceTree = "<group>"; };
+		A068C30D1D792BC700E844F1 /* OutAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutAlertViewController.m; path = General/Views/OutAlertViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 		A067F0561D741FFB003140D6 /* Out */ = {
 			isa = PBXGroup;
 			children = (
+				A068C3091D792A9D00E844F1 /* General */,
 				A068C3021D7820E400E844F1 /* Library */,
 				A068C3011D7820D700E844F1 /* Models */,
 				A068C2F61D78201A00E844F1 /* ViewControllers */,
@@ -96,6 +103,8 @@
 			children = (
 				A068C2F31D781F2F00E844F1 /* StringLengthHelper.h */,
 				A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */,
+				A068C3061D7929B300E844F1 /* TextViewHelper.h */,
+				A068C3071D7929B300E844F1 /* TextViewHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -132,6 +141,31 @@
 			children = (
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		A068C3091D792A9D00E844F1 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				A068C30A1D792AAD00E844F1 /* Views */,
+				A068C30B1D792ACE00E844F1 /* Categories */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		A068C30A1D792AAD00E844F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A068C30C1D792BC700E844F1 /* OutAlertViewController.h */,
+				A068C30D1D792BC700E844F1 /* OutAlertViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A068C30B1D792ACE00E844F1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +241,11 @@
 			files = (
 				A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */,
 				A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */,
+				A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */,
 				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,
 				A068C2F51D781F2F00E844F1 /* StringLengthHelper.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
+				A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */,
 				A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

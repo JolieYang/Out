@@ -24,6 +24,7 @@
 // 10.[done]  字数统计超过100字符弹框显示“超出100字限制”
 #import "InputMoodViewController.h"
 #import "StringLengthHelper.h"
+#import "OutAlertViewController.h"
 
 #define LIMIT_TEXT_LENGTH 100
 
@@ -71,17 +72,14 @@
 }
 
 - (void)didEndEdit {
-    NSString *date = @"Jolie";
     // 超出100字限制
     if ([StringLengthHelper length:self.inputTextView.text] > 100) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"超出100字限制" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:okAction];
+        UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
     if (_finishMoodBlock) {
-        _finishMoodBlock(date);
+        _finishMoodBlock();
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

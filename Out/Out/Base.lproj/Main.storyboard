@@ -36,7 +36,7 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
-                                <color key="backgroundColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

@@ -56,11 +56,12 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
+// 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
-    inputMoodVC.finishMoodBlock = ^(NSString *date) {
+    inputMoodVC.finishMoodBlock = ^ {
         weakSelf.otherMoodTextView.hidden = NO;
         weakSelf.otherMoodBgImage.hidden = NO;
     };
@@ -69,6 +70,12 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 // 海报式编辑器
 - (IBAction)inputPictureMoodAction:(id)sender {
     InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
+    
+    __weak typeof(self) weakSelf = self;
+    inputPictureVC.finishPictureMoodBlock = ^{
+        weakSelf.otherMoodBgImage.hidden = NO;
+        weakSelf.otherMoodTextView.hidden = NO;
+    };
     [self.navigationController pushViewController:inputPictureVC animated:YES];
 //    [self.navigationController presentViewController:inputPictureVC animated:YES completion:nil];
 //    [self.navigationController showViewController:inputPictureVC sender:self];

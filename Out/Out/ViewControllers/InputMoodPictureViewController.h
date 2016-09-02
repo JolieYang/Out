@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface InputMoodPictureViewController : UIViewController
-
+@property (nonatomic, strong) void (^finishPictureMoodBlock)();
 @end
