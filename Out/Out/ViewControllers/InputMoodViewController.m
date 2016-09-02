@@ -137,6 +137,7 @@
         [self addNavRightItem];
     }
     NSArray *subviews = self.navigationController.navigationBar.subviews;
+    if (subviews.count < 5) return;
     UIView *navRightItem = [subviews objectAtIndex:3];// 0 1 是固定的 ,然后显示UINavigationButton，根据加入的顺序，viewDidload中添加了导航栏左边按钮(index为2), 添加了右边按钮则index为3
     [navRightItem setHidden:hide];
 }
