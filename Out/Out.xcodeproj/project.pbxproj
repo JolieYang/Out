@@ -18,6 +18,7 @@
 		A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */; };
 		A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C3071D7929B300E844F1 /* TextViewHelper.m */; };
 		A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C30D1D792BC700E844F1 /* OutAlertViewController.m */; };
+		A068C3111D79642600E844F1 /* OutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C3101D79642600E844F1 /* OutImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		A068C3071D7929B300E844F1 /* TextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewHelper.m; path = Helpers/TextViewHelper.m; sourceTree = "<group>"; };
 		A068C30C1D792BC700E844F1 /* OutAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutAlertViewController.h; path = General/Views/OutAlertViewController.h; sourceTree = "<group>"; };
 		A068C30D1D792BC700E844F1 /* OutAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutAlertViewController.m; path = General/Views/OutAlertViewController.m; sourceTree = "<group>"; };
+		A068C30F1D79642600E844F1 /* OutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutImageView.h; path = General/Views/OutImageView.h; sourceTree = "<group>"; };
+		A068C3101D79642600E844F1 /* OutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutImageView.m; path = General/Views/OutImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 			children = (
 				A068C30C1D792BC700E844F1 /* OutAlertViewController.h */,
 				A068C30D1D792BC700E844F1 /* OutAlertViewController.m */,
+				A068C30F1D79642600E844F1 /* OutImageView.h */,
+				A068C3101D79642600E844F1 /* OutImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */,
+				A068C3111D79642600E844F1 /* OutImageView.m in Sources */,
 				A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */,
 				A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */,
 				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,

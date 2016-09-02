@@ -63,7 +63,6 @@
                     <connections>
                         <outlet property="otherMoodBgImage" destination="Ill-Xz-7iU" id="sbK-Ue-WUt"/>
                         <outlet property="otherMoodTextView" destination="XEK-lu-LW3" id="jbS-pW-UMd"/>
-                        <segue destination="LAp-dC-7My" kind="show" id="iY2-dK-2YR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -181,8 +180,9 @@
                                     <constraint firstAttribute="height" constant="320" id="wL7-Wa-G9S"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
-                                <rect key="frame" x="0.0" y="28" width="320" height="265"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -200,19 +200,6 @@
                                     <action selector="backAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="seu-dL-Kjz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-qF-C77">
-                                <rect key="frame" x="282" y="289" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="LNV-0L-LIS"/>
-                                    <constraint firstAttribute="width" constant="22" id="gTl-QN-nrr"/>
-                                </constraints>
-                                <state key="normal" image="picture_camera">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="choosePictureAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="rwo-cy-mPI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-bS-AYk">
                                 <rect key="frame" x="282" y="15" width="22" height="22"/>
                                 <constraints>
@@ -226,15 +213,61 @@
                                     <action selector="didEndEditAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="9n9-Ou-rVK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-qF-C77">
+                                <rect key="frame" x="282" y="289" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="LNV-0L-LIS"/>
+                                    <constraint firstAttribute="width" constant="22" id="gTl-QN-nrr"/>
+                                </constraints>
+                                <state key="normal" image="picture_camera">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePictureAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="rwo-cy-mPI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="选择一张背景图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yM-wW-CuD">
+                                <rect key="frame" x="20" y="328" width="284" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_girl" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-6i-WC8" customClass="OutImageView">
+                                <rect key="frame" x="12" y="411" width="81" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="Tv2-PI-XKc"/>
+                                    <constraint firstAttribute="width" constant="81" id="XXS-Za-FZW"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pink_boy" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-Kg-vGM" customClass="OutImageView">
+                                <rect key="frame" x="227" y="411" width="81" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="0xa-zn-sSg"/>
+                                    <constraint firstAttribute="height" constant="81" id="Kvv-6S-Vgw"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_girl" translatesAutoresizingMaskIntoConstraints="NO" id="0F5-ZP-Q0D" customClass="OutImageView">
+                                <rect key="frame" x="120" y="411" width="81" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="9nj-vq-q5b"/>
+                                    <constraint firstAttribute="height" constant="81" id="SFm-vL-hcM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="JV4-Kg-vGM" firstAttribute="centerY" secondItem="UoM-6i-WC8" secondAttribute="centerY" id="0Eb-0J-rX1"/>
                             <constraint firstItem="dHU-qF-C77" firstAttribute="trailing" secondItem="RnX-kT-nNF" secondAttribute="trailingMargin" id="0cn-wM-Bel"/>
+                            <constraint firstItem="Qe4-k6-cEq" firstAttribute="top" secondItem="UoM-6i-WC8" secondAttribute="bottom" constant="76" id="2jQ-nO-QeW"/>
                             <constraint firstItem="p70-lW-ilM" firstAttribute="leading" secondItem="RnX-kT-nNF" secondAttribute="leadingMargin" id="G8q-3B-9K8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JV4-Kg-vGM" secondAttribute="trailing" constant="-4" id="JFJ-xy-SK3"/>
                             <constraint firstItem="dHU-qF-C77" firstAttribute="trailing" secondItem="sS3-bS-AYk" secondAttribute="trailing" id="N8H-Dw-KEu"/>
+                            <constraint firstItem="0F5-ZP-Q0D" firstAttribute="centerX" secondItem="RnX-kT-nNF" secondAttribute="centerX" id="R2I-qr-Vg6"/>
                             <constraint firstItem="sS3-bS-AYk" firstAttribute="top" secondItem="RnX-kT-nNF" secondAttribute="topMargin" constant="15" id="WB2-GR-WwX"/>
                             <constraint firstItem="dHU-qF-C77" firstAttribute="bottom" secondItem="W0P-aG-9m8" secondAttribute="bottom" constant="-9" id="Z7K-j1-Ryu"/>
+                            <constraint firstItem="0F5-ZP-Q0D" firstAttribute="centerY" secondItem="UoM-6i-WC8" secondAttribute="centerY" id="ZpV-Dg-jin"/>
                             <constraint firstItem="W0P-aG-9m8" firstAttribute="leading" secondItem="RnX-kT-nNF" secondAttribute="leadingMargin" constant="-16" id="csB-ek-bG3"/>
+                            <constraint firstItem="UoM-6i-WC8" firstAttribute="leading" secondItem="RnX-kT-nNF" secondAttribute="leadingMargin" constant="-4" id="dS7-Bq-q5o"/>
                             <constraint firstItem="p70-lW-ilM" firstAttribute="top" secondItem="RnX-kT-nNF" secondAttribute="topMargin" constant="15" id="epW-ye-Wl0"/>
                             <constraint firstItem="W0P-aG-9m8" firstAttribute="top" secondItem="RnX-kT-nNF" secondAttribute="topMargin" id="hCH-R3-Jpx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="W0P-aG-9m8" secondAttribute="trailing" constant="-16" id="jDW-YE-OWS"/>
@@ -249,8 +282,12 @@
                     <navigationItem key="navigationItem" id="LJO-7r-tNN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="firstImageView" destination="UoM-6i-WC8" id="hde-tB-wpP"/>
+                        <outlet property="inputImageView" destination="W0P-aG-9m8" id="yId-vG-YNR"/>
                         <outlet property="inputTextView" destination="tZi-ap-wvg" id="y3U-dW-9lK"/>
                         <outlet property="outBtn" destination="sS3-bS-AYk" id="2xO-JI-N75"/>
+                        <outlet property="secondImageView" destination="0F5-ZP-Q0D" id="yVJ-fT-aQE"/>
+                        <outlet property="thirdImageView" destination="JV4-Kg-vGM" id="0g1-pI-kct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iag-cs-cqH" sceneMemberID="firstResponder"/>
@@ -259,9 +296,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gray_girl" width="1075" height="1600"/>
+        <image name="green_girl" width="335" height="335"/>
         <image name="picture_back" width="22" height="22"/>
         <image name="picture_camera" width="22" height="22"/>
         <image name="picture_ok" width="22" height="22"/>
+        <image name="pink_boy" width="882" height="663"/>
         <image name="yellow_girl" width="450" height="531"/>
     </resources>
 </document>

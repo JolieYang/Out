@@ -31,22 +31,36 @@
 // 8.[done] 点击左上角按钮相关处理
 // 9. 点击右上角按钮逻辑处理
 // 10.[done] 图标替换
+// 11. 回收键盘: version1: 点击return按钮
 
 // Questin LIST:
 // ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何
 
-
+// UI:
+// 按钮图标  44 @2x #fff
 #import "InputMoodPictureViewController.h"
 #import "HomeViewController.h"
 #import "OutAlertViewController.h"
 #import "StringLengthHelper.h"
 #import "TextViewHelper.h"
+#import "OutImageView.h"
 
-@interface InputMoodPictureViewController ()<UITextViewDelegate>
+// 访问相册图片
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+
+@interface InputMoodPictureViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UIButton *outBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *inputImageView;
+
+@property (weak, nonatomic) IBOutlet OutImageView *firstImageView;
+@property (weak, nonatomic) IBOutlet OutImageView *secondImageView;
+@property (weak, nonatomic) IBOutlet OutImageView *thirdImageView;
 
 @property (nonatomic, strong) UILabel *placeHolderLB;
+@property (nonatomic, strong) UIImagePickerController *imagePickerController;
 
 @end
 
@@ -56,8 +70,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupInputTextView];
+    [self setupImagePicker];
     self.inputTextView.delegate = self;
-    [self adjustInputMoodText];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -65,6 +79,7 @@
 }
 // 返回上一级界面
 - (IBAction)backAction:(id)sender {
+    [self.inputTextView resignFirstResponder];
     UIAlertController *giveupEditAlert = [OutAlertViewController giveUpEditWithOkHandler:^(UIAlertAction *action) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -89,14 +104,21 @@
 }
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark Config
+// 隐藏状态栏
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
+// 配置textView
 - (void)setupInputTextView {
     // 设置placeholder
     self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(30, [self.inputTextView bounds].size.height/2.0 - 23, [self.inputTextView bounds].size.width - 60, 30)];
@@ -108,10 +130,31 @@
     
     // 设置光标颜色
     self.inputTextView.tintColor = [UIColor whiteColor];
+    // 调整编辑光标所在位置
+    [self adjustInputMoodText];
     
     //  隐藏发布按钮
     self.outBtn.hidden = YES;
+    
+    
+    [self.firstImageView tapGestureWithBlock:^{
+        self.inputImageView.image = self.firstImageView.image;
+    }];
+    [self.secondImageView tapGestureWithBlock:^{
+        self.inputImageView.image = self.secondImageView.image;
+    }];
+    [self.thirdImageView tapGestureWithBlock:^{
+        self.inputImageView.image = self.thirdImageView.image;
+    }];
 }
+
+- (void)setupImagePicker {
+    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
+    self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.imagePickerController.allowsEditing = YES;
+}
+
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
@@ -136,12 +179,64 @@
 
 // 点击提示栏上的字不会进入该回调
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
     if (textView.text.length == 0 && text.length > 0) {
         self.placeHolderLB.hidden = YES;
         self.outBtn.hidden = NO;
     }
+    NSString *resultStr = [NSString stringWithFormat:@"%@%@", textView.text, text];
+    if ([StringLengthHelper length:resultStr] > 100) {
+        [OutAlertViewController lenghtExceedLimit];
+    }
     return YES;
 }
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo {
+    self.inputImageView.image = image;
+}
+// choose | cancel
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
+    //判断资源类型
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
+        //如果是图片
+        self.inputImageView.image = info[UIImagePickerControllerEditedImage];
+        //压缩图片
+//        NSData *fileData = UIImageJPEGRepresentation(self.inputImageView.image, 1.0);
+        //保存图片至相册
+//        UIImageWriteToSavedPhotosAlbum(self.inputImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        //上传图片
+//        [self uploadImageWithData:fileData];
+        
+    }else{
+        //如果是视频
+        NSURL *url = info[UIImagePickerControllerMediaURL];
+        //播放视频
+//        _moviePlayer.contentURL = url;
+//        [_moviePlayer play];
+        //保存视频至相册（异步线程）
+        NSString *urlStr = [url path];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(urlStr)) {
+                
+                UISaveVideoAtPathToSavedPhotosAlbum(urlStr, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+            }
+        });
+        NSData *videoData = [NSData dataWithContentsOfURL:url];
+        //视频上传
+//        [self uploadVideoWithData:videoData];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+}
+#pragma mark UINavigationControllerDelegate
+
 #pragma mark Tool
 - (void)adjustInputMoodText {
     CGFloat space = [self.inputTextView bounds].size.height - [TextViewHelper heightForTextView:self.inputTextView];
@@ -150,9 +245,6 @@
     [self.inputTextView setTextContainerInset:UIEdgeInsetsMake(verticalInset, horizontalInset, verticalInset, horizontalInset)];
 }
 
-#pragma mark Config
-// 隐藏状态栏
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
+
+
 @end
