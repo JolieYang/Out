@@ -22,6 +22,9 @@
 // 8. 更改导航栏返回图标和右边图标
 // 9.[done] 字数统计时超过100字符时统计的字符数显示为红色
 // 10.[done]  字数统计超过100字符弹框显示“超出100字限制”
+
+//  Tips:
+// 1. 导航栏图标尺寸 58 @2x  #757575
 #import "InputMoodViewController.h"
 #import "StringLengthHelper.h"
 #import "OutAlertViewController.h"

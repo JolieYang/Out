@@ -21,13 +21,16 @@
 
 
 // TODO LIST:
-// 1. 选择相册图片
+// 1. 点击右下角按钮相关处理:选择相册图片
 // 2. 修改背景图片
 // 3.[done] 输入文本,文本是居中显示 Q1:[done] 第一行是居中显示，但距离上面的距离是固定的，也就是计算textView的高度时，高度不会随着行数的改变而改变
 // 4.[done] 隐藏导航栏
 // 5.[done] textView编辑状态的光标颜色设为白色
 // 6.[done] textView编辑状态的光标调整成跟placeHolder同一水平线
 // 7. 进入该页面，是从底下往上显示，即show detail效果
+// 8.[done] 点击左上角按钮相关处理
+// 9. 点击右上角按钮逻辑处理
+// 10.[done] 图标替换
 
 // Questin LIST:
 // ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何
@@ -41,6 +44,7 @@
 
 @interface InputMoodPictureViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
+@property (weak, nonatomic) IBOutlet UIButton *outBtn;
 
 @property (nonatomic, strong) UILabel *placeHolderLB;
 
@@ -74,7 +78,10 @@
     if ([StringLengthHelper length:self.inputTextView.text] > 100) {
         UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
         [self presentViewController:alertController animated:YES completion:nil];
+        return;
     }
+    // TODO: 连接后台发布Out
+    // ...
     if (_finishPictureMoodBlock && [StringLengthHelper length:self.inputTextView.text] > 0) {
         _finishPictureMoodBlock();
     }
@@ -101,16 +108,21 @@
     
     // 设置光标颜色
     self.inputTextView.tintColor = [UIColor whiteColor];
+    
+    //  隐藏发布按钮
+    self.outBtn.hidden = YES;
 }
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length == 0) {// 无输入字符
         self.placeHolderLB.hidden = NO;
+        self.outBtn.hidden = YES;
     }
     else if (textView.text.length > 0) {// 有字符； 之前是按照输入第一个字符时，进行隐藏placeHolder,但其实可以一口气输入多个，所以目前还没找到如何判断第一次输入text
         if (!self.placeHolderLB.hidden) {
             self.placeHolderLB.hidden = YES;
+            self.outBtn.hidden = YES;
         }
     }
     UITextRange *selectedRange = [textView markedTextRange];
@@ -126,6 +138,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if (textView.text.length == 0 && text.length > 0) {
         self.placeHolderLB.hidden = YES;
+        self.outBtn.hidden = NO;
     }
     return YES;
 }

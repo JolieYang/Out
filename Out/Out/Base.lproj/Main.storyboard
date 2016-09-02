@@ -34,13 +34,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
-                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
-                                <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-YK-lHv">
                                 <rect key="frame" x="111" y="506" width="98" height="30"/>
                                 <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,6 +44,13 @@
                                     <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccX-dx-sXi"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
+                                <rect key="frame" x="0.0" y="72" width="320" height="320"/>
+                                <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -175,8 +175,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-aG-9m8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-aG-9m8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="wL7-Wa-G9S"/>
+                                </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tZi-ap-wvg">
                                 <rect key="frame" x="0.0" y="28" width="320" height="265"/>
@@ -184,40 +187,70 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p70-lW-ilM">
-                                <rect key="frame" x="20" y="7" width="34" height="30"/>
-                                <state key="normal" title="back">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p70-lW-ilM">
+                                <rect key="frame" x="16" y="15" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="0mQ-ol-hci"/>
+                                    <constraint firstAttribute="width" constant="22" id="VjP-RU-PfA"/>
+                                </constraints>
+                                <state key="normal" image="picture_back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="backAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="seu-dL-Kjz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-bS-AYk">
-                                <rect key="frame" x="270" y="7" width="30" height="30"/>
-                                <state key="normal" title="out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didEndEditAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="9n9-Ou-rVK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-qF-C77">
-                                <rect key="frame" x="249" y="285" width="51" height="30"/>
-                                <state key="normal" title="camera">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-qF-C77">
+                                <rect key="frame" x="282" y="289" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="LNV-0L-LIS"/>
+                                    <constraint firstAttribute="width" constant="22" id="gTl-QN-nrr"/>
+                                </constraints>
+                                <state key="normal" image="picture_camera">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="choosePictureAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="rwo-cy-mPI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-bS-AYk">
+                                <rect key="frame" x="282" y="15" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="FOU-PZ-zi2"/>
+                                    <constraint firstAttribute="width" constant="22" id="fTb-iy-rGy"/>
+                                </constraints>
+                                <state key="normal" image="picture_ok">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didEndEditAction:" destination="iVd-yz-MON" eventType="touchUpInside" id="9n9-Ou-rVK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dHU-qF-C77" firstAttribute="trailing" secondItem="RnX-kT-nNF" secondAttribute="trailingMargin" id="0cn-wM-Bel"/>
+                            <constraint firstItem="p70-lW-ilM" firstAttribute="leading" secondItem="RnX-kT-nNF" secondAttribute="leadingMargin" id="G8q-3B-9K8"/>
+                            <constraint firstItem="dHU-qF-C77" firstAttribute="trailing" secondItem="sS3-bS-AYk" secondAttribute="trailing" id="N8H-Dw-KEu"/>
+                            <constraint firstItem="sS3-bS-AYk" firstAttribute="top" secondItem="RnX-kT-nNF" secondAttribute="topMargin" constant="15" id="WB2-GR-WwX"/>
+                            <constraint firstItem="dHU-qF-C77" firstAttribute="bottom" secondItem="W0P-aG-9m8" secondAttribute="bottom" constant="-9" id="Z7K-j1-Ryu"/>
+                            <constraint firstItem="W0P-aG-9m8" firstAttribute="leading" secondItem="RnX-kT-nNF" secondAttribute="leadingMargin" constant="-16" id="csB-ek-bG3"/>
+                            <constraint firstItem="p70-lW-ilM" firstAttribute="top" secondItem="RnX-kT-nNF" secondAttribute="topMargin" constant="15" id="epW-ye-Wl0"/>
+                            <constraint firstItem="W0P-aG-9m8" firstAttribute="top" secondItem="RnX-kT-nNF" secondAttribute="topMargin" id="hCH-R3-Jpx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W0P-aG-9m8" secondAttribute="trailing" constant="-16" id="jDW-YE-OWS"/>
+                            <constraint firstItem="sS3-bS-AYk" firstAttribute="trailing" secondItem="RnX-kT-nNF" secondAttribute="trailingMargin" id="t8e-DG-A67"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0cn-wM-Bel"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="LJO-7r-tNN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="inputTextView" destination="tZi-ap-wvg" id="y3U-dW-9lK"/>
+                        <outlet property="outBtn" destination="sS3-bS-AYk" id="2xO-JI-N75"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iag-cs-cqH" sceneMemberID="firstResponder"/>
@@ -226,6 +259,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="picture_back" width="22" height="22"/>
+        <image name="picture_camera" width="22" height="22"/>
+        <image name="picture_ok" width="22" height="22"/>
         <image name="yellow_girl" width="450" height="531"/>
     </resources>
 </document>
