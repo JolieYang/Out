@@ -19,14 +19,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-36-oVV">
-                                <rect key="frame" x="111" y="468" width="98" height="30"/>
-                                <color key="backgroundColor" red="0.17647058823529413" green="0.18431372549019609" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="-4" y="482" width="328" height="30"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="QaR-xN-ibQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="clU-jL-Bf4"/>
                                 </constraints>
                                 <state key="normal" title="Out">
                                     <color key="titleColor" red="0.84705882352941175" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QaR-xN-ibQ"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="inputMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KRT-pj-3ne"/>
                                 </connections>
@@ -34,16 +40,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-YK-lHv">
-                                <rect key="frame" x="111" y="506" width="98" height="30"/>
-                                <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Out Picture">
-                                    <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccX-dx-sXi"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -51,12 +47,37 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-YK-lHv">
+                                <rect key="frame" x="-4" y="520" width="328" height="30"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9XP-w1-qCQ"/>
+                                </constraints>
+                                <state key="normal" title="Out Picture">
+                                    <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccX-dx-sXi"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="mQw-YK-lHv" firstAttribute="top" secondItem="oHW-36-oVV" secondAttribute="bottom" constant="8" id="2Jh-Fh-Rs9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oHW-36-oVV" secondAttribute="trailing" constant="-20" id="M7x-sC-JgB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oHW-36-oVV" secondAttribute="bottom" constant="70" id="OeT-5s-aZO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mQw-YK-lHv" secondAttribute="trailing" constant="-20" id="QL1-7s-Oud"/>
+                            <constraint firstItem="mQw-YK-lHv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="RVc-0u-Hjn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mQw-YK-lHv" secondAttribute="bottom" constant="18" id="fT5-hn-1oa"/>
+                            <constraint firstItem="oHW-36-oVV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="pig-Uf-Vm5"/>
                             <constraint firstItem="oHW-36-oVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="psa-oh-T4d"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="psa-oh-T4d"/>
+                                <exclude reference="OeT-5s-aZO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="efH-jf-cZp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

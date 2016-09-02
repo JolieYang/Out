@@ -44,7 +44,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     self.navigationItem.title = @" ";
     [self setupMoodTextView];
     self.otherMoodTextView.hidden = YES;
-    self.otherMoodBgImage.hidden = YES;
+//    self.otherMoodBgImage.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,7 +63,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     __weak typeof(self) weakSelf = self;
     inputMoodVC.finishMoodBlock = ^ {
         weakSelf.otherMoodTextView.hidden = NO;
-        weakSelf.otherMoodBgImage.hidden = NO;
+//        weakSelf.otherMoodBgImage.hidden = NO;
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 }
@@ -73,7 +73,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     
     __weak typeof(self) weakSelf = self;
     inputPictureVC.finishPictureMoodBlock = ^{
-        weakSelf.otherMoodBgImage.hidden = NO;
+//        weakSelf.otherMoodBgImage.hidden = NO;
         weakSelf.otherMoodTextView.hidden = NO;
     };
     [self.navigationController pushViewController:inputPictureVC animated:YES];
@@ -92,7 +92,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
     int leading = 8;
     int labelHeight = 36;
-    UILabel *timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2, labelHeight)];
+    UILabel *timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 30, labelHeight)];
     timeLB.textAlignment = NSTextAlignmentRight;
     timeLB.text = @"二0一六年八月三十一日";
 //    timeLB.font = self.otherMoodTextView.font;
