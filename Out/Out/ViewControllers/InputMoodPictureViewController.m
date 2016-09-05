@@ -34,7 +34,7 @@
 // 11.[done][ing] 回收键盘: version1: 点击return按钮
 
 // Questin LIST:
-// ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。
+// ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。 资料：https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/UsingSegues.html
 
 // UI:
 // 按钮图标  44 @2x #fff
@@ -216,10 +216,10 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(urlStr)) {
                 
-                UISaveVideoAtPathToSavedPhotosAlbum(urlStr, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+//                UISaveVideoAtPathToSavedPhotosAlbum(urlStr, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
             }
         });
-        NSData *videoData = [NSData dataWithContentsOfURL:url];
+//        NSData *videoData = [NSData dataWithContentsOfURL:url];
         //视频上传
 //        [self uploadVideoWithData:videoData];
     }
@@ -237,7 +237,6 @@
     CGFloat horizontalInset = 30;
     [self.inputTextView setTextContainerInset:UIEdgeInsetsMake(verticalInset, horizontalInset, verticalInset, horizontalInset)];
 }
-
 
 
 @end

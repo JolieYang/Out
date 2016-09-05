@@ -17,7 +17,7 @@
 // 6. 文本也有alpha值，感觉字不是很清晰。 预想解决方案： 海报文字是一个label，而不是设置textView的文本。
 // 7.[done] 图片背景遮罩效果。 r: 一开始是设置textView通过addSubview添加背景图片，但是无法实现遮罩效果。所以应该是设置image,textView设置背景颜色，再设置alpha值0.5。
 // 8.[done]  设置状态栏为白色
-// 9. 接入后端接口 communicate with spider-- 5th,Nov,2016
+// 9. 接入后端接口 communicate with spider-- 5th,Nov,2016 1) 发布out: content,用户昵称,时间,图片url 2) 上传图片 3) 获取一条out
 
 // Questin LIST:
 // 1. 该页面的获取otherMoodTextView的textColor和font为nil,尝试了下inputmoodViewController的textView能够获取到啊。为何啊
@@ -56,6 +56,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+#pragma mark UI
 
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
@@ -68,7 +69,11 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
+//    [self showViewController:inputMoodVC sender:self];
 }
+//- (nullable UIViewController *)targetViewControllerForAction:(SEL)action sender:(nullable id)sender {
+//    return self.navigationController;
+//}
 // 海报式编辑器
 - (IBAction)inputPictureMoodAction:(id)sender {
     InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
@@ -80,7 +85,8 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
         UIImage *image = [UIImage imageNamed:@"green_girl"];
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
     };
-    [self presentViewController:inputPictureVC animated:YES completion:nil];
+//    [self presentViewController:inputPictureVC animated:YES completion:nil];
+    [self showDetailViewController:inputPictureVC sender:self];
 }
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {

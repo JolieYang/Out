@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A045A0CF1D7D5E4B00AC9752 /* SetOutNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */; };
+		A045A0D21D7D769B00AC9752 /* SetOutNameWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -22,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A045A0CD1D7D5E4B00AC9752 /* SetOutNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetOutNameViewController.h; path = ViewControllers/SetOutNameViewController.h; sourceTree = "<group>"; };
+		A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetOutNameViewController.m; path = ViewControllers/SetOutNameViewController.m; sourceTree = "<group>"; };
+		A045A0D01D7D769B00AC9752 /* SetOutNameWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetOutNameWindow.h; sourceTree = "<group>"; };
+		A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetOutNameWindow.m; sourceTree = "<group>"; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 				A068C3001D7820C500E844F1 /* Network */,
 				A067F05A1D741FFB003140D6 /* AppDelegate.h */,
 				A067F05B1D741FFB003140D6 /* AppDelegate.m */,
+				A045A0D01D7D769B00AC9752 /* SetOutNameWindow.h */,
+				A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */,
 				A067F0601D741FFB003140D6 /* Main.storyboard */,
 				A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */,
 				A067F0631D741FFB003140D6 /* Assets.xcassets */,
@@ -115,6 +123,8 @@
 		A068C2F61D78201A00E844F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A045A0CD1D7D5E4B00AC9752 /* SetOutNameViewController.h */,
+				A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */,
 				A068C2F71D7820B200E844F1 /* HomeViewController.h */,
 				A068C2F81D7820B200E844F1 /* HomeViewController.m */,
 				A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */,
@@ -251,6 +261,8 @@
 				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,
 				A068C2F51D781F2F00E844F1 /* StringLengthHelper.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
+				A045A0CF1D7D5E4B00AC9752 /* SetOutNameViewController.m in Sources */,
+				A045A0D21D7D769B00AC9752 /* SetOutNameWindow.m in Sources */,
 				A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */,
 				A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */,
 			);

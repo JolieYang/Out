@@ -119,8 +119,8 @@
                                     <constraint firstAttribute="trailing" secondItem="YMN-Yk-xkl" secondAttribute="trailing" constant="8" id="eZR-Us-qnj"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
-                                <rect key="frame" x="16" y="72" width="288" height="208"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
+                                <rect key="frame" x="16" y="28" width="288" height="252"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="208" id="Q4c-7u-uxz"/>
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQG-36-bCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="411"/>
+            <point key="canvasLocation" x="1702" y="335"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TsD-bK-bEn">
@@ -182,6 +182,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzh-yG-5cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="899" y="411"/>
+        </scene>
+        <!--Set Out Name View Controller-->
+        <scene sceneID="QYK-e8-zFU">
+            <objects>
+                <viewController storyboardIdentifier="SetOutNameViewController" id="bAh-2K-DpX" customClass="SetOutNameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dWX-Rk-ruo"/>
+                        <viewControllerLayoutGuide type="bottom" id="yI5-h8-P4o"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="XXu-W1-pMr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input your Out name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NN6-nJ-XZw">
+                                <rect key="frame" x="24" y="132" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5o-eE-i04">
+                                <rect key="frame" x="24" y="176" width="280" height="30"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="进入">
+                                    <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dWI-Hh-28T"/>
+                                    <action selector="setOutNameAction:" destination="bAh-2K-DpX" eventType="touchUpInside" id="OXs-EI-oy1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Out your Happiness and sadness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-bS-1fg">
+                                <rect key="frame" x="20" y="516" width="280" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="outNameTF" destination="NN6-nJ-XZw" id="iVk-tI-49A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Emz-3Q-qNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="1110"/>
         </scene>
         <!--Input Mood Picture View Controller-->
         <scene sceneID="O2k-Qp-aRh">
@@ -313,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iag-cs-cqH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="1037"/>
+            <point key="canvasLocation" x="1702" y="953"/>
         </scene>
     </scenes>
     <resources>
