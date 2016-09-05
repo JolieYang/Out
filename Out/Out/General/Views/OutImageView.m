@@ -22,7 +22,6 @@
     [self setUserInteractionEnabled:YES];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
     [self addGestureRecognizer:tapGesture];
-//    _tapAction = nil;
     _tapAction = [tapHandler copy];
 }
 

@@ -46,20 +46,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.inputTextView.delegate = self;
-    self.navigationItem.title = @"InputMood";
-    // 设置导航栏返回(左边)按钮
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = backItem;
-    self.inputTextView.contentMode = UIViewContentModeTop;
-    [self addInputTextViewPlaceHolder];
+    [self setupNavigation];
+    [self setupTextView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.inputTextView becomeFirstResponder];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)setupNavigation {
+    self.navigationItem.title = @"InputMood";
+    // 设置导航栏返回(左边)按钮
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = backItem;
+}
+
+- (void)setupTextView {
+    self.inputTextView.delegate = self;
+    self.inputTextView.contentMode = UIViewContentModeTop;
+    [self addInputTextViewPlaceHolder];
+}
 - (void)addInputTextViewPlaceHolder {
     self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(5, 8, [[UIScreen mainScreen] bounds].size.width - 20, 36)];
     self.placeHolderLB.text = @"想说点什么呢?";

@@ -34,7 +34,7 @@
 // 11. 回收键盘: version1: 点击return按钮
 
 // Questin LIST:
-// ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何
+// ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。
 
 // UI:
 // 按钮图标  44 @2x #fff
@@ -77,11 +77,13 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
-// 返回上一级界面
+// 点击返回上一级界面按钮
 - (IBAction)backAction:(id)sender {
     [self.inputTextView resignFirstResponder];
     UIAlertController *giveupEditAlert = [OutAlertViewController giveUpEditWithOkHandler:^(UIAlertAction *action) {
-        [self.navigationController popViewControllerAnimated:YES];
+        //  确定离开该页面
+//        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     [self presentViewController:giveupEditAlert animated:YES completion:nil];
     
@@ -118,6 +120,9 @@
     return YES;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
 // 配置textView
 - (void)setupInputTextView {
     // 设置placeholder

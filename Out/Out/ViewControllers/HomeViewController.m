@@ -16,6 +16,7 @@
 // 5. 文字显示动画
 // 6. 文本也有alpha值，感觉字不是很清晰。 预想解决方案： 海报文字是一个label，而不是设置textView的文本。
 // 7.[done] 图片背景遮罩效果。 r: 一开始是设置textView通过addSubview添加背景图片，但是无法实现遮罩效果。所以应该是设置image,textView设置背景颜色，再设置alpha值0.5。
+// 8.[done]  设置状态栏为白色
 
 // Questin LIST:
 // 1. 该页面的获取otherMoodTextView的textColor和font为nil,尝试了下inputmoodViewController的textView能够获取到啊。为何啊
@@ -45,6 +46,11 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [self setupMoodTextView];
     self.otherMoodTextView.hidden = YES;
 //    self.otherMoodBgImage.hidden = YES;
+    
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,7 +60,6 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
@@ -76,9 +81,8 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //        weakSelf.otherMoodBgImage.hidden = NO;
         weakSelf.otherMoodTextView.hidden = NO;
     };
-    [self.navigationController pushViewController:inputPictureVC animated:YES];
-//    [self.navigationController presentViewController:inputPictureVC animated:YES completion:nil];
-//    [self.navigationController showViewController:inputPictureVC sender:self];
+//    [self.navigationController pushViewController:inputPictureVC animated:YES];
+    [self presentViewController:inputPictureVC animated:YES completion:nil];
 }
 
 - (void)setupMoodTextView {
