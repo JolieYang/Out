@@ -19,7 +19,7 @@
 // 5.[done] 计算字数时特殊情况处理: 1) emoji 使用length为2 ,通过[str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4 为1； 2) 英文字母字符数字为两个代表一个长度。
 // 6.[done] 输入文字后去除placeholder
 // 7.[done] 输入文字时textView是垂直居中左对齐，而不是顶部左对齐  [new]默认为顶部左对齐，之前在textView区域拖了一个Label，设置完约束后就是这样了。
-// 8. 更改导航栏返回图标和右边图标
+// 8.[done] 更改导航栏返回图标和右边图标
 // 9.[done] 字数统计时超过100字符时统计的字符数显示为红色
 // 10.[done]  字数统计超过100字符弹框显示“超出100字限制”
 

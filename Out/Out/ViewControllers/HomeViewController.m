@@ -17,6 +17,7 @@
 // 6. 文本也有alpha值，感觉字不是很清晰。 预想解决方案： 海报文字是一个label，而不是设置textView的文本。
 // 7.[done] 图片背景遮罩效果。 r: 一开始是设置textView通过addSubview添加背景图片，但是无法实现遮罩效果。所以应该是设置image,textView设置背景颜色，再设置alpha值0.5。
 // 8.[done]  设置状态栏为白色
+// 9. 接入后端接口 communicate with spider-- 5th,Nov,2016
 
 // Questin LIST:
 // 1. 该页面的获取otherMoodTextView的textColor和font为nil,尝试了下inputmoodViewController的textView能够获取到啊。为何啊

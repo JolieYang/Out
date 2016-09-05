@@ -21,17 +21,17 @@
 
 
 // TODO LIST:
-// 1. 点击右下角按钮相关处理:选择相册图片
-// 2. 修改背景图片
+// 1.[done] 点击右下角按钮相关处理:选择相册图片
+// 2.[done] 修改背景图片
 // 3.[done] 输入文本,文本是居中显示 Q1:[done] 第一行是居中显示，但距离上面的距离是固定的，也就是计算textView的高度时，高度不会随着行数的改变而改变
 // 4.[done] 隐藏导航栏
 // 5.[done] textView编辑状态的光标颜色设为白色
 // 6.[done] textView编辑状态的光标调整成跟placeHolder同一水平线
 // 7. 进入该页面，是从底下往上显示，即show detail效果
 // 8.[done] 点击左上角按钮相关处理
-// 9. 点击右上角按钮逻辑处理
+// 9.[done] 点击右上角按钮逻辑处理
 // 10.[done] 图标替换
-// 11. 回收键盘: version1: 点击return按钮
+// 11.[done][ing] 回收键盘: version1: 点击return按钮
 
 // Questin LIST:
 // ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。
@@ -50,7 +50,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface InputMoodPictureViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface InputMoodPictureViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UIButton *outBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *inputImageView;
@@ -73,20 +73,14 @@
     [self setupImagePicker];
     self.inputTextView.delegate = self;
 }
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
 // 点击返回上一级界面按钮
 - (IBAction)backAction:(id)sender {
     [self.inputTextView resignFirstResponder];
     UIAlertController *giveupEditAlert = [OutAlertViewController giveUpEditWithOkHandler:^(UIAlertAction *action) {
         //  确定离开该页面
-//        [self.navigationController popViewControllerAnimated:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
     [self presentViewController:giveupEditAlert animated:YES completion:nil];
-    
-//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 // 完成编辑发布心情
 - (IBAction)didEndEditAction:(id)sender {
@@ -117,10 +111,6 @@
 // 隐藏状态栏
 - (BOOL)prefersStatusBarHidden {
     return YES;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
 }
 // 配置textView
 - (void)setupInputTextView {
@@ -158,7 +148,6 @@
     self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.imagePickerController.allowsEditing = YES;
 }
-
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
@@ -201,7 +190,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo {
     self.inputImageView.image = image;
 }
-// choose | cancel
+// choose
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
     //判断资源类型
@@ -236,10 +225,10 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+// cancel
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-#pragma mark UINavigationControllerDelegate
 
 #pragma mark Tool
 - (void)adjustInputMoodText {
