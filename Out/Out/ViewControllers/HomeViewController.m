@@ -26,6 +26,7 @@
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
+#import "TextViewHelper.h"
 
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
@@ -35,6 +36,8 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 @property (weak, nonatomic) IBOutlet UIImageView *otherMoodBgImage;
 @property (nonatomic, strong) InputMoodViewController *inputMoodVC;
 
+@property (nonatomic, strong) UILabel *timeLB;
+
 @end
 
 @implementation HomeViewController
@@ -42,11 +45,6 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.title = @" ";
-    [self setupMoodTextView];
-    self.otherMoodTextView.hidden = YES;
-//    self.otherMoodBgImage.hidden = YES;
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -58,17 +56,15 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
     inputMoodVC.finishMoodBlock = ^ {
-        weakSelf.otherMoodTextView.hidden = NO;
-//        weakSelf.otherMoodBgImage.hidden = NO;
+        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
+        NSString *timeStr = @"二0一六年八月三十一日";
+        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 }
@@ -78,44 +74,46 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     
     __weak typeof(self) weakSelf = self;
     inputPictureVC.finishPictureMoodBlock = ^{
-//        weakSelf.otherMoodBgImage.hidden = NO;
-        weakSelf.otherMoodTextView.hidden = NO;
+        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+        NSString *timeStr = @"二0一六年九月三日";
+        UIImage *image = [UIImage imageNamed:@"green_girl"];
+        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
     };
-//    [self.navigationController pushViewController:inputPictureVC animated:YES];
     [self presentViewController:inputPictureVC animated:YES completion:nil];
 }
 
-- (void)setupMoodTextView {
+- (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
     // 设置背景图片
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame: [self.otherMoodTextView bounds]];
-//    imageView.image = [UIImage imageNamed: mood_bg_imageName];
-//    [self.otherMoodTextView addSubview:imageView];
-//    [self.otherMoodTextView sendSubviewToBack:imageView];
+    if (image) self.otherMoodBgImage.image = image;
+    
+    if (content) {
+        self.otherMoodTextView.text = content;
+        self.otherMoodTextView.textColor = [UIColor whiteColor];
+        self.otherMoodTextView.font = [UIFont fontWithName:@"Thonburi" size:14.0];
+        
+        // 设置文本的绘制区域
+        CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [TextViewHelper heightForTextView:self.otherMoodTextView];
+        CGFloat inset = MAX(30, deadSpace/2.0-20.0);
+        CGFloat leadingInset = 30;
+        [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
+    }
     
     // Mood时间
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
     int leading = 8;
     int labelHeight = 36;
-    UILabel *timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 30, labelHeight)];
-    timeLB.textAlignment = NSTextAlignmentRight;
-    timeLB.text = @"二0一六年八月三十一日";
-//    timeLB.font = self.otherMoodTextView.font;
-    timeLB.font = [UIFont fontWithName:@"Thonburi" size:14.0];
-//    timeLB.textColor = self.otherMoodTextView.textColor;
-    timeLB.textColor = [UIColor whiteColor];
-    [self.otherMoodTextView addSubview:timeLB];
+    if (!self.timeLB) {
+        // 添加Mood时间LB
+        self.timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 40, labelHeight)];
+        self.timeLB.textAlignment = NSTextAlignmentRight;
+        self.timeLB.font = [UIFont fontWithName:@"Thonburi" size:14.0];
+        self.timeLB.textColor = [UIColor whiteColor];
+//        self.timeLB.font = self.otherMoodTextView.font;
+//        self.timeLB.textColor = self.otherMoodTextView.textColor;
+        [self.otherMoodTextView addSubview:self.timeLB];
+    }
     
-    // 设置文本的绘制区域
-    CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [self.otherMoodTextView contentSize].height;
-    CGFloat inset = MAX(0, deadSpace/2.0);
-    CGFloat leadingInset = 30;
-    [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
-    
-    // m2
-//    UITextView *tv = self.otherMoodTextView;
-//    CGFloat leadingInset = 30;
-//    CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height*[tv zoomScale])/2.0;
-//    [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(topCorrect, leadingInset, 0, leadingInset)];
+    if (timeStr) self.timeLB.text = timeStr;
 }
 
 - (void)didReceiveMemoryWarning {

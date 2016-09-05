@@ -75,7 +75,6 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 // 点击返回上一级界面按钮
 - (IBAction)backAction:(id)sender {
@@ -102,7 +101,7 @@
     if (_finishPictureMoodBlock && [StringLengthHelper length:self.inputTextView.text] > 0) {
         _finishPictureMoodBlock();
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {
