@@ -46,7 +46,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"home");
+    [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -72,9 +72,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 //    [self showViewController:inputMoodVC sender:self];
 }
-//- (nullable UIViewController *)targetViewControllerForAction:(SEL)action sender:(nullable id)sender {
-//    return self.navigationController;
-//}
+
 // 海报式编辑器
 - (IBAction)inputPictureMoodAction:(id)sender {
     InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
@@ -104,6 +102,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
         CGFloat inset = MAX(30, deadSpace/2.0-20.0);
         CGFloat leadingInset = 30;
         [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
+        self.otherMoodTextView.textAlignment = NSTextAlignmentCenter;
     }
     
     // Mood时间

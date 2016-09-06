@@ -27,10 +27,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-+ (UIAlertController *)lenghtExceedLimit {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"超出100字限制" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
++ (UIAlertController *)showWithTitle:(NSString *)title actionTitle:(NSString *)actionStr {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:actionStr style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:okAction];
+    
+    return alertController;
+}
++ (UIAlertController *)lenghtExceedLimit {
+    UIAlertController *alertController = [OutAlertViewController showWithTitle:@"超出100字限制" actionTitle:@"知道了"];
+    
+    return alertController;
+}
++ (UIAlertController *)spaceOutName {
+    UIAlertController *alertController = [OutAlertViewController showWithTitle:@"OutName不可全为空格" actionTitle:@"知道了"];
+    
+    return alertController;
+}
++ (UIAlertController *)nullOutName {
+    UIAlertController *alertController = [OutAlertViewController showWithTitle:@"请输入OutName" actionTitle:@"知道了"];
     
     return alertController;
 }

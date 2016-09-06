@@ -19,11 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
     if (![[NSUserDefaults standardUserDefaults] valueForKey:OUT_NAME]) {
-        NSLog(@"not hello");
-        // 显示设置OutName窗口
-        // 设置OutName后change the value
         [[SetOutNameWindow shareInstance] show];
     }
     
