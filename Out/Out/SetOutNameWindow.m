@@ -10,28 +10,36 @@
 #import "SetOutNameViewController.h"
 
 @interface SetOutNameWindow()
-
-@property (nonatomic, strong) UIWindow *window;
-
 @end
 
 @implementation SetOutNameWindow
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
++ (SetOutNameWindow *)shareInstance {
+    static SetOutNameWindow *shareSetOutNameWindowInstance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        shareSetOutNameWindowInstance = [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    });
+    return shareSetOutNameWindowInstance;
 }
-*/
-+ (void)show {
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+    }
+    return self;
+}
+
+- (void)show {
     SetOutNameViewController *setOutNameVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetOutNameViewController"];
-//    [self setRootViewController:setOutNameVC];
-//    [self makeKeyWindow];
+    self.windowLevel = UIWindowLevelNormal + 93;
+    [self setRootViewController:setOutNameVC];
+    [self makeKeyAndVisible];
 }
 
 - (void)hide {
     [self resignKeyWindow];
+    self.hidden = YES;
 }
 
 @end

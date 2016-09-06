@@ -41,7 +41,7 @@
 #import "InputMoodPictureViewController.h"
 #import "HomeViewController.h"
 #import "OutAlertViewController.h"
-#import "StringLengthHelper.h"
+#import "StringHelper.h"
 #import "TextViewHelper.h"
 #import "OutImageView.h"
 
@@ -85,14 +85,14 @@
 // 完成编辑发布心情
 - (IBAction)didEndEditAction:(id)sender {
     // 判断字数是否超出限制
-    if ([StringLengthHelper length:self.inputTextView.text] > 100) {
+    if ([StringHelper length:self.inputTextView.text] > 100) {
         UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
     // TODO: 连接后台发布Out
     // ...
-    if (_finishPictureMoodBlock && [StringLengthHelper length:self.inputTextView.text] > 0) {
+    if (_finishPictureMoodBlock && [StringHelper length:self.inputTextView.text] > 0) {
         _finishPictureMoodBlock();
     }
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -163,7 +163,7 @@
     }
     UITextRange *selectedRange = [textView markedTextRange];
     NSString *newText = [textView textInRange:selectedRange];
-    int length = [StringLengthHelper length:textView.text] - (floor)(newText.length/2.0);
+    int length = [StringHelper length:textView.text] - (floor)(newText.length/2.0);
     if (length > 100) {
         // 弹窗提醒“文字超出长度限制"
     }
@@ -181,7 +181,7 @@
         self.outBtn.hidden = NO;
     }
     NSString *resultStr = [NSString stringWithFormat:@"%@%@", textView.text, text];
-    if ([StringLengthHelper length:resultStr] > 100) {
+    if ([StringHelper length:resultStr] > 100) {
         [OutAlertViewController lenghtExceedLimit];
     }
     return YES;

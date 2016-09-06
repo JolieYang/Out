@@ -26,7 +26,7 @@
 //  UI:
 // 1. 导航栏图标尺寸 58 @2x  #757575
 #import "InputMoodViewController.h"
-#import "StringLengthHelper.h"
+#import "StringHelper.h"
 #import "OutAlertViewController.h"
 
 #define LIMIT_TEXT_LENGTH 100
@@ -84,7 +84,7 @@
 
 - (void)didEndEdit {
     // 超出100字限制
-    if ([StringLengthHelper length:self.inputTextView.text] > 100) {
+    if ([StringHelper length:self.inputTextView.text] > 100) {
         UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
@@ -108,7 +108,7 @@
 //    NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
 //    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
     // m2--取巧
-    int length = [StringLengthHelper length:textView.text] - (floor)(newText.length/2.0);
+    int length = [StringHelper length:textView.text] - (floor)(newText.length/2.0);
     if (length > 100) {
         NSString *limitStr = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:limitStr];

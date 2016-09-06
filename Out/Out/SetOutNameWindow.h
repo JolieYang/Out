@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SetOutNameWindow : UIWindow
-+ (void)show;
+- (id)initWithFrame:(CGRect)frame;
++ (SetOutNameWindow *)shareInstance;
+- (void)show;
 - (void)hide;
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SetOutNameWindow.h"
+#import "const.h"
 
 @interface AppDelegate ()
 
@@ -18,11 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"HaveSetOName"]) {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:OUT_NAME]) {
         NSLog(@"not hello");
         // 显示设置OutName窗口
         // 设置OutName后change the value
-        [SetOutNameWindow show];
+        [[SetOutNameWindow shareInstance] show];
     }
     
     return YES;

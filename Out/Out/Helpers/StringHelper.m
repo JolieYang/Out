@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
-#import "StringLengthHelper.h"
+#import "StringHelper.h"
 
-@implementation StringLengthHelper
+@implementation StringHelper
 // 计算字符长度，进行特殊处理：emoji 当作一个长度  ascii吗与数字 两个当做一个长度
 + (int)length:(NSString *)str {
     NSUInteger length = [str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4;
@@ -29,5 +29,14 @@
     len = (int)ceilf((float)(blankCount+asciiCount)/2.0) + otherCount;
     
     return len;
+}
++ (BOOL)isEmpty:(NSString *)string {
+    return (![string isKindOfClass:[NSString class]]) || ([StringHelper trim: string].length <= 0);
+}
++ (NSString *)trim:(NSString *)string {
+    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
++ (NSString *)stripSpace:(NSString *)string {
+    return [string stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 @end

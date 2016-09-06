@@ -14,7 +14,7 @@
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
 		A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067F0631D741FFB003140D6 /* Assets.xcassets */; };
 		A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */; };
-		A068C2F51D781F2F00E844F1 /* StringLengthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */; };
+		A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F41D781F2F00E844F1 /* StringHelper.m */; };
 		A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F81D7820B200E844F1 /* HomeViewController.m */; };
 		A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */; };
 		A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */; };
@@ -28,6 +28,7 @@
 		A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetOutNameViewController.m; path = ViewControllers/SetOutNameViewController.m; sourceTree = "<group>"; };
 		A045A0D01D7D769B00AC9752 /* SetOutNameWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetOutNameWindow.h; sourceTree = "<group>"; };
 		A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetOutNameWindow.m; sourceTree = "<group>"; };
+		A04C93A81D7EB1860028F2DB /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = const.h; path = Config/const.h; sourceTree = "<group>"; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,8 +37,8 @@
 		A067F0631D741FFB003140D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A067F0661D741FFB003140D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A067F0681D741FFB003140D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A068C2F31D781F2F00E844F1 /* StringLengthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringLengthHelper.h; path = Helpers/StringLengthHelper.h; sourceTree = "<group>"; };
-		A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringLengthHelper.m; path = Helpers/StringLengthHelper.m; sourceTree = "<group>"; };
+		A068C2F31D781F2F00E844F1 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringHelper.h; path = Helpers/StringHelper.h; sourceTree = "<group>"; };
+		A068C2F41D781F2F00E844F1 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringHelper.m; path = Helpers/StringHelper.m; sourceTree = "<group>"; };
 		A068C2F71D7820B200E844F1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController.h; sourceTree = "<group>"; };
 		A068C2F81D7820B200E844F1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController.m; sourceTree = "<group>"; };
 		A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputMoodPictureViewController.h; path = ViewControllers/InputMoodPictureViewController.h; sourceTree = "<group>"; };
@@ -63,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A04C93A71D7EB1560028F2DB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A04C93A81D7EB1860028F2DB /* const.h */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
 		A067F04B1D741FFB003140D6 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +91,7 @@
 		A067F0561D741FFB003140D6 /* Out */ = {
 			isa = PBXGroup;
 			children = (
+				A04C93A71D7EB1560028F2DB /* Config */,
 				A068C3091D792A9D00E844F1 /* General */,
 				A068C3021D7820E400E844F1 /* Library */,
 				A068C3011D7820D700E844F1 /* Models */,
@@ -112,8 +122,8 @@
 		A068C2F21D781EE300E844F1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A068C2F31D781F2F00E844F1 /* StringLengthHelper.h */,
-				A068C2F41D781F2F00E844F1 /* StringLengthHelper.m */,
+				A068C2F31D781F2F00E844F1 /* StringHelper.h */,
+				A068C2F41D781F2F00E844F1 /* StringHelper.m */,
 				A068C3061D7929B300E844F1 /* TextViewHelper.h */,
 				A068C3071D7929B300E844F1 /* TextViewHelper.m */,
 			);
@@ -259,7 +269,7 @@
 				A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */,
 				A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */,
 				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,
-				A068C2F51D781F2F00E844F1 /* StringLengthHelper.m in Sources */,
+				A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
 				A045A0CF1D7D5E4B00AC9752 /* SetOutNameViewController.m in Sources */,
 				A045A0D21D7D769B00AC9752 /* SetOutNameWindow.m in Sources */,
@@ -378,13 +388,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fujian EHealth Science & Technology Co., Ltd.";
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.NL.Out;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spider.out;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8a81bb6e-387c-4020-89a2-efaf44147df4";
 			};
 			name = Debug;
 		};
@@ -392,12 +402,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fujian EHealth Science & Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fujian EHealth Science & Technology Co., Ltd.";
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.NL.Out;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spider.out;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8a81bb6e-387c-4020-89a2-efaf44147df4";
 			};
 			name = Release;
 		};

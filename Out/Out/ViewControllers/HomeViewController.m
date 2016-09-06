@@ -28,7 +28,7 @@
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
 #import "TextViewHelper.h"
-
+#import "AppDelegate.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
 
@@ -46,6 +46,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"home");
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
