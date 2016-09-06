@@ -62,6 +62,8 @@
 @property (nonatomic, strong) UILabel *placeHolderLB;
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+
 @end
 
 @implementation InputMoodPictureViewController
@@ -72,7 +74,10 @@
     [self setupInputTextView];
     [self setupImagePicker];
     self.inputTextView.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
 }
+
 // 点击返回上一级界面按钮
 - (IBAction)backAction:(id)sender {
     [self.inputTextView resignFirstResponder];
@@ -147,6 +152,16 @@
     self.imagePickerController.delegate = self;
     self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.imagePickerController.allowsEditing = YES;
+}
+
+- (void)didEndShowKeyboard:(NSNotification *)notification {
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.inputTextView addGestureRecognizer:self.tap];
+}
+
+- (void)hideKeyboard {
+    [self.inputTextView removeGestureRecognizer:self.tap];
+    [self.inputTextView resignFirstResponder];
 }
 
 #pragma mark UITextViewDelegate
@@ -237,6 +252,7 @@
     CGFloat horizontalInset = 30;
     [self.inputTextView setTextContainerInset:UIEdgeInsetsMake(verticalInset, horizontalInset, verticalInset, horizontalInset)];
 }
+
 
 
 @end
