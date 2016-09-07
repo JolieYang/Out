@@ -28,6 +28,7 @@
 #import "InputMoodViewController.h"
 #import "OutAlertViewController.h"
 #import "StringHelper.h"
+#import "DateHelper.h"
 #import "OutAPIRequest.h"
 #import "const.h"
 
@@ -84,6 +85,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 发布mood
 - (void)didEndEdit {
     // 超出100字限制
     if ([StringHelper length:self.inputTextView.text] > 100) {
@@ -91,11 +93,26 @@
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
-    if (_finishMoodBlock) {
-        _finishMoodBlock();
-    }
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString *apiName = @"mind";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:self.inputTextView.text forKey:@"content"];
+    [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
+    [OutAPIRequest startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
+        NSString *otherContent = [response valueForKey:@"content"];
+        NSString *timeStr = [response valueForKey:@"createtime"];
+        timeStr = [DateHelper customeDateStr:timeStr];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (_finishMoodBlock) {
+                _finishMoodBlock(otherContent, timeStr);
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    } failed:^(NSString *errMsg) {
+        // 弹窗显示 发布失败
+        return ;
+    }];
 }
+
 
 
 #pragma mark UITextViewDelegate
@@ -159,5 +176,6 @@
     self.navigationItem.rightBarButtonItem = checkItem;
     self.hasAddedNavRight = YES;
 }
+
 
 @end

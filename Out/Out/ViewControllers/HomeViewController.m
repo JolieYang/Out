@@ -66,9 +66,9 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
-    inputMoodVC.finishMoodBlock = ^ {
-        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
-        NSString *timeStr = @"二0一六年八月三十一日";
+    inputMoodVC.finishMoodBlock = ^(NSString *content, NSString *timeStr){
+//        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
+//        NSString *timeStr = @"二0一六年八月三十一日";
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
@@ -77,28 +77,28 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 
 // 海报式编辑器
 - (IBAction)inputPictureMoodAction:(id)sender {
-    NSString *apiName = @"user/login";
-    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
-    [OutAPIRequest startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
-        NSLog(@"succeed:%@", response);
-        NSString *token = [[response objectForKey:@"token"] objectForKey:@"token"];
-        [[NSUserDefaults standardUserDefaults] setValue:token forKey:OUT_TOKEN];
-    } failed:^(NSString *errMsg) {
-        NSLog(@"error:%@", errMsg);
-    }];
-    return;
+//    NSString *apiName = @"user/login";
+//    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
+//    [OutAPIRequest startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
+//        NSLog(@"succeed:%@", response);
+//        NSString *token = [[response objectForKey:@"token"] objectForKey:@"token"];
+//        [[NSUserDefaults standardUserDefaults] setValue:token forKey:OUT_TOKEN];
+//    } failed:^(NSString *errMsg) {
+//        NSLog(@"error:%@", errMsg);
+//    }];
+//    return;
     
-//    InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
-//    
-//    __weak typeof(self) weakSelf = self;
-//    inputPictureVC.finishPictureMoodBlock = ^{
-//        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-//        NSString *timeStr = @"二0一六年九月三日";
-//        UIImage *image = [UIImage imageNamed:@"green_girl"];
-//        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
-//    };
-////    [self presentViewController:inputPictureVC animated:YES completion:nil];
-//    [self showDetailViewController:inputPictureVC sender:self];
+    InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
+    
+    __weak typeof(self) weakSelf = self;
+    inputPictureVC.finishPictureMoodBlock = ^{
+        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+        NSString *timeStr = @"二0一六年九月三日";
+        UIImage *image = [UIImage imageNamed:@"green_girl"];
+        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
+    };
+//    [self presentViewController:inputPictureVC animated:YES completion:nil];
+    [self showDetailViewController:inputPictureVC sender:self];
 }
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {

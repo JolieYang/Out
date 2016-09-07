@@ -10,6 +10,6 @@
 
 @interface InputMoodViewController : UIViewController
 
-@property (nonatomic, strong) void (^finishMoodBlock)();
+@property (nonatomic, strong) void (^finishMoodBlock)(NSString *content, NSString *timeStr);
 
 @end
