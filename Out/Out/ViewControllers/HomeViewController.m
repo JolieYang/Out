@@ -29,6 +29,8 @@
 #import "InputMoodPictureViewController.h"
 #import "TextViewHelper.h"
 #import "AppDelegate.h"
+#import "OutAPIRequest.h"
+#import "const.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
 
@@ -75,17 +77,28 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 
 // 海报式编辑器
 - (IBAction)inputPictureMoodAction:(id)sender {
-    InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
+    NSString *apiName = @"user/login";
+    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
+    [OutAPIRequest startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
+        NSLog(@"succeed:%@", response);
+        NSString *token = [[response objectForKey:@"token"] objectForKey:@"token"];
+        [[NSUserDefaults standardUserDefaults] setValue:token forKey:OUT_TOKEN];
+    } failed:^(NSString *errMsg) {
+        NSLog(@"error:%@", errMsg);
+    }];
+    return;
     
-    __weak typeof(self) weakSelf = self;
-    inputPictureVC.finishPictureMoodBlock = ^{
-        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-        NSString *timeStr = @"二0一六年九月三日";
-        UIImage *image = [UIImage imageNamed:@"green_girl"];
-        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
-    };
-//    [self presentViewController:inputPictureVC animated:YES completion:nil];
-    [self showDetailViewController:inputPictureVC sender:self];
+//    InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
+//    
+//    __weak typeof(self) weakSelf = self;
+//    inputPictureVC.finishPictureMoodBlock = ^{
+//        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+//        NSString *timeStr = @"二0一六年九月三日";
+//        UIImage *image = [UIImage imageNamed:@"green_girl"];
+//        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
+//    };
+////    [self presentViewController:inputPictureVC animated:YES completion:nil];
+//    [self showDetailViewController:inputPictureVC sender:self];
 }
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {

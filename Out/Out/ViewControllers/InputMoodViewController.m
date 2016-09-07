@@ -26,8 +26,10 @@
 //  UI:
 // 1. 导航栏图标尺寸 58 @2x  #757575
 #import "InputMoodViewController.h"
-#import "StringHelper.h"
 #import "OutAlertViewController.h"
+#import "StringHelper.h"
+#import "OutAPIRequest.h"
+#import "const.h"
 
 #define LIMIT_TEXT_LENGTH 100
 

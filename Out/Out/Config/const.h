@@ -11,14 +11,15 @@
 
 #if DEBUG
     // 开发
-    #define kSERVER_URL @""
+    #define kSERVER_HOST @"http://express.mistkafka.tk"
+    #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
 
 #else
     // 生产
-    #define kSERVER_URL @""
+    #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
 #endif 
 
 #define OUT_NAME @"com.spider.out.developer.name"
-#define HAVE_SET_ONAME @"com.spider.out.developer.setoname"
+#define OUT_TOKEN @"com.spider.out.develop.token"
 
 #endif
