@@ -77,17 +77,6 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 
 // 海报式编辑器
 - (IBAction)inputPictureMoodAction:(id)sender {
-//    NSString *apiName = @"user/login";
-//    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
-//    [OutAPIRequest startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
-//        NSLog(@"succeed:%@", response);
-//        NSString *token = [[response objectForKey:@"token"] objectForKey:@"token"];
-//        [[NSUserDefaults standardUserDefaults] setValue:token forKey:OUT_TOKEN];
-//    } failed:^(NSString *errMsg) {
-//        NSLog(@"error:%@", errMsg);
-//    }];
-//    return;
-    
     InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
