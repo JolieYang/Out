@@ -219,7 +219,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Your Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="62U-QT-rY7">
                                 <rect key="frame" x="24" y="129" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="join" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="bAh-2K-DpX" id="gwW-jt-tb9"/>
                                 </connections>

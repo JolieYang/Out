@@ -41,6 +41,7 @@
 #import "InputMoodPictureViewController.h"
 #import "HomeViewController.h"
 #import "OutAlertViewController.h"
+#import "OutAPIRequest.h"
 #import "StringHelper.h"
 #import "TextViewHelper.h"
 #import "OutImageView.h"
@@ -97,10 +98,21 @@
     }
     // TODO: 连接后台发布Out
     // ...
-    if (_finishPictureMoodBlock && [StringHelper length:self.inputTextView.text] > 0) {
-        _finishPictureMoodBlock();
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // test 上传图片接口
+    // TODO: 加载 MBProgress "发布中"
+    [OutAPIRequest uploadImage:self.inputImageView.image succeed:^(NSDictionary *response) {
+        NSLog(@"succeed");
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (_finishPictureMoodBlock && [StringHelper length:self.inputTextView.text] > 0) {
+                _finishPictureMoodBlock();
+            }
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+    } failed:^(NSString *errMsg) {
+        NSLog(@"failed");
+    }];
+    
+    
 }
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {

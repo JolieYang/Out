@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
     if (![[NSUserDefaults standardUserDefaults] valueForKey:OUT_NAME]) {
         [[SetOutNameWindow shareInstance] show];
     }

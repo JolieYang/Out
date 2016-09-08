@@ -10,9 +10,6 @@
 #import "const.h"
 #import "AFNetworking.h"
 
-typedef void (^SuccessedResponse)(NSDictionary *response);
-typedef void (^FailedResponse)(NSString *errMsg);
-
 @interface OutAPIRequest()<NSURLSessionDelegate>
 @property (nonatomic, strong) SuccessedResponse successResponse;
 @property (nonatomic, strong) FailedResponse failedResponse;
@@ -44,4 +41,33 @@ typedef void (^FailedResponse)(NSString *errMsg);
     [dataTask resume];
 }
 
++ (void)uploadImage:(UIImage *)image  succeed:(SuccessedResponse)successResponse failed:(FailedResponse)failedResponse {
+    NSString *urlString = [NSString stringWithFormat:@"%@photo", kSERVER_URL];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        // 获取图片的大小，根据大小进行不同等级的压缩
+        // 压缩图片
+        NSData *data = UIImageJPEGRepresentation(image, 0.3);
+        [formData appendPartWithFileData:data name:kPHOTO_NAME fileName:@"default.jpg" mimeType:@"image/jpeg"];
+    } error: nil];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager uploadTaskWithStreamedRequest:request progress:^(NSProgress * _Nonnull uploadProgress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 更新进度条
+        });
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error) {
+            failedResponse(error.localizedDescription);
+        }
+        NSString *status = [responseObject valueForKey:@"status"];
+        if ([status isEqualToString:@"succeed"]) {
+            successResponse(responseObject);
+        } else {
+            NSString *message = [responseObject objectForKey:@"message"];
+            failedResponse(message);
+        }
+    }];
+    [uploadTask resume];
+}
 @end

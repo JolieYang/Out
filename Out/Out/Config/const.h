@@ -13,7 +13,8 @@
     // 开发
     #define kSERVER_HOST @"http://express.mistkafka.tk"
     #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
-
+    #define kPHOTO_NAME @"photo"
+    #define kPHOTO_URL @"http://express.mistkafka.tk/api1/photo?photoId="
 #else
     // 生产
     #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
