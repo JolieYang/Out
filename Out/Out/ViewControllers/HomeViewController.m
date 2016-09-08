@@ -31,6 +31,7 @@
 #import "AppDelegate.h"
 #import "OutAPIManager.h"
 #import "const.h"
+#import "MFLHintLabel.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
 
@@ -39,7 +40,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 @property (weak, nonatomic) IBOutlet UIImageView *otherMoodBgImage;
 @property (nonatomic, strong) InputMoodViewController *inputMoodVC;
 
-@property (nonatomic, strong) UILabel *timeLB;
+@property (nonatomic, strong) MFLHintLabel *timeLB;
 
 @end
 
@@ -61,7 +62,6 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 #pragma mark UI
-
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
@@ -71,6 +71,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
 //        NSString *timeStr = @"二0一六年八月三十一日";
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
+        [self goneWithTheWind];
         if (photoId) {
             NSLog(@"存在photoId");
             // 设置背景图片
@@ -90,6 +91,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //        NSString *timeStr = @"二0一六年九月三日";
 //        UIImage *image = [UIImage imageNamed:@"green_girl"];
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
+        [self goneWithTheWind];
         if (photoId) {
             [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -101,6 +103,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //    [self presentViewController:inputPictureVC animated:YES completion:nil];
     [self showDetailViewController:inputPictureVC sender:self];
 }
+
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
     // 设置背景图片
@@ -125,16 +128,38 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     int labelHeight = 36;
     if (!self.timeLB) {
         // 添加Mood时间LB
-        self.timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 40, labelHeight)];
-        self.timeLB.textAlignment = NSTextAlignmentRight;
-        self.timeLB.font = [UIFont fontWithName:@"Thonburi" size:14.0];
-        self.timeLB.textColor = [UIColor whiteColor];
+//        self.timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 40, labelHeight)];
+//        self.timeLB.alignment = NSTextAlignmentRight;
+//        self.timeLB.font = [UIFont fontWithName:@"Thonburi" size:14.0];
+//        self.timeLB.textColor = [UIColor whiteColor];
 //        self.timeLB.font = self.otherMoodTextView.font;
 //        self.timeLB.textColor = self.otherMoodTextView.textColor;
-        [self.otherMoodTextView addSubview:self.timeLB];
+//        [self.otherMoodTextView addSubview:self.timeLB];
     }
     
-    if (timeStr) self.timeLB.text = timeStr;
+    if (timeStr) {
+        leading = leading + 60;
+        self.timeLB.textColor = [UIColor whiteColor];
+        CGFloat y = otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight;
+        self.timeLB = [[MFLHintLabel alloc] createHintAnimationForText:timeStr withFont:[UIFont fontWithName:@"Thonburi" size:14.0] beginningAt:CGPointMake(leading, y) displayingAt:CGPointMake(leading, y) endingAt:CGPointMake(leading+400, y+20) inTargetView:self.otherMoodTextView];
+        self.timeLB.stringToDisplay = timeStr;
+        self.timeLB.textColor = [UIColor whiteColor];
+        [self.timeLB setAnimateOnType:kMFLAnimateOnLinear];
+        [self.timeLB setAnimateOffType:kMFLAnimateOffLinear];
+        
+        [self.timeLB setTweakLineheight:6];
+        
+//        [self.timeLB setPhaseDelayTimeIn:.05];
+//        [self.timeLB setPhaseDelayTimeOut:.1];
+        [self.timeLB setPhaseDelayTimeIn: .05];
+        [self.timeLB setPhaseDelayTimeOut:.1];
+        
+        [self.timeLB setCharactersToMoveSimultaneouslyIn:3];
+        [self.timeLB setCharactersToMoveSimultaneouslyOut:1];
+        
+        [self.timeLB prepareToRun];
+        [self.timeLB run];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,6 +167,20 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Tool
+// 开启定时器，5s后随风而去了
+- (void)goneWithTheWind {
+    double delayInSeconds = 5.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds *NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^{
+        [self cleanOtherMood];
+    });
+}
+- (void)cleanOtherMood {
+    self.otherMoodTextView.text = @"";
+//    self.timeLB.stringToDisplay = @"";
+    // todo 背景图片
+}
 
 
 @end

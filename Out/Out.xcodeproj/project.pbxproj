@@ -17,6 +17,10 @@
 		A04C93C01D7FF2490028F2DB /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93B91D7FF2490028F2DB /* AFURLResponseSerialization.m */; };
 		A04C93C11D7FF2490028F2DB /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93BB1D7FF2490028F2DB /* AFURLSessionManager.m */; };
 		A04C93C41D8017FE0028F2DB /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93C31D8017FE0028F2DB /* DateHelper.m */; };
+		A04C93CC1D8166FA0028F2DB /* MFLBezierHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93C71D8166FA0028F2DB /* MFLBezierHelper.m */; };
+		A04C93CD1D8166FA0028F2DB /* MFLHintLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93C91D8166FA0028F2DB /* MFLHintLabel.m */; };
+		A04C93CE1D8166FA0028F2DB /* UILabel+Lines.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93CB1D8166FA0028F2DB /* UILabel+Lines.m */; };
+		A04C93D01D8169CC0028F2DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04C93CF1D8169CC0028F2DB /* CoreGraphics.framework */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -54,6 +58,13 @@
 		A04C93BB1D7FF2490028F2DB /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		A04C93C21D8017FE0028F2DB /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateHelper.h; path = Helpers/DateHelper.h; sourceTree = "<group>"; };
 		A04C93C31D8017FE0028F2DB /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateHelper.m; path = Helpers/DateHelper.m; sourceTree = "<group>"; };
+		A04C93C61D8166FA0028F2DB /* MFLBezierHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLBezierHelper.h; sourceTree = "<group>"; };
+		A04C93C71D8166FA0028F2DB /* MFLBezierHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLBezierHelper.m; sourceTree = "<group>"; };
+		A04C93C81D8166FA0028F2DB /* MFLHintLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLHintLabel.h; sourceTree = "<group>"; };
+		A04C93C91D8166FA0028F2DB /* MFLHintLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLHintLabel.m; sourceTree = "<group>"; };
+		A04C93CA1D8166FA0028F2DB /* UILabel+Lines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Lines.h"; sourceTree = "<group>"; };
+		A04C93CB1D8166FA0028F2DB /* UILabel+Lines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Lines.m"; sourceTree = "<group>"; };
+		A04C93CF1D8169CC0028F2DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A04C93D01D8169CC0028F2DB /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,9 +130,24 @@
 			path = Library/AFNetworking;
 			sourceTree = "<group>";
 		};
+		A04C93C51D8166FA0028F2DB /* MFLHintLabel */ = {
+			isa = PBXGroup;
+			children = (
+				A04C93C61D8166FA0028F2DB /* MFLBezierHelper.h */,
+				A04C93C71D8166FA0028F2DB /* MFLBezierHelper.m */,
+				A04C93C81D8166FA0028F2DB /* MFLHintLabel.h */,
+				A04C93C91D8166FA0028F2DB /* MFLHintLabel.m */,
+				A04C93CA1D8166FA0028F2DB /* UILabel+Lines.h */,
+				A04C93CB1D8166FA0028F2DB /* UILabel+Lines.m */,
+			);
+			name = MFLHintLabel;
+			path = Library/MFLHintLabel;
+			sourceTree = "<group>";
+		};
 		A067F04B1D741FFB003140D6 = {
 			isa = PBXGroup;
 			children = (
+				A04C93CF1D8169CC0028F2DB /* CoreGraphics.framework */,
 				A067F0561D741FFB003140D6 /* Out */,
 				A067F0551D741FFB003140D6 /* Products */,
 			);
@@ -212,6 +239,7 @@
 		A068C3021D7820E400E844F1 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A04C93C51D8166FA0028F2DB /* MFLHintLabel */,
 				A04C93AE1D7FF2490028F2DB /* AFNetworking */,
 			);
 			name = Library;
@@ -318,11 +346,14 @@
 				A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */,
 				A04C93BE1D7FF2490028F2DB /* AFSecurityPolicy.m in Sources */,
 				A068C3111D79642600E844F1 /* OutImageView.m in Sources */,
+				A04C93CD1D8166FA0028F2DB /* MFLHintLabel.m in Sources */,
 				A04C93AC1D7FC5240028F2DB /* OutAPIManager.m in Sources */,
 				A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */,
 				A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */,
 				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,
+				A04C93CE1D8166FA0028F2DB /* UILabel+Lines.m in Sources */,
 				A04C93BF1D7FF2490028F2DB /* AFURLRequestSerialization.m in Sources */,
+				A04C93CC1D8166FA0028F2DB /* MFLBezierHelper.m in Sources */,
 				A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */,
 				A04C93C11D7FF2490028F2DB /* AFURLSessionManager.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
