@@ -13,7 +13,7 @@
 #import "OutAlertViewController.h"
 #import "SetOutnameWindow.h"
 #import "StringHelper.h"
-#import "OutAPIRequest.h"
+#import "OutAPIManager.h"
 #import "const.h"
 
 @interface SetOutNameViewController ()<UITextFieldDelegate>
@@ -57,7 +57,7 @@
     NSString *apiName = @"user/login";
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.outNameTF.text,@"email",self.outPasswdTF.text, @"password", nil];
 //    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
-    [OutAPIRequest startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
+    [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
         NSLog(@"succeed:%@", response);
         NSString *token = [[response objectForKey:@"token"] objectForKey:@"token"];
         [[NSUserDefaults standardUserDefaults] setValue:self.outNameTF.text forKey: OUT_NAME];

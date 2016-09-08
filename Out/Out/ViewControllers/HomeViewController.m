@@ -29,7 +29,7 @@
 #import "InputMoodPictureViewController.h"
 #import "TextViewHelper.h"
 #import "AppDelegate.h"
-#import "OutAPIRequest.h"
+#import "OutAPIManager.h"
 #import "const.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
@@ -49,6 +49,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
+
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -66,7 +67,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
-    inputMoodVC.finishMoodBlock = ^(NSString *content, NSString *timeStr){
+    inputMoodVC.finishMoodBlock = ^(NSString *content, NSString *timeStr, NSString *photoId){
 //        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
 //        NSString *timeStr = @"二0一六年八月三十一日";
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
@@ -80,11 +81,16 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
-    inputPictureVC.finishPictureMoodBlock = ^{
-        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-        NSString *timeStr = @"二0一六年九月三日";
-        UIImage *image = [UIImage imageNamed:@"green_girl"];
-        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:image];
+    inputPictureVC.finishPictureMoodBlock = ^(NSString *content,NSString *timeStr, NSString *photoId) {
+//        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+//        NSString *timeStr = @"二0一六年九月三日";
+//        UIImage *image = [UIImage imageNamed:@"green_girl"];
+        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
+        [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.otherMoodBgImage.image = image;
+            });
+        }];
     };
 //    [self presentViewController:inputPictureVC animated:YES completion:nil];
     [self showDetailViewController:inputPictureVC sender:self];

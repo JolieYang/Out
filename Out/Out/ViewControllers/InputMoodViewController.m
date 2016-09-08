@@ -29,7 +29,7 @@
 #import "OutAlertViewController.h"
 #import "StringHelper.h"
 #import "DateHelper.h"
-#import "OutAPIRequest.h"
+#import "OutAPIManager.h"
 #import "const.h"
 
 #define LIMIT_TEXT_LENGTH 100
@@ -97,13 +97,14 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:self.inputTextView.text forKey:@"content"];
     [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
-    [OutAPIRequest startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
+    [OutAPIManager startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
         NSString *otherContent = [response valueForKey:@"content"];
         NSString *timeStr = [response valueForKey:@"createtime"];
         timeStr = [DateHelper customeDateStr:timeStr];
+        NSString *photoId = [response valueForKey:@"photoId"];
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (_finishMoodBlock) {
-                _finishMoodBlock(otherContent, timeStr);
+                _finishMoodBlock(otherContent, timeStr, photoId);
             }
             [self.navigationController popViewControllerAnimated:YES];
         });
@@ -142,6 +143,7 @@
         // 显示placeHolder
         self.placeHolderLB.hidden = NO;
     }
+    
 }
 
 // 点击键盘上的

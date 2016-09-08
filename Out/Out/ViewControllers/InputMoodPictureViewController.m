@@ -41,10 +41,12 @@
 #import "InputMoodPictureViewController.h"
 #import "HomeViewController.h"
 #import "OutAlertViewController.h"
-#import "OutAPIRequest.h"
+#import "OutAPIManager.h"
 #import "StringHelper.h"
 #import "TextViewHelper.h"
+#import "DateHelper.h"
 #import "OutImageView.h"
+#import "const.h"
 
 // 访问相册图片
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -96,18 +98,35 @@
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
+    // 判断字符非空
+    if ([StringHelper length:self.inputTextView.text] == 0) {
+        //
+        return;
+    }
     // TODO: 连接后台发布Out
+    // TODO: 加载 MBProgress "发布中"
     // ...
     // test 上传图片接口
-    // TODO: 加载 MBProgress "发布中"
-    [OutAPIRequest uploadImage:self.inputImageView.image succeed:^(NSDictionary *response) {
-        NSLog(@"succeed");
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (_finishPictureMoodBlock && [StringHelper length:self.inputTextView.text] > 0) {
-                _finishPictureMoodBlock();
-            }
-            [self dismissViewControllerAnimated:YES completion:nil];
-        });
+    [OutAPIManager uploadImage:self.inputImageView.image succeed:^(NSString *photoId) {
+        NSString *apiName = @"mind";
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setValue:self.inputTextView.text forKey:@"content"];
+        [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
+        [params setValue:photoId forKey:@"photoId"];
+        [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
+            NSString *otherContent = [response valueForKey:@"content"];
+            NSString *timeStr = [response valueForKey:@"createtime"];
+            timeStr = [DateHelper customeDateStr:timeStr];
+            NSString *photoId = [response valueForKey:@"photoId"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (_finishPictureMoodBlock) {
+                    _finishPictureMoodBlock(otherContent, timeStr, photoId);
+                }
+                [self dismissViewControllerAnimated:YES completion:nil];
+            });
+        } failed:^(NSString *errMsg) {
+            NSLog(@"发布失败");
+        }];
     } failed:^(NSString *errMsg) {
         NSLog(@"failed");
     }];
