@@ -71,6 +71,10 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
 //        NSString *timeStr = @"二0一六年八月三十一日";
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
+        if (photoId) {
+            NSLog(@"存在photoId");
+            // 设置背景图片
+        }
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 //    [self showViewController:inputMoodVC sender:self];
@@ -86,11 +90,13 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 //        NSString *timeStr = @"二0一六年九月三日";
 //        UIImage *image = [UIImage imageNamed:@"green_girl"];
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
-        [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.otherMoodBgImage.image = image;
-            });
-        }];
+        if (photoId) {
+            [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    weakSelf.otherMoodBgImage.image = image;
+                });
+            }];    
+        }
     };
 //    [self presentViewController:inputPictureVC animated:YES completion:nil];
     [self showDetailViewController:inputPictureVC sender:self];

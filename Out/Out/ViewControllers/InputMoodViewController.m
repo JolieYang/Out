@@ -11,6 +11,9 @@
 // ?2.去除空格失败
 // ?3. 主页面进入该页面是会有点卡顿
 
+// BUG:
+// 1. 字数统计还是有bug,比如 中文输入法时，输入'u'，长度为0, 
+
 // TODO:
 // 1.[done] #隐藏导航栏右边按钮#TextView里有文本就显示导航栏勾选，无则不显示 1) 第一次进入界面是默认隐藏还是等输入后再添加导航栏右边按钮呢
 // 2. TextView明明设置距离上边是2，运行后则调到下面去了。字数多的时候又会顶到之前设置的约束上
@@ -118,6 +121,8 @@
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
+    NSLog(@"didChange");
+    // markedTextRange currently marked 预输入分为两种情况: 一种是点击字母的预输入；另一种是默认的预输入字符。
     UITextRange *selectedRange = [textView markedTextRange];
     NSString *newText = [textView textInRange:selectedRange];
     // ?2. 去除空格失败
@@ -128,7 +133,8 @@
 //    NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
 //    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
     // m2--取巧
-    int length = [StringHelper length:textView.text] - (floor)(newText.length/2.0);
+//    int length = [StringHelper length:textView.text] - (floor)(newText.length/2.0);
+    int length = [StringHelper length:textView.text] - (floor)([StringHelper length:newText]/2.0);
     if (length > 100) {
         NSString *limitStr = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:limitStr];
@@ -137,16 +143,21 @@
     } else {
         self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
     }
-    if (length == 0) {
+    if (newText.length == 0 && self.inputTextView.text.length == 0) {
         // 隐藏导航栏右边按钮
         [self hideNavRightItem: YES];
         // 显示placeHolder
         self.placeHolderLB.hidden = NO;
     }
-    
+    if (length == 1) {// 取巧: 直接点击提示栏文字
+        if (!self.placeHolderLB.hidden) {
+            self.placeHolderLB.hidden = YES;
+            [self hideNavRightItem:NO];
+        }
+    }
 }
 
-// 点击键盘上的
+// 点击键盘上的 无法获取到预输入，必须在didChange回调里获取
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     // 空textView，点击清除键 text.length==0，不显示
     if (textView.text.length == 0 && text.length > 0) {
