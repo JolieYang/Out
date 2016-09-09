@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef NS_ENUM(NSUInteger, OutLoginType) {
+    OutLoginTypeNickName = 0,
+    OutLoginTypeEmail = 1
+};
 
 @interface SetOutNameViewController : UIViewController
 

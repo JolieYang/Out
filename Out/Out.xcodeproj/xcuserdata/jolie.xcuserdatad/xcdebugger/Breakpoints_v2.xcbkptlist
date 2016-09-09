@@ -74,7 +74,7 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/HomeViewController.m"
-                  timestampString = "495083556.055034"
+                  timestampString = "495085913.902941"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
@@ -89,7 +89,7 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/HomeViewController.m"
-                  timestampString = "495083556.055137"
+                  timestampString = "495085913.903066"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
@@ -104,7 +104,7 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/HomeViewController.m"
-                  timestampString = "495083556.055227"
+                  timestampString = "495085913.903158"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
@@ -112,6 +112,22 @@
                   offsetFromSymbolStart = "55">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Out/ViewControllers/SetOutNameViewController.m"
+            timestampString = "495085796.046932"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-setOutNameAction:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
