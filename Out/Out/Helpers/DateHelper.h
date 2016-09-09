@@ -10,4 +10,7 @@
 
 @interface DateHelper : NSObject
 + (NSString *)customeDateStr:(NSString *)timeStr;
+
++ (NSString *)chineseWithArabString:(NSString *)arabStr;
++ (NSString *)chineseFromArab:(NSString *)arabStr; // 根据系统语言
 @end

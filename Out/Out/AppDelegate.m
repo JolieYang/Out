@@ -23,7 +23,7 @@
     if (![[NSUserDefaults standardUserDefaults] valueForKey:OUT_NAME]) {
         [[SetOutNameWindow shareInstance] show];
     }
-    
+
     return YES;
 }
 
