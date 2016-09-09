@@ -31,7 +31,6 @@
 #import "InputMoodViewController.h"
 #import "OutAlertViewController.h"
 #import "StringHelper.h"
-#import "DateHelper.h"
 #import "OutAPIManager.h"
 #import "const.h"
 
@@ -101,13 +100,9 @@
     [params setValue:self.inputTextView.text forKey:@"content"];
     [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
     [OutAPIManager startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
-        NSString *otherContent = [response valueForKey:@"content"];
-        NSString *timeStr = [response valueForKey:@"createtime"];
-        timeStr = [DateHelper customeDateStr:timeStr];
-        NSString *photoId = [response valueForKey:@"photoId"];
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (_finishMoodBlock) {
-                _finishMoodBlock(otherContent, timeStr, photoId);
+                _finishMoodBlock(response);
             }
             [self.navigationController popViewControllerAnimated:YES];
         });
@@ -121,7 +116,7 @@
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
-    NSLog(@"didChange");
+//    NSLog(@"didChange");
     // markedTextRange currently marked 预输入分为两种情况: 一种是点击字母的预输入；另一种是默认的预输入字符。
     UITextRange *selectedRange = [textView markedTextRange];
     NSString *newText = [textView textInRange:selectedRange];

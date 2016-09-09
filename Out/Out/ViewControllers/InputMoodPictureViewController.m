@@ -114,13 +114,9 @@
         [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
         [params setValue:photoId forKey:@"photoId"];
         [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
-            NSString *otherContent = [response valueForKey:@"content"];
-            NSString *timeStr = [response valueForKey:@"createtime"];
-            timeStr = [DateHelper customeDateStr:timeStr];
-            NSString *photoId = [response valueForKey:@"photoId"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (_finishPictureMoodBlock) {
-                    _finishPictureMoodBlock(otherContent, timeStr, photoId);
+                    _finishPictureMoodBlock(response);
                 }
                 [self dismissViewControllerAnimated:YES completion:nil];
             });

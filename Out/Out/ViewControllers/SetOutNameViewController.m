@@ -73,7 +73,6 @@
         //    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
     }
     [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
-        NSLog(@"succeed:%@", response);
         NSString *token = [response objectForKey:@"token"];
         NSNumber *number = [response objectForKey:@"number"];
         [[NSUserDefaults standardUserDefaults] setValue:self.outNameTF.text forKey: OUT_NAME];

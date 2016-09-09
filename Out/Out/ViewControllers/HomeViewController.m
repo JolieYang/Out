@@ -28,6 +28,7 @@
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
 #import "TextViewHelper.h"
+#import "DateHelper.h"
 #import "AppDelegate.h"
 #import "OutAPIManager.h"
 #import "const.h"
@@ -67,14 +68,23 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
-    inputMoodVC.finishMoodBlock = ^(NSString *content, NSString *timeStr, NSString *photoId){
+    inputMoodVC.finishMoodBlock = ^(NSDictionary *response){
 //        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
 //        NSString *timeStr = @"二0一六年八月三十一日";
+        NSString *content = [response valueForKey:@"content"];
+        NSString *timeStr = [response valueForKey:@"createtime"];
+        timeStr = [DateHelper customeDateStr:timeStr];
+        NSString *photoId = [response valueForKey:@"photoId"];
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
         [self goneWithTheWind];
         if (photoId) {
             NSLog(@"存在photoId");
             // 设置背景图片
+            [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    weakSelf.otherMoodBgImage.image = image;
+                });
+            }];
         }
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
@@ -86,12 +96,16 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
     InputMoodPictureViewController *inputPictureVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputPictureMoodViewController"];
     
     __weak typeof(self) weakSelf = self;
-    inputPictureVC.finishPictureMoodBlock = ^(NSString *content,NSString *timeStr, NSString *photoId) {
+    inputPictureVC.finishPictureMoodBlock = ^(NSDictionary *data) {
 //        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
 //        NSString *timeStr = @"二0一六年九月三日";
 //        UIImage *image = [UIImage imageNamed:@"green_girl"];
+        NSString *content = [data valueForKey:@"content"];
+        NSString *timeStr = [data valueForKey:@"createtime"];
+        timeStr = [DateHelper customeDateStr:timeStr];
+        NSString *photoId = [data valueForKey:@"photoId"];
         [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
-        [self goneWithTheWind];
+//        [self goneWithTheWind];
         if (photoId) {
             [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -170,7 +184,7 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 #pragma mark Tool
 // 开启定时器，5s后随风而去了
 - (void)goneWithTheWind {
-    double delayInSeconds = 5.0;
+    double delayInSeconds = 10.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds *NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
         [self cleanOtherMood];

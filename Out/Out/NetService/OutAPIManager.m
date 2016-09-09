@@ -64,7 +64,8 @@
         }
         NSString *status = [responseObject valueForKey:@"status"];
         if ([status isEqualToString:SUCCESS_STATUS]) {
-            NSString *photoId = [responseObject valueForKey:@"data"];
+            NSDictionary *data = [responseObject valueForKey:@"data"];
+            NSString *photoId = [data valueForKey:@"photoId"];
             NSLog(@"receive photoId:%@", photoId);
             successUploadImageResponse(photoId);
         } else {
