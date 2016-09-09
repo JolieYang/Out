@@ -139,7 +139,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark Config
+#pragma mark ConfigUI
 // 隐藏状态栏
 - (BOOL)prefersStatusBarHidden {
     return YES;
@@ -191,7 +191,18 @@
     [self.inputTextView resignFirstResponder];
 }
 
-#pragma mark UITextViewDelegate
+// 输入文字隐藏placeHolder与显示发布按钮
+- (void)didEnterText {
+    self.placeHolderLB.hidden = YES;
+    self.outBtn.hidden = NO;
+}
+// 无输入内容则显示placeHolder与隐藏发布按钮
+- (void)didEnterEmpty {
+    self.placeHolderLB.hidden = NO;
+    self.outBtn.hidden = YES;
+}
+
+#pragma mark UITextFieldDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length == 0) {// 无输入字符
         self.placeHolderLB.hidden = NO;
@@ -205,9 +216,15 @@
     }
     UITextRange *selectedRange = [textView markedTextRange];
     NSString *newText = [textView textInRange:selectedRange];
-    int length = [StringHelper length:textView.text] - (floor)(newText.length/2.0);
+    int length = [StringHelper length:textView.text] - (floor)([StringHelper length:newText]/2.0);
     if (length > 100) {
         // 弹窗提醒“文字超出长度限制"
+    }
+    if (newText.length == 0 && self.inputTextView.text.length == 0) {
+        [self didEnterEmpty];
+    }
+    if (length == 1) {
+        [self didEnterText];
     }
     [self adjustInputMoodText];
 }
@@ -219,8 +236,7 @@
         return NO;
     }
     if (textView.text.length == 0 && text.length > 0) {
-        self.placeHolderLB.hidden = YES;
-        self.outBtn.hidden = NO;
+        [self didEnterText];
     }
     NSString *resultStr = [NSString stringWithFormat:@"%@%@", textView.text, text];
     if ([StringHelper length:resultStr] > 100) {

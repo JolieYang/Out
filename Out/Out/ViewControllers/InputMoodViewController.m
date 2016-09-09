@@ -139,16 +139,14 @@
         self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
     }
     if (newText.length == 0 && self.inputTextView.text.length == 0) {
-        // 隐藏导航栏右边按钮
-        [self hideNavRightItem: YES];
-        // 显示placeHolder
-        self.placeHolderLB.hidden = NO;
+        [self didEnterEmpty];
     }
     if (length == 1) {// 取巧: 直接点击提示栏文字
-        if (!self.placeHolderLB.hidden) {
-            self.placeHolderLB.hidden = YES;
-            [self hideNavRightItem:NO];
-        }
+//        if (!self.placeHolderLB.hidden) {
+//            self.placeHolderLB.hidden = YES;
+//            [self hideNavRightItem:NO];
+//        }
+        [self didEnterText];
     }
 }
 
@@ -156,9 +154,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     // 空textView，点击清除键 text.length==0，不显示
     if (textView.text.length == 0 && text.length > 0) {
-        // 显示导航栏右边按钮
-        [self hideNavRightItem:NO];
-        self.placeHolderLB.hidden = YES;
+        [self didEnterText];
     }
     
     return YES;
@@ -177,7 +173,6 @@
     UIView *navRightItem = [subviews objectAtIndex:3];// 0 1 是固定的 ,然后显示UINavigationButton，根据加入的顺序，viewDidload中添加了导航栏左边按钮(index为2), 添加了右边按钮则index为3
     [navRightItem setHidden:hide];
 }
-
 // 设置导航栏右边按钮
 - (void)addNavRightItem {
     UIBarButtonItem *checkItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_check"] style:UIBarButtonItemStylePlain target:self action:@selector(didEndEdit)];
@@ -185,5 +180,17 @@
     self.hasAddedNavRight = YES;
 }
 
+
+#pragma mark UI
+// 输入文字隐藏placeHolder与显示发布按钮
+- (void)didEnterText {
+    self.placeHolderLB.hidden = YES;
+    [self hideNavRightItem:NO];
+}
+// 无输入内容则显示placeHolder与隐藏发布按钮
+- (void)didEnterEmpty {
+    self.placeHolderLB.hidden = NO;
+    [self hideNavRightItem:YES];
+}
 
 @end
