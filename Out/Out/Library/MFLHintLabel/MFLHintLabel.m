@@ -163,7 +163,8 @@
         CGFloat removeWaitTime = [self animateToFinalPosition];
         
         if (removeWaitTime) {
-            double delayInSeconds = self.displayTime+removeWaitTime+self.duration;
+//            double delayInSeconds = self.displayTime+removeWaitTime+self.duration;
+            double delayInSeconds = self.displayTime;// change by jolie
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 
@@ -517,6 +518,7 @@
         default:
             break;
     }
+    NSLog(@"waitTime:%f", waitTime);
     
     return waitTime;
 }

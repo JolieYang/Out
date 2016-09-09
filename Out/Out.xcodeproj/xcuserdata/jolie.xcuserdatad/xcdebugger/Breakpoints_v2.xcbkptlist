@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Out/ViewControllers/HomeViewController.m"
-            timestampString = "495096100.164114"
+            timestampString = "495107228.902952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-inputMoodAction:"
             landmarkType = "5">
             <Locations>
@@ -58,12 +58,12 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/HomeViewController.m"
-                  timestampString = "495096504.29385"
+                  timestampString = "495108065.305866"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "527">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "502">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,61 +73,29 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/HomeViewController.m"
-                  timestampString = "495096504.294006"
+                  timestampString = "495108065.306091"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "564">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "605">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.46"
+                  symbolName = "__destroy_helper_block_.44"
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/HomeViewController.m"
-                  timestampString = "495096504.294205"
+                  timestampString = "495108065.306306"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "55">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "25">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Out/ViewControllers/HomeViewController.m"
-            timestampString = "495096145.148362"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-inputMoodAction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Out/ViewControllers/HomeViewController.m"
-            timestampString = "495096491.572707"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-inputPictureMoodAction:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

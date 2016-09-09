@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" constant="98" id="QaR-xN-ibQ"/>
                                     <constraint firstAttribute="height" constant="30" id="clU-jL-Bf4"/>
                                 </constraints>
-                                <state key="normal" title="Out">
+                                <state key="normal" title="Simple Out">
                                     <color key="titleColor" red="0.84705882352941175" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
@@ -37,10 +37,10 @@
                                     <action selector="inputMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KRT-pj-3ne"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" text="说出去的,就随风而去吧!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,11 +53,20 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9XP-w1-qCQ"/>
                                 </constraints>
-                                <state key="normal" title="Out Picture">
+                                <state key="normal" title="Picture Out">
                                     <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccX-dx-sXi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aP-wH-pNZ">
+                                <rect key="frame" x="0.0" y="400" width="320" height="30"/>
+                                <state key="normal" title="Gone With The Wind">
+                                    <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="testAnimationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RdA-pn-TGS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -382,6 +391,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book" width="640" height="640"/>
         <image name="gray_girl" width="1075" height="1600"/>
         <image name="green_girl" width="335" height="335"/>
         <image name="picture_back" width="22" height="22"/>

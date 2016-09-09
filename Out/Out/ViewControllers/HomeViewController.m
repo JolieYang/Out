@@ -35,6 +35,7 @@
 #import "MFLHintLabel.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
+static CGFloat const WIND_DELAY = 3.0;
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *otherMoodTextView;
@@ -42,6 +43,9 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 @property (nonatomic, strong) InputMoodViewController *inputMoodVC;
 
 @property (nonatomic, strong) MFLHintLabel *timeLB;
+@property (nonatomic, strong) MFLHintLabel *contentLB;
+
+@property (nonatomic, strong) UILabel *defaultTimeLB;
 
 @end
 
@@ -50,8 +54,12 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    self.otherMoodBgImage.image = nil;
     [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
-
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -75,16 +83,16 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
         NSString *timeStr = [response valueForKey:@"createtime"];
         timeStr = [DateHelper customeDateStr:timeStr];
         NSString *photoId = [response valueForKey:@"photoId"];
-        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
-        [self goneWithTheWind];
         if (photoId) {
             NSLog(@"存在photoId");
             // 设置背景图片
             [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.otherMoodBgImage.image = image;
+                    [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage: image];
                 });
             }];
+        } else {
+            [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
         }
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
@@ -104,97 +112,143 @@ static NSString * const mood_bg_imageName = @"yellow_girl";
         NSString *timeStr = [data valueForKey:@"createtime"];
         timeStr = [DateHelper customeDateStr:timeStr];
         NSString *photoId = [data valueForKey:@"photoId"];
-        [weakSelf setupMoodTextViewWithContent:content TimeString:timeStr backgroundImage:nil];
-//        [self goneWithTheWind];
         if (photoId) {
             [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.otherMoodBgImage.image = image;
+                    [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:image];
+            
                 });
             }];    
+        } else {
+            [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
         }
     };
 //    [self presentViewController:inputPictureVC animated:YES completion:nil];
     [self showDetailViewController:inputPictureVC sender:self];
 }
 
+- (IBAction)testAnimationAction:(id)sender {
+    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+    NSString *timeStr = @"二0一六年九月三日";
+    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
+    
+//    [self setupMoodTextViewWithContent:nil TimeString:nil backgroundImage:nil];
+}
+
+
+
+
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
+    [self setDefaultContent:content];
+    [self setDefaultTimeLBString:timeStr];
+    if (image) {
+        self.otherMoodBgImage.image = image;
+    }
+}
+
+
+
+#pragma mark Default_UI
+- (void)setDefaultTimeLBString:(NSString *)timeStr {
+    CGRect otherMoodRect = [self.otherMoodTextView bounds];
+    int leading = 8;
+    int labelHeight = 36;
+    if (!self.defaultTimeLB) {
+        // 添加Mood时间LB
+        self.defaultTimeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 40, labelHeight)];
+        self.defaultTimeLB.textAlignment = NSTextAlignmentRight;
+        self.defaultTimeLB.font = [UIFont fontWithName:@"Thonburi" size:14.0];
+        self.defaultTimeLB.textColor = [UIColor whiteColor];
+//        self.defaultTimeLB.font = self.otherMoodTextView.font;
+//        self.defaultTimeLB.textColor = self.otherMoodTextView.textColor;
+        self.defaultTimeLB.text = timeStr;
+        [self.otherMoodTextView addSubview:self.defaultTimeLB];
+    } else {
+        self.defaultTimeLB.text = timeStr;
+    }
+}
+
+- (void)setDefaultContent:(NSString *)content {
+    self.otherMoodTextView.text = content;
+    self.otherMoodTextView.textColor = [UIColor whiteColor];
+    self.otherMoodTextView.font = [UIFont fontWithName:@"Thonburi" size:14.0];
+    
+    // 设置文本的绘制区域
+    CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [TextViewHelper heightForTextView:self.otherMoodTextView];
+    CGFloat inset = MAX(30, deadSpace/2.0-20.0);
+    CGFloat leadingInset = 30;
+    [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
+    self.otherMoodTextView.textAlignment = NSTextAlignmentCenter;
+}
+
+#pragma mark Tool
+
+#pragma mark Animation
+// 开启定时器，5s后随风而去了
+- (void)goneWithTheWind:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image{
+    [self setupMoodTextViewWithContent:nil TimeString:nil backgroundImage:nil];
+    int OnHeight = 0; // 300
     // 设置背景图片
     if (image) self.otherMoodBgImage.image = image;
     
     if (content) {
-        self.otherMoodTextView.text = content;
-        self.otherMoodTextView.textColor = [UIColor whiteColor];
-        self.otherMoodTextView.font = [UIFont fontWithName:@"Thonburi" size:14.0];
-        
         // 设置文本的绘制区域
         CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [TextViewHelper heightForTextView:self.otherMoodTextView];
         CGFloat inset = MAX(30, deadSpace/2.0-20.0);
         CGFloat leadingInset = 30;
-        [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
-        self.otherMoodTextView.textAlignment = NSTextAlignmentCenter;
+        
+        // 绘制动画contentLB
+        self.contentLB.textColor = [UIColor whiteColor];
+        CGFloat x = [self.otherMoodTextView bounds].origin.x + leadingInset;
+        CGFloat y = [self.otherMoodTextView bounds].origin.y + inset;
+        self.contentLB = [[MFLHintLabel alloc] createHintAnimationForText:content withFont:[UIFont fontWithName:@"Thonburi" size:14.0] beginningAt:CGPointMake(x, y-OnHeight) displayingAt:CGPointMake(x, y) endingAt:CGPointMake(x, y+370) inTargetView:self.otherMoodTextView];
+        [self.contentLB setAnimateOnType:kMFLAnimateOnLinear];
+        [self.contentLB setAnimateOffType:kMFLAnimateOffLinear];
+        [self.contentLB setDuration:1];
+        [self.contentLB setDisplayTime:WIND_DELAY];
+        [self.contentLB setPhaseDelayTimeIn:.05];
+        [self.contentLB setPhaseDelayTimeOut:.05];
+        [self.contentLB setCharactersToMoveSimultaneouslyIn:4];
+        [self.contentLB setCharactersToMoveSimultaneouslyOut:2];
+        [self.contentLB prepareToRun];
+        [self.contentLB run];
+//        [self.contentLB runWithCompletion:^{
+//            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
+//        }];
     }
     
     // Mood时间
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
     int leading = 8;
     int labelHeight = 36;
-    if (!self.timeLB) {
-        // 添加Mood时间LB
-//        self.timeLB = [[UILabel alloc] initWithFrame: CGRectMake(leading, otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight, otherMoodRect.size.width - leading*2 - 40, labelHeight)];
-//        self.timeLB.alignment = NSTextAlignmentRight;
-//        self.timeLB.font = [UIFont fontWithName:@"Thonburi" size:14.0];
-//        self.timeLB.textColor = [UIColor whiteColor];
-//        self.timeLB.font = self.otherMoodTextView.font;
-//        self.timeLB.textColor = self.otherMoodTextView.textColor;
-//        [self.otherMoodTextView addSubview:self.timeLB];
-    }
     
     if (timeStr) {
         leading = leading + 60;
         self.timeLB.textColor = [UIColor whiteColor];
         CGFloat y = otherMoodRect.origin.y + otherMoodRect.size.height - 8 - labelHeight;
-        self.timeLB = [[MFLHintLabel alloc] createHintAnimationForText:timeStr withFont:[UIFont fontWithName:@"Thonburi" size:14.0] beginningAt:CGPointMake(leading, y) displayingAt:CGPointMake(leading, y) endingAt:CGPointMake(leading+400, y+20) inTargetView:self.otherMoodTextView];
-        self.timeLB.stringToDisplay = timeStr;
+        self.timeLB = [[MFLHintLabel alloc] createHintAnimationForText:timeStr withFont:[UIFont fontWithName:@"Thonburi" size:14.0] beginningAt:CGPointMake(leading, y-OnHeight) displayingAt:CGPointMake(leading, y) endingAt:CGPointMake(leading, y+170) inTargetView:self.otherMoodTextView];
         self.timeLB.textColor = [UIColor whiteColor];
         [self.timeLB setAnimateOnType:kMFLAnimateOnLinear];
         [self.timeLB setAnimateOffType:kMFLAnimateOffLinear];
         
         [self.timeLB setTweakLineheight:6];
         
-//        [self.timeLB setPhaseDelayTimeIn:.05];
-//        [self.timeLB setPhaseDelayTimeOut:.1];
+        // 设置显示时间
+        [self.timeLB setDisplayTime: WIND_DELAY];
+        
         [self.timeLB setPhaseDelayTimeIn: .05];
         [self.timeLB setPhaseDelayTimeOut:.1];
         
-        [self.timeLB setCharactersToMoveSimultaneouslyIn:3];
+        [self.timeLB setCharactersToMoveSimultaneouslyIn:2];
         [self.timeLB setCharactersToMoveSimultaneouslyOut:1];
         
         [self.timeLB prepareToRun];
-        [self.timeLB run];
+//        [self.timeLB run];
+        [self.timeLB runWithCompletion:^{
+            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
+        }];
     }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark Tool
-// 开启定时器，5s后随风而去了
-- (void)goneWithTheWind {
-    double delayInSeconds = 10.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds *NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^{
-        [self cleanOtherMood];
-    });
-}
-- (void)cleanOtherMood {
-    self.otherMoodTextView.text = @"";
-//    self.timeLB.stringToDisplay = @"";
-    // todo 背景图片
-}
-
 
 @end
