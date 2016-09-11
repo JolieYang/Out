@@ -41,6 +41,7 @@
 #import "InputMoodPictureViewController.h"
 #import "HomeViewController.h"
 #import "OutAlertViewController.h"
+#import "MBProgressHUD.h"
 #import "OutAPIManager.h"
 #import "StringHelper.h"
 #import "TextViewHelper.h"
@@ -103,9 +104,11 @@
         //
         return;
     }
-    // TODO: 连接后台发布Out
+    // 回收键盘
+    [self.inputTextView resignFirstResponder];
     // TODO: 加载 MBProgress "发布中"
-    // ...
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self configHUD:hud];
     // test 上传图片接口
     [OutAPIManager uploadImage:self.inputImageView.image succeed:^(NSString *photoId) {
         NSString *apiName = @"mind";
@@ -116,6 +119,7 @@
         [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (_finishPictureMoodBlock) {
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                     _finishPictureMoodBlock(response);
                 }
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -128,6 +132,18 @@
     }];
     
     
+}
+- (void)configHUD:(MBProgressHUD *)hud {
+    hud.bezelView.color = [UIColor blackColor];
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.layer.cornerRadius = 7;
+    hud.bezelView.alpha = 0.7;
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.contentColor = [UIColor whiteColor];
+    hud.square = YES;
+    hud.minShowTime = 1.0;
+    hud.minSize = CGSizeMake(30, 30);
+    hud.detailsLabel.text = @"正在发布";
 }
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {

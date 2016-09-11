@@ -30,6 +30,7 @@
 // 1. 导航栏图标尺寸 58 @2x  #757575
 #import "InputMoodViewController.h"
 #import "OutAlertViewController.h"
+#import "MBProgressHUD.h"
 #import "StringHelper.h"
 #import "OutAPIManager.h"
 #import "const.h"
@@ -95,6 +96,8 @@
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self configHUD:hud];
     NSString *apiName = @"mind";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:self.inputTextView.text forKey:@"content"];
@@ -102,6 +105,7 @@
     [OutAPIManager startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (_finishMoodBlock) {
+                [hud hideAnimated:YES];
                 _finishMoodBlock(response);
             }
             [self.navigationController popViewControllerAnimated:YES];
@@ -112,6 +116,18 @@
     }];
 }
 
+- (void)configHUD:(MBProgressHUD *)hud {
+    hud.bezelView.color = [UIColor blackColor];
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.layer.cornerRadius = 7;
+    hud.bezelView.alpha = 0.7;
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.contentColor = [UIColor whiteColor];
+    hud.square = YES;
+//    hud.minShowTime = 1.0;
+    hud.minSize = CGSizeMake(30, 30);
+    hud.detailsLabel.text = @"正在发布";
+}
 
 
 #pragma mark UITextViewDelegate

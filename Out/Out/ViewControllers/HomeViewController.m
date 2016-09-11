@@ -27,6 +27,7 @@
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
+#import "MBProgressHUD.h"
 #import "TextViewHelper.h"
 #import "DateHelper.h"
 #import "AppDelegate.h"
@@ -128,11 +129,11 @@ static CGFloat const WIND_DELAY = 3.0;
 }
 
 - (IBAction)testAnimationAction:(id)sender {
-    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-    NSString *timeStr = @"二0一六年九月三日";
-    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
+//    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+//    NSString *timeStr = @"二0一六年九月三日";
+//    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
     
-//    [self setupMoodTextViewWithContent:nil TimeString:nil backgroundImage:nil];
+    
 }
 
 
