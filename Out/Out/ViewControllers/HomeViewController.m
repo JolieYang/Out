@@ -215,9 +215,9 @@ static CGFloat const WIND_DELAY = 3.0;
         [self.contentLB setCharactersToMoveSimultaneouslyOut:2];
         [self.contentLB prepareToRun];
         [self.contentLB run];
-//        [self.contentLB runWithCompletion:^{
-//            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
-//        }];
+        [self.contentLB runWithCompletion:^{
+            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
+        }];
     }
     
     // Mood时间
@@ -246,10 +246,10 @@ static CGFloat const WIND_DELAY = 3.0;
         [self.timeLB setCharactersToMoveSimultaneouslyOut:1];
         
         [self.timeLB prepareToRun];
-//        [self.timeLB run];
-        [self.timeLB runWithCompletion:^{
-            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
-        }];
+        [self.timeLB run];
+//        [self.timeLB runWithCompletion:^{
+//            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
+//        }];
     }
 }
 
