@@ -34,6 +34,7 @@
 		A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C30D1D792BC700E844F1 /* OutAlertViewController.m */; };
 		A068C3111D79642600E844F1 /* OutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C3101D79642600E844F1 /* OutImageView.m */; };
 		A072D7DA1D853C5F00D1D008 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A072D7D91D853C5F00D1D008 /* MBProgressHUD.m */; };
+		A072D7DD1D85569800D1D008 /* OutProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A072D7DC1D85569800D1D008 /* OutProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,8 @@
 		A068C3101D79642600E844F1 /* OutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutImageView.m; path = General/Views/OutImageView.m; sourceTree = "<group>"; };
 		A072D7D81D853C5F00D1D008 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A072D7D91D853C5F00D1D008 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A072D7DB1D85569800D1D008 /* OutProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutProgressHUD.h; path = General/Views/OutProgressHUD.h; sourceTree = "<group>"; };
+		A072D7DC1D85569800D1D008 /* OutProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutProgressHUD.m; path = General/Views/OutProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +268,8 @@
 				A068C30D1D792BC700E844F1 /* OutAlertViewController.m */,
 				A068C30F1D79642600E844F1 /* OutImageView.h */,
 				A068C3101D79642600E844F1 /* OutImageView.m */,
+				A072D7DB1D85569800D1D008 /* OutProgressHUD.h */,
+				A072D7DC1D85569800D1D008 /* OutProgressHUD.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
 				A045A0CF1D7D5E4B00AC9752 /* SetOutNameViewController.m in Sources */,
 				A045A0D21D7D769B00AC9752 /* SetOutNameWindow.m in Sources */,
+				A072D7DD1D85569800D1D008 /* OutProgressHUD.m in Sources */,
 				A04C93C01D7FF2490028F2DB /* AFURLResponseSerialization.m in Sources */,
 				A04C93BD1D7FF2490028F2DB /* AFNetworkReachabilityManager.m in Sources */,
 				A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */,

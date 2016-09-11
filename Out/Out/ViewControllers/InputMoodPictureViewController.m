@@ -41,7 +41,7 @@
 #import "InputMoodPictureViewController.h"
 #import "HomeViewController.h"
 #import "OutAlertViewController.h"
-#import "MBProgressHUD.h"
+#import "OutProgressHUD.h"
 #import "OutAPIManager.h"
 #import "StringHelper.h"
 #import "TextViewHelper.h"
@@ -106,10 +106,7 @@
     }
     // 回收键盘
     [self.inputTextView resignFirstResponder];
-    // TODO: 加载 MBProgress "发布中"
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self configHUD:hud];
-    // test 上传图片接口
+    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
     [OutAPIManager uploadImage:self.inputImageView.image succeed:^(NSString *photoId) {
         NSString *apiName = @"mind";
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -133,18 +130,7 @@
     
     
 }
-- (void)configHUD:(MBProgressHUD *)hud {
-    hud.bezelView.color = [UIColor blackColor];
-    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.bezelView.layer.cornerRadius = 7;
-    hud.bezelView.alpha = 0.7;
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.contentColor = [UIColor whiteColor];
-    hud.square = YES;
-    hud.minShowTime = 1.0;
-    hud.minSize = CGSizeMake(30, 30);
-    hud.detailsLabel.text = @"正在发布";
-}
+
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;

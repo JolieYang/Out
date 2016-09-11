@@ -27,7 +27,7 @@
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
-#import "MBProgressHUD.h"
+#import "OutProgressHUD.h"
 #import "TextViewHelper.h"
 #import "DateHelper.h"
 #import "AppDelegate.h"
@@ -133,6 +133,7 @@ static CGFloat const WIND_DELAY = 3.0;
 //    NSString *timeStr = @"二0一六年九月三日";
 //    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
     
+//    [OutProgressHUD showHUDDetailString:@"正在发布" AddedTo:self.view animated:YES];
     
 }
 
