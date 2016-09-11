@@ -35,6 +35,7 @@
     hud.square = YES;
     hud.minShowTime = 1.0;
     // TODO 定制HUD's Size
+    hud.margin = 10.0;// default is '20.0'
 }
 
 @end

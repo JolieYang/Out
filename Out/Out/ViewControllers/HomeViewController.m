@@ -133,7 +133,7 @@ static CGFloat const WIND_DELAY = 3.0;
 //    NSString *timeStr = @"二0一六年九月三日";
 //    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
     
-//    [OutProgressHUD showHUDDetailString:@"正在发布" AddedTo:self.view animated:YES];
+    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
     
 }
 
