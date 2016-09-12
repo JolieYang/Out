@@ -11,6 +11,7 @@
 
 #import "SetOutNameViewController.h"
 #import "OutAlertViewController.h"
+#import "OutProgressHUD.h"
 #import "SetOutnameWindow.h"
 #import "StringHelper.h"
 #import "OutAPIManager.h"
@@ -75,14 +76,19 @@
     [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
         NSString *token = [response objectForKey:@"token"];
         NSNumber *number = [response objectForKey:@"number"];
-        [[NSUserDefaults standardUserDefaults] setValue:self.outNameTF.text forKey: OUT_NAME];
+        [[NSUserDefaults standardUserDefaults] setValue:self.outNameTF.text forKey: OUT_NICK_NAME];
         [[NSUserDefaults standardUserDefaults] setValue:token forKey:OUT_TOKEN];
         [[NSUserDefaults standardUserDefaults] setValue:number forKey:OUT_NAME_NUMBER];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
+        
+        NSString *nickName = [[NSUserDefaults standardUserDefaults] valueForKey:OUT_NICK_NAME];
+        NSLog(@"store nickName:%@", nickName);
+        
         [[SetOutNameWindow shareInstance] hide];
     } failed:^(NSString *errMsg) {
         NSLog(@"error:%@", errMsg);
+        [OutProgressHUD showTextHUDWithDetailString:@"登录失败" AddedTo:self.view];
     }];
     
 }

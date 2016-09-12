@@ -101,13 +101,15 @@
 - (IBAction)didEndEditAction:(id)sender {
     // 判断字数是否超出限制
     if ([StringHelper length:self.inputTextView.text] > 100) {
-        UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
-        [self presentViewController:alertController animated:YES completion:nil];
+//        UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
+//        [self presentViewController:alertController animated:YES completion:nil];
+        [OutProgressHUD showTextHUDWithDetailString:@"文字超出100字限制" AddedTo:self.view];
         return;
     }
     // 判断字符非空
     if ([StringHelper length:self.inputTextView.text] == 0) {
-        //
+        // 正常是不会进入这里
+        [OutProgressHUD showTextHUDWithDetailString:@"程序跑到火星去了吧" AddedTo:self.view];
         return;
     }
     // 回收键盘
@@ -129,12 +131,12 @@
             });
         } failed:^(NSString *errMsg) {
             NSLog(@"发布失败");
+            [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
         }];
     } failed:^(NSString *errMsg) {
+        [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
         NSLog(@"failed");
     }];
-    
-    
 }
 
 // 从系统相册选择背景图片

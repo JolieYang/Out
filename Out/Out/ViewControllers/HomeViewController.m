@@ -49,8 +49,6 @@ static CGFloat const WIND_DELAY = 3.0;
 @property (nonatomic, strong) MFLHintLabel *contentLB;
 @property (nonatomic, strong) UILabel *defaultTimeLB;
 
-@property (nonatomic, strong) CAGradientLayer *gradientLayer;
-
 @end
 
 @implementation HomeViewController
@@ -58,27 +56,14 @@ static CGFloat const WIND_DELAY = 3.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self gradientImage];
-    self.otherMoodBgImage.image = nil;
-    self.otherMoodBgImage.clipsToBounds = YES;
-    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self setupViews];
     [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)gradientImage {
-    UIView *tmpView = self.otherMoodBgImage;
-    self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.bounds = tmpView.bounds;
-    self.gradientLayer.borderWidth = 0;
-    self.gradientLayer.frame = tmpView.bounds;
-    self.gradientLayer.colors = [NSArray arrayWithObjects:[UIColor clearColor],[UIColor grayColor], nil];
-    self.gradientLayer.startPoint = CGPointMake(0.5, 0.5);
-    self.gradientLayer.endPoint = CGPointMake(0.5, 1.0);
-    [tmpView.layer insertSublayer:self.gradientLayer atIndex:0];
-}
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -131,10 +116,10 @@ static CGFloat const WIND_DELAY = 3.0;
         timeStr = [DateHelper customeDateStr:timeStr];
         NSString *photoId = [data valueForKey:@"photoId"];
         if (photoId) {
+            // TODO 加载图片失败处理
             [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:image];
-            
                 });
             }];
         } else {
@@ -152,20 +137,32 @@ static CGFloat const WIND_DELAY = 3.0;
 //    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
     
     // test 弹窗HUD
+    // style1
 //    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
+    // style2 -- text
+    [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+    
     
     // test 图片加载
     // 加载图片 2a68cbd4453be810b3c432ce5b958073 9eaf5991ad88878226cd450be251858b 2a68cbd4453be810b3c432ce5b958073
-    NSString *photoId = @"2a68cbd4453be810b3c432ce5b958073";
-    [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-        self.otherMoodBgImage.image = image;
-    }];
+    // m1
+//    NSString *photoId = @"2a68cbd4453be810b3c432ce5b958073";
+//    [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+//        self.otherMoodBgImage.image = image;
+//    }];
+    // m2
 //    NSString *urlStr = [kPHOTO_URL stringByAppendingString:photoId];
 //    [self.otherMoodBgImage sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil];
 }
 
 
+
 #pragma mark Default_UI
+- (void)setupViews {
+    self.otherMoodBgImage.clipsToBounds = YES;
+    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
+}
+
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
     [self setDefaultContent:content];
     [self setDefaultTimeLBString:timeStr];

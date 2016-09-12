@@ -111,6 +111,7 @@
         });
     } failed:^(NSString *errMsg) {
         // 弹窗显示 发布失败
+        [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
         return ;
     }];
 }

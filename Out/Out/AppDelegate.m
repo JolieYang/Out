@@ -20,7 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:OUT_NAME]) {
+    NSString *nickName = [[NSUserDefaults standardUserDefaults] valueForKey:OUT_NICK_NAME];
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:OUT_NICK_NAME]) {
         [[SetOutNameWindow shareInstance] show];
     }
 

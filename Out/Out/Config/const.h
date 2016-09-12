@@ -21,7 +21,7 @@
     #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
 #endif 
 
-#define OUT_NAME @"com.spider.out.developer.name"
+#define OUT_NICK_NAME @"com.spider.out.developer.nickname"
 #define OUT_NAME_NUMBER @"com.spider.out.developer.name.number"
 #define OUT_TOKEN @"com.spider.out.develop.token"
 
