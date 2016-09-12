@@ -35,7 +35,7 @@
 
 // Questin LIST:
 // ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。 资料：https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/UsingSegues.html
-
+// ?2. 手势方向只能支持上下或者左右，不能同时支持上下左右，但没道理啊，不知道哪里出了问题.
 // UI:
 // 按钮图标  44 @2x #fff
 #import "InputMoodPictureViewController.h"
@@ -54,7 +54,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface InputMoodPictureViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate>
+@interface InputMoodPictureViewController ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UIButton *outBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *inputImageView;
@@ -66,7 +66,9 @@
 @property (nonatomic, strong) UILabel *placeHolderLB;
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 
-@property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (nonatomic, strong) UIGestureRecognizer *tap;
+@property (nonatomic, strong) UIView *keyView;
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipe;
 
 @end
 
@@ -80,6 +82,10 @@
     self.inputTextView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // 点击返回上一级界面按钮
@@ -185,9 +191,13 @@
 
 - (void)didEndShowKeyboard:(NSNotification *)notification {
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    self.swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    // ?2
+//    self.swipe.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
+    self.swipe.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionDown;
+    [self.inputTextView addGestureRecognizer:self.swipe];
     [self.inputTextView addGestureRecognizer:self.tap];
 }
-
 - (void)hideKeyboard {
     [self.inputTextView removeGestureRecognizer:self.tap];
     [self.inputTextView resignFirstResponder];
@@ -204,7 +214,7 @@
     self.outBtn.hidden = YES;
 }
 
-#pragma mark UITextFieldDelegate
+#pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length == 0) {// 无输入字符
         self.placeHolderLB.hidden = NO;
