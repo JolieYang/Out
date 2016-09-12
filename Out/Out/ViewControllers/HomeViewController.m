@@ -18,6 +18,7 @@
 // 7.[done] 图片背景遮罩效果。 r: 一开始是设置textView通过addSubview添加背景图片，但是无法实现遮罩效果。所以应该是设置image,textView设置背景颜色，再设置alpha值0.5。
 // 8.[done]  设置状态栏为白色
 // 9. 接入后端接口 communicate with spider-- 5th,Nov,2016 1) 发布out: content,用户昵称,时间,图片url 2) 上传图片 3) 获取一条out
+// 10.[done] 照片显示 UIViewContentModeScaleAspectFill+ Clips
 
 // Questin LIST:
 // 1. 该页面的获取otherMoodTextView的textColor和font为nil,尝试了下inputmoodViewController的textView能够获取到啊。为何啊
@@ -28,12 +29,13 @@
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
 #import "OutProgressHUD.h"
+#import "MFLHintLabel.h"
 #import "TextViewHelper.h"
 #import "DateHelper.h"
 #import "AppDelegate.h"
 #import "OutAPIManager.h"
 #import "const.h"
-#import "MFLHintLabel.h"
+#import "UIImageView+WebCache.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
 static CGFloat const WIND_DELAY = 3.0;
@@ -45,8 +47,9 @@ static CGFloat const WIND_DELAY = 3.0;
 
 @property (nonatomic, strong) MFLHintLabel *timeLB;
 @property (nonatomic, strong) MFLHintLabel *contentLB;
-
 @property (nonatomic, strong) UILabel *defaultTimeLB;
+
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
 
 @end
 
@@ -55,12 +58,26 @@ static CGFloat const WIND_DELAY = 3.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    self.otherMoodBgImage.image = nil;
+    [self gradientImage];
+    self.otherMoodBgImage.image = nil;
+    self.otherMoodBgImage.clipsToBounds = YES;
+    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
     [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)gradientImage {
+    UIView *tmpView = self.otherMoodBgImage;
+    self.gradientLayer = [CAGradientLayer layer];
+    self.gradientLayer.bounds = tmpView.bounds;
+    self.gradientLayer.borderWidth = 0;
+    self.gradientLayer.frame = tmpView.bounds;
+    self.gradientLayer.colors = [NSArray arrayWithObjects:[UIColor clearColor],[UIColor grayColor], nil];
+    self.gradientLayer.startPoint = CGPointMake(0.5, 0.5);
+    self.gradientLayer.endPoint = CGPointMake(0.5, 1.0);
+    [tmpView.layer insertSublayer:self.gradientLayer atIndex:0];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -71,7 +88,7 @@ static CGFloat const WIND_DELAY = 3.0;
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
-#pragma mark UI
+#pragma mark Action
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
@@ -119,7 +136,7 @@ static CGFloat const WIND_DELAY = 3.0;
                     [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:image];
             
                 });
-            }];    
+            }];
         } else {
             [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
         }
@@ -129,18 +146,26 @@ static CGFloat const WIND_DELAY = 3.0;
 }
 
 - (IBAction)testAnimationAction:(id)sender {
+    // test 动画效果
 //    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
 //    NSString *timeStr = @"二0一六年九月三日";
 //    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
     
-    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
+    // test 弹窗HUD
+//    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
     
+    // test 图片加载
+    // 加载图片 2a68cbd4453be810b3c432ce5b958073 9eaf5991ad88878226cd450be251858b 2a68cbd4453be810b3c432ce5b958073
+    NSString *photoId = @"2a68cbd4453be810b3c432ce5b958073";
+    [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+        self.otherMoodBgImage.image = image;
+    }];
+//    NSString *urlStr = [kPHOTO_URL stringByAppendingString:photoId];
+//    [self.otherMoodBgImage sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil];
 }
 
 
-
-
-
+#pragma mark Default_UI
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
     [self setDefaultContent:content];
     [self setDefaultTimeLBString:timeStr];
@@ -149,9 +174,6 @@ static CGFloat const WIND_DELAY = 3.0;
     }
 }
 
-
-
-#pragma mark Default_UI
 - (void)setDefaultTimeLBString:(NSString *)timeStr {
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
     int leading = 8;

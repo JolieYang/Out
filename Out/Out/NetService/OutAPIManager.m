@@ -9,6 +9,7 @@
 #import "OutAPIManager.h"
 #import "const.h"
 #import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
 
 @interface OutAPIManager()<NSURLSessionDelegate>
 @property (nonatomic, strong) SuccessedResponse successResponse;
@@ -78,20 +79,46 @@
 
 + (void)downloadImageWithPhotoID:(NSString *)photoId completionHandler:(DownloadImageResponse)imageResponse {
     NSLog(@"download Photoid:%@", photoId);
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration: configuration];
+    // m1 31.4MB 33.7-34.1
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration: configuration];
+//    
+//    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kPHOTO_URL, photoId];
+//    NSURL *URL = [NSURL URLWithString:urlStr];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    
+//    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+//        NSURL *documentDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+//        return [documentDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+//    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+//        UIImage *image = [UIImage imageWithContentsOfFile:[filePath path]];
+//        imageResponse(image);
+//    }];
+//    [downloadTask resume];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kPHOTO_URL, photoId];
-    NSURL *URL = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    // m2 31.1-9MB 35.4-8
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQueue, ^{
+        [self loadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+            imageResponse(image);
+        }];
+    });
     
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        NSURL *documentDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        UIImage *image = [UIImage imageWithContentsOfFile:[filePath path]];
+    
+}
+
++ (void)loadImageWithPhotoID:(NSString *)photoId completionHandler:(DownloadImageResponse)imageResponse {
+    NSData *imageData = [self requestImageDataWithPhotoID:photoId];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *image = [UIImage imageWithData:imageData];
         imageResponse(image);
-    }];
-    [downloadTask resume];
+    });
+}
++ (NSData *)requestImageDataWithPhotoID:(NSString *)photoID {
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kPHOTO_URL, photoID];
+    NSURL *URL = [NSURL URLWithString:urlStr];
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:URL];
+    return imageData;
 }
 @end
