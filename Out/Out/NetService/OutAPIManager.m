@@ -18,6 +18,11 @@
 @implementation OutAPIManager
 + (void)startRequestWithApiName:(NSString *)apiName params:(NSDictionary *)params successed:(void (^)(NSDictionary *response))successResponse failed:(void (^)(NSString *errMsg))failedResponse {
     NSLog(@"send:%@", params);
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    if (!manager.reachable) {
+        failedResponse(@"网络无法连接"); // 网络出问题了
+        return;
+    }
     NSError *error;
     NSString *urlString = [NSString stringWithFormat:@"%@%@", kSERVER_URL, apiName];
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:params error:&error];
@@ -28,6 +33,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
+            NSLog(@"failed:%@", error.localizedDescription);
             failedResponse(error.localizedDescription);
             return ;
         }
@@ -49,6 +55,11 @@
 }
 
 + (void)uploadImage:(UIImage *)image  succeed:(UploadImageResponse)successUploadImageResponse failed:(FailedResponse)failedResponse {
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    if (!reachabilityManager.reachable) {
+        failedResponse(@"网络无法连接"); // 网络出问题了
+        return;
+    }
     NSString *urlString = [NSString stringWithFormat:@"%@photo", kSERVER_URL];
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         // 获取图片的大小，根据大小进行不同等级的压缩
@@ -81,6 +92,14 @@
     [uploadTask resume];
 }
 
++ (void)downloadImageWithPhotoID:(NSString *)photoId succeed:(DownloadImageResponse)successDownloadImageResponse failed:(FailedResponse)failedResponse {
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    if (!reachabilityManager.reachable) {
+        failedResponse(@"网络无法连接"); // 网络出问题了
+        return;
+    }
+    [self downloadImageWithPhotoID:photoId completionHandler:successDownloadImageResponse];
+}
 + (void)downloadImageWithPhotoID:(NSString *)photoId completionHandler:(DownloadImageResponse)imageResponse {
     NSLog(@"download Photoid:%@", photoId);
     // m1 31.4MB 33.7-34.1
@@ -107,8 +126,6 @@
             imageResponse(image);
         }];
     });
-    
-    
 }
 
 + (void)loadImageWithPhotoID:(NSString *)photoId completionHandler:(DownloadImageResponse)imageResponse {

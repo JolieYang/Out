@@ -24,6 +24,10 @@
 // 1. 该页面的获取otherMoodTextView的textColor和font为nil,尝试了下inputmoodViewController的textView能够获取到啊。为何啊
 
 // 开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。
+// 守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。
+
+// Discussion LIST:
+// 1. 主页面图片跟文字加载， 1)先加载好图片，再一起显示文字图片，2)还是先显示文字图片加载好后再显示图片。两种策略，一开始是2策略，但感觉显示不是很友好，改为1策略，改后同样感觉还是不是非常友好，就显示一张图片跟文字，感觉需要等待，本身就不是很友好。 现在更偏向于选择一开始的2策略。策略本身没有什么问题， 问题的关键在于图片太大了，导致加载的时间比较久，
 
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
@@ -38,7 +42,7 @@
 #import "UIImageView+WebCache.h"
 
 static NSString * const mood_bg_imageName = @"yellow_girl";
-static CGFloat const WIND_DELAY = 3.0;
+static CGFloat const WIND_DELAY = 37.0;
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *otherMoodTextView;
@@ -63,12 +67,6 @@ static CGFloat const WIND_DELAY = 3.0;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setupViews {
-    self.otherMoodBgImage.clipsToBounds = YES;
-    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
@@ -77,33 +75,11 @@ static CGFloat const WIND_DELAY = 3.0;
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
-    
     __weak typeof(self) weakSelf = self;
     inputMoodVC.finishMoodBlock = ^(NSDictionary *response){
-//        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
-//        NSString *timeStr = @"二0一六年八月三十一日";
         [weakSelf showOtherMoodWithResponse:response];
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
-//    [self showViewController:inputMoodVC sender:self];
-}
-
-- (void)showOtherMoodWithResponse:(NSDictionary *)response {
-    NSString *content = [response valueForKey:@"content"];
-    NSString *timeStr = [response valueForKey:@"createtime"];
-    timeStr = [DateHelper customeDateStr:timeStr];
-    NSString *photoId = [response valueForKey:@"photoId"];
-    if (photoId) {
-        NSLog(@"存在photoId");
-        // 设置背景图片
-        [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self goneWithTheWind:content TimeString:timeStr backgroundImage: image];
-            });
-        }];
-    } else {
-        [self goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
-    }
 }
 
 // 海报式编辑器
@@ -112,26 +88,9 @@ static CGFloat const WIND_DELAY = 3.0;
     
     __weak typeof(self) weakSelf = self;
     inputPictureVC.finishPictureMoodBlock = ^(NSDictionary *data) {
-//        NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-//        NSString *timeStr = @"二0一六年九月三日";
-//        UIImage *image = [UIImage imageNamed:@"green_girl"];
-        NSString *content = [data valueForKey:@"content"];
-        NSString *timeStr = [data valueForKey:@"createtime"];
-        timeStr = [DateHelper customeDateStr:timeStr];
-        NSString *photoId = [data valueForKey:@"photoId"];
-        if (photoId) {
-            // TODO 加载图片失败处理
-            [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:image];
-                });
-            }];
-        } else {
-            [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
-        }
+        [weakSelf showOtherMoodWithResponse:data];
     };
-//    [self presentViewController:inputPictureVC animated:YES completion:nil];
-    [self showDetailViewController:inputPictureVC sender:self];
+    [self presentViewController:inputPictureVC animated:YES completion:nil];
 }
 
 - (IBAction)testAnimationAction:(id)sender {
@@ -144,13 +103,23 @@ static CGFloat const WIND_DELAY = 3.0;
     // style1
 //    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
     // style2 -- text
-    [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+//    [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+    // style3 -- changeText
+    MBProgressHUD *hud = [OutProgressHUD HUDForView:self.view];
+    hud.detailsLabel.text = @"发布失败";
     
     
     // test 图片加载
-    // 加载图片 2a68cbd4453be810b3c432ce5b958073 9eaf5991ad88878226cd450be251858b 2a68cbd4453be810b3c432ce5b958073
+    // 加载图片 2a68cbd4453be810b3c432ce5b958073 9eaf5991ad88878226cd450be251858b 2a68cbd4453be810b3c432ce5b958073 689812b786948ca0a097881304a90d72 // green-girl
     // m1
-//    NSString *photoId = @"2a68cbd4453be810b3c432ce5b958073";
+//    NSString *photoId = @"689812b786948ca0a097881304a90d72";
+//    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
+//    NSString *createtime = @"2016-09-12";
+//    NSMutableDictionary *response = [NSMutableDictionary dictionary];
+//    [response setObject:photoId forKey:@"photoId"];
+//    [response setObject:createtime forKey:@"createtime"];
+//    [response setObject:content forKey:@"content"];
+//    [self showOtherMoodWithResponse:response];
 //    [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
 //        self.otherMoodBgImage.image = image;
 //    }];
@@ -161,17 +130,42 @@ static CGFloat const WIND_DELAY = 3.0;
 
 
 
-#pragma mark UI
+#pragma mark UI-Config
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+- (void)setupViews {
+    self.otherMoodBgImage.clipsToBounds = YES;
+    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:[UIImage imageNamed:mood_bg_imageName]];
+}
+
+#pragma mark UI-Update
+- (void)showOtherMoodWithResponse:(NSDictionary *)response {
+    [self setupMoodTextViewWithContent:nil TimeString:nil backgroundImage:nil];
+    NSString *content = [response valueForKey:@"content"];
+    NSString *timeStr = [response valueForKey:@"createtime"];
+    timeStr = [DateHelper customeDateStr:timeStr];
+    NSString *photoId = [response valueForKey:@"photoId"];
+    if (photoId) {
+        NSLog(@"存在photoId");
+        [self goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
+        // TODO 加载图片失败处理
+        // 设置背景图片
+        [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.otherMoodBgImage.image = image;
+            });
+        }];
+    } else {
+        [self goneWithTheWind:content TimeString:timeStr backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
+    }
 }
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
     [self setDefaultContent:content];
     [self setDefaultTimeLBString:timeStr];
-    if (image) {
-        self.otherMoodBgImage.image = image;
-    }
+    self.otherMoodBgImage.image = image;
 }
 - (void)setDefaultTimeLBString:(NSString *)timeStr {
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
@@ -204,12 +198,10 @@ static CGFloat const WIND_DELAY = 3.0;
     self.otherMoodTextView.textAlignment = NSTextAlignmentCenter;
 }
 
-#pragma mark Tool
 
 #pragma mark Animation
 // 开启定时器，5s后随风而去了
 - (void)goneWithTheWind:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image{
-    [self setupMoodTextViewWithContent:nil TimeString:nil backgroundImage:nil];
     int OnHeight = 0; // 300
     // 设置背景图片
     if (image) self.otherMoodBgImage.image = image;
@@ -235,9 +227,9 @@ static CGFloat const WIND_DELAY = 3.0;
         [self.contentLB setCharactersToMoveSimultaneouslyOut:2];
         [self.contentLB prepareToRun];
         [self.contentLB run];
-        [self.contentLB runWithCompletion:^{
-            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
-        }];
+//        [self.contentLB runWithCompletion:^{
+//            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
+//        }];
     }
     
     // Mood时间
@@ -266,10 +258,10 @@ static CGFloat const WIND_DELAY = 3.0;
         [self.timeLB setCharactersToMoveSimultaneouslyOut:1];
         
         [self.timeLB prepareToRun];
-        [self.timeLB run];
-//        [self.timeLB runWithCompletion:^{
-//            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: nil];
-//        }];
+//        [self.timeLB run];
+        [self.timeLB runWithCompletion:^{
+            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
+        }];
     }
 }
 

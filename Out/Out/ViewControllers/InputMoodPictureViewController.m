@@ -129,12 +129,10 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             });
         } failed:^(NSString *errMsg) {
-            NSLog(@"发布失败");
-            [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+            [OutProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
         }];
     } failed:^(NSString *errMsg) {
-        [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
-        NSLog(@"failed");
+        [OutProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
     }];
 }
 
@@ -148,7 +146,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark ConfigUI
+#pragma mark UI-Config
 // 隐藏状态栏
 - (BOOL)prefersStatusBarHidden {
     return YES;

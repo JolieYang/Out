@@ -9,6 +9,7 @@
 #import "MBProgressHUD.h"
 
 @interface OutProgressHUD : MBProgressHUD
++ (void)changeToTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view; // 已显示HUD再改为显示textHUD
 + (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view; // text
 + (instancetype)showIndicatorHUDWithDetailString:(NSString *)detailString AddedTo:(UIView *)view animated:(BOOL)animated;
 @end

@@ -25,4 +25,6 @@
 #define OUT_NAME_NUMBER @"com.spider.out.developer.name.number"
 #define OUT_TOKEN @"com.spider.out.develop.token"
 
+#define LIMIT_TEXT_LENGTH 100
+
 #endif

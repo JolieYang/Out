@@ -35,8 +35,6 @@
 #import "OutAPIManager.h"
 #import "const.h"
 
-#define LIMIT_TEXT_LENGTH 100
-
 #define YLog(formatString, ...) NSLog((@"%s" formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
 
 @interface InputMoodViewController ()<UITextViewDelegate>
@@ -112,8 +110,7 @@
     } failed:^(NSString *errMsg) {
         // 弹窗显示 发布失败
         dispatch_async(dispatch_get_main_queue(), ^{
-            [OutProgressHUD hideHUDForView:self.view animated:YES];
-            [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+            [OutProgressHUD changeToTextHUDWithDetailString:errMsg AddedTo:self.view];
         });
         return ;
     }];
