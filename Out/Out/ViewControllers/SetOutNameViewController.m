@@ -29,15 +29,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self config];
-    [self.outNameTF becomeFirstResponder];
+    [self setupViews];
 }
 
-- (void)config {
+- (void)setupViews {
+    // 配置登录类型
     self.outLoginType = OutLoginTypeNickName;
+    
     if (self.outLoginType == OutLoginTypeNickName) {
         self.outNameTF.returnKeyType = UIReturnKeyGo;
     }
+    [self.outNameTF becomeFirstResponder];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -55,8 +57,8 @@
 - (IBAction)setOutNameAction:(id)sender {
     [self resignKeyboard];
     if ([StringHelper isEmpty:self.outNameTF.text]) {
-        UIAlertController *alertController = [OutAlertViewController nullOutName];
-        [self presentViewController:alertController animated:YES completion:nil];
+        [OutProgressHUD showTextHUDWithDetailString:@"请输入昵称" AddedTo:self.view];
+        [self.outNameTF becomeFirstResponder];
         
         return;
     }
@@ -67,11 +69,10 @@
         [params setValue:self.outNameTF.text forKey:@"nickname"];
     } else {
         if ([StringHelper isEmpty:self.outPasswdTF.text]) {
-            // todo 弹窗
+            [OutProgressHUD showTextHUDWithDetailString:@"请输入密码" AddedTo:self.view];
             return;
         }
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:self.outNameTF.text,@"email",self.outPasswdTF.text, @"password", nil];
-        //    NSDictionary *params = @{@"email":@"jolie@icloud.com",@"password":@"sl0131"};
     }
     [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
         NSString *token = [response objectForKey:@"token"];
@@ -80,7 +81,6 @@
         [[NSUserDefaults standardUserDefaults] setValue:token forKey:OUT_TOKEN];
         [[NSUserDefaults standardUserDefaults] setValue:number forKey:OUT_NAME_NUMBER];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
         
         NSString *nickName = [[NSUserDefaults standardUserDefaults] valueForKey:OUT_NICK_NAME];
         NSLog(@"store nickName:%@", nickName);

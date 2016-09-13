@@ -32,6 +32,7 @@
 // 9.[done] 点击右上角按钮逻辑处理
 // 10.[done] 图标替换
 // 11.[done][ing] 回收键盘: version1: 点击return按钮
+// 12. 使用应用提供图片，则不做图片上传处理，直接获取图片id。
 
 // Questin LIST:
 // ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。 资料：https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/UsingSegues.html
@@ -101,8 +102,6 @@
 - (IBAction)didEndEditAction:(id)sender {
     // 判断字数是否超出限制
     if ([StringHelper length:self.inputTextView.text] > 100) {
-//        UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
-//        [self presentViewController:alertController animated:YES completion:nil];
         [OutProgressHUD showTextHUDWithDetailString:@"文字超出100字限制" AddedTo:self.view];
         return;
     }

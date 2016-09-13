@@ -111,7 +111,10 @@
         });
     } failed:^(NSString *errMsg) {
         // 弹窗显示 发布失败
-        [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [OutProgressHUD hideHUDForView:self.view animated:YES];
+            [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+        });
         return ;
     }];
 }

@@ -22,10 +22,14 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@", kSERVER_URL, apiName];
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:params error:&error];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.timeoutIntervalForRequest = 7.0;
+    configuration.timeoutIntervalForResource = 7.0;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             failedResponse(error.localizedDescription);
+            return ;
         }
         NSError *jsonError;
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];

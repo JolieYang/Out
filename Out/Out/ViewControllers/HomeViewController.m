@@ -17,7 +17,7 @@
 // 6. 文本也有alpha值，感觉字不是很清晰。 预想解决方案： 海报文字是一个label，而不是设置textView的文本。
 // 7.[done] 图片背景遮罩效果。 r: 一开始是设置textView通过addSubview添加背景图片，但是无法实现遮罩效果。所以应该是设置image,textView设置背景颜色，再设置alpha值0.5。
 // 8.[done]  设置状态栏为白色
-// 9. 接入后端接口 communicate with spider-- 5th,Nov,2016 1) 发布out: content,用户昵称,时间,图片url 2) 上传图片 3) 获取一条out
+// 9.[done] 接入后端接口 communicate with spider-- 5th,Nov,2016 1) 发布out: content,用户昵称,时间,图片url 2) 上传图片 3) 获取一条out
 // 10.[done] 照片显示 UIViewContentModeScaleAspectFill+ Clips
 
 // Questin LIST:
@@ -57,16 +57,16 @@ static CGFloat const WIND_DELAY = 3.0;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self setupViews];
-    [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+- (void)setupViews {
+    self.otherMoodBgImage.clipsToBounds = YES;
+    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,24 +82,28 @@ static CGFloat const WIND_DELAY = 3.0;
     inputMoodVC.finishMoodBlock = ^(NSDictionary *response){
 //        NSString *content = @"开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。";
 //        NSString *timeStr = @"二0一六年八月三十一日";
-        NSString *content = [response valueForKey:@"content"];
-        NSString *timeStr = [response valueForKey:@"createtime"];
-        timeStr = [DateHelper customeDateStr:timeStr];
-        NSString *photoId = [response valueForKey:@"photoId"];
-        if (photoId) {
-            NSLog(@"存在photoId");
-            // 设置背景图片
-            [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage: image];
-                });
-            }];
-        } else {
-            [weakSelf goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
-        }
+        [weakSelf showOtherMoodWithResponse:response];
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 //    [self showViewController:inputMoodVC sender:self];
+}
+
+- (void)showOtherMoodWithResponse:(NSDictionary *)response {
+    NSString *content = [response valueForKey:@"content"];
+    NSString *timeStr = [response valueForKey:@"createtime"];
+    timeStr = [DateHelper customeDateStr:timeStr];
+    NSString *photoId = [response valueForKey:@"photoId"];
+    if (photoId) {
+        NSLog(@"存在photoId");
+        // 设置背景图片
+        [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self goneWithTheWind:content TimeString:timeStr backgroundImage: image];
+            });
+        }];
+    } else {
+        [self goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
+    }
 }
 
 // 海报式编辑器
@@ -157,10 +161,9 @@ static CGFloat const WIND_DELAY = 3.0;
 
 
 
-#pragma mark Default_UI
-- (void)setupViews {
-    self.otherMoodBgImage.clipsToBounds = YES;
-    self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
+#pragma mark UI
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)setupMoodTextViewWithContent:(NSString *)content TimeString:(NSString *)timeStr backgroundImage:(UIImage *)image {
@@ -170,7 +173,6 @@ static CGFloat const WIND_DELAY = 3.0;
         self.otherMoodBgImage.image = image;
     }
 }
-
 - (void)setDefaultTimeLBString:(NSString *)timeStr {
     CGRect otherMoodRect = [self.otherMoodTextView bounds];
     int leading = 8;
@@ -189,7 +191,6 @@ static CGFloat const WIND_DELAY = 3.0;
         self.defaultTimeLB.text = timeStr;
     }
 }
-
 - (void)setDefaultContent:(NSString *)content {
     self.otherMoodTextView.text = content;
     self.otherMoodTextView.textColor = [UIColor whiteColor];
