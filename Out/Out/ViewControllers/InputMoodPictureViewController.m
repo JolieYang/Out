@@ -154,7 +154,7 @@
 // 配置textView
 - (void)setupInputTextView {
     // 设置placeholder
-    self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(30, [self.inputTextView bounds].size.height/2.0 - 23, [self.inputTextView bounds].size.width - 60, 30)];
+    self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(60, [[UIScreen mainScreen] bounds].size.width/2.0 - 23, [self.inputTextView bounds].size.width - 60, 30)];
     self.placeHolderLB.text = @"想说点什么呢?";
     self.placeHolderLB.textColor = [UIColor whiteColor];
     self.placeHolderLB.textAlignment = NSTextAlignmentCenter;
@@ -301,7 +301,8 @@
 
 #pragma mark Tool
 - (void)adjustInputMoodText {
-    CGFloat space = [self.inputTextView bounds].size.height - [TextViewHelper heightForTextView:self.inputTextView];
+//    CGFloat space = [self.inputTextView bounds].size.height - [TextViewHelper heightForTextView:self.inputTextView];
+    CGFloat space = [[UIScreen mainScreen] bounds].size.width - [TextViewHelper heightForTextView:self.inputTextView];
     CGFloat verticalInset = MAX(30, space/2.0);
     CGFloat horizontalInset = 30;
     [self.inputTextView setTextContainerInset:UIEdgeInsetsMake(verticalInset, horizontalInset, verticalInset, horizontalInset)];

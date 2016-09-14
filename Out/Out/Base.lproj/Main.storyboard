@@ -39,13 +39,16 @@
                                     <action selector="inputMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KRT-pj-3ne"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-Xz-7iU">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-lu-LW3">
                                 <rect key="frame" x="0.0" y="72" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XEK-lu-LW3" secondAttribute="height" multiplier="1:1" id="i2A-Ar-WhU"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -63,7 +66,7 @@
                                     <action selector="inputPictureMoodAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccX-dx-sXi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aP-wH-pNZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aP-wH-pNZ">
                                 <rect key="frame" x="0.0" y="400" width="320" height="30"/>
                                 <state key="normal" title="Gone With The Wind">
                                     <color key="titleColor" red="0.84705882349999995" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,13 +79,23 @@
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mQw-YK-lHv" firstAttribute="top" secondItem="oHW-36-oVV" secondAttribute="bottom" constant="8" id="2Jh-Fh-Rs9"/>
+                            <constraint firstItem="Ill-Xz-7iU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="7dB-eK-8Ba"/>
+                            <constraint firstItem="7aP-wH-pNZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cr0-CU-tj4"/>
+                            <constraint firstItem="Ill-Xz-7iU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Frf-Q0-uAT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oHW-36-oVV" secondAttribute="trailing" constant="-20" id="M7x-sC-JgB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oHW-36-oVV" secondAttribute="bottom" constant="70" id="OeT-5s-aZO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mQw-YK-lHv" secondAttribute="trailing" constant="-20" id="QL1-7s-Oud"/>
                             <constraint firstItem="mQw-YK-lHv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="RVc-0u-Hjn"/>
+                            <constraint firstItem="XEK-lu-LW3" firstAttribute="height" secondItem="Ill-Xz-7iU" secondAttribute="height" id="SK3-M9-av2"/>
+                            <constraint firstAttribute="trailing" secondItem="7aP-wH-pNZ" secondAttribute="trailing" id="dlr-ji-ZCn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mQw-YK-lHv" secondAttribute="bottom" constant="18" id="fT5-hn-1oa"/>
+                            <constraint firstItem="XEK-lu-LW3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lFz-Mm-YcY"/>
+                            <constraint firstItem="7aP-wH-pNZ" firstAttribute="top" secondItem="XEK-lu-LW3" secondAttribute="bottom" constant="8" id="lvb-Z7-qCd"/>
+                            <constraint firstItem="XEK-lu-LW3" firstAttribute="width" secondItem="Ill-Xz-7iU" secondAttribute="width" id="nfk-lE-6H5"/>
+                            <constraint firstItem="XEK-lu-LW3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="pMB-UY-mpg"/>
                             <constraint firstItem="oHW-36-oVV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="pig-Uf-Vm5"/>
                             <constraint firstItem="oHW-36-oVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="psa-oh-T4d"/>
+                            <constraint firstItem="XEK-lu-LW3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="vjM-cY-FVg"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

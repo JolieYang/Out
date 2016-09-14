@@ -191,8 +191,11 @@ static CGFloat const WIND_DELAY = 37.0;
     self.otherMoodTextView.font = [UIFont fontWithName:@"Thonburi" size:14.0];
     
     // 设置文本的绘制区域
-    CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [TextViewHelper heightForTextView:self.otherMoodTextView];
-    CGFloat inset = MAX(30, deadSpace/2.0-20.0);
+//    CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [TextViewHelper heightForTextView:self.otherMoodTextView];
+    CGFloat deadSpace = [[UIScreen mainScreen] bounds].size.width -  [TextViewHelper heightForTextView:self.otherMoodTextView];
+//    CGFloat inset = MAX(30, deadSpace/2.0-20.0);
+    NSLog(@"rose show:%f %f %f", [[UIScreen mainScreen] bounds].size.width, [self.otherMoodTextView bounds].size.height, [TextViewHelper heightForTextView:self.otherMoodTextView]);
+    CGFloat inset = MAX(30, deadSpace/2.0);
     CGFloat leadingInset = 30;
     [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];
     self.otherMoodTextView.textAlignment = NSTextAlignmentCenter;
