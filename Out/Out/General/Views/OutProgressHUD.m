@@ -30,7 +30,6 @@
     if (hud.mode != MBProgressHUDModeText) {
         hud.detailsLabel.text = string;
         [self configTextHUD:hud];
-        hud.square = NO;
     }
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
@@ -61,6 +60,7 @@
     hud.mode = MBProgressHUDModeText;
     hud.margin = 14.0;
     hud.detailsLabel.font = [UIFont fontWithName:@"Thonburi" size:14.0];
+    hud.square = NO;
     [self configDarkHUD:hud];
 }
 
