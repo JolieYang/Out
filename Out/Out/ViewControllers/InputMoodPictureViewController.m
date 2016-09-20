@@ -132,7 +132,7 @@
             [OutProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
         }];
     } failed:^(NSString *errMsg) {
-        [OutProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+        [OutProgressHUD changeToTextHUDWithDetailString:@"上传图片失败" AddedTo:self.view];
     }];
 }
 
@@ -154,7 +154,7 @@
 // 配置textView
 - (void)setupInputTextView {
     // 设置placeholder
-    self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(60, [[UIScreen mainScreen] bounds].size.width/2.0 - 23, [self.inputTextView bounds].size.width - 60, 30)];
+    self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(30, [[UIScreen mainScreen] bounds].size.width/2.0 - 23, [self.inputTextView bounds].size.width - 60, 30)];
     self.placeHolderLB.text = @"想说点什么呢?";
     self.placeHolderLB.textColor = [UIColor whiteColor];
     self.placeHolderLB.textAlignment = NSTextAlignmentCenter;

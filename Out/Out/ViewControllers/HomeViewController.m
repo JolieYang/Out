@@ -105,14 +105,20 @@ static CGFloat const WIND_DELAY = 37.0;
     // style2 -- text
 //    [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
     // style3 -- changeText
-    MBProgressHUD *hud = [OutProgressHUD HUDForView:self.view];
-    hud.detailsLabel.text = @"发布失败";
+//    MBProgressHUD *hud = [OutProgressHUD HUDForView:self.view];
+//    hud.detailsLabel.text = @"发布失败";
     
     
     // test 图片加载
     // 加载图片 2a68cbd4453be810b3c432ce5b958073 9eaf5991ad88878226cd450be251858b 2a68cbd4453be810b3c432ce5b958073 689812b786948ca0a097881304a90d72 // green-girl
+    // 2ca67e6c2baf4bf9e5f73530d9c70b02 green-girl 1d58614db71a62cb4ddd1038805413e0
+    // 8ade29a81520204377e8822599d8d618 gray-girl
+    // e9606c3de48098451994187379a1ccf5 pink
+    // 2d8416c2107fce1087c5167d167eb6fb yellow-girl
     // m1
-//    NSString *photoId = @"689812b786948ca0a097881304a90d72";
+    self.otherMoodBgImage.image = nil;
+    [OutProgressHUD showIndicatorHUDWithDetailString:@"加载图片中" AddedTo:self.view animated:YES];
+    NSString *photoId = @"e9606c3de48098451994187379a1ccf5";
 //    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
 //    NSString *createtime = @"2016-09-12";
 //    NSMutableDictionary *response = [NSMutableDictionary dictionary];
@@ -120,9 +126,16 @@ static CGFloat const WIND_DELAY = 37.0;
 //    [response setObject:createtime forKey:@"createtime"];
 //    [response setObject:content forKey:@"content"];
 //    [self showOtherMoodWithResponse:response];
-//    [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-//        self.otherMoodBgImage.image = image;
-//    }];
+    [OutAPIManager downloadImageWithPhotoID:photoId succeed:^(UIImage *image) {
+        [OutProgressHUD hideHUDForView:self.view animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.otherMoodBgImage.image = image;
+        });
+    } failed:^(NSString *errMsg) {
+        // 传进来的图片ID无效
+        [OutProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
+    }];
+     
     // m2
 //    NSString *urlStr = [kPHOTO_URL stringByAppendingString:photoId];
 //    [self.otherMoodBgImage sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil];
@@ -152,10 +165,14 @@ static CGFloat const WIND_DELAY = 37.0;
         [self goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
         // TODO 加载图片失败处理
         // 设置背景图片
-        [OutAPIManager downloadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
+        [OutAPIManager downloadImageWithPhotoID:photoId succeed:^(UIImage *image) {
+            [OutProgressHUD hideHUDForView:self.view animated:YES];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.otherMoodBgImage.image = image;
             });
+        } failed:^(NSString *errMsg) {
+            // 传进来的图片ID无效
+            [OutProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
         }];
     } else {
         [self goneWithTheWind:content TimeString:timeStr backgroundImage: [UIImage imageNamed:mood_bg_imageName]];

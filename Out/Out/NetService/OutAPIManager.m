@@ -64,8 +64,10 @@
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         // 获取图片的大小，根据大小进行不同等级的压缩
         // 压缩图片
-        NSData *data = UIImageJPEGRepresentation(image, 0.3);
-        [formData appendPartWithFileData:data name:kPHOTO_NAME fileName:@"default.jpg" mimeType:@"image/jpeg"];
+        NSData *data = UIImageJPEGRepresentation(image, 0.1);
+        NSString *photoName = [self photoName];
+        NSLog(@"photoName:%@", photoName);
+        [formData appendPartWithFileData:data name:kPHOTO_NAME fileName:photoName mimeType:@"image/jpeg"];
     } error: nil];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -91,17 +93,13 @@
     }];
     [uploadTask resume];
 }
-
 + (void)downloadImageWithPhotoID:(NSString *)photoId succeed:(DownloadImageResponse)successDownloadImageResponse failed:(FailedResponse)failedResponse {
+    NSLog(@"download Photoid:%@", photoId);
     AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
     if (!reachabilityManager.reachable) {
         failedResponse(@"网络无法连接"); // 网络出问题了
         return;
     }
-    [self downloadImageWithPhotoID:photoId completionHandler:successDownloadImageResponse];
-}
-+ (void)downloadImageWithPhotoID:(NSString *)photoId completionHandler:(DownloadImageResponse)imageResponse {
-    NSLog(@"download Photoid:%@", photoId);
     // m1 31.4MB 33.7-34.1
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration: configuration];
@@ -123,7 +121,11 @@
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(globalQueue, ^{
         [self loadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {
-            imageResponse(image);
+            if (image) {
+                successDownloadImageResponse(image);
+            } else {
+                failedResponse(@"图片ID错误");
+            }
         }];
     });
 }
@@ -141,5 +143,13 @@
     NSURL *URL = [NSURL URLWithString:urlStr];
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:URL];
     return imageData;
+}
+#pragma mark Tool
++ (NSString *)photoName {
+    NSDate *date = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HHmmss"];
+    NSString *photoName = [[df stringFromDate:date] stringByAppendingString:@".jpg"];
+    return photoName;
 }
 @end
