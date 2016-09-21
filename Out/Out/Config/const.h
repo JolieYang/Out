@@ -19,8 +19,13 @@
     #define SUCCESS_STATUS @"success"
 #else
     // 生产
+    #define kSERVER_HOST @"http://express.mistkafka.tk"
     #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
-#endif 
+    #define kPHOTO_NAME @"photo"
+    #define kPHOTO_URL @"http://express.mistkafka.tk/api1/photo?photoId="
+    #define kPHOTO_DEFAULT @"http://express.mistkafka.tk/api1/photo?photoSrc=system&photoId=default"
+    #define SUCCESS_STATUS @"success"
+#endif
 
 #define OUT_NICK_NAME @"com.spider.out.developer.nickname"
 #define OUT_NAME_NUMBER @"com.spider.out.developer.name.number"

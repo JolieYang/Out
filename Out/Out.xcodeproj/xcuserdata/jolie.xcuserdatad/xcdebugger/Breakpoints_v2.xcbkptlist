@@ -89,54 +89,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Out/ViewControllers/InputMoodPictureViewController.m"
-            timestampString = "496122375.623123"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-didEndEditAction:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[InputMoodPictureViewController didEndEditAction:]"
-                  moduleName = "Out"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/InputMoodPictureViewController.m"
-                  timestampString = "496030224.026276"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "785">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__51-[InputMoodPictureViewController didEndEditAction:]_block_invoke"
-                  moduleName = "Out"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jolie/Developer/Out/Out/Out/ViewControllers/InputMoodPictureViewController.m"
-                  timestampString = "496030224.026374"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Out/NetService/OutAPIManager.m"
             timestampString = "496028827.517475"
             startingColumnNumber = "9223372036854775807"
