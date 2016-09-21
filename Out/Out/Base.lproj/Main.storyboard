@@ -365,7 +365,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqt-Lz-uJe">
                                 <rect key="frame" x="-4" y="328" width="328" height="240"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_girl" translatesAutoresizingMaskIntoConstraints="NO" id="0F5-ZP-Q0D" customClass="OutImageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0F5-ZP-Q0D" customClass="OutImageView">
                                         <rect key="frame" x="123" y="79" width="82" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="0F5-ZP-Q0D" secondAttribute="height" multiplier="1:1" id="2dN-Gi-nWc"/>
@@ -379,7 +379,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pink_boy" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-Kg-vGM" customClass="OutImageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-Kg-vGM" customClass="OutImageView">
                                         <rect key="frame" x="229" y="79" width="82" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="81" id="0xa-zn-sSg"/>
@@ -400,7 +400,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_girl" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-6i-WC8" customClass="OutImageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-6i-WC8" customClass="OutImageView">
                                         <rect key="frame" x="17" y="79" width="82" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="81" id="Tv2-PI-XKc"/>
@@ -482,12 +482,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gray_girl" width="1075" height="1600"/>
-        <image name="green_girl" width="335" height="335"/>
         <image name="picture_back" width="22" height="22"/>
         <image name="picture_camera" width="22" height="22"/>
         <image name="picture_ok" width="22" height="22"/>
-        <image name="pink_boy" width="882" height="663"/>
         <image name="yellow_girl" width="450" height="531"/>
     </resources>
 </document>

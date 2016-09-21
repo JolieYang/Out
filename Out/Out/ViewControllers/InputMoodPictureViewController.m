@@ -48,6 +48,7 @@
 #import "TextViewHelper.h"
 #import "DateHelper.h"
 #import "OutImageView.h"
+#import "UIImageView+WebCache.h"
 #import "const.h"
 
 // 访问相册图片
@@ -78,8 +79,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupInputTextView];
-    [self setupImagePicker];
+    [self setupViews];
     self.inputTextView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
@@ -150,6 +150,22 @@
 // 隐藏状态栏
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+- (void)setupViews {
+    [self setupDefaultImage];
+    [self setupInputTextView];
+    [self setupImagePicker];
+}
+// 配置默认图片: 从服务器获取三张默认图片
+- (void)setupDefaultImage {
+    NSMutableArray *defaultPhotoArray = [NSMutableArray array];
+    for (int i = 1; i <= 3; i++) {
+        NSString *photoStr = [kPHOTO_DEFAULT stringByAppendingFormat:@"%d", i];
+        [defaultPhotoArray addObject:photoStr];
+    }
+    [self.firstImageView sd_setImageWithURL:[NSURL URLWithString:defaultPhotoArray[0]] placeholderImage:nil];
+    [self.secondImageView sd_setImageWithURL:[NSURL URLWithString:defaultPhotoArray[1]] placeholderImage:nil];
+    [self.thirdImageView sd_setImageWithURL:[NSURL URLWithString:defaultPhotoArray[2]] placeholderImage:nil];
 }
 // 配置textView
 - (void)setupInputTextView {

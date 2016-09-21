@@ -15,6 +15,7 @@
     #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
     #define kPHOTO_NAME @"photo"
     #define kPHOTO_URL @"http://express.mistkafka.tk/api1/photo?photoId="
+    #define kPHOTO_DEFAULT @"http://express.mistkafka.tk/api1/photo?photoSrc=system&photoId=default"
     #define SUCCESS_STATUS @"success"
 #else
     // 生产
