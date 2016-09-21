@@ -85,6 +85,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
 }
 
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -152,7 +153,9 @@
     return YES;
 }
 - (void)setupViews {
-    [self setupDefaultImage];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self setupDefaultImage];
+    });
     [self setupInputTextView];
     [self setupImagePicker];
 }
