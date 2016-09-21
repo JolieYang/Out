@@ -155,9 +155,9 @@
 - (void)setupViews {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self setupDefaultImage];
+        [self setupImagePicker];
     });
     [self setupInputTextView];
-    [self setupImagePicker];
 }
 // 配置默认图片: 从服务器获取三张默认图片
 - (void)setupDefaultImage {
