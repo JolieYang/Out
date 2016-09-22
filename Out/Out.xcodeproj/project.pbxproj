@@ -20,7 +20,6 @@
 		A04C93CC1D8166FA0028F2DB /* MFLBezierHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93C71D8166FA0028F2DB /* MFLBezierHelper.m */; };
 		A04C93CD1D8166FA0028F2DB /* MFLHintLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93C91D8166FA0028F2DB /* MFLHintLabel.m */; };
 		A04C93CE1D8166FA0028F2DB /* UILabel+Lines.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93CB1D8166FA0028F2DB /* UILabel+Lines.m */; };
-		A04C93D01D8169CC0028F2DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04C93CF1D8169CC0028F2DB /* CoreGraphics.framework */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -51,6 +50,8 @@
 		A072D80D1D86844300D1D008 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A072D7FB1D86844300D1D008 /* UIImageView+HighlightedWebCache.m */; };
 		A072D80E1D86844300D1D008 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A072D7FD1D86844300D1D008 /* UIImageView+WebCache.m */; };
 		A072D80F1D86844300D1D008 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A072D7FF1D86844300D1D008 /* UIView+WebCacheOperation.m */; };
+		A079C49A1D93B4BB00612F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C4991D93B4BB00612F08 /* CoreGraphics.framework */; };
+		A079C49C1D93B4D300612F08 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C49B1D93B4D300612F08 /* Photos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,7 +83,6 @@
 		A04C93C91D8166FA0028F2DB /* MFLHintLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLHintLabel.m; sourceTree = "<group>"; };
 		A04C93CA1D8166FA0028F2DB /* UILabel+Lines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Lines.h"; sourceTree = "<group>"; };
 		A04C93CB1D8166FA0028F2DB /* UILabel+Lines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Lines.m"; sourceTree = "<group>"; };
-		A04C93CF1D8169CC0028F2DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -142,6 +142,8 @@
 		A072D7FD1D86844300D1D008 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		A072D7FE1D86844300D1D008 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A072D7FF1D86844300D1D008 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		A079C4991D93B4BB00612F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A079C49B1D93B4D300612F08 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04C93D01D8169CC0028F2DB /* CoreGraphics.framework in Frameworks */,
+				A079C49C1D93B4D300612F08 /* Photos.framework in Frameworks */,
+				A079C49A1D93B4BB00612F08 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +337,8 @@
 		A072D7D51D853BBD00D1D008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A04C93CF1D8169CC0028F2DB /* CoreGraphics.framework */,
+				A079C49B1D93B4D300612F08 /* Photos.framework */,
+				A079C4991D93B4BB00612F08 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

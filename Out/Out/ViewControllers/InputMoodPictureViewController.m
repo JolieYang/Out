@@ -50,13 +50,14 @@
 #import "OutImageView.h"
 #import "UIImageView+WebCache.h"
 #import "const.h"
+#import <Photos/Photos.h>
 
 // 访问相册图片
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface InputMoodPictureViewController ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface InputMoodPictureViewController ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,PHPhotoLibraryChangeObserver>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UIButton *outBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *inputImageView;
@@ -67,6 +68,7 @@
 
 @property (nonatomic, strong) UILabel *placeHolderLB;
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
+@property (nonatomic, strong) UICollectionView *photoCollectionView;
 
 @property (nonatomic, strong) UIGestureRecognizer *tap;
 @property (nonatomic, strong) UIView *keyView;
@@ -83,8 +85,15 @@
     self.inputTextView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
+    [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 }
 
+#pragma mark PHPhotoLibraryChangeObserver
+- (void)photoLibraryDidChange:(PHChange *)changeInstance {
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        // 对UI进行更新
+    });
+}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -139,9 +148,18 @@
 
 // 从系统相册选择背景图片
 - (IBAction)choosePictureAction:(id)sender {
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+    // UIImagePickerControllerDelegate
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    if (status == PHAuthorizationStatusDenied || status == PHAuthorizationStatusRestricted) {
+        // 无图片访问权限 "请在iPhone的“设置-隐私-照片"选项中，允许微信访问你的手机相册"
+        [OutProgressHUD showLongerTextHUDWithString:@"请在iPhone的“设置-隐私-照片“选项中，允许微信访问你的手机相册" AddedTo:self.view];
+    } else {
+        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+    }
 }
+
+#pragma mark Photos
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -203,6 +221,7 @@
 - (void)setupImagePicker {
     self.imagePickerController = [[UIImagePickerController alloc] init];
     self.imagePickerController.delegate = self;
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     self.imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.imagePickerController.allowsEditing = YES;
 }

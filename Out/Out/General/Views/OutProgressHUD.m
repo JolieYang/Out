@@ -38,10 +38,22 @@
 }
 
 + (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view {
+    OutProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 1.0];
+    
+    return hud;
+}
+
++ (instancetype)showLongerTextHUDWithString:(NSString *)string AddedTo:(UIView *)view {
+    OutProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 3.0];
+    
+    return hud;
+}
+
++ (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view After:(float)afterTime {
     OutProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
     hud.detailsLabel.text = string;
     [self configTextHUD:hud];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, afterTime * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
         [super hideHUDForView:view animated:YES];
     });
