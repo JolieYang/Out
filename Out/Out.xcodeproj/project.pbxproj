@@ -52,6 +52,10 @@
 		A072D80F1D86844300D1D008 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A072D7FF1D86844300D1D008 /* UIView+WebCacheOperation.m */; };
 		A079C49A1D93B4BB00612F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C4991D93B4BB00612F08 /* CoreGraphics.framework */; };
 		A079C49C1D93B4D300612F08 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C49B1D93B4D300612F08 /* Photos.framework */; };
+		A079C4E31D952D1A00612F08 /* JYPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A079C4DB1D952D1A00612F08 /* JYPhotoListViewController.m */; };
+		A079C4E41D952D1A00612F08 /* JYPhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A079C4DC1D952D1A00612F08 /* JYPhotoListViewController.xib */; };
+		A079C4E51D952D1A00612F08 /* JYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A079C4DF1D952D1A00612F08 /* JYPhoto.m */; };
+		A079C4E61D952D1A00612F08 /* JYPhotoData.m in Sources */ = {isa = PBXBuildFile; fileRef = A079C4E11D952D1A00612F08 /* JYPhotoData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +148,14 @@
 		A072D7FF1D86844300D1D008 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		A079C4991D93B4BB00612F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A079C49B1D93B4D300612F08 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		A079C4D81D952D1A00612F08 /* JYPhotoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoConfig.h; sourceTree = "<group>"; };
+		A079C4DA1D952D1A00612F08 /* JYPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoListViewController.h; sourceTree = "<group>"; };
+		A079C4DB1D952D1A00612F08 /* JYPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoListViewController.m; sourceTree = "<group>"; };
+		A079C4DC1D952D1A00612F08 /* JYPhotoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYPhotoListViewController.xib; sourceTree = "<group>"; };
+		A079C4DE1D952D1A00612F08 /* JYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhoto.h; sourceTree = "<group>"; };
+		A079C4DF1D952D1A00612F08 /* JYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhoto.m; sourceTree = "<group>"; };
+		A079C4E01D952D1A00612F08 /* JYPhotoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoData.h; sourceTree = "<group>"; };
+		A079C4E11D952D1A00612F08 /* JYPhotoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +309,7 @@
 		A068C3021D7820E400E844F1 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A079C4D61D952D1A00612F08 /* JYPhoto */,
 				A072D7DE1D86844300D1D008 /* SDWebImage */,
 				A072D7D61D853C1800D1D008 /* MBProgressHUD */,
 				A04C93C51D8166FA0028F2DB /* MFLHintLabel */,
@@ -392,6 +405,54 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		A079C4D61D952D1A00612F08 /* JYPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				A079C4D71D952D1A00612F08 /* Config */,
+				A079C4D91D952D1A00612F08 /* Controller */,
+				A079C4DD1D952D1A00612F08 /* Model */,
+				A079C4E21D952D1A00612F08 /* View */,
+			);
+			name = JYPhoto;
+			path = Library/JYPhoto;
+			sourceTree = "<group>";
+		};
+		A079C4D71D952D1A00612F08 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A079C4D81D952D1A00612F08 /* JYPhotoConfig.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		A079C4D91D952D1A00612F08 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A079C4DA1D952D1A00612F08 /* JYPhotoListViewController.h */,
+				A079C4DB1D952D1A00612F08 /* JYPhotoListViewController.m */,
+				A079C4DC1D952D1A00612F08 /* JYPhotoListViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A079C4DD1D952D1A00612F08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A079C4DE1D952D1A00612F08 /* JYPhoto.h */,
+				A079C4DF1D952D1A00612F08 /* JYPhoto.m */,
+				A079C4E01D952D1A00612F08 /* JYPhotoData.h */,
+				A079C4E11D952D1A00612F08 /* JYPhotoData.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A079C4E21D952D1A00612F08 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -452,6 +513,7 @@
 			files = (
 				A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */,
 				A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */,
+				A079C4E41D952D1A00612F08 /* JYPhotoListViewController.xib in Resources */,
 				A067F0621D741FFB003140D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +529,7 @@
 				A072D8091D86844300D1D008 /* UIButton+WebCache.m in Sources */,
 				A072D8071D86844300D1D008 /* SDWebImageManager.m in Sources */,
 				A04C93BE1D7FF2490028F2DB /* AFSecurityPolicy.m in Sources */,
+				A079C4E31D952D1A00612F08 /* JYPhotoListViewController.m in Sources */,
 				A072D7DA1D853C5F00D1D008 /* MBProgressHUD.m in Sources */,
 				A068C3111D79642600E844F1 /* OutImageView.m in Sources */,
 				A072D8051D86844300D1D008 /* SDWebImageDownloader.m in Sources */,
@@ -484,7 +547,9 @@
 				A04C93BF1D7FF2490028F2DB /* AFURLRequestSerialization.m in Sources */,
 				A072D80B1D86844300D1D008 /* UIImage+MultiFormat.m in Sources */,
 				A072D8061D86844300D1D008 /* SDWebImageDownloaderOperation.m in Sources */,
+				A079C4E61D952D1A00612F08 /* JYPhotoData.m in Sources */,
 				A04C93CC1D8166FA0028F2DB /* MFLBezierHelper.m in Sources */,
+				A079C4E51D952D1A00612F08 /* JYPhoto.m in Sources */,
 				A072D80D1D86844300D1D008 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */,
 				A04C93C11D7FF2490028F2DB /* AFURLSessionManager.m in Sources */,
