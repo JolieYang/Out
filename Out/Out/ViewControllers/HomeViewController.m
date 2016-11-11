@@ -47,6 +47,8 @@ static CGFloat const WIND_DELAY = 37.0;
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *otherMoodTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *otherMoodBgImage;
+@property (weak, nonatomic) IBOutlet UIButton *testButton;
+@property (nonatomic, strong) UIButton *confirmButton;
 @property (nonatomic, strong) InputMoodViewController *inputMoodVC;
 
 @property (nonatomic, strong) MFLHintLabel *timeLB;
@@ -62,6 +64,7 @@ static CGFloat const WIND_DELAY = 37.0;
     // Do any additional setup after loading the view, typically from a nib.
     [self setupViews];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -94,38 +97,10 @@ static CGFloat const WIND_DELAY = 37.0;
 }
 
 - (IBAction)testAnimationAction:(id)sender {
-    // test 动画效果
-//    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-//    NSString *timeStr = @"二0一六年九月三日";
-//    [self goneWithTheWind:content TimeString:timeStr backgroundImage:nil];
-    
-    // test 弹窗HUD
-    // style1
-//    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
-    // style2 -- text
-//    [OutProgressHUD showTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
-    // style3 -- changeText
-//    MBProgressHUD *hud = [OutProgressHUD HUDForView:self.view];
-//    hud.detailsLabel.text = @"发布失败";
-    
-    
-    // test 图片加载
-    // 加载图片 2a68cbd4453be810b3c432ce5b958073 9eaf5991ad88878226cd450be251858b 2a68cbd4453be810b3c432ce5b958073 689812b786948ca0a097881304a90d72 // green-girl
-    // 2ca67e6c2baf4bf9e5f73530d9c70b02 green-girl 1d58614db71a62cb4ddd1038805413e0
-    // 8ade29a81520204377e8822599d8d618 gray-girl
-    // e9606c3de48098451994187379a1ccf5 pink
-    // 2d8416c2107fce1087c5167d167eb6fb yellow-girl
     // m1
     self.otherMoodBgImage.image = nil;
     [OutProgressHUD showIndicatorHUDWithDetailString:@"加载图片中" AddedTo:self.view animated:YES];
     NSString *photoId = @"e9606c3de48098451994187379a1ccf5";
-//    NSString *content = @"守静，向光，淡然。根紧握在地下，叶相触在云里。每一阵风过，我们都互相致意，但没有人能读懂我们的语言。";
-//    NSString *createtime = @"2016-09-12";
-//    NSMutableDictionary *response = [NSMutableDictionary dictionary];
-//    [response setObject:photoId forKey:@"photoId"];
-//    [response setObject:createtime forKey:@"createtime"];
-//    [response setObject:content forKey:@"content"];
-//    [self showOtherMoodWithResponse:response];
     [OutAPIManager downloadImageWithPhotoID:photoId succeed:^(UIImage *image) {
         [OutProgressHUD hideHUDForView:self.view animated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -163,7 +138,6 @@ static CGFloat const WIND_DELAY = 37.0;
     if (photoId) {
         NSLog(@"存在photoId");
         [self goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
-        // TODO 加载图片失败处理
         // 设置背景图片
         [OutAPIManager downloadImageWithPhotoID:photoId succeed:^(UIImage *image) {
             [OutProgressHUD hideHUDForView:self.view animated:YES];

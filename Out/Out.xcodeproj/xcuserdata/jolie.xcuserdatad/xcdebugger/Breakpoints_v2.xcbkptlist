@@ -122,12 +122,12 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "496221274.386255"
+                  timestampString = "498627572.137795"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "76"
                   endingLineNumber = "76"
-                  offsetFromSymbolStart = "59">
+                  offsetFromSymbolStart = "73">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,12 +137,12 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Developer/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "496221274.386383"
+                  timestampString = "498627572.137888"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
                   endingLineNumber = "78"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "15">
                </Location>
             </Locations>
          </BreakpointContent>

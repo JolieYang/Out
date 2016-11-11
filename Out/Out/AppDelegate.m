@@ -23,7 +23,7 @@
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
     NSString *nickName = [[NSUserDefaults standardUserDefaults] valueForKey:OUT_NICK_NAME];
     if (!nickName) {
-        [[SetOutNameWindow shareInstance] show];
+//        [[SetOutNameWindow shareInstance] show];
     }
     
     // 用于ping
