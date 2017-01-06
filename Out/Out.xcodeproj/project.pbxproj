@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A045A0CF1D7D5E4B00AC9752 /* SetOutNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */; };
-		A045A0D21D7D769B00AC9752 /* SetOutNameWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */; };
+		A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03779281E1E3934009D3DE6 /* Target.storyboard */; };
+		A03779361E1E399E009D3DE6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A037792E1E1E399E009D3DE6 /* HomeViewController.m */; };
+		A03779371E1E399E009D3DE6 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03779301E1E399E009D3DE6 /* InputMoodPictureViewController.m */; };
+		A03779381E1E399E009D3DE6 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03779321E1E399E009D3DE6 /* InputMoodViewController.m */; };
+		A03779391E1E399E009D3DE6 /* SetOutNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03779341E1E399E009D3DE6 /* SetOutNameViewController.m */; };
+		A037793C1E1E39C5009D3DE6 /* SetOutNameWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A037793B1E1E39C5009D3DE6 /* SetOutNameWindow.m */; };
+		A037793F1E1E3C75009D3DE6 /* TargetHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A037793E1E1E3C75009D3DE6 /* TargetHomeViewController.m */; };
 		A04C93AC1D7FC5240028F2DB /* OutAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93AB1D7FC5240028F2DB /* OutAPIManager.m */; };
 		A04C93BC1D7FF2490028F2DB /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93B01D7FF2490028F2DB /* AFHTTPSessionManager.m */; };
 		A04C93BD1D7FF2490028F2DB /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93B31D7FF2490028F2DB /* AFNetworkReachabilityManager.m */; };
@@ -26,9 +31,6 @@
 		A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067F0631D741FFB003140D6 /* Assets.xcassets */; };
 		A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */; };
 		A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F41D781F2F00E844F1 /* StringHelper.m */; };
-		A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2F81D7820B200E844F1 /* HomeViewController.m */; };
-		A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */; };
-		A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */; };
 		A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C3071D7929B300E844F1 /* TextViewHelper.m */; };
 		A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C30D1D792BC700E844F1 /* OutAlertViewController.m */; };
 		A068C3111D79642600E844F1 /* OutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A068C3101D79642600E844F1 /* OutImageView.m */; };
@@ -59,10 +61,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A045A0CD1D7D5E4B00AC9752 /* SetOutNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetOutNameViewController.h; path = ViewControllers/SetOutNameViewController.h; sourceTree = "<group>"; };
-		A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetOutNameViewController.m; path = ViewControllers/SetOutNameViewController.m; sourceTree = "<group>"; };
-		A045A0D01D7D769B00AC9752 /* SetOutNameWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetOutNameWindow.h; sourceTree = "<group>"; };
-		A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetOutNameWindow.m; sourceTree = "<group>"; };
+		A03779291E1E3934009D3DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Out/Base.lproj/Target.storyboard; sourceTree = "<group>"; };
+		A037792D1E1E399E009D3DE6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		A037792E1E1E399E009D3DE6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A037792F1E1E399E009D3DE6 /* InputMoodPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMoodPictureViewController.h; sourceTree = "<group>"; };
+		A03779301E1E399E009D3DE6 /* InputMoodPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMoodPictureViewController.m; sourceTree = "<group>"; };
+		A03779311E1E399E009D3DE6 /* InputMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMoodViewController.h; sourceTree = "<group>"; };
+		A03779321E1E399E009D3DE6 /* InputMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMoodViewController.m; sourceTree = "<group>"; };
+		A03779331E1E399E009D3DE6 /* SetOutNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetOutNameViewController.h; sourceTree = "<group>"; };
+		A03779341E1E399E009D3DE6 /* SetOutNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetOutNameViewController.m; sourceTree = "<group>"; };
+		A037793A1E1E39C5009D3DE6 /* SetOutNameWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetOutNameWindow.h; sourceTree = "<group>"; };
+		A037793B1E1E39C5009D3DE6 /* SetOutNameWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetOutNameWindow.m; sourceTree = "<group>"; };
+		A037793D1E1E3C75009D3DE6 /* TargetHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetHomeViewController.h; sourceTree = "<group>"; };
+		A037793E1E1E3C75009D3DE6 /* TargetHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetHomeViewController.m; sourceTree = "<group>"; };
 		A04C93A81D7EB1860028F2DB /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = const.h; path = Config/const.h; sourceTree = "<group>"; };
 		A04C93AA1D7FC5240028F2DB /* OutAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutAPIManager.h; path = NetService/OutAPIManager.h; sourceTree = "<group>"; };
 		A04C93AB1D7FC5240028F2DB /* OutAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutAPIManager.m; path = NetService/OutAPIManager.m; sourceTree = "<group>"; };
@@ -97,12 +108,6 @@
 		A067F0681D741FFB003140D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A068C2F31D781F2F00E844F1 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringHelper.h; path = Helpers/StringHelper.h; sourceTree = "<group>"; };
 		A068C2F41D781F2F00E844F1 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringHelper.m; path = Helpers/StringHelper.m; sourceTree = "<group>"; };
-		A068C2F71D7820B200E844F1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController.h; sourceTree = "<group>"; };
-		A068C2F81D7820B200E844F1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController.m; sourceTree = "<group>"; };
-		A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputMoodPictureViewController.h; path = ViewControllers/InputMoodPictureViewController.h; sourceTree = "<group>"; };
-		A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputMoodPictureViewController.m; path = ViewControllers/InputMoodPictureViewController.m; sourceTree = "<group>"; };
-		A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputMoodViewController.h; path = ViewControllers/InputMoodViewController.h; sourceTree = "<group>"; };
-		A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputMoodViewController.m; path = ViewControllers/InputMoodViewController.m; sourceTree = "<group>"; };
 		A068C3061D7929B300E844F1 /* TextViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewHelper.h; path = Helpers/TextViewHelper.h; sourceTree = "<group>"; };
 		A068C3071D7929B300E844F1 /* TextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewHelper.m; path = Helpers/TextViewHelper.m; sourceTree = "<group>"; };
 		A068C30C1D792BC700E844F1 /* OutAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutAlertViewController.h; path = General/Views/OutAlertViewController.h; sourceTree = "<group>"; };
@@ -171,6 +176,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A037792B1E1E399E009D3DE6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A037792C1E1E399E009D3DE6 /* Out */,
+				A03779351E1E399E009D3DE6 /* Target */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A037792C1E1E399E009D3DE6 /* Out */ = {
+			isa = PBXGroup;
+			children = (
+				A037792D1E1E399E009D3DE6 /* HomeViewController.h */,
+				A037792E1E1E399E009D3DE6 /* HomeViewController.m */,
+				A037792F1E1E399E009D3DE6 /* InputMoodPictureViewController.h */,
+				A03779301E1E399E009D3DE6 /* InputMoodPictureViewController.m */,
+				A03779311E1E399E009D3DE6 /* InputMoodViewController.h */,
+				A03779321E1E399E009D3DE6 /* InputMoodViewController.m */,
+				A03779331E1E399E009D3DE6 /* SetOutNameViewController.h */,
+				A03779341E1E399E009D3DE6 /* SetOutNameViewController.m */,
+				A037793A1E1E39C5009D3DE6 /* SetOutNameWindow.h */,
+				A037793B1E1E39C5009D3DE6 /* SetOutNameWindow.m */,
+			);
+			path = Out;
+			sourceTree = "<group>";
+		};
+		A03779351E1E399E009D3DE6 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				A037793D1E1E3C75009D3DE6 /* TargetHomeViewController.h */,
+				A037793E1E1E3C75009D3DE6 /* TargetHomeViewController.m */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
 		A04C93A71D7EB1560028F2DB /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,14 +277,13 @@
 				A04C93A71D7EB1560028F2DB /* Config */,
 				A068C3091D792A9D00E844F1 /* General */,
 				A068C3011D7820D700E844F1 /* Models */,
-				A068C2F61D78201A00E844F1 /* ViewControllers */,
 				A068C2F21D781EE300E844F1 /* Helpers */,
 				A068C3001D7820C500E844F1 /* NetService */,
+				A037792B1E1E399E009D3DE6 /* ViewControllers */,
 				A068C3021D7820E400E844F1 /* Library */,
 				A067F05A1D741FFB003140D6 /* AppDelegate.h */,
 				A067F05B1D741FFB003140D6 /* AppDelegate.m */,
-				A045A0D01D7D769B00AC9752 /* SetOutNameWindow.h */,
-				A045A0D11D7D769B00AC9752 /* SetOutNameWindow.m */,
+				A03779281E1E3934009D3DE6 /* Target.storyboard */,
 				A067F0601D741FFB003140D6 /* Main.storyboard */,
 				A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */,
 				A067F0631D741FFB003140D6 /* Assets.xcassets */,
@@ -273,21 +312,6 @@
 				A04C93C31D8017FE0028F2DB /* DateHelper.m */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		A068C2F61D78201A00E844F1 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A045A0CD1D7D5E4B00AC9752 /* SetOutNameViewController.h */,
-				A045A0CE1D7D5E4B00AC9752 /* SetOutNameViewController.m */,
-				A068C2F71D7820B200E844F1 /* HomeViewController.h */,
-				A068C2F81D7820B200E844F1 /* HomeViewController.m */,
-				A068C2FB1D7820B200E844F1 /* InputMoodViewController.h */,
-				A068C2FC1D7820B200E844F1 /* InputMoodViewController.m */,
-				A068C2F91D7820B200E844F1 /* InputMoodPictureViewController.h */,
-				A068C2FA1D7820B200E844F1 /* InputMoodPictureViewController.m */,
-			);
-			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A068C3001D7820C500E844F1 /* NetService */ = {
@@ -515,6 +539,7 @@
 				A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */,
 				A079C4E41D952D1A00612F08 /* JYPhotoListViewController.xib in Resources */,
 				A067F0621D741FFB003140D6 /* Main.storyboard in Resources */,
+				A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,16 +556,18 @@
 				A04C93BE1D7FF2490028F2DB /* AFSecurityPolicy.m in Sources */,
 				A079C4E31D952D1A00612F08 /* JYPhotoListViewController.m in Sources */,
 				A072D7DA1D853C5F00D1D008 /* MBProgressHUD.m in Sources */,
+				A037793C1E1E39C5009D3DE6 /* SetOutNameWindow.m in Sources */,
 				A068C3111D79642600E844F1 /* OutImageView.m in Sources */,
 				A072D8051D86844300D1D008 /* SDWebImageDownloader.m in Sources */,
 				A04C93CD1D8166FA0028F2DB /* MFLHintLabel.m in Sources */,
 				A072D8031D86844300D1D008 /* SDWebImageCompat.m in Sources */,
 				A04C93AC1D7FC5240028F2DB /* OutAPIManager.m in Sources */,
-				A068C2FE1D7820B200E844F1 /* InputMoodPictureViewController.m in Sources */,
+				A037793F1E1E3C75009D3DE6 /* TargetHomeViewController.m in Sources */,
 				A068C30E1D792BC700E844F1 /* OutAlertViewController.m in Sources */,
+				A03779391E1E399E009D3DE6 /* SetOutNameViewController.m in Sources */,
 				A072D80F1D86844300D1D008 /* UIView+WebCacheOperation.m in Sources */,
-				A068C2FF1D7820B200E844F1 /* InputMoodViewController.m in Sources */,
 				A04C93CE1D8166FA0028F2DB /* UILabel+Lines.m in Sources */,
+				A03779381E1E399E009D3DE6 /* InputMoodViewController.m in Sources */,
 				A072D80E1D86844300D1D008 /* UIImageView+WebCache.m in Sources */,
 				A072D80C1D86844300D1D008 /* UIImage+WebP.m in Sources */,
 				A072D8021D86844300D1D008 /* SDImageCache.m in Sources */,
@@ -550,19 +577,18 @@
 				A079C4E61D952D1A00612F08 /* JYPhotoData.m in Sources */,
 				A04C93CC1D8166FA0028F2DB /* MFLBezierHelper.m in Sources */,
 				A079C4E51D952D1A00612F08 /* JYPhoto.m in Sources */,
+				A03779361E1E399E009D3DE6 /* HomeViewController.m in Sources */,
 				A072D80D1D86844300D1D008 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */,
 				A04C93C11D7FF2490028F2DB /* AFURLSessionManager.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
-				A045A0CF1D7D5E4B00AC9752 /* SetOutNameViewController.m in Sources */,
 				A072D8011D86844300D1D008 /* NSData+ImageContentType.m in Sources */,
-				A045A0D21D7D769B00AC9752 /* SetOutNameWindow.m in Sources */,
 				A072D7DD1D85569800D1D008 /* OutProgressHUD.m in Sources */,
+				A03779371E1E399E009D3DE6 /* InputMoodPictureViewController.m in Sources */,
 				A04C93C01D7FF2490028F2DB /* AFURLResponseSerialization.m in Sources */,
 				A072D8041D86844300D1D008 /* SDWebImageDecoder.m in Sources */,
 				A04C93BD1D7FF2490028F2DB /* AFNetworkReachabilityManager.m in Sources */,
 				A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */,
-				A068C2FD1D7820B200E844F1 /* HomeViewController.m in Sources */,
 				A04C93BC1D7FF2490028F2DB /* AFHTTPSessionManager.m in Sources */,
 				A072D8081D86844300D1D008 /* SDWebImagePrefetcher.m in Sources */,
 				A072D8001D86844300D1D008 /* MKAnnotationView+WebCache.m in Sources */,
@@ -574,6 +600,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A03779281E1E3934009D3DE6 /* Target.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A03779291E1E3934009D3DE6 /* Base */,
+			);
+			name = Target.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		A067F0601D741FFB003140D6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

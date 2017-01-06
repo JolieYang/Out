@@ -32,6 +32,7 @@
 #import "HomeViewController.h"
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
+#import "TargetHomeViewController.h"
 #import "OutProgressHUD.h"
 #import "MFLHintLabel.h"
 #import "TextViewHelper.h"
@@ -75,6 +76,15 @@ static CGFloat const WIND_DELAY = 37.0;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 #pragma mark Action
+// Target入口
+- (IBAction)targetAction:(id)sender {
+    UIStoryboard *targetSB = [UIStoryboard storyboardWithName:@"Target" bundle:nil];
+    TargetHomeViewController *targetHomeVC = [targetSB instantiateViewControllerWithIdentifier:@"TargetHomeViewController"];
+    [self.navigationController pushViewController:targetHomeVC animated:YES];
+//    AppDelegate *pDelegate = [UIApplication sharedApplication].delegate;
+//    pDelegate.window.rootViewController = targetHomeVC;
+}
+
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
