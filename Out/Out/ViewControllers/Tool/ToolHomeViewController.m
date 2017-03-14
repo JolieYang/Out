@@ -49,7 +49,7 @@ static NSArray *TOOL_TTTLE = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {
-            ScanViewController *vc = [[ScanViewController alloc] initWithNibName:@"ScanViewController" bundle:nil];
+            ScanViewController *vc = [ScanViewController new];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }

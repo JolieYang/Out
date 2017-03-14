@@ -35,6 +35,8 @@
 		A05266751E77DFE10087D861 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266731E77DFE10087D861 /* ScanViewController.m */; };
 		A05266761E77DFE10087D861 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05266741E77DFE10087D861 /* ScanViewController.xib */; };
 		A05266781E77E0610087D861 /* scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05266771E77E0610087D861 /* scan@2x.png */; };
+		A052667A1E77E57F0087D861 /* scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05266791E77E57F0087D861 /* scan_line@2x.png */; };
+		A052667D1E77E6DC0087D861 /* ScanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A052667C1E77E6DC0087D861 /* ScanResultViewController.m */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -125,6 +127,9 @@
 		A05266731E77DFE10087D861 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		A05266741E77DFE10087D861 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		A05266771E77E0610087D861 /* scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan@2x.png"; sourceTree = "<group>"; };
+		A05266791E77E57F0087D861 /* scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_line@2x.png"; sourceTree = "<group>"; };
+		A052667B1E77E6DC0087D861 /* ScanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanResultViewController.h; sourceTree = "<group>"; };
+		A052667C1E77E6DC0087D861 /* ScanResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanResultViewController.m; sourceTree = "<group>"; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -354,7 +359,10 @@
 				A05266721E77DFE10087D861 /* ScanViewController.h */,
 				A05266731E77DFE10087D861 /* ScanViewController.m */,
 				A05266741E77DFE10087D861 /* ScanViewController.xib */,
+				A052667B1E77E6DC0087D861 /* ScanResultViewController.h */,
+				A052667C1E77E6DC0087D861 /* ScanResultViewController.m */,
 				A05266771E77E0610087D861 /* scan@2x.png */,
+				A05266791E77E57F0087D861 /* scan_line@2x.png */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A052667A1E77E57F0087D861 /* scan_line@2x.png in Resources */,
 				A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */,
 				A067F0641D741FFB003140D6 /* Assets.xcassets in Resources */,
 				A079C4E41D952D1A00612F08 /* JYPhotoListViewController.xib in Resources */,
@@ -665,6 +674,7 @@
 				A04C93CC1D8166FA0028F2DB /* MFLBezierHelper.m in Sources */,
 				A079C4E51D952D1A00612F08 /* JYPhoto.m in Sources */,
 				A03779361E1E399E009D3DE6 /* OutHomeViewController.m in Sources */,
+				A052667D1E77E6DC0087D861 /* ScanResultViewController.m in Sources */,
 				A072D80D1D86844300D1D008 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A068C2F51D781F2F00E844F1 /* StringHelper.m in Sources */,
 				A05266751E77DFE10087D861 /* ScanViewController.m in Sources */,
