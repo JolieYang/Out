@@ -9,28 +9,12 @@
 #ifndef const_h
 #define const_h
 
-#if DEBUG
-    // 开发
-    #define kSERVER_HOST @"http://express.mistkafka.tk"
-    #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
-    #define kPHOTO_NAME @"photo"
-    #define kPHOTO_URL @"http://express.mistkafka.tk/api1/photo?photoId="
-    #define kPHOTO_DEFAULT @"http://express.mistkafka.tk/api1/photo?photoSrc=system&photoId=default"
-    #define SUCCESS_STATUS @"success"
-#else
-    // 生产
-    #define kSERVER_HOST @"http://express.mistkafka.tk"
-    #define kSERVER_URL @"http://express.mistkafka.tk/api1/"
-    #define kPHOTO_NAME @"photo"
-    #define kPHOTO_URL @"http://express.mistkafka.tk/api1/photo?photoId="
-    #define kPHOTO_DEFAULT @"http://express.mistkafka.tk/api1/photo?photoSrc=system&photoId=default"
-    #define SUCCESS_STATUS @"success"
-#endif
+// 尺寸
+#define kAppWidth [[UIScreen mainScreen] bounds].size.width
+#define kAppHeight [[UIScreen mainScreen] bounds].size.height
 
-#define OUT_NICK_NAME @"com.spider.out.developer.nickname"
-#define OUT_NAME_NUMBER @"com.spider.out.developer.name.number"
-#define OUT_TOKEN @"com.spider.out.develop.token"
-
-#define LIMIT_TEXT_LENGTH 100
-
+// 颜色
+#define RGB(r, g, b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBA(r,g,b,a)          [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #endif

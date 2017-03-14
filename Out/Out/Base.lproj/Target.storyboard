@@ -37,7 +37,7 @@
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pI4-9h-8KU">
                                 <rect key="frame" x="20" y="267" width="105" height="59"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="个人网站">
                                     <color key="titleColor" red="0.99962180850000004" green="1" blue="0.98959797620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>

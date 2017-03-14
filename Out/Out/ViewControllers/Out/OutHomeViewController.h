@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface OutHomeViewController : UIViewController
 
 
 @end

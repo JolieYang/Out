@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Out/AppDelegate.m"
-            timestampString = "495445711.527003"
+            timestampString = "511155551.500447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
@@ -122,12 +122,12 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Spider/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "505299709.260022"
+                  timestampString = "511173130.91735"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "76"
                   endingLineNumber = "76"
-                  offsetFromSymbolStart = "59">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,7 +137,7 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Spider/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "505299709.260141"
+                  timestampString = "511173130.917447"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"

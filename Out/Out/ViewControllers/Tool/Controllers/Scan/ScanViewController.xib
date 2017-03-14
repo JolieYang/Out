@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController">
+            <connections>
+                <outlet property="view" destination="gUw-f8-648" id="zaT-3d-vNs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gUw-f8-648">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ht8-Cs-78Y">
+                    <rect key="frame" x="0.0" y="0.0" width="35" height="568"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="Rp6-OA-QQj"/>
+                    </constraints>
+                </view>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-zH-JMl">
+                    <rect key="frame" x="285" y="0.0" width="35" height="568"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="A3c-c1-8wd"/>
+                    </constraints>
+                </view>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="scan.png" translatesAutoresizingMaskIntoConstraints="NO" id="LJ3-bY-Nls">
+                    <rect key="frame" x="35" y="122" width="250" height="250"/>
+                </imageView>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwf-kM-Hbm">
+                    <rect key="frame" x="35" y="372" width="250" height="196"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请将二维码/条码放入框内，即可自动扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-q5-KVw">
+                            <rect key="frame" x="-27" y="23" width="304" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="WcP-q5-KVw" firstAttribute="top" secondItem="Cwf-kM-Hbm" secondAttribute="top" constant="23" id="1g7-yh-2hE"/>
+                        <constraint firstAttribute="trailing" secondItem="WcP-q5-KVw" secondAttribute="trailing" constant="-27" id="YAe-c2-gAQ"/>
+                        <constraint firstItem="WcP-q5-KVw" firstAttribute="leading" secondItem="Cwf-kM-Hbm" secondAttribute="leading" constant="-27" id="pDF-zc-ywG"/>
+                    </constraints>
+                </view>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qey-gN-rbi">
+                    <rect key="frame" x="35" y="0.0" width="250" height="122"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="122" id="WJS-AR-9CO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="tgY-zH-JMl" firstAttribute="top" secondItem="gUw-f8-648" secondAttribute="top" id="4h4-ER-5cf"/>
+                <constraint firstItem="qey-gN-rbi" firstAttribute="top" secondItem="gUw-f8-648" secondAttribute="top" id="623-Ke-dZQ"/>
+                <constraint firstItem="Cwf-kM-Hbm" firstAttribute="top" secondItem="LJ3-bY-Nls" secondAttribute="bottom" id="6Ks-4E-2Lq"/>
+                <constraint firstAttribute="bottom" secondItem="Ht8-Cs-78Y" secondAttribute="bottom" id="9v5-NC-cSz"/>
+                <constraint firstAttribute="bottom" secondItem="tgY-zH-JMl" secondAttribute="bottom" id="ApY-Wu-MHD"/>
+                <constraint firstItem="tgY-zH-JMl" firstAttribute="leading" secondItem="Cwf-kM-Hbm" secondAttribute="trailing" id="CyV-Dc-ns0"/>
+                <constraint firstItem="Ht8-Cs-78Y" firstAttribute="top" secondItem="gUw-f8-648" secondAttribute="top" id="Ngf-3f-0ur"/>
+                <constraint firstItem="LJ3-bY-Nls" firstAttribute="height" secondItem="qey-gN-rbi" secondAttribute="width" id="UPT-2O-eQl"/>
+                <constraint firstItem="LJ3-bY-Nls" firstAttribute="leading" secondItem="Ht8-Cs-78Y" secondAttribute="trailing" id="V0y-D4-Wya"/>
+                <constraint firstAttribute="bottom" secondItem="Cwf-kM-Hbm" secondAttribute="bottom" id="Vqp-Mf-SXQ"/>
+                <constraint firstItem="tgY-zH-JMl" firstAttribute="leading" secondItem="qey-gN-rbi" secondAttribute="trailing" id="Ycc-dH-65Z"/>
+                <constraint firstAttribute="trailing" secondItem="tgY-zH-JMl" secondAttribute="trailing" id="a02-bS-Wza"/>
+                <constraint firstItem="Cwf-kM-Hbm" firstAttribute="leading" secondItem="Ht8-Cs-78Y" secondAttribute="trailing" id="b8a-d2-TW1"/>
+                <constraint firstItem="Ht8-Cs-78Y" firstAttribute="leading" secondItem="gUw-f8-648" secondAttribute="leading" id="cHg-0J-ePT"/>
+                <constraint firstItem="LJ3-bY-Nls" firstAttribute="top" secondItem="qey-gN-rbi" secondAttribute="bottom" id="fuj-aI-7EJ"/>
+                <constraint firstItem="qey-gN-rbi" firstAttribute="leading" secondItem="Ht8-Cs-78Y" secondAttribute="trailing" id="oiw-Od-dJU"/>
+                <constraint firstItem="tgY-zH-JMl" firstAttribute="leading" secondItem="LJ3-bY-Nls" secondAttribute="trailing" id="xvz-vn-QDp"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="299" y="331"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="scan.png" width="256" height="215"/>
+    </resources>
+</document>

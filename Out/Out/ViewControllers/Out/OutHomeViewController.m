@@ -29,7 +29,7 @@
 // Discussion LIST:
 // 1. 主页面图片跟文字加载， 1)先加载好图片，再一起显示文字图片，2)还是先显示文字图片加载好后再显示图片。两种策略，一开始是2策略，但感觉显示不是很友好，改为1策略，改后同样感觉还是不是非常友好，就显示一张图片跟文字，感觉需要等待，本身就不是很友好。 现在更偏向于选择一开始的2策略。策略本身没有什么问题， 问题的关键在于图片太大了，导致加载的时间比较久，
 
-#import "HomeViewController.h"
+#import "OutHomeViewController.h"
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
 #import "TargetHomeViewController.h"
@@ -45,7 +45,7 @@
 static NSString * const mood_bg_imageName = @"yellow_girl";
 static CGFloat const WIND_DELAY = 37.0;
 
-@interface HomeViewController ()
+@interface OutHomeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *otherMoodTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *otherMoodBgImage;
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
@@ -58,7 +58,7 @@ static CGFloat const WIND_DELAY = 37.0;
 
 @end
 
-@implementation HomeViewController
+@implementation OutHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,6 +106,7 @@ static CGFloat const WIND_DELAY = 37.0;
     [self presentViewController:inputPictureVC animated:YES completion:nil];
 }
 
+// Gone With The Wind
 - (IBAction)testAnimationAction:(id)sender {
     // m1
     self.otherMoodBgImage.image = nil;
@@ -119,6 +120,7 @@ static CGFloat const WIND_DELAY = 37.0;
     } failed:^(NSString *errMsg) {
         // 传进来的图片ID无效
         [OutProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
+        [self configDefaultTextView];
     }];
      
     // m2
@@ -135,7 +137,7 @@ static CGFloat const WIND_DELAY = 37.0;
 - (void)setupViews {
     self.otherMoodBgImage.clipsToBounds = YES;
     self.otherMoodBgImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage:[UIImage imageNamed:mood_bg_imageName]];
+    [self configDefaultTextView];
 }
 
 #pragma mark UI-Update
@@ -157,6 +159,7 @@ static CGFloat const WIND_DELAY = 37.0;
         } failed:^(NSString *errMsg) {
             // 传进来的图片ID无效
             [OutProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
+            [self configDefaultTextView];
         }];
     } else {
         [self goneWithTheWind:content TimeString:timeStr backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
@@ -231,9 +234,6 @@ static CGFloat const WIND_DELAY = 37.0;
         [self.contentLB setCharactersToMoveSimultaneouslyOut:2];
         [self.contentLB prepareToRun];
         [self.contentLB run];
-//        [self.contentLB runWithCompletion:^{
-//            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
-//        }];
     }
     
     // Mood时间
@@ -264,9 +264,12 @@ static CGFloat const WIND_DELAY = 37.0;
         [self.timeLB prepareToRun];
 //        [self.timeLB run];
         [self.timeLB runWithCompletion:^{
-            [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
+            [self configDefaultTextView];
         }];
     }
+}
+- (void)configDefaultTextView {
+   [self setupMoodTextViewWithContent:@"说出去的，就随风而去吧!" TimeString:@"--Spider" backgroundImage: [UIImage imageNamed:mood_bg_imageName]];
 }
 
 @end

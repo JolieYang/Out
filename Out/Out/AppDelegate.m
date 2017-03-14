@@ -10,6 +10,7 @@
 #import "SetOutNameWindow.h"
 #import "const.h"
 #import "AFNetworking.h"
+#import "SPTabBarViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) AFNetworkReachabilityManager *manager;
@@ -20,6 +21,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    SPTabBarViewController *vc = [SPTabBarViewController new];
+    self.window.rootViewController = vc;
+    
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OUT_NAME];
     NSString *nickName = [[NSUserDefaults standardUserDefaults] valueForKey:OUT_NICK_NAME];
     if (!nickName) {
@@ -57,14 +63,6 @@
 //    [manager.reachabilityManager startMonitoring];
     
     
-    
-    
-    // m2: 监测的不是很准确，会进入两次通知，并且有时命名有网络，但是显示AFNetworkReachabilityStatusNotReachable
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityStatusDidChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
-//    self.manager = [AFNetworkReachabilityManager managerForDomain:kSERVER_HOST];
-//    [self.manager startMonitoring];
-    
-    // m3:
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager startMonitoring];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -92,6 +90,8 @@
         }
  
     }];
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

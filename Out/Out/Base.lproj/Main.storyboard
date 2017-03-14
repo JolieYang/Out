@@ -8,10 +8,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Out Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OutHomeViewController" id="BYZ-38-t0r" customClass="OutHomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -386,7 +386,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqt-Lz-uJe">
                                 <rect key="frame" x="-4" y="328" width="328" height="240"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0F5-ZP-Q0D" customClass="OutImageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="0F5-ZP-Q0D" customClass="OutImageView">
                                         <rect key="frame" x="123" y="79" width="82" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="0F5-ZP-Q0D" secondAttribute="height" multiplier="1:1" id="2dN-Gi-nWc"/>
@@ -400,28 +400,13 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-Kg-vGM" customClass="OutImageView">
-                                        <rect key="frame" x="229" y="79" width="82" height="82"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="81" id="0xa-zn-sSg"/>
-                                            <constraint firstAttribute="width" secondItem="JV4-Kg-vGM" secondAttribute="height" multiplier="1:1" id="GLj-vq-HR4"/>
-                                            <constraint firstAttribute="height" constant="81" id="Kvv-6S-Vgw"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="0xa-zn-sSg"/>
-                                                <exclude reference="GLj-vq-HR4"/>
-                                                <exclude reference="Kvv-6S-Vgw"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择一张背景图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yM-wW-CuD">
                                         <rect key="frame" x="0.0" y="8" width="328" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-6i-WC8" customClass="OutImageView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-6i-WC8" customClass="OutImageView">
                                         <rect key="frame" x="17" y="79" width="82" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="81" id="Tv2-PI-XKc"/>
@@ -433,6 +418,21 @@
                                                 <exclude reference="Tv2-PI-XKc"/>
                                                 <exclude reference="XXS-Za-FZW"/>
                                                 <exclude reference="oeo-C0-tna"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hair" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-Kg-vGM" customClass="OutImageView">
+                                        <rect key="frame" x="229" y="79" width="82" height="82"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="81" id="0xa-zn-sSg"/>
+                                            <constraint firstAttribute="width" secondItem="JV4-Kg-vGM" secondAttribute="height" multiplier="1:1" id="GLj-vq-HR4"/>
+                                            <constraint firstAttribute="height" constant="81" id="Kvv-6S-Vgw"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="0xa-zn-sSg"/>
+                                                <exclude reference="GLj-vq-HR4"/>
+                                                <exclude reference="Kvv-6S-Vgw"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -503,6 +503,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book" width="640" height="640"/>
+        <image name="hair" width="220" height="220"/>
         <image name="picture_back" width="22" height="22"/>
         <image name="picture_camera" width="22" height="22"/>
         <image name="picture_ok" width="22" height="22"/>
