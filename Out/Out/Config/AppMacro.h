@@ -33,6 +33,7 @@
 #define LIMIT_TEXT_LENGTH 100
 
 // 颜色
+#define White UIColorFromRGB(0xFFF)
 #define System_Black UIColorFromRGB(0x28292B)
 #define System_White UIColorFromRGB(0xECECED)
 #define Apple_Gold UIColorFromRGB(0xD2C2AC)

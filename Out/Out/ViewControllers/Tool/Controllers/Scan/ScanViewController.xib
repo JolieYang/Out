@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController">
             <connections>
+                <outlet property="scanBox" destination="LJ3-bY-Nls" id="QKX-8M-fuO"/>
                 <outlet property="view" destination="gUw-f8-648" id="zaT-3d-vNs"/>
             </connections>
         </placeholder>

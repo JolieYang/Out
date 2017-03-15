@@ -13,33 +13,49 @@
 @end
 
 @implementation ScanResultViewController
+static CGFloat StatusBarHeight = 20;
+static CGFloat NavigationHeight = 44;
+static CGFloat TabBarHeight = 48;
+static CGFloat FullScreenHeight;// 满屏高度
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"扫描结果";
     [self configView];
 }
 
 - (void)configView {
-    self.resultTextView = [[UITextView alloc] initWithFrame:CGRectMake(8, 8, kAppWidth - 8*2, kAppHeight - 8*2)];
-    self.resultTextView.text = self.resultString;
-    [self.view addSubview:self.resultTextView];
+    // 判读是否存在导航栏
+    if ([[self.navigationController visibleViewController] isKindOfClass:[self class]]) {
+        FullScreenHeight = kAppHeight - NavigationHeight - StatusBarHeight;
+    }
+    // 判断是否存在 TabBar
+    [self.tabBarController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([vc isKindOfClass:[self class]]) {
+            FullScreenHeight -= TabBarHeight;
+            return ;
+        }
+    }];
+    
+    self.title = @"扫描结果";
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight)];
+    [self.view addSubview:backgroundView];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight)];
+    scrollView.alwaysBounceVertical = YES;
+    scrollView.backgroundColor = Apple_Silver;
+    [backgroundView addSubview:scrollView];
+    
+    self.resultTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, FullScreenHeight)];
+    self.resultTextView.editable = NO;
+    self.resultTextView.font = [UIFont systemFontOfSize:16.0];
+    self.resultTextView.text = self.resultString == nil ? @"扫描失败" : self.resultString;
+    [scrollView addSubview:self.resultTextView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

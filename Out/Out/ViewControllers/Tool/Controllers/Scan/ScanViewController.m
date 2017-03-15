@@ -4,7 +4,9 @@
 //
 //  Created by Jolie_Yang on 2017/3/14.
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
-//
+//  如何实现很好的支持扫描二维码与一维码,两种思路：1是调整识别区域，2是动态修改识别类型(会在修改类型时，屏幕会闪烁以下。)
+//  转场时将预览图层在本图层卸载后再回收， 但转场时本图层存在透明问题。通过设置viewDidDisappear才卸载preview图层，接近效果，但又出现了新问题，进入图层的时候会出现屏幕左侧透明右侧正常的问题.
+//  还需优化： 1.扫描线; 2.一维码扫描灵明度； 20170315
 
 #import "ScanViewController.h"
 #import "ScanResultViewController.h"
@@ -12,14 +14,16 @@
 
 @interface ScanViewController ()<AVCaptureMetadataOutputObjectsDelegate>{
     int num;
-    BOOL upOrdown;
     NSTimer *timer;
+    NSTimer *typeTimer;
 }
 @property (strong,nonatomic)AVCaptureDevice *device; // 捕捉设备
 @property (strong,nonatomic)AVCaptureDeviceInput *input;
 @property (strong,nonatomic)AVCaptureMetadataOutput *output;
 @property (strong,nonatomic)AVCaptureSession *session;
 @property (strong,nonatomic)AVCaptureVideoPreviewLayer *preview;
+@property (weak, nonatomic) IBOutlet UIImageView *scanBox;
+@property (nonatomic, assign) BOOL scaning;
 @property (nonatomic, retain) UIImageView * line;
 @end
 
@@ -34,39 +38,54 @@ static CGFloat SCAN_HEIGHT = 0;
     // Do any additional setup after loading the view from its nib.
     SCAN_WIDTH = kAppWidth - 2*SCAN_X;
     SCAN_HEIGHT = kAppHeight - 2*SCAN_Y ;
-    self.title = @"扫一扫";
+    
+    [self configView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self unloadPreviewLayer];
     [self startScan];
 }
-- (void)configScanView {
-    upOrdown = NO;
-    num =0;
-    _line = [[UIImageView alloc] initWithFrame:CGRectMake(SCAN_X, SCAN_Y, SCAN_WIDTH, 2)];
-    _line.image = [UIImage imageNamed:@"scan_line"];
-    [self.view addSubview:_line];
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self stopScan];
+}
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self unloadPreviewLayer];
+}
+- (void)unloadPreviewLayer {
+    [_preview removeFromSuperlayer];
+    _preview = nil;
 }
 
--(void)animation1 {
-    // 上下上下
-    if (2*num == SCAN_HEIGHT) {
-        _line.frame = CGRectMake(SCAN_X, SCAN_Y, SCAN_WIDTH, 2);
-        num = 0;
-    }
-    else {
-        _line.frame = CGRectMake(SCAN_X, SCAN_Y+2*num, SCAN_WIDTH, 2);
-    }
-    num ++;
+- (void)configView {
+    self.title = @"扫一扫";
+    [self configScanView];
 }
-- (void)startScan
+
+- (void)configScanView {
+    num =0;
+    _line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCAN_WIDTH, 2)];
+    _line.image = [UIImage imageNamed:@"scan_line.png"];
+    [self.scanBox addSubview:_line];
+}
+
+- (BOOL)startScan
 {
-    timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
+    _scaning = YES;
+    NSError *error;
+    timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(scanLineAnimation) userInfo:nil repeats:YES];
+//    typeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(changeMetaObjectType) userInfo:nil repeats:YES];
     // Device
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     // Input 用设备创建输入流
-    _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
+    _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:&error];
+    if (!_input) {
+        NSLog(@"创建输入流失败:%@", [error localizedDescription]);
+        return NO;
+    }
     
     // Output 输出流
     _output = [[AVCaptureMetadataOutput alloc]init];
@@ -78,22 +97,17 @@ static CGFloat SCAN_HEIGHT = 0;
         [_session setSessionPreset:AVCaptureSessionPreset640x480];
     }
     else {
-        //        [_session setSessionPreset:AVCaptureSessionPresetHigh];
         [_session setSessionPreset:AVCaptureSessionPreset1920x1080];
     }
-    //    AVCaptureDeviceFormat
     
-    if ([_session canAddInput:self.input])
-    {
+    if ([_session canAddInput:self.input]) {
         [_session addInput:self.input];
     }
-    
-    if ([_session canAddOutput:self.output])
-    {
+    if ([_session canAddOutput:self.output]) {
         [_session addOutput:self.output];
     }
     
-    // 条码类型 AVMetadataObjectTypeQRCode
+    // 条码类型 AVMetadataObjectTypeQRCode二维码
     _output.metadataObjectTypes = [NSArray arrayWithObjects:
                                    AVMetadataObjectTypeEAN13Code,
                                    AVMetadataObjectTypeEAN8Code,
@@ -102,52 +116,78 @@ static CGFloat SCAN_HEIGHT = 0;
                                    nil];
     // 设置识别范围
     if (_session.sessionPreset == AVCaptureSessionPreset1920x1080) {
-        NSLog(@"x:%f,y:%f,scanWidth:%f, scanHeight:%f", SCAN_X, SCAN_Y, SCAN_WIDTH, SCAN_HEIGHT);
         CGFloat p1 = kAppHeight / kAppWidth;
         CGFloat p2 = 1920. / 1080.;
         if (p1 < p2) {
             CGFloat fixHeight = kAppWidth * p2;
             CGFloat fixHeightPadding = (fixHeight - kAppHeight) / 2;
             _output.rectOfInterest = CGRectMake((SCAN_Y + fixHeightPadding)/fixHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/fixHeight, SCAN_WIDTH/kAppWidth);
-            //            _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
         }
-        else {
-            _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
-            
-        }
+    } else {
+        _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
+        
     }
     //    AVCaptureDeviceFormat
     // 预览图层
-    _preview =[AVCaptureVideoPreviewLayer layerWithSession:self.session];
-    _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    //    _preview.frame =CGRectMake(SCAN_X, SCAN_Y, SCAN_WIDTH, SCAN_HEIGHT);
-    _preview.frame = self.view.frame;
-    [self.view.layer insertSublayer:self.preview atIndex:0];
+    if (!_preview) {
+        _preview =[AVCaptureVideoPreviewLayer layerWithSession:self.session];
+        _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        _preview.frame = self.view.frame;
+        [self.view.layer insertSublayer:self.preview atIndex:0];
+    }
     
     [_session startRunning];
+    
+    return YES;
 }
 
-#pragma --mark AVCaptureMetadataOutputObjectsDelegate
 - (void)stopScan {
+    _scaning = NO;
     [_session stopRunning];
     _session = nil;
-    [_preview removeFromSuperlayer];
     // 关闭定时器
     [timer invalidate];
     timer = nil;
 }
 
+-(void)scanLineAnimation {
+    // 上下上下
+    CGRect frame = _line.frame;
+    if (_line.frame.origin.y ==  SCAN_HEIGHT) {
+        frame.origin.y = 0;
+        _line.frame = frame;
+    } else {
+        frame.origin.y += 3;
+        _line.frame = frame;
+    }
+}
 
+- (void)changeMetaObjectType {
+    if ([_output.metadataObjectTypes containsObject:AVMetadataObjectTypeQRCode]) {
+        // 设置成一维码识别类型
+        [_output setMetadataObjectTypes: [NSArray arrayWithObjects:
+                                       AVMetadataObjectTypeEAN13Code,
+                                       AVMetadataObjectTypeEAN8Code,
+                                       AVMetadataObjectTypeCode128Code,
+                                       nil]];
+    } else {
+        // 设置成二维码
+        [_output setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
+    }
+}
 
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
+    if (typeTimer) {
+        [typeTimer invalidate];
+        typeTimer = nil;
+    }
     
     NSString *stringValue = nil;
     
     // 判断是否有数据
-    if ([metadataObjects count] >0)
-    {
+    if ([metadataObjects count] >0) {
         [self stopScan];
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
         stringValue = metadataObject.stringValue;

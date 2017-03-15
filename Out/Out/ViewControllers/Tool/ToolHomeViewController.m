@@ -8,6 +8,7 @@
 
 #import "ToolHomeViewController.h"
 #import "ScanViewController.h"
+#import "ScanResultViewController.h"
 
 @interface ToolHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
