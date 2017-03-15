@@ -1,31 +1,30 @@
 //
-//  ScanViewController.m
+//  ScanDemoViewController.m
 //  Out
 //
-//  Created by Jolie_Yang on 2017/3/14.
+//  Created by Jolie_Yang on 2017/3/15.
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
-//  如何实现很好的支持扫描二维码与一维码,两种思路：1是调整识别区域，2是动态修改识别类型(会在修改类型时，屏幕会闪烁以下。)
-//  转场时将预览图层在本图层卸载后再回收， 但转场时本图层存在透明问题。通过设置viewDidDisappear才卸载preview图层，接近效果，但又出现了新问题，进入图层的时候会出现屏幕左侧透明右侧正常的问题.
-//  还需优化： 1.扫描线; 2.一维码扫描灵明度； 20170315
+//
 
-#import "ScanViewController.h"
+#import "ScanDemoViewController.h"
 #import "ScanResultViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ScanViewController ()<AVCaptureMetadataOutputObjectsDelegate>{
+@interface ScanDemoViewController ()<AVCaptureMetadataOutputObjectsDelegate>{
+    int num;
     NSTimer *timer;
+    NSTimer *typeTimer;
 }
 @property (strong,nonatomic)AVCaptureDevice *device; // 捕捉设备
 @property (strong,nonatomic)AVCaptureDeviceInput *input;
 @property (strong,nonatomic)AVCaptureMetadataOutput *output;
 @property (strong,nonatomic)AVCaptureSession *session;
 @property (strong,nonatomic)AVCaptureVideoPreviewLayer *preview;
-@property (weak, nonatomic) IBOutlet UIImageView *scanBox;
 @property (nonatomic, assign) BOOL scaning;
 @property (nonatomic, retain) UIImageView * line;
 @end
 
-@implementation ScanViewController
+@implementation ScanDemoViewController
 static CGFloat SCAN_X = 35;
 static CGFloat SCAN_Y = 122;
 static CGFloat SCAN_WIDTH = 0;
@@ -64,17 +63,15 @@ static CGFloat SCAN_HEIGHT = 0;
 }
 
 - (void)configScanView {
+    num =0;
     _line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCAN_WIDTH, 2)];
     _line.image = [UIImage imageNamed:@"scan_line.png"];
-    [self.scanBox addSubview:_line];
 }
 
 - (BOOL)startScan
 {
     _scaning = YES;
     NSError *error;
-    timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(scanLineAnimation) userInfo:nil repeats:YES];
-//    typeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(changeMetaObjectType) userInfo:nil repeats:YES];
     // Device
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
@@ -143,31 +140,16 @@ static CGFloat SCAN_HEIGHT = 0;
     _scaning = NO;
     [_session stopRunning];
     _session = nil;
-    // 关闭定时器
-    [timer invalidate];
-    timer = nil;
-}
-
--(void)scanLineAnimation {
-    // 上下上下
-    CGRect frame = _line.frame;
-    if (_line.frame.origin.y ==  SCAN_HEIGHT) {
-        frame.origin.y = 0;
-        _line.frame = frame;
-    } else {
-        frame.origin.y += 3;
-        _line.frame = frame;
-    }
 }
 
 - (void)changeMetaObjectType {
     if ([_output.metadataObjectTypes containsObject:AVMetadataObjectTypeQRCode]) {
         // 设置成一维码识别类型
         [_output setMetadataObjectTypes: [NSArray arrayWithObjects:
-                                       AVMetadataObjectTypeEAN13Code,
-                                       AVMetadataObjectTypeEAN8Code,
-                                       AVMetadataObjectTypeCode128Code,
-                                       nil]];
+                                          AVMetadataObjectTypeEAN13Code,
+                                          AVMetadataObjectTypeEAN8Code,
+                                          AVMetadataObjectTypeCode128Code,
+                                          nil]];
     } else {
         // 设置成二维码
         [_output setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
@@ -192,9 +174,5 @@ static CGFloat SCAN_HEIGHT = 0;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (void)dealloc {
-    [timer invalidate];
-    timer = nil;
 }
 @end

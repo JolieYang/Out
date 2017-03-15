@@ -8,7 +8,9 @@
 
 #import "ToolHomeViewController.h"
 #import "ScanViewController.h"
+#import "ScanDemoViewController.h"
 #import "ScanResultViewController.h"
+#import "WeatherViewController.h"
 
 @interface ToolHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -22,6 +24,9 @@ static NSArray *TOOL_TTTLE = nil;
     // Do any additional setup after loading the view.
     TOOL_TTTLE = @[@[@"天气预报", @"扫一扫"]];
     [self configView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,9 +53,17 @@ static NSArray *TOOL_TTTLE = nil;
     return 16.0;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            WeatherViewController *vc = [WeatherViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
         if (indexPath.row == 1) {
+            // 取消cell被选中的状态
             ScanViewController *vc = [ScanViewController new];
+//            ScanDemoViewController *vc = [ScanDemoViewController new];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -70,6 +83,7 @@ static NSArray *TOOL_TTTLE = nil;
     
     return cell;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSArray *rowsTitle = TOOL_TTTLE[section];
     return rowsTitle.count;
