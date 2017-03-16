@@ -19,15 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.viewControllers = @[[ToolHomeViewController new]];
-    self.navigationBar.barTintColor = System_Black;
-    self.navigationBar.tintColor = System_White;
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: System_White}];
-    self.tabBarItem.title = @"Tool";
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

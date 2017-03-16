@@ -59,6 +59,7 @@ static CGFloat SCAN_HEIGHT = 0;
 }
 
 - (void)configView {
+    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"扫一扫";
     [self configScanView];
 }

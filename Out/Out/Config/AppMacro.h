@@ -41,6 +41,10 @@
 #define Apple_SpaceGray UIColorFromRGB(0xA4A4A8)
 #define Apple_RoseGold UIColorFromRGB(0xCBB0A9)
 #define Apple_Black UIColorFromRGB(0x383A3E)
+#define Alipay_Bg UIColorFromRGB(0xEBEEEC)
+#define Table_Bg UIColorFromRGB(0xF1F3F5)
+#define App_Bg Alipay_Bg
 
-
+// 图片
+#define Default_Image [UIImage imageNamed: @"tab_icon_01_normal"]
 #endif /* AppMacro_h */

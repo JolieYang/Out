@@ -88,6 +88,7 @@ static CGFloat const WIND_DELAY = 37.0;
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
+    inputMoodVC.hidesBottomBarWhenPushed = YES;
     __weak typeof(self) weakSelf = self;
     inputMoodVC.finishMoodBlock = ^(NSDictionary *response){
         [weakSelf showOtherMoodWithResponse:response];

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseNavigationController.h"
 
-@interface ToolHomeNavigationController : UINavigationController
+@interface ToolHomeNavigationController : BaseNavigationController
 
 @end

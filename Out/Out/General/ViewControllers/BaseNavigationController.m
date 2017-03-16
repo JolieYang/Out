@@ -1,28 +1,29 @@
 //
-//  TargetHomeViewController.m
+//  BaseNavigationController.m
 //  Out
 //
-//  Created by Jolie_Yang on 2017/1/5.
+//  Created by Jolie_Yang on 2017/3/16.
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
 //
 
-#import "TargetHomeViewController.h"
+#import "BaseNavigationController.h"
 
-@interface TargetHomeViewController ()
-@property (weak, nonatomic) IBOutlet UIView *countDownBgView;
-@property (weak, nonatomic) IBOutlet UILabel *countDownDayLB;
+@interface BaseNavigationController ()
+
 @end
 
-@implementation TargetHomeViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO];
-}
+@implementation BaseNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupViews];
+    self.navigationBar.barTintColor = System_Black;
+    self.navigationBar.tintColor = System_White;
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: System_White}];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,11 +31,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setupViews {
-    self.navigationController.title = @"Target";
-    
-    self.countDownBgView.layer.cornerRadius = self.countDownBgView.frame.size.width/2;
-}
 /*
 #pragma mark - Navigation
 

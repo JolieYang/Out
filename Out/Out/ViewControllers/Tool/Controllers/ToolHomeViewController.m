@@ -36,18 +36,15 @@ static NSArray *TOOL_TTTLE = nil;
 
 - (void)configView {
     self.title = @"Tool";
-    self.view.backgroundColor = UIColorFromRGB(0xF1F3F5);
+    self.view.backgroundColor = Table_Bg;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [UIView new];
     [self.view addSubview:self.tableView];
-    [self configTableView];
 }
-- (void)configTableView {
-//    self.tableView.backgroundColor =
-//    self.tableView.tableFooterView = [UIView alloc] initW
-}
+
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 16.0;

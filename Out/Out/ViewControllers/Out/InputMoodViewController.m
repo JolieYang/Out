@@ -143,11 +143,7 @@
     if (newText.length == 0 && self.inputTextView.text.length == 0) {
         [self didEnterEmpty];
     }
-    if (length == 1) {// 取巧: 直接点击提示栏文字
-//        if (!self.placeHolderLB.hidden) {
-//            self.placeHolderLB.hidden = YES;
-//            [self hideNavRightItem:NO];
-//        }
+    if (length == 1) {
         [self didEnterText];
     }
 }
