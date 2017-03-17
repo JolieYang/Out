@@ -11,8 +11,9 @@
 @interface TargetAddTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (strong, nonatomic) IBOutlet UITextField *inputTextField;
-@property (nonatomic, assign) BOOL inputed;// 标志是否输入文本
+
 + (instancetype)reusableCellWithTableView:(UITableView *)tableView;
 
-@property (nonatomic, copy) void (^textFieldReturnBlock)(NSString *input);
+@property (nonatomic, copy) void (^textFieldReturnBlock)(NSString *inputedText);
+@property (nonatomic, copy) void (^textFieldDidChangeBlock)(NSString *inputedText);
 @end

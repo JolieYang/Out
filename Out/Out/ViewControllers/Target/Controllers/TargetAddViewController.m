@@ -22,6 +22,12 @@
     // Do any additional setup after loading the view.
     [self setupViews];
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self addDoneNavigationItem];
+    [self disableDoneBtn];
+}
+
 - (void)setupViews {
     self.view.backgroundColor = App_Bg;
     self.configTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight) style: UITableViewStylePlain];
@@ -39,7 +45,7 @@
 }
 
 - (void)doneItemAction {
-    
+    // 添加项目
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,9 +63,21 @@
     static NSString *identifier = @"UITableViewCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (indexPath.row == 0) {
-        TargetAddTableViewCell *firstCell = [TargetAddTableViewCell loadFromNib];
+        TargetAddTableViewCell *firstCell = [TargetAddTableViewCell reusableCellWithTableView:tableView];
         firstCell.iconImageView.image = Default_Image;
         firstCell.inputTextField.returnKeyType = UIReturnKeyDone;
+        firstCell.textFieldReturnBlock = ^(NSString *text) {
+            // 成功添加项目
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+        firstCell.textFieldDidChangeBlock = ^(NSString *text) {
+            if (text.length > 0) {
+                [self enableDoneBtn];
+            } else {
+                [self disableDoneBtn];
+            }
+        };
         return firstCell;
     }
     if (!cell) {
@@ -76,6 +94,14 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+#pragma mark Tool
+- (void)enableDoneBtn {
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+}
+- (void)disableDoneBtn {
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
 }
 
 @end
