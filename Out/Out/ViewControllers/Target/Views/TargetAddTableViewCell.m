@@ -8,6 +8,7 @@
 //  [检测是否输入文字]当直接点击提示栏中的文字时，不触发任何代理，因而需要通过键值观察检测是否输入文本。
 // UITextFieldTextDidChangeNotification点击词频上的字符，会调用两次，点击按键上的字符，调用一次。
 // [?]添加键值观察self.inputTextField addObserver:self keyPath:@"text" 不知道为什么文本明明修改了，但是没有触发observeValueForKeyPath事件
+// [todo] 本控件封装的还不够好， 比如是否应该开放控件inputTextField。
 
 #import "TargetAddTableViewCell.h"
 

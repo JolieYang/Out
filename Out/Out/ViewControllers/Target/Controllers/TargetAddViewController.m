@@ -5,12 +5,14 @@
 //  Created by Jolie_Yang on 2017/3/16.
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
 //
+// [todo] 进入该页面时自动弹出键盘
 
 #import "TargetAddViewController.h"
 #import "TargetAddTableViewCell.h"
 #import "UIView+LoadFromNib.h"
 
 @interface TargetAddViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) NSString *targetName;
 @property (nonatomic, strong) UITableView *configTableView;
 @property (nonatomic, strong) UICollectionView *iconCollectionView;
 @end
@@ -26,6 +28,7 @@
     [super viewWillAppear:animated];
     [self addDoneNavigationItem];
     [self disableDoneBtn];
+    [self becomeFirstResponder];
 }
 
 - (void)setupViews {
@@ -46,6 +49,9 @@
 
 - (void)doneItemAction {
     // 添加项目
+    if (self.successAddTargetBlock) {
+        self.successAddTargetBlock([self addedTargetModel]);
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,15 +69,18 @@
     static NSString *identifier = @"UITableViewCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (indexPath.row == 0) {
-        TargetAddTableViewCell *firstCell = [TargetAddTableViewCell reusableCellWithTableView:tableView];
+        TargetAddTableViewCell *firstCell = [TargetAddTableViewCell loadFromNib];
         firstCell.iconImageView.image = Default_Image;
         firstCell.inputTextField.returnKeyType = UIReturnKeyDone;
         firstCell.textFieldReturnBlock = ^(NSString *text) {
             // 成功添加项目
-            
+            if (self.successAddTargetBlock) {
+                self.successAddTargetBlock([self addedTargetModel]);
+            }
             [self.navigationController popViewControllerAnimated:YES];
         };
         firstCell.textFieldDidChangeBlock = ^(NSString *text) {
+            self.targetName = text;
             if (text.length > 0) {
                 [self enableDoneBtn];
             } else {
@@ -81,12 +90,23 @@
         return firstCell;
     }
     if (!cell) {
-        cell = [[TargetAddTableViewCell alloc] init];
+        cell = [TargetAddTableViewCell reusableCellWithTableView:tableView];
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:@"tool_icon_01"];
     
     return cell;
+}
+
+- (TargetShowModel *)addedTargetModel {
+    TargetShowModel *model = [TargetShowModel new];
+    model.targetName = self.targetName;
+    model.insistHours = 0;
+    model.insistDays = 0;
+    model.beginTime = @"";
+    model.iconName = nil;
+   
+    return model;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -98,10 +118,10 @@
 
 #pragma mark Tool
 - (void)enableDoneBtn {
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
 }
 - (void)disableDoneBtn {
-    [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
 }
 
 @end

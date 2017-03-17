@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TargetShowModel.h"
 
 @interface TargetAddViewController : UIViewController
+
+@property (nonatomic, copy) void (^successAddTargetBlock)(TargetShowModel *newData);
 
 @end
