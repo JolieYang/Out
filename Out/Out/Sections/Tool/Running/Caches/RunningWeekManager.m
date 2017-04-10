@@ -7,10 +7,28 @@
 //
 
 #import "RunningWeekManager.h"
+#import "RunningWeek.h"
+
+#define NSTimeStringFromJolie @"2017-04-03"
+#define WeekInterval 7*24*60*60
 
 @implementation RunningWeekManager
-- (void)addWeekrecord {
-    
+- (void)addWeekRecord:(RunningWeek *)record {
+    [record save];
+}
+
+- (NSArray *)getWeekRecord {
+    NSString *whereSql = @"";
+    NSArray *arguments = @[];
+    NSArray *recordsArray = [RunningWeek objectsWhere:whereSql arguments:arguments];
+    if (recordsArray.count == 0) {
+        // 没有记录，就创建第一条记录
+        RunningWeek *record = [[RunningWeek alloc] init];
+        record.weekId = recordsArray.count + 1;
+        
+        
+    }
+    return recordsArray;
 }
 
 #pragma mark Tool
@@ -22,5 +40,11 @@
     dateComponents = [calendar components:NSCalendarUnitWeekday fromDate:now];
     NSInteger day = [dateComponents day];
     NSLog(@"day:%li", (long)day);
+}
+
+- (void)timeIntervalWithDateStr:(NSString *)dateString {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:@"yyyy-MM-dd"];
+    
 }
 @end
