@@ -107,12 +107,14 @@ static CGFloat SCAN_HEIGHT = 0;
     }
     
     // 条码类型 AVMetadataObjectTypeQRCode二维码
-    _output.metadataObjectTypes = [NSArray arrayWithObjects:
-                                   AVMetadataObjectTypeEAN13Code,
-                                   AVMetadataObjectTypeEAN8Code,
-                                   AVMetadataObjectTypeCode128Code,
-                                   AVMetadataObjectTypeQRCode,
-                                   nil];
+    // 一定要先设置会话的输出为output之后，再指定输出的元数据类型！
+//    _output.metadataObjectTypes = [NSArray arrayWithObjects:
+//                                   AVMetadataObjectTypeEAN13Code,
+//                                   AVMetadataObjectTypeEAN8Code,
+//                                   AVMetadataObjectTypeCode128Code,
+//                                   AVMetadataObjectTypeQRCode,
+//                                   nil];
+    _output.metadataObjectTypes = [self.output availableMetadataObjectTypes];
     // 设置识别范围
     if (_session.sessionPreset == AVCaptureSessionPreset1920x1080) {
         CGFloat p1 = kAppHeight / kAppWidth;
@@ -120,10 +122,10 @@ static CGFloat SCAN_HEIGHT = 0;
         if (p1 < p2) {
             CGFloat fixHeight = kAppWidth * p2;
             CGFloat fixHeightPadding = (fixHeight - kAppHeight) / 2;
-            _output.rectOfInterest = CGRectMake((SCAN_Y + fixHeightPadding)/fixHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/fixHeight, SCAN_WIDTH/kAppWidth);
+//            _output.rectOfInterest = CGRectMake((SCAN_Y + fixHeightPadding)/fixHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/fixHeight, SCAN_WIDTH/kAppWidth);
         }
     } else {
-        _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
+//        _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
         
     }
     //    AVCaptureDeviceFormat
@@ -135,7 +137,17 @@ static CGFloat SCAN_HEIGHT = 0;
         [self.view.layer insertSublayer:self.preview atIndex:0];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:AVCaptureInputPortFormatDescriptionDidChangeNotification
+                                                      object:nil
+                                                       queue:[NSOperationQueue currentQueue]
+                                                  usingBlock: ^(NSNotification *_Nonnull note) {
+                                                      AVCaptureMetadataOutput *output = self.session.outputs.firstObject;
+                                                      _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
+                                                      
+                                                  }];
+    
     [_session startRunning];
+    
     
     return YES;
 }

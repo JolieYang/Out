@@ -21,8 +21,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    [self setupNavigationItem];
-    [self.navigationController setNavigationBarHidden:NO];
     self.title = @"Target";
 }
 
@@ -48,6 +46,7 @@
 }
 
 - (void)setupViews {
+    [self setupNavigation];
     self.view.backgroundColor = App_Bg;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight) style: UITableViewStylePlain];
     self.tableView.backgroundColor = App_Bg;
@@ -57,7 +56,8 @@
     [self.view addSubview:self.tableView];
 }
 
-- (void)setupNavigationItem {
+- (void)setupNavigation {
+    [self.navigationController setNavigationBarHidden:NO];
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage: Default_Image style:UIBarButtonItemStylePlain target:self action:@selector(addItemAction)];
     self.navigationItem.rightBarButtonItem = addItem;
 }

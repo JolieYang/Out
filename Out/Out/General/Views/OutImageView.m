@@ -10,13 +10,6 @@
 
 @implementation OutImageView
 
-- (void)drawRect:(CGRect)rect {
-//    Drawing code
-//    [self setUserInteractionEnabled: YES];
-//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureWithBlock:)];
-//    [self addGestureRecognizer:tapGesture];
-    NSLog(@"OutimageView drawRect");
-}
 
 - (void)tapGestureWithBlock:(void (^)())tapHandler {
     [self setUserInteractionEnabled:YES];
