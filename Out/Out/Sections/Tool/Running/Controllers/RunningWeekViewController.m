@@ -41,7 +41,7 @@ static NSArray *fundsTitleArray = nil;
     fundsTitleArray = @[@"当前经费", @"上期经费", @"累计经费"];
     self.recordsArray = [NSMutableArray array];
     for (int i = 0; i < 23; i++) {
-        RunningRecordsModel *model = [RunningRecordsModel new];
+        RunningRecord *model = [RunningRecord new];
         model.memberName = @"花木兰";
         [self.recordsArray addObject:model];
     }

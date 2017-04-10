@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GYDataCenter.h"
 
-@interface RunningRecordsModel : NSObject
+@interface RunningRecord :GYModelObject
+@property (nonatomic, assign ) NSInteger recordId;
+@property (nonatomic, assign) NSInteger memerId;
 @property (nonatomic, strong) NSString *memberName;
 @property (nonatomic, assign) BOOL isAchieve;
 @property (nonatomic, assign) NSInteger contributionMoney;
 @property (nonatomic, strong) NSString *remarks;
+@property (nonatomic, assign) NSInteger weeksId;
 @end

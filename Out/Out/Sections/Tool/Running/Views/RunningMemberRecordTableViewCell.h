@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RunningRecordsModel.h"
+#import "RunningRecord.h"
 
 @interface RunningMemberRecordTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *memberNameLabel;
@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *contributionMoneyTF;
 @property (weak, nonatomic) IBOutlet UITextField *remarksTF;
 
-@property (nonatomic, strong) RunningRecordsModel *dataModel;
+@property (nonatomic, strong) RunningRecord *dataModel;
 
-- (instancetype)initWithDataModel:(RunningRecordsModel *)model;
+- (instancetype)initWithDataModel:(RunningRecord *)model;
 @end

@@ -14,7 +14,7 @@
 @end
 @implementation RunningMemberRecordTableViewCell
 
-- (instancetype)initWithDataModel:(RunningRecordsModel *)model {
+- (instancetype)initWithDataModel:(RunningRecord *)model {
     RunningMemberRecordTableViewCell *cell = [RunningMemberRecordTableViewCell loadFromNib];
     
     cell.dataModel = model;
