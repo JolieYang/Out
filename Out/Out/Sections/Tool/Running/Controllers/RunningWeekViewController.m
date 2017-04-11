@@ -50,13 +50,45 @@ static NSArray *fundsTitleArray = nil;
 }
 
 - (void)addNavRightItem {
-    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithTitle:@"归档" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
+    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithTitle:@"截图" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
     self.navigationItem.rightBarButtonItem = titleItem;
 }
 
 - (void)rightItemAction {
-    // 归档
+    // 截图--自定义截屏位置大小
+    [self sreenShotTableView];
+}
+
+- (BOOL)sreenShotTableView {
+    UIImage* image = nil;
+    UIGraphicsBeginImageContext(self.tableView.contentSize);
+//    UIGraphicsBeginImageContextWithOptions(self.tableView.contentSize, YES, 0.0);
     
+    //保存tableView当前的偏移量
+    CGPoint savedContentOffset = self.tableView.contentOffset;
+    CGRect saveFrame = self.tableView.frame;
+    
+    //将tableView的偏移量设置为(0,0)
+    self.tableView.contentOffset = CGPointZero;
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.contentSize.width, self.tableView.contentSize.height);
+    
+    //在当前上下文中渲染出tableView
+    [self.tableView.layer renderInContext: UIGraphicsGetCurrentContext()];
+    //截取当前上下文生成Image
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    //恢复tableView的偏移量
+    self.tableView.contentOffset = savedContentOffset;
+    self.tableView.frame = saveFrame;
+    
+    UIGraphicsEndImageContext();
+    
+    if (image != nil) {
+        UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+        return YES;
+    }else {
+        return NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,5 +181,13 @@ static NSArray *fundsTitleArray = nil;
     [df setDateFormat:@"yyyy.MM.dd"];
     NSString *timeString = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:unix]];
     return timeString;
+}
+
+- (NSString *)timeStringFromDate:(NSDate *)date {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd:HH:ss"];
+    NSString *timeString = [df stringFromDate:[NSDate date]];
+    return timeString;
+    
 }
 @end

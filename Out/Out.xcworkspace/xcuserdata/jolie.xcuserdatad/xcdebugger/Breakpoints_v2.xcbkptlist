@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Out/Sections/Tool/Running/Caches/RunningWeekManager.m"
-            timestampString = "513591492.523935"
+            timestampString = "513592391.093729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "+updateContributionWithWeekId:weekContribution:"
             landmarkType = "5">
          </BreakpointContent>
