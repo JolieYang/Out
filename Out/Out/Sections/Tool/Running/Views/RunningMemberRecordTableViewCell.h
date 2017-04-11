@@ -18,4 +18,6 @@
 @property (nonatomic, strong) RunningRecord *dataModel;
 
 - (instancetype)initWithDataModel:(RunningRecord *)model;
+
+@property (nonatomic, copy) void (^updateContributionBlock)(NSInteger preContributionMoney, NSInteger contributionMoney);
 @end

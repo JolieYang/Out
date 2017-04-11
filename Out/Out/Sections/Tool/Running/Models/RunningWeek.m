@@ -26,9 +26,14 @@
     if (!propertis) {
         propertis = @[
                       @"weekId",
-                      @"fromDate",
-                      @"endDate",
-                      @"weekOrder"
+                      @"fromUnix",
+                      @"endUnix",
+                      @"year",
+                      @"month",
+                      @"weekOfMonth",
+                      @"preSumContribution",
+                      @"weekContribution",
+                      @"sumContribution"
                       ];
     }
     return propertis;

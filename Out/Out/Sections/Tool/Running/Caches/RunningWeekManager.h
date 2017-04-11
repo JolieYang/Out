@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+@class RunningWeek;
 
 @interface RunningWeekManager : NSObject
-- (void)addWeekrecord;
++ (NSArray *)addWeekRecord;// 返回添加的记录
++ (NSArray *)getRecentTwentyWeekRecords;
++ (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId weekContribution:(NSInteger)weekContribution;
 
++ (RunningWeek *)getRecentWeekRecord;
 
-+ (void)weekFirstDayUnix;
++ (void)updateData;
+
 @end

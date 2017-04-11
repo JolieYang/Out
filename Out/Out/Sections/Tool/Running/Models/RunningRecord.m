@@ -28,10 +28,10 @@
                       @"recordId",
                       @"memerId",
                       @"memberName",
-                      @"isAchieve"
+                      @"isAchieve",
                       @"contributionMoney",
                       @"remarks",
-                      @"weeksId",
+                      @"weekId",
                       ];
     }
     return propertis;

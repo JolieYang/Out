@@ -12,6 +12,9 @@
 #import "RunningRecordColumnTableViewCell.h"
 #import "RunningMemberRecordTableViewCell.h"
 #import "RunningRecordFundsTableViewCell.h"
+#import "RunningRecordManager.h"
+#import "RunningWeekManager.h"
+#import "RunningWeek.h"
 
 static NSString *recordTitleTableViewCellIdentifier = @"RunningMemberRecordColumnTitleTableViewCell";
 static NSString *recordTableViewCellIdentifier = @"RunningMemberRecordTableViewCell";
@@ -39,12 +42,11 @@ static NSArray *fundsTitleArray = nil;
 
 - (void)setupDatas {
     fundsTitleArray = @[@"当前经费", @"上期经费", @"累计经费"];
-    self.recordsArray = [NSMutableArray array];
-    for (int i = 0; i < 23; i++) {
-        RunningRecord *model = [RunningRecord new];
-        model.memberName = @"花木兰";
-        [self.recordsArray addObject:model];
+    NSArray *recordsArray = [RunningRecordManager getRecordsWithWeekId:self.week.weekId];
+    if (recordsArray.count == 0) {
+        recordsArray = [RunningRecordManager addAllMembersRecordWithWeekId:self.week.weekId];
     }
+    self.recordsArray = [NSMutableArray arrayWithArray:recordsArray];
 }
 
 - (void)addNavRightItem {
@@ -84,16 +86,33 @@ static NSArray *fundsTitleArray = nil;
 #pragma mark UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        RunningRecordTitleTableViewCell *cell = [RunningRecordTitleTableViewCell initWithTitle:@"04月第一周(2017.04.03~2017.04.09)"];
+        NSString *fromDate = [self timeStringFromUnix:self.week.fromUnix];
+        NSString *endDate = [self timeStringFromUnix:self.week.endUnix];
+        NSString *title = [NSString stringWithFormat:@"%ld月第%ld周(%@~%@)", (long)self.week.month, (long)self.week.weekOfMonth, fromDate, endDate];
+        RunningRecordTitleTableViewCell *cell = [RunningRecordTitleTableViewCell initWithTitle: title];
         return cell;
     } else if (indexPath.section == 1) {
         RunningRecordColumnTableViewCell *cell = [RunningRecordColumnTableViewCell loadFromNib];
         return cell;
     } else if (indexPath.section == 2) {
         RunningMemberRecordTableViewCell *cell = [[RunningMemberRecordTableViewCell alloc] initWithDataModel:self.recordsArray[indexPath.row]];
+        cell.updateContributionBlock = ^(NSInteger preContributionMoney, NSInteger contributionMoney) {
+            NSInteger currentWeekContribution = self.week.weekContribution + (contributionMoney - preContributionMoney);
+            self.week = [RunningWeekManager updateContributionWithWeekId:self.week.weekId weekContribution: currentWeekContribution];
+            
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+        };
         return cell;
     } else if (indexPath.section == 3) {
-        RunningRecordFundsTableViewCell *cell = [[RunningRecordFundsTableViewCell alloc] initWithTitle:fundsTitleArray[indexPath.row] sum:50];
+        NSInteger sum;
+        if (indexPath.row == 0) {
+            sum = self.week.weekContribution;
+        } else if (indexPath.row == 1) {
+            sum = self.week.preSumContribution;
+        } else {
+            sum = self.week.sumContribution;
+        }
+        RunningRecordFundsTableViewCell *cell = [[RunningRecordFundsTableViewCell alloc] initWithTitle:fundsTitleArray[indexPath.row] sum:sum];
         return cell;
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -124,4 +143,11 @@ static NSArray *fundsTitleArray = nil;
     [self.view endEditing:YES];
 }
 
+#pragma mark Date Tool
+- (NSString *)timeStringFromUnix:(NSTimeInterval)unix {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy.MM.dd"];
+    NSString *timeString = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:unix]];
+    return timeString;
+}
 @end

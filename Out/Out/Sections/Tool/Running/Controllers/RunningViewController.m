@@ -12,8 +12,6 @@
 #import "RunningWeek.h"
 #import "RunningWeekManager.h"
 
-static NSArray *initRunningMembers = nil;
-
 @interface RunningViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *weeksList;
@@ -42,29 +40,22 @@ static NSArray *initRunningMembers = nil;
 }
 - (void)rightItemAction {
     //  下一周
-    [RunningWeekManager weekFirstDayUnix];
+    [RunningWeekManager updateData];
+    NSArray *newRecords = [RunningWeekManager addWeekRecord];
+    if (newRecords) {
+        [self.weeksList addObjectsFromArray:newRecords];
+        [self.tableView reloadData];
+    } else {
+        // 弹窗显示时间未到，无法添加新纪录
+    }
 }
 - (void)setupDatas {
-    self.weeksList = [NSMutableArray array];
-    [self.weeksList addObject:@"2017年04月--W1"];
-//    [self runningMember];
+    self.weeksList = [NSMutableArray arrayWithArray:[RunningWeekManager getRecentTwentyWeekRecords]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-// first -- 初始化跑团成员
-- (void)runningMember {
-    initRunningMembers = @[@"孙宇翔", @"沈聪维", @"陈炜枫",@"陈明智",@"陈双",@"黄佳萍",@"杨巧伶",@"范本清",@"李旭东",@"苏忠伟",@"林思颖",@"叶金新",@"唐尧",@"曾佑杰",@"陈文静",@"刘文迪",@"赵赫",@"张波",@"林善统",@"池如海",@"王丽仙"];
-    for (int i = 0; i < initRunningMembers.count; i++) {
-        RunningMember *member = [[RunningMember alloc] init];
-        member.memberId = i + 1;
-        member.name = initRunningMembers[i];
-        [member save];
-    }
 }
 
 #pragma mark UITableViewDelegate
@@ -74,6 +65,7 @@ static NSArray *initRunningMembers = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RunningWeekViewController *vc = [[RunningWeekViewController alloc] initWithNibName:NSStringFromClass([RunningWeekViewController class]) bundle:nil];
+    vc.week = self.weeksList[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -85,7 +77,9 @@ static NSArray *initRunningMembers = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = self.weeksList[indexPath.row];
+    RunningWeek *weekRecord = self.weeksList[indexPath.row];
+    NSString *recordTitle = [NSString stringWithFormat:@"%li年%li月第%li周", (long)weekRecord.year, (long)weekRecord.month, (long)weekRecord.weekOfMonth];
+    cell.textLabel.text = recordTitle;
     
     return cell;
 }

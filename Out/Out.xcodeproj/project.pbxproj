@@ -96,6 +96,8 @@
 		A0643C331E9B70AE0005785F /* RunningMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C321E9B70AE0005785F /* RunningMember.m */; };
 		A0643C361E9B76A60005785F /* RunningWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C351E9B76A60005785F /* RunningWeek.m */; };
 		A0643C3B1E9B79F20005785F /* RunningWeekManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C3A1E9B79F20005785F /* RunningWeekManager.m */; };
+		A0643C3E1E9C87920005785F /* RunningMemberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C3D1E9C87920005785F /* RunningMemberManager.m */; };
+		A0643C411E9C88230005785F /* RunningRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C401E9C88230005785F /* RunningRecordManager.m */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -272,6 +274,10 @@
 		A0643C351E9B76A60005785F /* RunningWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningWeek.m; sourceTree = "<group>"; };
 		A0643C391E9B79F20005785F /* RunningWeekManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningWeekManager.h; sourceTree = "<group>"; };
 		A0643C3A1E9B79F20005785F /* RunningWeekManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningWeekManager.m; sourceTree = "<group>"; };
+		A0643C3C1E9C87920005785F /* RunningMemberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningMemberManager.h; sourceTree = "<group>"; };
+		A0643C3D1E9C87920005785F /* RunningMemberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningMemberManager.m; sourceTree = "<group>"; };
+		A0643C3F1E9C88230005785F /* RunningRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningRecordManager.h; sourceTree = "<group>"; };
+		A0643C401E9C88230005785F /* RunningRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningRecordManager.m; sourceTree = "<group>"; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -724,6 +730,10 @@
 			children = (
 				A0643C391E9B79F20005785F /* RunningWeekManager.h */,
 				A0643C3A1E9B79F20005785F /* RunningWeekManager.m */,
+				A0643C3C1E9C87920005785F /* RunningMemberManager.h */,
+				A0643C3D1E9C87920005785F /* RunningMemberManager.m */,
+				A0643C3F1E9C88230005785F /* RunningRecordManager.h */,
+				A0643C401E9C88230005785F /* RunningRecordManager.m */,
 			);
 			path = Caches;
 			sourceTree = "<group>";
@@ -1025,6 +1035,7 @@
 				A0643B971E9B17D30005785F /* UIImageView+WebCache.m in Sources */,
 				A0643BD91E9B17E80005785F /* InputMoodPictureViewController.m in Sources */,
 				A0643B8E1E9B17D30005785F /* SDWebImageDownloader.m in Sources */,
+				A0643C3E1E9C87920005785F /* RunningMemberManager.m in Sources */,
 				A0643B871E9B17D30005785F /* MFLHintLabel.m in Sources */,
 				A0643C2F1E9B6BB00005785F /* UIViewController+Navigation.m in Sources */,
 				A0643BDC1E9B17E80005785F /* OutHomeViewController.m in Sources */,
@@ -1039,6 +1050,7 @@
 				A0643B961E9B17D30005785F /* UIImageView+HighlightedWebCache.m in Sources */,
 				A0643C1F1E9B36A40005785F /* RunningRecordColumnTableViewCell.m in Sources */,
 				A0643B8A1E9B17D30005785F /* NSData+ImageContentType.m in Sources */,
+				A0643C411E9C88230005785F /* RunningRecordManager.m in Sources */,
 				A0643BF31E9B17E80005785F /* ForecastView.m in Sources */,
 				A04C93C41D8017FE0028F2DB /* DateHelper.m in Sources */,
 				A0643BF11E9B17E80005785F /* ToolHomeViewController.m in Sources */,

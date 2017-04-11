@@ -16,5 +16,5 @@
 @property (nonatomic, assign) BOOL isAchieve;
 @property (nonatomic, assign) NSInteger contributionMoney;
 @property (nonatomic, strong) NSString *remarks;
-@property (nonatomic, assign) NSInteger weeksId;
+@property (nonatomic, assign) NSInteger weekId;
 @end

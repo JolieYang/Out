@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class RunningWeek;
 
 @interface RunningWeekViewController : UIViewController
-
+@property (nonatomic, strong) RunningWeek *week;
 @end
