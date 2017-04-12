@@ -23,7 +23,7 @@ static NSArray *TOOL_TTTLE = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    TOOL_TTTLE = @[@[@"天气预报", @"扫一扫", @"跑团"]];
+    TOOL_TTTLE = @[@[@"扫一扫", @"跑团"]];
     [self configView];
 }
 
@@ -54,19 +54,16 @@ static NSArray *TOOL_TTTLE = nil;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            WeatherViewController *vc = [WeatherViewController new];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        } else if (indexPath.row == 1) {
             // 取消cell被选中的状态
             ScanViewController *vc = [ScanViewController new];
 //            ScanDemoViewController *vc = [ScanDemoViewController new];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 1) {
             RunningViewController *vc = [RunningViewController new];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+        } else if (indexPath.row == 2) {
         } else {
             
         }

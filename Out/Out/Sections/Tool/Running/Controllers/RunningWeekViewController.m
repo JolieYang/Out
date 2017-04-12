@@ -33,12 +33,19 @@ static NSArray *fundsTitleArray = nil;
     [self setupViews];
     [self setupDatas];
 }
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
 - (void)setupViews {
     [self addNavRightItem];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+
 
 - (void)setupDatas {
     fundsTitleArray = @[@"当期经费", @"上期经费", @"累计经费"];
@@ -133,7 +140,6 @@ static NSArray *fundsTitleArray = nil;
         cell.updateContributionBlock = ^(NSInteger preContributionMoney, NSInteger contributionMoney) {
             NSInteger currentWeekContribution = self.week.weekContribution + (contributionMoney - preContributionMoney);
             self.week = [RunningWeekManager updateContributionWithWeekId:self.week.weekId weekContribution: currentWeekContribution];
-            
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         };
         return cell;
@@ -175,6 +181,49 @@ static NSArray *fundsTitleArray = nil;
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
+}
+
+
+
+#pragma mark Keyboard
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGFloat viewY = [self getEditingTextFieldYFromTableView:self.tableView];
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyboardEndY = value.CGRectValue.origin.y;
+    // 动画
+    NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSLog(@"viewY:%f, keyboarEndy:%f,screenY:%f", viewY, keyboardEndY, self.view.frame.size.height);
+    [UIView animateWithDuration:duration.doubleValue animations:^{
+        if (viewY > keyboardEndY) {
+//            self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + viewY - keyboardEndY);// ps: 如果设置contentOffset则调整位置后键盘并不会弹出，需要在点击一次才会弹出键盘
+            CGRect rect = self.tableView.frame;
+            rect.origin.y +=  keyboardEndY - viewY;
+            self.tableView.frame = rect;
+        }
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    CGRect rect = self.tableView.frame;
+    rect.origin.y = 0;
+    self.tableView.frame = rect;
+}
+
+- (CGFloat)getEditingTextFieldYFromTableView:(UITableView *)tableView {
+    CGFloat y = 0;
+    for (UITableViewCell *tableViewCell in tableView.visibleCells) {
+        if ([tableViewCell isKindOfClass:[RunningMemberRecordTableViewCell class]]) {
+            RunningMemberRecordTableViewCell *cell = (RunningMemberRecordTableViewCell *)tableViewCell;
+            if (cell.remarksTF.isEditing || cell.contributionMoneyTF.isEditing) {
+                y += tableViewCell.frame.origin.y + tableViewCell.frame.size.height + 64;
+                y = y - (tableView.contentOffset.y + 64);
+                return y;
+            }
+        }
+    }
+    y = -1;
+    return y;
 }
 
 #pragma mark Date Tool

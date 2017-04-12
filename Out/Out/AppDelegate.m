@@ -31,7 +31,6 @@
     if (!nickName) {
 //        [[SetOutNameWindow shareInstance] show];
     }
-    
     // 用于ping
 //    NSURL *baseURL = [NSURL URLWithString: kSERVER_HOST];
 //    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];

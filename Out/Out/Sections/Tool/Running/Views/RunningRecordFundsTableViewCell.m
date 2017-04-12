@@ -14,7 +14,7 @@
 - (instancetype)initWithTitle:(NSString *)title sum:(NSInteger)sum {
     RunningRecordFundsTableViewCell *cell = [RunningRecordFundsTableViewCell loadFromNib];
     cell.fundsTitleLabel.text = title;
-    cell.sumLabel.text = [NSString stringWithFormat:@"¥ %ld", (long)sum];
+    cell.sumLabel.text = [NSString stringWithFormat:@"%ld", (long)sum];
     
     return cell;
 }
