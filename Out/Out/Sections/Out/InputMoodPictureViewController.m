@@ -42,7 +42,7 @@
 #import "InputMoodPictureViewController.h"
 #import "OutHomeViewController.h"
 #import "OutAlertViewController.h"
-#import "OutProgressHUD.h"
+#import "JYProgressHUD.h"
 #import "OutAPIManager.h"
 #import "StringHelper.h"
 #import "TextViewHelper.h"
@@ -112,18 +112,18 @@
 - (IBAction)didEndEditAction:(id)sender {
     // 判断字数是否超出限制
     if ([StringHelper length:self.inputTextView.text] > 100) {
-        [OutProgressHUD showTextHUDWithDetailString:@"文字超出100字限制" AddedTo:self.view];
+        [JYProgressHUD showTextHUDWithDetailString:@"文字超出100字限制" AddedTo:self.view];
         return;
     }
     // 判断字符非空
     if ([StringHelper length:self.inputTextView.text] == 0) {
         // 正常是不会进入这里
-        [OutProgressHUD showTextHUDWithDetailString:@"程序跑到火星去了吧" AddedTo:self.view];
+        [JYProgressHUD showTextHUDWithDetailString:@"程序跑到火星去了吧" AddedTo:self.view];
         return;
     }
     // 回收键盘
     [self.inputTextView resignFirstResponder];
-    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
+    [JYProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
     [OutAPIManager uploadImage:self.inputImageView.image succeed:^(NSString *photoId) {
         NSString *apiName = @"mind";
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -139,10 +139,10 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             });
         } failed:^(NSString *errMsg) {
-            [OutProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+            [JYProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
         }];
     } failed:^(NSString *errMsg) {
-        [OutProgressHUD changeToTextHUDWithDetailString:@"上传图片失败" AddedTo:self.view];
+        [JYProgressHUD changeToTextHUDWithDetailString:@"上传图片失败" AddedTo:self.view];
     }];
 }
 
@@ -152,7 +152,7 @@
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     if (status == PHAuthorizationStatusDenied || status == PHAuthorizationStatusRestricted) {
         // 无图片访问权限 "请在iPhone的“设置-隐私-照片"选项中，允许微信访问你的手机相册"
-        [OutProgressHUD showLongerTextHUDWithString:@"请在iPhone的“设置-隐私-照片“选项中，允许Out访问你的手机相册" AddedTo:self.view];
+        [JYProgressHUD showLongerTextHUDWithString:@"请在iPhone的“设置-隐私-照片“选项中，允许Out访问你的手机相册" AddedTo:self.view];
     } else {
         [self presentViewController:self.imagePickerController animated:YES completion:nil];
     }

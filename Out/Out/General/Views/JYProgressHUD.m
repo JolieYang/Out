@@ -9,13 +9,13 @@
 // Thinking LIST:
 // 1. 在changeToTextHUD跟showTextHUD时，其实可以整在一个方法中，但会出现其实是显示同一个HUD,
 
-#import "OutProgressHUD.h"
+#import "JYProgressHUD.h"
 
-@implementation OutProgressHUD
+@implementation JYProgressHUD
 
 
 + (instancetype)showIndicatorHUDWithDetailString:(NSString *)detailString AddedTo:(UIView *)view animated:(BOOL)animated {
-    OutProgressHUD *hud = [super showHUDAddedTo:view animated:animated];
+    JYProgressHUD *hud = [super showHUDAddedTo:view animated:animated];
     hud.detailsLabel.text = detailString;
     [self configIndicatorHUD:hud];
     
@@ -38,19 +38,19 @@
 }
 
 + (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view {
-    OutProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 1.0];
+    JYProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 1.0];
     
     return hud;
 }
 
 + (instancetype)showLongerTextHUDWithString:(NSString *)string AddedTo:(UIView *)view {
-    OutProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 3.0];
+    JYProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 3.0];
     
     return hud;
 }
 
 + (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view After:(float)afterTime {
-    OutProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
+    JYProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
     hud.detailsLabel.text = string;
     [self configTextHUD:hud];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, afterTime * NSEC_PER_SEC);

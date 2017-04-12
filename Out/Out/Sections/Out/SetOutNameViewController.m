@@ -11,7 +11,7 @@
 
 #import "SetOutNameViewController.h"
 #import "OutAlertViewController.h"
-#import "OutProgressHUD.h"
+#import "JYProgressHUD.h"
 #import "SetOutnameWindow.h"
 #import "StringHelper.h"
 #import "OutAPIManager.h"
@@ -57,7 +57,7 @@
 - (IBAction)setOutNameAction:(id)sender {
     [self resignKeyboard];
     if ([StringHelper isEmpty:self.outNameTF.text]) {
-        [OutProgressHUD showTextHUDWithDetailString:@"请输入昵称" AddedTo:self.view];
+        [JYProgressHUD showTextHUDWithDetailString:@"请输入昵称" AddedTo:self.view];
         [self.outNameTF becomeFirstResponder];
         
         return;
@@ -69,7 +69,7 @@
         [params setValue:self.outNameTF.text forKey:@"nickname"];
     } else {
         if ([StringHelper isEmpty:self.outPasswdTF.text]) {
-            [OutProgressHUD showTextHUDWithDetailString:@"请输入密码" AddedTo:self.view];
+            [JYProgressHUD showTextHUDWithDetailString:@"请输入密码" AddedTo:self.view];
             return;
         }
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:self.outNameTF.text,@"email",self.outPasswdTF.text, @"password", nil];
@@ -88,7 +88,7 @@
         [[SetOutNameWindow shareInstance] hide];
     } failed:^(NSString *errMsg) {
         NSLog(@"error:%@", errMsg);
-        [OutProgressHUD showTextHUDWithDetailString:@"登录失败" AddedTo:self.view];
+        [JYProgressHUD showTextHUDWithDetailString:@"登录失败" AddedTo:self.view];
     }];
     
 }

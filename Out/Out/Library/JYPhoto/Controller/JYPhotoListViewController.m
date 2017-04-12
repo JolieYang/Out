@@ -9,7 +9,7 @@
 #import "JYPhotoListViewController.h"
 #import <Photos/Photos.h>
 
-@interface JYPhotoListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JYPhotoListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *albumTable;
 @property (nonatomic, strong) PHPhotoLibrary *assetsLibrary;
 @property (nonatomic, strong) NSMutableArray *albums;

@@ -42,11 +42,12 @@
     //  下一周
     [RunningWeekManager updateData];
     NSArray *newRecords = [RunningWeekManager addWeekRecord];
-    if (newRecords) {
+    if (newRecords.count > 0) {
         [self.weeksList addObjectsFromArray:newRecords];
         [self.tableView reloadData];
     } else {
         // 弹窗显示时间未到，无法添加新纪录
+        [JYProgressHUD showTextHUDWithDetailString:@"已经是最新纪录" AddedTo:self.view];
     }
 }
 - (void)setupDatas {

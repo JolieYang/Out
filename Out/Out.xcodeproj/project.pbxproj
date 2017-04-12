@@ -15,7 +15,7 @@
 		A04C93C41D8017FE0028F2DB /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A04C93C31D8017FE0028F2DB /* DateHelper.m */; };
 		A05266661E77D93D0087D861 /* OutAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266611E77D93D0087D861 /* OutAlertViewController.m */; };
 		A05266671E77D93D0087D861 /* OutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266631E77D93D0087D861 /* OutImageView.m */; };
-		A05266681E77D93D0087D861 /* OutProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266651E77D93D0087D861 /* OutProgressHUD.m */; };
+		A05266681E77D93D0087D861 /* JYProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266651E77D93D0087D861 /* JYProgressHUD.m */; };
 		A052666B1E77D9480087D861 /* UIView+LoadFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */; };
 		A0643B7B1E9B17D30005785F /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B361E9B17D30005785F /* AFHTTPSessionManager.m */; };
 		A0643B7C1E9B17D30005785F /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B391E9B17D30005785F /* AFNetworkReachabilityManager.m */; };
@@ -27,7 +27,6 @@
 		A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643B481E9B17D30005785F /* JYPhotoListViewController.xib */; };
 		A0643B831E9B17D30005785F /* JYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B4B1E9B17D30005785F /* JYPhoto.m */; };
 		A0643B841E9B17D30005785F /* JYPhotoData.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B4D1E9B17D30005785F /* JYPhotoData.m */; };
-		A0643B851E9B17D30005785F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B511E9B17D30005785F /* MBProgressHUD.m */; };
 		A0643B861E9B17D30005785F /* MFLBezierHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B541E9B17D30005785F /* MFLBezierHelper.m */; };
 		A0643B871E9B17D30005785F /* MFLHintLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B561E9B17D30005785F /* MFLHintLabel.m */; };
 		A0643B881E9B17D30005785F /* UILabel+Lines.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B581E9B17D30005785F /* UILabel+Lines.m */; };
@@ -92,12 +91,13 @@
 		A0643C291E9B621F0005785F /* RunningRecordFundsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C271E9B621F0005785F /* RunningRecordFundsTableViewCell.m */; };
 		A0643C2A1E9B621F0005785F /* RunningRecordFundsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C281E9B621F0005785F /* RunningRecordFundsTableViewCell.xib */; };
 		A0643C2C1E9B68040005785F /* RunningMembers.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0643C2B1E9B68040005785F /* RunningMembers.plist */; };
-		A0643C2F1E9B6BB00005785F /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C2E1E9B6BB00005785F /* UIViewController+Navigation.m */; };
 		A0643C331E9B70AE0005785F /* RunningMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C321E9B70AE0005785F /* RunningMember.m */; };
 		A0643C361E9B76A60005785F /* RunningWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C351E9B76A60005785F /* RunningWeek.m */; };
 		A0643C3B1E9B79F20005785F /* RunningWeekManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C3A1E9B79F20005785F /* RunningWeekManager.m */; };
 		A0643C3E1E9C87920005785F /* RunningMemberManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C3D1E9C87920005785F /* RunningMemberManager.m */; };
 		A0643C411E9C88230005785F /* RunningRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C401E9C88230005785F /* RunningRecordManager.m */; };
+		A0643C461E9E09DA0005785F /* MBProgressHUD+JDragon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0643C431E9E09DA0005785F /* MBProgressHUD+JDragon.bundle */; };
+		A0643C471E9E09DA0005785F /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C451E9E09DA0005785F /* MBProgressHUD+JDragon.m */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -128,8 +128,8 @@
 		A05266611E77D93D0087D861 /* OutAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutAlertViewController.m; sourceTree = "<group>"; };
 		A05266621E77D93D0087D861 /* OutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutImageView.h; sourceTree = "<group>"; };
 		A05266631E77D93D0087D861 /* OutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutImageView.m; sourceTree = "<group>"; };
-		A05266641E77D93D0087D861 /* OutProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutProgressHUD.h; sourceTree = "<group>"; };
-		A05266651E77D93D0087D861 /* OutProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutProgressHUD.m; sourceTree = "<group>"; };
+		A05266641E77D93D0087D861 /* JYProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYProgressHUD.h; sourceTree = "<group>"; };
+		A05266651E77D93D0087D861 /* JYProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYProgressHUD.m; sourceTree = "<group>"; };
 		A05266691E77D9480087D861 /* UIView+LoadFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadFromNib.h"; sourceTree = "<group>"; };
 		A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadFromNib.m"; sourceTree = "<group>"; };
 		A0643B351E9B17D30005785F /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -153,8 +153,6 @@
 		A0643B4B1E9B17D30005785F /* JYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhoto.m; sourceTree = "<group>"; };
 		A0643B4C1E9B17D30005785F /* JYPhotoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoData.h; sourceTree = "<group>"; };
 		A0643B4D1E9B17D30005785F /* JYPhotoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoData.m; sourceTree = "<group>"; };
-		A0643B501E9B17D30005785F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		A0643B511E9B17D30005785F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A0643B531E9B17D30005785F /* MFLBezierHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLBezierHelper.h; sourceTree = "<group>"; };
 		A0643B541E9B17D30005785F /* MFLBezierHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLBezierHelper.m; sourceTree = "<group>"; };
 		A0643B551E9B17D30005785F /* MFLHintLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLHintLabel.h; sourceTree = "<group>"; };
@@ -266,8 +264,6 @@
 		A0643C271E9B621F0005785F /* RunningRecordFundsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningRecordFundsTableViewCell.m; sourceTree = "<group>"; };
 		A0643C281E9B621F0005785F /* RunningRecordFundsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunningRecordFundsTableViewCell.xib; sourceTree = "<group>"; };
 		A0643C2B1E9B68040005785F /* RunningMembers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RunningMembers.plist; sourceTree = "<group>"; };
-		A0643C2D1E9B6BB00005785F /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
-		A0643C2E1E9B6BB00005785F /* UIViewController+Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navigation.m"; sourceTree = "<group>"; };
 		A0643C311E9B70AE0005785F /* RunningMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningMember.h; sourceTree = "<group>"; };
 		A0643C321E9B70AE0005785F /* RunningMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningMember.m; sourceTree = "<group>"; };
 		A0643C341E9B76A60005785F /* RunningWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningWeek.h; sourceTree = "<group>"; };
@@ -278,6 +274,9 @@
 		A0643C3D1E9C87920005785F /* RunningMemberManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningMemberManager.m; sourceTree = "<group>"; };
 		A0643C3F1E9C88230005785F /* RunningRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningRecordManager.h; sourceTree = "<group>"; };
 		A0643C401E9C88230005785F /* RunningRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningRecordManager.m; sourceTree = "<group>"; };
+		A0643C431E9E09DA0005785F /* MBProgressHUD+JDragon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "MBProgressHUD+JDragon.bundle"; sourceTree = "<group>"; };
+		A0643C441E9E09DA0005785F /* MBProgressHUD+JDragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JDragon.h"; sourceTree = "<group>"; };
+		A0643C451E9E09DA0005785F /* MBProgressHUD+JDragon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+JDragon.m"; sourceTree = "<group>"; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -359,8 +358,6 @@
 			children = (
 				A05266691E77D9480087D861 /* UIView+LoadFromNib.h */,
 				A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */,
-				A0643C2D1E9B6BB00005785F /* UIViewController+Navigation.h */,
-				A0643C2E1E9B6BB00005785F /* UIViewController+Navigation.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -372,8 +369,8 @@
 				A05266611E77D93D0087D861 /* OutAlertViewController.m */,
 				A05266621E77D93D0087D861 /* OutImageView.h */,
 				A05266631E77D93D0087D861 /* OutImageView.m */,
-				A05266641E77D93D0087D861 /* OutProgressHUD.h */,
-				A05266651E77D93D0087D861 /* OutProgressHUD.m */,
+				A05266641E77D93D0087D861 /* JYProgressHUD.h */,
+				A05266651E77D93D0087D861 /* JYProgressHUD.m */,
 				A0F7C2791E7A728D00BDA19F /* BaseTableView.h */,
 				A0F7C27A1E7A728D00BDA19F /* BaseTableView.m */,
 			);
@@ -383,9 +380,9 @@
 		A0643B331E9B17D30005785F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A0643C421E9E09DA0005785F /* MBProgressHUD+JDragon */,
 				A0643B341E9B17D30005785F /* AFNetworking */,
 				A0643B421E9B17D30005785F /* JYPhoto */,
-				A0643B4F1E9B17D30005785F /* MBProgressHUD */,
 				A0643B521E9B17D30005785F /* MFLHintLabel */,
 				A0643B591E9B17D30005785F /* SDWebImage */,
 			);
@@ -457,15 +454,6 @@
 			children = (
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		A0643B4F1E9B17D30005785F /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				A0643B501E9B17D30005785F /* MBProgressHUD.h */,
-				A0643B511E9B17D30005785F /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		A0643B521E9B17D30005785F /* MFLHintLabel */ = {
@@ -738,6 +726,16 @@
 			path = Caches;
 			sourceTree = "<group>";
 		};
+		A0643C421E9E09DA0005785F /* MBProgressHUD+JDragon */ = {
+			isa = PBXGroup;
+			children = (
+				A0643C431E9E09DA0005785F /* MBProgressHUD+JDragon.bundle */,
+				A0643C441E9E09DA0005785F /* MBProgressHUD+JDragon.h */,
+				A0643C451E9E09DA0005785F /* MBProgressHUD+JDragon.m */,
+			);
+			path = "MBProgressHUD+JDragon";
+			sourceTree = "<group>";
+		};
 		A067F04B1D741FFB003140D6 = {
 			isa = PBXGroup;
 			children = (
@@ -914,6 +912,7 @@
 				A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */,
 				A0643C091E9B229E0005785F /* RunningWeekViewController.xib in Resources */,
 				A0643BF71E9B17E80005785F /* WeatherViewController.xib in Resources */,
+				A0643C461E9E09DA0005785F /* MBProgressHUD+JDragon.bundle in Resources */,
 				A0643BF51E9B17E80005785F /* IMG_5840.JPG in Resources */,
 				A0643C2A1E9B621F0005785F /* RunningRecordFundsTableViewCell.xib in Resources */,
 				A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */,
@@ -997,9 +996,9 @@
 				A0643B911E9B17D30005785F /* SDWebImagePrefetcher.m in Sources */,
 				A0643BDA1E9B17E80005785F /* InputMoodViewController.m in Sources */,
 				A0643BE21E9B17E80005785F /* TargetHomeViewController.m in Sources */,
+				A0643C471E9E09DA0005785F /* MBProgressHUD+JDragon.m in Sources */,
 				A0643B881E9B17D30005785F /* UILabel+Lines.m in Sources */,
 				A0643C061E9B229E0005785F /* RunningViewController.m in Sources */,
-				A0643B851E9B17D30005785F /* MBProgressHUD.m in Sources */,
 				A0643C0E1E9B23350005785F /* RunningMemberRecordTableViewCell.m in Sources */,
 				A0643C3B1E9B79F20005785F /* RunningWeekManager.m in Sources */,
 				A0643B7C1E9B17D30005785F /* AFNetworkReachabilityManager.m in Sources */,
@@ -1027,7 +1026,7 @@
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
 				A0643B901E9B17D30005785F /* SDWebImageManager.m in Sources */,
 				A0643B951E9B17D30005785F /* UIImage+WebP.m in Sources */,
-				A05266681E77D93D0087D861 /* OutProgressHUD.m in Sources */,
+				A05266681E77D93D0087D861 /* JYProgressHUD.m in Sources */,
 				A068C3081D7929B300E844F1 /* TextViewHelper.m in Sources */,
 				A0643B841E9B17D30005785F /* JYPhotoData.m in Sources */,
 				A0643B7B1E9B17D30005785F /* AFHTTPSessionManager.m in Sources */,
@@ -1037,7 +1036,6 @@
 				A0643B8E1E9B17D30005785F /* SDWebImageDownloader.m in Sources */,
 				A0643C3E1E9C87920005785F /* RunningMemberManager.m in Sources */,
 				A0643B871E9B17D30005785F /* MFLHintLabel.m in Sources */,
-				A0643C2F1E9B6BB00005785F /* UIViewController+Navigation.m in Sources */,
 				A0643BDC1E9B17E80005785F /* OutHomeViewController.m in Sources */,
 				A0643B891E9B17D30005785F /* MKAnnotationView+WebCache.m in Sources */,
 				A0643BE61E9B17E80005785F /* TargetShowTableViewCell.m in Sources */,

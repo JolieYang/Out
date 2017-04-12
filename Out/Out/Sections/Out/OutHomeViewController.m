@@ -33,7 +33,7 @@
 #import "InputMoodViewController.h"
 #import "InputMoodPictureViewController.h"
 #import "TargetHomeViewController.h"
-#import "OutProgressHUD.h"
+#import "JYProgressHUD.h"
 #import "MFLHintLabel.h"
 #import "TextViewHelper.h"
 #import "DateHelper.h"
@@ -111,16 +111,16 @@ static CGFloat const WIND_DELAY = 37.0;
 - (IBAction)testAnimationAction:(id)sender {
     // m1
     self.otherMoodBgImage.image = nil;
-    [OutProgressHUD showIndicatorHUDWithDetailString:@"加载图片中" AddedTo:self.view animated:YES];
+    [JYProgressHUD showIndicatorHUDWithDetailString:@"加载图片中" AddedTo:self.view animated:YES];
     NSString *photoId = @"e9606c3de48098451994187379a1ccf5";
     [OutAPIManager downloadImageWithPhotoID:photoId succeed:^(UIImage *image) {
-        [OutProgressHUD hideHUDForView:self.view animated:YES];
+        [JYProgressHUD hideHUDForView:self.view animated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.otherMoodBgImage.image = image;
         });
     } failed:^(NSString *errMsg) {
         // 传进来的图片ID无效
-        [OutProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
+        [JYProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
         [self configDefaultTextView];
     }];
      
@@ -153,13 +153,13 @@ static CGFloat const WIND_DELAY = 37.0;
         [self goneWithTheWind:content TimeString:timeStr backgroundImage: nil];
         // 设置背景图片
         [OutAPIManager downloadImageWithPhotoID:photoId succeed:^(UIImage *image) {
-            [OutProgressHUD hideHUDForView:self.view animated:YES];
+            [JYProgressHUD hideHUDForView:self.view animated:YES];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.otherMoodBgImage.image = image;
             });
         } failed:^(NSString *errMsg) {
             // 传进来的图片ID无效
-            [OutProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
+            [JYProgressHUD changeToTextHUDWithDetailString:@"图片脱轨了" AddedTo:self.view];
             [self configDefaultTextView];
         }];
     } else {

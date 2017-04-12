@@ -12,24 +12,24 @@
 
 @implementation KeyedArchiverHelper
 
-+ (BOOL)addObject:(NSObject *)dataObject {
-    return [self addObject:dataObject archiverPathComponent:[self getDefaultArchiverPath]];
-}
+//+ (BOOL)addObject:(NSObject *)dataObject {
+//    return [self addObject:dataObject archiverPathComponent:[self getDefaultArchiverPath]];
+//}
 
-+ (BOOL)addObject:(NSObject *)dataObject archiverPathComponent:(NSString *)path {
-    NSMutableDictionary *dataDictionary = [NSMutableDictionary dictionary];
-    NSMutableArray *dataArray = [NSMutableArray array];
-    NSMutableDictionary *dict = [KeyedArchiverHelper dictionaryFromModel:dataObject];
-    NSMutableDictionary *existDataDictionary = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    NSMutableArray *existDataArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    if (existDataArray.count == 0) {
-        [dataArray addObject:dataObject];
-    }
-    // 向已有文件添加数据
-    
-    BOOL isSuccess = [NSKeyedArchiver archiveRootObject:dataArray toFile:path];
-    return isSuccess;
-}
+//+ (BOOL)addObject:(NSObject *)dataObject archiverPathComponent:(NSString *)path {
+//    NSMutableDictionary *dataDictionary = [NSMutableDictionary dictionary];
+//    NSMutableArray *dataArray = [NSMutableArray array];
+//    NSMutableDictionary *dict = [KeyedArchiverHelper dictionaryFromModel:dataObject];
+//    NSMutableDictionary *existDataDictionary = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+//    NSMutableArray *existDataArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+//    if (existDataArray.count == 0) {
+//        [dataArray addObject:dataObject];
+//    }
+//    // 向已有文件添加数据
+//    
+//    BOOL isSuccess = [NSKeyedArchiver archiveRootObject:dataArray toFile:path];
+//    return isSuccess;
+//}
 
 #pragma mark Tool
 + (NSMutableDictionary *)dictionaryFromModel:(NSObject *)model {

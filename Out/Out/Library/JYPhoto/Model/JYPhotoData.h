@@ -10,11 +10,11 @@
 #import "JYPhotoConfig.h"
 
 @interface JYPhotoData : NSObject
-- (NSMutableArray *)getPhotoList;
-- (PHFetchResult *)getFetchResult:(PHAssetCollection *)assetCollection;
-- (NSMutableArray *)getPhotoAssets:(PHFetchResult *)fetchResult;
-- (PHFetchResult *)getCameraRollFectchResult;
-- (void)getImageObject:(id)asset completion:(void (^)(UIImage *, NSURL *))completion;
-
-- (BOOL)isiCloudAsset:(PHAsset *)asset;
+//- (NSMutableArray *)getPhotoList;
+//- (PHFetchResult *)getFetchResult:(PHAssetCollection *)assetCollection;
+//- (NSMutableArray *)getPhotoAssets:(PHFetchResult *)fetchResult;
+//- (PHFetchResult *)getCameraRollFectchResult;
+//- (void)getImageObject:(id)asset completion:(void (^)(UIImage *, NSURL *))completion;
+//
+//- (BOOL)isiCloudAsset:(PHAsset *)asset;
 @end

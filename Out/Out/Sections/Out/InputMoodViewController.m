@@ -30,7 +30,7 @@
 // 1. 导航栏图标尺寸 58 @2x  #757575
 #import "InputMoodViewController.h"
 #import "OutAlertViewController.h"
-#import "OutProgressHUD.h"
+#import "JYProgressHUD.h"
 #import "StringHelper.h"
 #import "OutAPIManager.h"
 #import "const.h"
@@ -94,7 +94,7 @@
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
-    [OutProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
+    [JYProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
     NSString *apiName = @"mind";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:self.inputTextView.text forKey:@"content"];
@@ -102,7 +102,7 @@
     [OutAPIManager startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (_finishMoodBlock) {
-                [OutProgressHUD hideHUDForView:self.view animated:YES];
+                [JYProgressHUD hideHUDForView:self.view animated:YES];
                 _finishMoodBlock(response);
             }
             [self.navigationController popViewControllerAnimated:YES];
@@ -110,7 +110,7 @@
     } failed:^(NSString *errMsg) {
         // 弹窗显示 发布失败
         dispatch_async(dispatch_get_main_queue(), ^{
-            [OutProgressHUD changeToTextHUDWithDetailString:errMsg AddedTo:self.view];
+            [JYProgressHUD changeToTextHUDWithDetailString:errMsg AddedTo:self.view];
         });
         return ;
     }];

@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface KeyedArchiverHelper : NSObject
-+ (BOOL)addObject:(NSObject *)dataObject;
-+ (BOOL)addObject:(NSObject *)dataObject archiverPathComponent:(NSString *)path;
-
-+ (id)readKeyedArchiverData;
-+ (id)readKeyedArchiverDataWithPath:(NSString *)path;
+//+ (BOOL)addObject:(NSObject *)dataObject;
+//+ (BOOL)addObject:(NSObject *)dataObject archiverPathComponent:(NSString *)path;
+//
+//+ (id)readKeyedArchiverData;
+//+ (id)readKeyedArchiverDataWithPath:(NSString *)path;
 @end
