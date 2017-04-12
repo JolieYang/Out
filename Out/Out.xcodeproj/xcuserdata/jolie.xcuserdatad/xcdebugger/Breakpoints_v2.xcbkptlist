@@ -122,12 +122,12 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Spider/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "513593812.601877"
+                  timestampString = "513653777.926874"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "76"
                   endingLineNumber = "76"
-                  offsetFromSymbolStart = "59">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,7 +137,7 @@
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jolie/Spider/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "513593812.602011"
+                  timestampString = "513653777.926967"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"

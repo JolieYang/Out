@@ -41,7 +41,7 @@ static NSArray *fundsTitleArray = nil;
 }
 
 - (void)setupDatas {
-    fundsTitleArray = @[@"当前经费", @"上期经费", @"累计经费"];
+    fundsTitleArray = @[@"当期经费", @"上期经费", @"累计经费"];
     NSArray *recordsArray = [RunningRecordManager getRecordsWithWeekId:self.week.weekId];
     if (recordsArray.count == 0) {
         recordsArray = [RunningRecordManager addAllMembersRecordWithWeekId:self.week.weekId];
@@ -99,19 +99,21 @@ static NSArray *fundsTitleArray = nil;
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
-        return 8.0;
-    } else {
+        return 0;
+    } else if (section == 3) {
+        return 0;
+    }else {
         return 0;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 36;
+        return 28;
     } else if (indexPath.section == 1) {
-        return 36;
+        return 30;
     } else {
-        return 32;
+        return 30;
     }
 }
 
