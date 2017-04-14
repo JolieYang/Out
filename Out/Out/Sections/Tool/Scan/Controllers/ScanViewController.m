@@ -145,11 +145,11 @@ static CGFloat SCAN_HEIGHT = 0;
                                                   SCAN_HEIGHT/fixHeight,
                                                   SCAN_WIDTH/kAppWidth);
         // m2
-        CGFloat p1 = kAppHeight / kAppWidth;
-        CGFloat p2 = 1920. / 1080.;
-        CGFloat fixWidth = kAppWidth * p1 / p2;
-        CGFloat padding = (fixWidth - kAppWidth)/2;// 为负值
-        CGRect myRect =  CGRectMake(0, (fixWidth - SCAN_X - SCAN_WIDTH - padding)/fixWidth, SCAN_HEIGHT/kAppHeight+0.3, SCAN_WIDTH/fixWidth);
+//        CGFloat p1 = kAppHeight / kAppWidth;
+//        CGFloat p2 = 1920. / 1080.;
+//        CGFloat fixWidth = kAppWidth * p1 / p2;
+//        CGFloat padding = (fixWidth - kAppWidth)/2;// 为负值
+//        CGRect myRect =  CGRectMake(0, (fixWidth - SCAN_X - SCAN_WIDTH - padding)/fixWidth, SCAN_HEIGHT/kAppHeight+0.3, SCAN_WIDTH/fixWidth);
 //        _output.rectOfInterest = myRect;
         NSLog(@"selfset:%@", NSStringFromCGRect(_output.rectOfInterest));
     } else if (_session.sessionPreset == AVCaptureSessionPreset640x480) {

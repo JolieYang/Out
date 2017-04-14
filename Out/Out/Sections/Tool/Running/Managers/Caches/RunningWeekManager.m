@@ -9,6 +9,7 @@
 
 #import "RunningWeekManager.h"
 #import "RunningWeek.h"
+#import "DateHelper.h"
 
 #define NSTimeStringFromJolie @"2017-04-03"
 #define SumContributionFromJolie 2640
@@ -24,7 +25,7 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
     RunningWeek *lastRecord = [self getRecentWeekRecord];
     if (!lastRecord) {
         // 无记录，添加新纪录
-        NSDateComponents *dateComponents = [self dateComponentsFromTimeInterval:timeIntervalFromJolie + WeekInterval/2];
+        NSDateComponents *dateComponents = [DateHelper dateComponentsFromTimeInterval:timeIntervalFromJolie + WeekInterval/2];
         
         RunningWeek *newRecord = [[RunningWeek alloc] init];
         newRecord.fromUnix = timeIntervalFromJolie;
@@ -39,10 +40,10 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
         lastRecord = newRecord;
     }
     
-    NSTimeInterval currentTimeInterval = [self getCurrentTimeInterval];
+    NSTimeInterval currentTimeInterval = [DateHelper getCurrentTimeInterval];
     // 判断当前时间是否超过endUnix，超过才可添加新纪录
     while (lastRecord.endUnix < currentTimeInterval) {
-        NSDateComponents *currentDateComponents = [self currentDateComponents];
+        NSDateComponents *currentDateComponents = [DateHelper currentDateComponents];
         RunningWeek *newRecord = [[RunningWeek alloc] init];
         newRecord.fromUnix = lastRecord.endUnix + 1;
         newRecord.endUnix = newRecord.fromUnix + WeekInterval;
@@ -115,38 +116,6 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
         }
     }
     return weekRecord;
-}
-
-#pragma mark Date Tool
-+ (NSDateComponents *)dateComponentsFromTimeInterval:(NSTimeInterval)timeInterval {
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-    return [self customComponentsFromDate:date];
-}
-
-+ (NSDateComponents *)currentDateComponents {
-    return [self customComponentsFromDate:[NSDate date]];
-}
-
-+ (NSDateComponents *)customComponentsFromDate:(NSDate *)date {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfMonth fromDate:date];
-    return dateComponents;
-}
-
-+ (NSTimeInterval)getCurrentTimeInterval {
-    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
-    return timeInterval;
-}
-
-+ (void)timeIntervalFromDateStr:(NSString *)dateString {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd"];
-    
-    NSDate *date = [df dateFromString:NSTimeStringFromJolie];
-    NSTimeInterval timeInterval = [date timeIntervalSince1970];
-    
-    NSLog(@"timeInterval:%f", timeInterval);
 }
 
 @end

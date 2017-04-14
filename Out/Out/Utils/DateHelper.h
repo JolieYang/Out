@@ -8,7 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#define DayInterval 24*60*60
+
 @interface DateHelper : NSObject
+// Base
++ (NSTimeInterval)getCurrentTimeInterval;
++ (NSTimeInterval)getTodayTimeInterval;
++ (NSTimeInterval)timeIntervalFromDateStr:(NSString *)dateString dateFormat:(NSString *)dateFormat;
++ (NSString *)dateStringFromTimeInterval:(NSTimeInterval)timeInterval dateFormat:(NSString *)dateFormat;
+
++ (NSDateComponents *)dateComponentsFromTimeInterval:(NSTimeInterval)timeInterval;
++ (NSDateComponents *)currentDateComponents;
+// 汉化
 + (NSString *)customeDateStr:(NSString *)timeStr;
 
 + (NSString *)chineseWithArabString:(NSString *)arabStr;

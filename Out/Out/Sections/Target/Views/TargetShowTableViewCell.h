@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TargetShowModel.h"
+@class Target;
 
 @interface TargetShowTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *insistDaysLabel;
@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 + (instancetype)reusableCellWithTableView:(UITableView *)tableView;
-@property (nonatomic, strong) TargetShowModel *dataModel;
+@property (nonatomic, strong) Target *dataModel;
 @end

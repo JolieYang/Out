@@ -10,7 +10,59 @@
 
 #import "DateHelper.h"
 
+
+
 @implementation DateHelper
+
+#pragma mark -- Base
++ (NSTimeInterval)getCurrentTimeInterval {
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+    return timeInterval;
+}
++ (NSTimeInterval)getTodayTimeInterval {
+    NSString *dateFormat = @"yyyy-MM-dd";
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:dateFormat];
+    NSString *dateString = [df stringFromDate:nowDate];
+    return [self timeIntervalFromDateStr:dateString dateFormat:dateFormat];
+}
+
++ (NSTimeInterval)timeIntervalFromDateStr:(NSString *)dateString dateFormat:(NSString *)dateFormat {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:dateFormat];
+    
+    NSDate *date = [df dateFromString:dateString];
+    NSTimeInterval timeInterval = [date timeIntervalSince1970];
+    
+    return timeInterval;
+}
+
++ (NSString *)dateStringFromTimeInterval:(NSTimeInterval)timeInterval dateFormat:(NSString *)dateFormat {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:dateFormat];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSString *dateString = [df stringFromDate:date];
+    return dateString;
+    
+}
++ (NSDateComponents *)dateComponentsFromTimeInterval:(NSTimeInterval)timeInterval {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    return [self defaultComponentsFromDate:date];
+}
+
++ (NSDateComponents *)currentDateComponents {
+    return [self defaultComponentsFromDate:[NSDate date]];
+}
+// 年，月
++ (NSDateComponents *)defaultComponentsFromDate:(NSDate *)date {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfMonth fromDate:date];
+    return dateComponents;
+}
+
+#pragma 年月日转汉语
 + (NSString *)customeDateStr:(NSString *)timeStr {
     NSString *customeStr = [timeStr substringToIndex:10];
     

@@ -7,14 +7,16 @@
 //
 
 #import "TargetHomeViewController.h"
+#import "TargetAddRecordViewController.h"
 #import "TargetShowTableViewCell.h"
 #import "TargetAddViewController.h"
 #import "UIView+LoadFromNib.h"
-#import "TargetShowModel.h"
+#import "TargetManager.h"
+#import "Target.h"
 
 @interface TargetHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray<TargetShowModel *> *dataArray;
+@property (nonatomic, strong) NSMutableArray<Target *> *targetList;
 @end
 
 @implementation TargetHomeViewController
@@ -37,12 +39,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)setupData {
-    TargetShowModel *model = [[TargetShowModel alloc] init];
-    model.targetName = @"瑜伽";
-    model.insistHours = @"17";
-    model.insistDays = @"1";
-    model.beginTime = @"2017年3月7日";
-    self.dataArray = [NSMutableArray arrayWithObject:model];
+    self.targetList = [NSMutableArray arrayWithArray:[TargetManager getTargetList]];
+    NSLog(@"haha");
 }
 
 - (void)setupViews {
@@ -69,8 +67,8 @@
 
 - (void)jumpToTargetAddVC {
     TargetAddViewController *vc = [TargetAddViewController new];
-    vc.successAddTargetBlock = ^(TargetShowModel *newData) {
-        [self.dataArray addObject:newData];
+    vc.successAddTargetBlock = ^(Target *newData) {
+        [self.targetList addObject:newData];
     };
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
@@ -82,6 +80,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 82;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TargetAddRecordViewController *addRecordVC = [[TargetAddRecordViewController alloc] init];
+    addRecordVC.hidesBottomBarWhenPushed = YES;
+    addRecordVC.target = self.targetList[indexPath.row];
+    addRecordVC.updateTargetBlock = ^(Target *target) {
+        self.targetList[indexPath.row] = target;
+    };
+    [self.navigationController pushViewController:addRecordVC animated:YES];
+}
 
 #pragma mark UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,7 +97,7 @@
     if (!cell) {
         cell = [TargetShowTableViewCell loadFromNib];
     }
-    cell.dataModel = self.dataArray[indexPath.section];
+    cell.dataModel = self.targetList[indexPath.section];
     
     return cell;
 }
@@ -99,6 +106,6 @@
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataArray.count;
+    return self.targetList.count;
 }
 @end

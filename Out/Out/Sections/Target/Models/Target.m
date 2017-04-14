@@ -6,15 +6,15 @@
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
 //
 
-#import "GYTarget.h"
+#import "Target.h"
 
-@implementation GYTarget
+@implementation Target
 + (NSString *)dbName {
-    return @"Target";
+    return @"TargetDB";
 }
 
 + (NSString *)tableName {
-    return @"GYTarget";
+    return @"Target";
 }
 
 + (NSString *)primaryKey {
@@ -27,9 +27,12 @@
                       @"targetId",
                       @"targetName",
                       @"fromUnix",
+                      @"updateUnix",
                       @"insistDays",
                       @"insistHours",
-                      @"iconName"
+                      @"iconName",
+                      @"status",
+                      @"remarks"
                       ];
     }
     return propertis;

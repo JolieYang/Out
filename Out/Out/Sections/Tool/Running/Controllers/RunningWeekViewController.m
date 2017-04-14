@@ -69,7 +69,6 @@ static NSArray *fundsTitleArray = nil;
 - (BOOL)sreenShotTableView {
     UIImage* image = nil;
     UIGraphicsBeginImageContext(self.tableView.contentSize);
-//    UIGraphicsBeginImageContextWithOptions(self.tableView.contentSize, YES, 0.0);
     
     //保存tableView当前的偏移量
     CGPoint savedContentOffset = self.tableView.contentOffset;

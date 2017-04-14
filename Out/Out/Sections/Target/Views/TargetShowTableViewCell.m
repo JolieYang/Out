@@ -7,6 +7,8 @@
 //
 
 #import "TargetShowTableViewCell.h"
+#import "Target.h"
+#import "DateHelper.h"
 
 @implementation TargetShowTableViewCell
 + (instancetype)reusableCellWithTableView:(UITableView *)tableView {
@@ -29,14 +31,16 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)setDataModel:(TargetShowModel *)dataModel {
-    self.insistDaysLabel.text = [NSString stringWithFormat:@"坚持了%@天", dataModel.insistDays==nil?@"0":dataModel.insistDays];
-    self.insistHoursLabel.text = dataModel.insistHours==nil?@"0":dataModel.insistHours;
-    self.beginTimeLabel.text = [NSString stringWithFormat:@"从%@", dataModel.beginTime];
-    self.targetNameLabel.text = dataModel.targetName;
-    if (dataModel.iconName) {
-        self.iconImageView.image = [UIImage imageNamed:dataModel.iconName];
+- (void)setDataModel:(Target *)dataModel {
+    if (dataModel.status == 0) {
+        self.insistDaysLabel.text = @"尚未开始";
+        self.insistHoursLabel.text = @"0";
+    } else {
+        self.insistDaysLabel.text = [NSString stringWithFormat:@"坚持了%ld天", (long)dataModel.insistDays];
+        self.insistHoursLabel.text = [NSString stringWithFormat:@"%.1f", dataModel.insistHours];
     }
+    self.beginTimeLabel.text = [DateHelper dateStringFromTimeInterval: dataModel.fromUnix dateFormat:@"从yyyy年MM月dd日"];
+    self.targetNameLabel.text = dataModel.targetName;
     self.iconImageView.image = dataModel.iconName == nil?Default_Image: [UIImage imageNamed:dataModel.iconName];
 }
 

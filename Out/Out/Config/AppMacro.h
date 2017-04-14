@@ -44,6 +44,7 @@
 #define Alipay_Bg UIColorFromRGB(0xEBEEEC)
 #define Table_Bg UIColorFromRGB(0xF1F3F5)
 #define App_Bg Alipay_Bg
+#define PlaceHolder_Gray UIColorFromRGB(0xBAB9BF)
 
 #define Running_Record_Not_Achieve UIColorFromRGB(0xFFFE3C)
 #define Running_Record_Take_Leave UIColorFromRGB(0x62A14E)

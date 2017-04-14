@@ -77,7 +77,7 @@ static NSArray *TOOL_TTTLE = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    cell.imageView.image = [UIImage imageNamed:@"tool_icon_01"];
+    cell.imageView.image = [UIImage imageNamed:@"tab_icon_01_normal"];
     cell.textLabel.text = TOOL_TTTLE[indexPath.section][indexPath.row];
     
     return cell;

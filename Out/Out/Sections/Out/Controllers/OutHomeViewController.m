@@ -76,15 +76,6 @@ static CGFloat const WIND_DELAY = 37.0;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 #pragma mark Action
-// Target入口
-- (IBAction)targetAction:(id)sender {
-    UIStoryboard *targetSB = [UIStoryboard storyboardWithName:@"Target" bundle:nil];
-    TargetHomeViewController *targetHomeVC = [targetSB instantiateViewControllerWithIdentifier:@"TargetHomeViewController"];
-    [self.navigationController pushViewController:targetHomeVC animated:YES];
-//    AppDelegate *pDelegate = [UIApplication sharedApplication].delegate;
-//    pDelegate.window.rootViewController = targetHomeVC;
-}
-
 // 生辰式编辑器
 - (IBAction)inputMoodAction:(id)sender {
     InputMoodViewController *inputMoodVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"InputMoodViewController"];
@@ -199,7 +190,6 @@ static CGFloat const WIND_DELAY = 37.0;
 //    CGFloat deadSpace = [self.otherMoodTextView bounds].size.height -  [TextViewHelper heightForTextView:self.otherMoodTextView];
     CGFloat deadSpace = [[UIScreen mainScreen] bounds].size.width -  [TextViewHelper heightForTextView:self.otherMoodTextView];
 //    CGFloat inset = MAX(30, deadSpace/2.0-20.0);
-    NSLog(@"rose show:%f %f %f", [[UIScreen mainScreen] bounds].size.width, [self.otherMoodTextView bounds].size.height, [TextViewHelper heightForTextView:self.otherMoodTextView]);
     CGFloat inset = MAX(30, deadSpace/2.0);
     CGFloat leadingInset = 30;
     [self.otherMoodTextView setTextContainerInset:UIEdgeInsetsMake(inset, leadingInset, inset, leadingInset)];

@@ -10,6 +10,9 @@
 #import "TargetAddViewController.h"
 #import "TargetAddTableViewCell.h"
 #import "UIView+LoadFromNib.h"
+#import "Target.h"
+#import "TargetManager.h"
+#import "DateHelper.h"
 
 @interface TargetAddViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSString *targetName;
@@ -29,6 +32,9 @@
     [self addDoneNavigationItem];
     [self disableDoneBtn];
     [self becomeFirstResponder];
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 - (void)setupViews {
@@ -50,8 +56,9 @@
 - (void)doneItemAction {
     // 添加项目
     if (self.successAddTargetBlock) {
-        self.successAddTargetBlock([self addedTargetModel]);
+        self.successAddTargetBlock([self addedTarget]);
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,11 +80,7 @@
         firstCell.iconImageView.image = Default_Image;
         firstCell.inputTextField.returnKeyType = UIReturnKeyDone;
         firstCell.textFieldReturnBlock = ^(NSString *text) {
-            // 成功添加项目
-            if (self.successAddTargetBlock) {
-                self.successAddTargetBlock([self addedTargetModel]);
-            }
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.view endEditing:YES];
         };
         firstCell.textFieldDidChangeBlock = ^(NSString *text) {
             self.targetName = text;
@@ -98,15 +101,8 @@
     return cell;
 }
 
-- (TargetShowModel *)addedTargetModel {
-    TargetShowModel *model = [TargetShowModel new];
-    model.targetName = self.targetName;
-    model.insistHours = 0;
-    model.insistDays = 0;
-    model.beginTime = @"";
-    model.iconName = nil;
-   
-    return model;
+- (Target *)addedTarget {
+    return [TargetManager addTargetWithTargetName:self.targetName createUnix:[DateHelper getCurrentTimeInterval]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
