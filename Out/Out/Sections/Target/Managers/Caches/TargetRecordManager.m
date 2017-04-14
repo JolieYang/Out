@@ -34,8 +34,8 @@
 
 + (BOOL)existRecordOnTodayWithTargetId:(NSInteger)targetId {
     NSTimeInterval todayInterval = [DateHelper getTodayTimeInterval];
-    NSString *whereSql = @"WHERE recordUnix > ? AND recordUnix < ?";
-    NSArray *arguments = @[[NSNumber numberWithFloat:todayInterval], [NSNumber numberWithFloat:todayInterval + DayInterval]];
+    NSString *whereSql = @"WHERE recordUnix > ? AND recordUnix < ? AND targetId = ?";
+    NSArray *arguments = @[[NSNumber numberWithFloat:todayInterval], [NSNumber numberWithFloat:todayInterval + DayInterval], [NSNumber numberWithInteger:targetId]];
     NSArray *record = [TargetRecord objectsWhere:whereSql arguments:arguments];
     if (record.count > 0) {
         return YES;
