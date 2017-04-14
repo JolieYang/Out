@@ -64,6 +64,7 @@
     if (self.updateTargetBlock) {
         self.updateTargetBlock(self.target);
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)enabledRightItem:(BOOL)enabled {

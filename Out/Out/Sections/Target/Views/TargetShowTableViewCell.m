@@ -32,7 +32,7 @@
 }
 
 - (void)setDataModel:(Target *)dataModel {
-    if (dataModel.status == 0) {
+    if (dataModel.insistHours == 0) {
         self.insistDaysLabel.text = @"尚未开始";
         self.insistHoursLabel.text = @"0";
     } else {
