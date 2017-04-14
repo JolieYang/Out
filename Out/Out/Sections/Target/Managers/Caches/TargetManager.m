@@ -28,8 +28,9 @@
 + (Target *)addTargetWithTargetName:(NSString *)targetName IconName:(NSString *)iconName {
     Target *target = [[Target alloc] init];
     target.targetName = targetName;
-    target.fromUnix = [DateHelper getCurrentTimeInterval];
-    
+    target.createUnix = [DateHelper getCurrentTimeInterval];
+    target.iconName = iconName;
+    [target save];
     
     return target;
 }
@@ -56,5 +57,10 @@
 #pragma mark -- U
 
 #pragma mark -- D
++ (void)deleteAllTargets {
+    NSString *whereSql = @"WHERE targetId > ?";
+    NSArray *arguments = @[[NSNumber numberWithInt:0]];
+    [Target deleteObjectsWhere:whereSql arguments:arguments];
+}
 
 @end

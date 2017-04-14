@@ -26,7 +26,9 @@
         propertis = @[
                       @"targetId",
                       @"targetName",
+                      @"createUnix",
                       @"fromUnix",
+                      @"endUnix",
                       @"updateUnix",
                       @"insistDays",
                       @"insistHours",

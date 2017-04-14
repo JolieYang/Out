@@ -34,7 +34,8 @@
 
 // 颜色
 #define White UIColorFromRGB(0xFFF)
-#define System_Black UIColorFromRGB(0x28292B)
+#define System_Black UIColorFromRGB(0x28292B)// 导航栏设置该颜色，渲染后的颜色为Navigation_Black
+#define Navigation_Black UIColorFromRGB(0x474749)
 #define System_White UIColorFromRGB(0xECECED)
 #define Apple_Gold UIColorFromRGB(0xD2C2AC)
 #define Apple_Silver UIColorFromRGB(0xD5D5D8)

@@ -14,20 +14,20 @@
 
 @implementation TargetRecordManager
 + (Target *)addTargetRecordAndReturnTargetWithTarget:(Target *)target insistHours:(float)insistHours log:(NSString *)log {
-    TargetRecord *record = [[TargetRecord alloc] init];
-    record.targetId = target.targetId;
-    record.addUnix = [DateHelper getCurrentTimeInterval];
-    record.recordUnix = [DateHelper getCurrentTimeInterval];// ps: todo
-    record.insistHours = insistHours;
-    record.log = log;
-    [record save];
-    
-    target.updateUnix= record.addUnix;
-    target.insistHours += record.insistHours;
+    target.updateUnix = [DateHelper getCurrentTimeInterval];
+    target.insistHours += insistHours;
     if (![self existRecordOnTodayWithTargetId:target.targetId]) {
         target.insistDays += 1;
     }
     [target save];
+    
+    TargetRecord *record = [[TargetRecord alloc] init];
+    record.targetId = target.targetId;
+    record.addUnix = target.updateUnix;
+    record.recordUnix = target.updateUnix;// ps: todo
+    record.insistHours = insistHours;
+    record.log = log;
+    [record save];
     
     return target;
 }
@@ -43,5 +43,11 @@
         return NO;
     }
     
+}
+
++ (void)deleteAllTargetRecord {
+    NSString *whereSql = @"WHERE recordId > ?";
+    NSArray *arguments = @[[NSNumber numberWithInt:0]];
+    [Target deleteObjectsWhere:whereSql arguments:arguments];
 }
 @end

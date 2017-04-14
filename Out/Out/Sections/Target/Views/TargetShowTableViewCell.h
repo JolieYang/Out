@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *beginTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *targetNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UIView *hoursBgLabel;
 
 + (instancetype)reusableCellWithTableView:(UITableView *)tableView;
 @property (nonatomic, strong) Target *dataModel;

@@ -141,6 +141,7 @@
 - (void)showHourMinutePickerView {
     if (!dateTimePickerView) {
         dateTimePickerView = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerHourMinuteMode defaultDateTime:[[NSDate alloc]initWithTimeIntervalSinceNow:0]];
+        dateTimePickerView.topViewColor = Navigation_Black;
     }
     __weak typeof(self) weakSelf = self;
     dateTimePickerView.clickedOkBtn = ^(NSString *datetimeStr) {// 00:38
@@ -148,7 +149,7 @@
         NSArray *array = [datetimeStr componentsSeparatedByString:@":"];
         NSInteger hour = [array[0] integerValue];
         NSInteger minute = [array[1] integerValue];
-        weakSelf.insistHours = [[NSString stringWithFormat:@"%.1f", (float)(hour+minute/60)] floatValue];
+        weakSelf.insistHours = [[NSString stringWithFormat:@"%.1f",(hour+(float)minute/60)] floatValue];
         if (weakSelf.insistHours > 0) {
             // 才可添加纪录
             [weakSelf enabledRightItem:YES];

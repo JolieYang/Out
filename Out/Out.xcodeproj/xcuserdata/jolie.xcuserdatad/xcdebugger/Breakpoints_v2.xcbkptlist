@@ -121,13 +121,13 @@
                   symbolName = "__44+[OutAPIManager uploadImage:succeed:failed:]_block_invoke.79"
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jolie/Spider/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "513853200.184646"
+                  urlString = "file:///Users/jolie/Developer/Out/Out/Out/NetService/OutAPIManager.m"
+                  timestampString = "513880115.412234"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "76"
                   endingLineNumber = "76"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "59">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -136,8 +136,8 @@
                   symbolName = "__44+[OutAPIManager uploadImage:succeed:failed:]_block_invoke_2"
                   moduleName = "Out"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jolie/Spider/Out/Out/Out/NetService/OutAPIManager.m"
-                  timestampString = "513853200.184757"
+                  urlString = "file:///Users/jolie/Developer/Out/Out/Out/NetService/OutAPIManager.m"
+                  timestampString = "513880115.412355"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"

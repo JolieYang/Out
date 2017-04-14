@@ -17,11 +17,13 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] firstObject];
     }
     
+    
     return cell;
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.hoursBgLabel.backgroundColor = Apple_Gold;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,7 +41,7 @@
         self.insistDaysLabel.text = [NSString stringWithFormat:@"坚持了%ld天", (long)dataModel.insistDays];
         self.insistHoursLabel.text = [NSString stringWithFormat:@"%.1f", dataModel.insistHours];
     }
-    self.beginTimeLabel.text = [DateHelper dateStringFromTimeInterval: dataModel.fromUnix dateFormat:@"从yyyy年MM月dd日"];
+    self.beginTimeLabel.text = [DateHelper dateStringFromTimeInterval: dataModel.createUnix dateFormat:@"从yyyy年MM月dd日"];
     self.targetNameLabel.text = dataModel.targetName;
     self.iconImageView.image = dataModel.iconName == nil?Default_Image: [UIImage imageNamed:dataModel.iconName];
 }

@@ -15,6 +15,6 @@
 
 + (NSArray *)getTargetList;
 + (Target *)getTargetWithTargetId:(NSInteger)targetId;
-
++ (void)deleteAllTargets;
 
 @end

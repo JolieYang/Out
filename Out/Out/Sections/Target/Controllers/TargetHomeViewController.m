@@ -13,6 +13,7 @@
 #import "UIView+LoadFromNib.h"
 #import "TargetManager.h"
 #import "Target.h"
+#import "TargetRecordManager.h"
 
 @interface TargetHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -83,9 +84,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TargetAddRecordViewController *addRecordVC = [[TargetAddRecordViewController alloc] init];
     addRecordVC.hidesBottomBarWhenPushed = YES;
-    addRecordVC.target = self.targetList[indexPath.row];
+    addRecordVC.target = self.targetList[indexPath.section];
     addRecordVC.updateTargetBlock = ^(Target *target) {
-        self.targetList[indexPath.row] = target;
+        self.targetList[indexPath.section] = target;
     };
     [self.navigationController pushViewController:addRecordVC animated:YES];
 }
