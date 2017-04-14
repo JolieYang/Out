@@ -10,7 +10,6 @@
 #import "ScanViewController.h"
 #import "ScanDemoViewController.h"
 #import "ScanResultViewController.h"
-#import "WeatherViewController.h"
 #import "RunningViewController.h"
 
 @interface ToolHomeViewController ()<UITableViewDelegate, UITableViewDataSource>

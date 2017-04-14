@@ -5,6 +5,7 @@
 //  Created by Jolie_Yang on 2017/4/10.
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
 //
+//  Log-- v0.1 本地缓存；防键盘遮挡；--20170412
 
 #import "RunningViewController.h"
 #import "RunningWeekViewController.h"

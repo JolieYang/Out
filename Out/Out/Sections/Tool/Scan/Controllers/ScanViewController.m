@@ -18,6 +18,7 @@
 @property (strong,nonatomic)AVCaptureDevice *device; // 捕捉设备
 @property (strong,nonatomic)AVCaptureDeviceInput *input;
 @property (strong,nonatomic)AVCaptureMetadataOutput *output;
+@property (nonatomic, strong) AVCaptureStillImageOutput *imageOutput;
 @property (strong,nonatomic)AVCaptureSession *session;
 @property (strong,nonatomic)AVCaptureVideoPreviewLayer *preview;
 @property (weak, nonatomic) IBOutlet UIImageView *scanBox;
@@ -108,32 +109,20 @@ static CGFloat SCAN_HEIGHT = 0;
     
     // 条码类型 AVMetadataObjectTypeQRCode二维码
     // 一定要先设置会话的输出为output之后，再指定输出的元数据类型！
-//    _output.metadataObjectTypes = [NSArray arrayWithObjects:
-//                                   AVMetadataObjectTypeEAN13Code,
-//                                   AVMetadataObjectTypeEAN8Code,
-//                                   AVMetadataObjectTypeCode128Code,
-//                                   AVMetadataObjectTypeQRCode,
-//                                   nil];
-    _output.metadataObjectTypes = [self.output availableMetadataObjectTypes];
-    // 设置识别范围
-    if (_session.sessionPreset == AVCaptureSessionPreset1920x1080) {
-        CGFloat p1 = kAppHeight / kAppWidth;
-        CGFloat p2 = 1920. / 1080.;
-        if (p1 < p2) {
-            CGFloat fixHeight = kAppWidth * p2;
-            CGFloat fixHeightPadding = (fixHeight - kAppHeight) / 2;
-//            _output.rectOfInterest = CGRectMake((SCAN_Y + fixHeightPadding)/fixHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/fixHeight, SCAN_WIDTH/kAppWidth);
-        }
-    } else {
-//        _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
-        
-    }
+    _output.metadataObjectTypes = [NSArray arrayWithObjects:
+                                   AVMetadataObjectTypeEAN13Code,
+                                   AVMetadataObjectTypeEAN8Code,
+                                   AVMetadataObjectTypeCode128Code,
+                                   AVMetadataObjectTypeQRCode,
+                                   nil];
+//    _output.metadataObjectTypes = [self.output availableMetadataObjectTypes];
+
     //    AVCaptureDeviceFormat
     // 预览图层
     if (!_preview) {
         _preview =[AVCaptureVideoPreviewLayer layerWithSession:self.session];
         _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        _preview.frame = self.view.frame;
+        _preview.frame = self.view.layer.bounds;
         [self.view.layer insertSublayer:self.preview atIndex:0];
     }
     
@@ -141,10 +130,38 @@ static CGFloat SCAN_HEIGHT = 0;
                                                       object:nil
                                                        queue:[NSOperationQueue currentQueue]
                                                   usingBlock: ^(NSNotification *_Nonnull note) {
-                                                      AVCaptureMetadataOutput *output = self.session.outputs.firstObject;
-                                                      _output.rectOfInterest = CGRectMake(SCAN_Y/kAppHeight, SCAN_X/kAppWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/kAppWidth);
-                                                      
+                                                      _output = self.session.outputs.firstObject;
+//                                                      CGRect metadataRect = [_preview metadataOutputRectOfInterestForRect:CGRectMake(SCAN_X, SCAN_Y, SCAN_WIDTH, SCAN_HEIGHT)];
+//                                                      NSLog(@"meta:%@", NSStringFromCGRect(metadataRect));
                                                   }];
+    
+    // 设置识别范围
+    if (_session.sessionPreset == AVCaptureSessionPreset1920x1080) {
+        // m1
+        CGFloat fixHeight = kAppWidth * 1920. / 1080.;
+        CGFloat fixPadding = (fixHeight - kAppHeight)/2;
+        _output.rectOfInterest = CGRectMake((SCAN_Y + fixPadding)/fixHeight,
+                                                  SCAN_X/kAppWidth,
+                                                  SCAN_HEIGHT/fixHeight,
+                                                  SCAN_WIDTH/kAppWidth);
+        // m2
+        CGFloat p1 = kAppHeight / kAppWidth;
+        CGFloat p2 = 1920. / 1080.;
+        CGFloat fixWidth = kAppWidth * p1 / p2;
+        CGFloat padding = (fixWidth - kAppWidth)/2;// 为负值
+        CGRect myRect =  CGRectMake(0, (fixWidth - SCAN_X - SCAN_WIDTH - padding)/fixWidth, SCAN_HEIGHT/kAppHeight+0.3, SCAN_WIDTH/fixWidth);
+//        _output.rectOfInterest = myRect;
+        NSLog(@"selfset:%@", NSStringFromCGRect(_output.rectOfInterest));
+    } else if (_session.sessionPreset == AVCaptureSessionPreset640x480) {
+        CGFloat p1 = kAppHeight / kAppWidth;
+        CGFloat p2 = 640 / 480.;
+        CGFloat fixWidth = kAppWidth * p1 / p2;
+        CGFloat padding = (fixWidth - kAppWidth)/2;// 为负值
+//        CGRect myRect =  CGRectMake(SCAN_Y/kAppHeight, (fixWidth - SCAN_X - SCAN_WIDTH - padding)/fixWidth, SCAN_HEIGHT/kAppHeight, SCAN_WIDTH/fixWidth);
+        CGRect myRect =  CGRectMake(SCAN_Y/kAppHeight/2, (fixWidth - SCAN_X - SCAN_WIDTH - padding)/fixWidth, SCAN_HEIGHT/kAppHeight+SCAN_Y/kAppHeight, SCAN_WIDTH/fixWidth);
+        _output.rectOfInterest = myRect;
+        NSLog(@"selfset:%@", NSStringFromCGRect(myRect));
+    }
     
     [_session startRunning];
     
@@ -194,12 +211,13 @@ static CGFloat SCAN_HEIGHT = 0;
     
     // 判断是否有数据
     if ([metadataObjects count] >0) {
-        [self stopScan];
-        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
-        stringValue = metadataObject.stringValue;
-        ScanResultViewController *vc = [ScanResultViewController new];
-        vc.resultString = stringValue;
-        [self.navigationController pushViewController:vc animated:YES];
+        [JYProgressHUD showTextHUDWithDetailString:@"识别" AddedTo:self.view];
+//        [self stopScan];
+//        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
+//        stringValue = metadataObject.stringValue;
+//        ScanResultViewController *vc = [ScanResultViewController new];
+//        vc.resultString = stringValue;
+//        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {
