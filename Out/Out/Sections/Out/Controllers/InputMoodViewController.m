@@ -124,9 +124,7 @@
     NSLog(@"textView:%@ newText:%@", textView.text, newText);
     NSString *text = [textView.text copy];
     text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    // m--取巧
-//    int length = [StringHelper length:textView.text] - (floor)([StringHelper length:newText]/2.0);
-    int length = [StringHelper length:text];
+    int length = (int)[StringHelper length:text];
     if (length > 100) {
         NSString *limitStr = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:limitStr];

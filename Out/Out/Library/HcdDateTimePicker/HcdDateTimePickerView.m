@@ -322,7 +322,14 @@
         hourScrollView = [[MXSCycleScrollView alloc] initWithFrame:CGRectMake(kScreen_Width*0.64, kTopViewHeight, kScreen_Width*0.18, kTimeBroadcastViewHeight)];
     }
     
-    self.curHour = [self setNowTimeShow:3];
+    // change by Jolie
+//    self.curHour = [self setNowTimeShow:3];
+//    [hourScrollView setCurrentSelectPage:(self.curHour-2)];
+    if (self.datePickerMode == DatePickerHourMinuteMode) {
+        self.curHour = 0;
+    } else {
+        self.curHour = [self setNowTimeShow:3];
+    }
     [hourScrollView setCurrentSelectPage:(self.curHour-2)];
     hourScrollView.delegate = self;
     hourScrollView.datasource = self;
@@ -342,8 +349,11 @@
         minuteScrollView = [[MXSCycleScrollView alloc] initWithFrame:CGRectMake(kScreen_Width*0.82, kTopViewHeight, kScreen_Width*0.18, kTimeBroadcastViewHeight)];
     }
     
-    self.curMin = [self setNowTimeShow:4];
-    [minuteScrollView setCurrentSelectPage:(self.curMin-2)];
+    // change by Jolie
+//    self.curMin = [self setNowTimeShow:4];
+//    [minuteScrollView setCurrentSelectPage:(self.curMin-2)];
+    self.curMin = 6 * Minute_Interval;
+    [minuteScrollView setCurrentSelectPage:(self.curMin/Minute_Interval - 2)];
     minuteScrollView.delegate = self;
     minuteScrollView.datasource = self;
     [self setAfterScrollShowView:minuteScrollView andCurrentPage:1];
@@ -427,7 +437,9 @@
     }
     else if (scrollView == minuteScrollView)
     {
-        return 60;
+//        return 60;
+        // change by Jolie
+        return 60/Minute_Interval + 1;
     }
     return 60;
 }
@@ -457,11 +469,14 @@
     }
     else if (scrollView == minuteScrollView)
     {
-        if (index < 10) {
-            l.text = [NSString stringWithFormat:@"0%ld分",(long)index];
-        }
-        else
-            l.text = [NSString stringWithFormat:@"%ld分",(long)index];
+//        if (index < 10) {
+//            l.text = [NSString stringWithFormat:@"0%ld分",(long)index];
+//        }
+//        else
+//            l.text = [NSString stringWithFormat:@"%ld分",(long)index];
+        // change by Jolie
+        l.tag = index * Minute_Interval;
+        l.text = [NSString stringWithFormat:@"%ld分", (long)l.tag];
     }
     else
         if (index < 10) {
@@ -577,7 +592,13 @@
     self.curMonth = monthLabel.tag;
     self.curDay = dayLabel.tag;
     self.curHour = hourLabel.tag - 1;
-    self.curMin = minuteLabel.tag - 1;
+    // change by Jolie
+//    self.curMin = minuteLabel.tag - 1;
+    if (self.datePickerMode == DatePickerHourMinuteMode) {
+        self.curMin = minuteLabel.tag;
+    } else {
+        self.curMin = minuteLabel.tag - 1;
+    }
     self.curSecond = secondLabel.tag - 1;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

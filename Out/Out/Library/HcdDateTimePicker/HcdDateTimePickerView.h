@@ -23,6 +23,8 @@
 
 #define kScaleFrom_iPhone5_Desgin(_X_) (_X_ * (kScreen_Width/320))
 
+#define Minute_Interval 5
+
 #import <UIKit/UIKit.h>
 #import "MXSCycleScrollView.h"
 
