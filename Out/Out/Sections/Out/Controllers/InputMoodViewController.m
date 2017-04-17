@@ -118,44 +118,32 @@
 
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
-//    NSLog(@"didChange");
     // markedTextRange currently marked 预输入分为两种情况: 一种是点击字母的预输入；另一种是默认的预输入字符。
     UITextRange *selectedRange = [textView markedTextRange];
     NSString *newText = [textView textInRange:selectedRange];
-    // ?2. 去除空格失败
-//    NSString *failedStrip = [newText stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    // m1
-//    NSString *textStr = newText;
-//    NSString *stripSpaceStr = [textStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    int length = [self strLength:textView.text] - [self strLength:newText] + [self strLength:stripSpaceStr];
-    // m2--取巧
-//    int length = [StringHelper length:textView.text] - (floor)(newText.length/2.0);
-    int length = [StringHelper length:textView.text] - (floor)([StringHelper length:newText]/2.0);
+    NSLog(@"textView:%@ newText:%@", textView.text, newText);
+    NSString *text = [textView.text copy];
+    text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    // m--取巧
+//    int length = [StringHelper length:textView.text] - (floor)([StringHelper length:newText]/2.0);
+    int length = [StringHelper length:text];
     if (length > 100) {
         NSString *limitStr = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:limitStr];
         [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, limitStr.length - 4)];
-        self.textLengthLB.attributedText = attStr;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.textLengthLB.attributedText = attStr;
+        });
     } else {
-        self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
-    }
-    if (newText.length == 0 && self.inputTextView.text.length == 0) {
-        [self didEnterEmpty];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
+        });
     }
     if (length == 1) {
         [self didEnterText];
+    } else if (newText.length == 0 && self.inputTextView.text.length == 0) {
+        [self didEnterEmpty];
     }
-}
-
-// 点击键盘上的 无法获取到预输入，必须在didChange回调里获取
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    // 空textView，点击清除键 text.length==0，不显示
-    if (textView.text.length == 0 && text.length > 0) {
-        [self didEnterText];
-    }
-    
-    return YES;
 }
 
 #pragma mark Tool

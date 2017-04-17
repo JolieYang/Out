@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface StringHelper : NSObject
-+ (int)length:(NSString *)str;
++ (NSInteger)length:(NSString *)str;
 + (BOOL)isEmpty:(NSString *)str; // 判空
 + (NSString *)trim:(NSString *)string; // 去除首尾空格
 + (NSString *)stripSpace:(NSString *)string; // 去除包含的空格
