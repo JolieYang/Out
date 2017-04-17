@@ -13,13 +13,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-JN-mdS">
-                        <rect key="frame" x="31" y="5" width="22" height="20"/>
-                        <state key="normal" image="check_unselected.png"/>
-                        <connections>
-                            <action selector="checkAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yKT-M6-BiI"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvb-tx-LXA">
                         <rect key="frame" x="74" y="0.0" width="1" height="30"/>
                         <color key="backgroundColor" red="0.91781586408615112" green="0.9184994101524353" blue="0.9213605523109436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -57,6 +50,13 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-JN-mdS">
+                        <rect key="frame" x="31" y="5" width="22" height="20"/>
+                        <state key="normal" image="check_unselected.png"/>
+                        <connections>
+                            <action selector="checkAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yKT-M6-BiI"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>

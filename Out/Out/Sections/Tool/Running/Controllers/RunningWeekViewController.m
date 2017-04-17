@@ -192,7 +192,6 @@ static NSArray *fundsTitleArray = nil;
     CGFloat keyboardEndY = value.CGRectValue.origin.y;
     // 动画
     NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSLog(@"viewY:%f, keyboarEndy:%f,screenY:%f", viewY, keyboardEndY, self.view.frame.size.height);
     [UIView animateWithDuration:duration.doubleValue animations:^{
         if (viewY > keyboardEndY) {
 //            self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + viewY - keyboardEndY);// ps: 如果设置contentOffset则调整位置后键盘并不会弹出，需要在点击一次才会弹出键盘

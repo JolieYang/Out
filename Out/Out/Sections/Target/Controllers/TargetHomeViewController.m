@@ -41,7 +41,6 @@
 }
 - (void)setupData {
     self.targetList = [NSMutableArray arrayWithArray:[TargetManager getTargetList]];
-    NSLog(@"haha");
 }
 
 - (void)setupViews {
