@@ -20,5 +20,6 @@
 - (instancetype)initWithDataModel:(RunningRecord *)model;
 
 @property (nonatomic, copy) void (^updateContributionBlock)(NSInteger preContributionMoney, NSInteger contributionMoney);
+@property (nonatomic, copy) void (^checkBtnClickBlock)(BOOL checked);
 @property (nonatomic, copy) void (^keyboardWillShowBlock)(UITextField *tf);
 @end

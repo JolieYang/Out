@@ -44,8 +44,11 @@
 }
 
 - (IBAction)checkAction:(UIButton *)sender {
-    [self endEditing:YES];// ps: 无法成功回收键盘,当点击其他cell的check按钮时
     [self updateCheckButtonWithTag:!sender.tag];
+    
+    if (self.checkBtnClickBlock) {
+        self.checkBtnClickBlock(self.checkBtn.tag);
+    }
     
     // 更新数据
     self.dataModel.isAchieve = sender.tag;

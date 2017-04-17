@@ -15,6 +15,7 @@
 #import "RunningRecordManager.h"
 #import "RunningWeekManager.h"
 #import "RunningWeek.h"
+#import "DateHelper.h"
 
 static NSString *recordTitleTableViewCellIdentifier = @"RunningMemberRecordColumnTitleTableViewCell";
 static NSString *recordTableViewCellIdentifier = @"RunningMemberRecordTableViewCell";
@@ -141,6 +142,9 @@ static NSArray *fundsTitleArray = nil;
             self.week = [RunningWeekManager updateContributionWithWeekId:self.week.weekId weekContribution: currentWeekContribution];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         };
+        cell.checkBtnClickBlock = ^(BOOL checkted) {
+            [self.view endEditing:YES];
+        };
         return cell;
     } else if (indexPath.section == 3) {
         NSInteger sum;
@@ -226,17 +230,7 @@ static NSArray *fundsTitleArray = nil;
 
 #pragma mark Date Tool
 - (NSString *)timeStringFromUnix:(NSTimeInterval)unix {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy.MM.dd"];
-    NSString *timeString = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:unix]];
-    return timeString;
+    return [DateHelper dateStringFromTimeInterval:unix dateFormat:@"yyyy.MM.dd"];
 }
 
-- (NSString *)timeStringFromDate:(NSDate *)date {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd:HH:ss"];
-    NSString *timeString = [df stringFromDate:[NSDate date]];
-    return timeString;
-    
-}
 @end
