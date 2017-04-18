@@ -10,6 +10,20 @@
 #import "RunningMember.h"
 
 @implementation RunningMemberManager
+
++ (BOOL)addMemberWithName:(NSString *)name {
+    NSArray *existMembers = [self getAllMembers];
+    if ([existMembers containsObject:name]) {
+        // 已存在该成员
+        return NO;
+    } else {
+        RunningMember *member = [RunningMember new];
+        member.name = name;
+        [member save];
+        return YES;
+    }
+}
+
 + (NSArray *)getAllMembers {
     NSString *whereSql = @"ORDER BY memberId";
     NSArray *arguments = nil;
@@ -26,7 +40,6 @@
     NSMutableArray *membersArray = [NSMutableArray arrayWithCapacity:defaultRunningMembers.count];
     for (int i = 0; i < defaultRunningMembers.count; i++) {
         RunningMember *member = [RunningMember new];
-        member.memberId = i + 1;
         member.name = defaultRunningMembers[i];
         [member save];
         [membersArray addObject:member];

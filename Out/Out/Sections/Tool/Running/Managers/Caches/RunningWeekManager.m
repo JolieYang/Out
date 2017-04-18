@@ -18,11 +18,22 @@
 static NSTimeInterval timeIntervalFromJolie = 1491148800;
 
 @implementation RunningWeekManager
+// 限制一次只拉取最新的二十条记录
++ (NSArray *)getRecentTwentyWeekRecords {
+    // 获取之前先判断是否需要添加新一周的纪录
+    [self addWeekRecord];
+    
+    NSString *whereSql = @"ORDER BY fromUnix DESC LIMIT 20";
+    NSArray *arguments = @[];
+    NSArray *recordsArray = [RunningWeek objectsWhere:whereSql arguments:arguments];
+    
+    return recordsArray;
+}
 
 + (NSArray *)addWeekRecord {
     // 获取最新一条数据
     NSMutableArray *addedRecordArray = [NSMutableArray array];
-    RunningWeek *lastRecord = [self getRecentWeekRecord];
+    RunningWeek *lastRecord = [self getDBLatestWeekRecord];
     if (!lastRecord) {
         // 无记录，添加新纪录
         NSDateComponents *dateComponents = [DateHelper dateComponentsFromTimeInterval:timeIntervalFromJolie + WeekInterval/2];
@@ -65,11 +76,7 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
     return addedRecordArray;
 }
 
-+ (void)updateData {
-   
-}
-
-+ (RunningWeek *)getRecentWeekRecord {
++ (RunningWeek *)getDBLatestWeekRecord {
     NSString *whereSql = @"ORDER BY weekId DESC LIMIT 1";
     NSArray *arguments = nil;
     NSArray *recordArray = [RunningWeek objectsWhere:whereSql arguments:arguments];
@@ -79,14 +86,7 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
         return nil;
     }
 }
-// 限制一次只拉取最新的二十条记录
-+ (NSArray *)getRecentTwentyWeekRecords {
-    NSString *whereSql = @"WHERE weekId > 0 ORDER BY fromUnix DESC LIMIT 20";
-    NSArray *arguments = @[];
-    NSArray *recordsArray = [RunningWeek objectsWhere:whereSql arguments:arguments];
-    
-    return recordsArray;
-}
+
 
 + (RunningWeek *)getWeekRecordWithWeekId:(NSInteger)weekId {
     RunningWeek *weekRecord = (RunningWeek *)[RunningWeek objectForId:[NSNumber numberWithInteger:weekId]];

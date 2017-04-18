@@ -9,6 +9,7 @@
 
 #import "RunningViewController.h"
 #import "RunningWeekViewController.h"
+#import "RunningAddMemberViewController.h"
 #import "RunningMember.h"
 #import "RunningWeek.h"
 #import "RunningWeekManager.h"
@@ -36,20 +37,13 @@
 }
 
 - (void)addNavRightItem {
-    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithTitle:@"下一周" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
+    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightItemAction)];
+    
     self.navigationItem.rightBarButtonItem = titleItem;
 }
 - (void)rightItemAction {
-    //  下一周
-    [RunningWeekManager updateData];
-    NSArray *newRecords = [RunningWeekManager addWeekRecord];
-    if (newRecords.count > 0) {
-        [self.weeksList addObjectsFromArray:newRecords];
-        [self.tableView reloadData];
-    } else {
-        // 弹窗显示时间未到，无法添加新纪录
-        [JYProgressHUD showTextHUDWithDetailString:@"已经是最新纪录" AddedTo:self.view];
-    }
+    RunningAddMemberViewController *vc = [[RunningAddMemberViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)setupDatas {
     self.weeksList = [NSMutableArray arrayWithArray:[RunningWeekManager getRecentTwentyWeekRecords]];

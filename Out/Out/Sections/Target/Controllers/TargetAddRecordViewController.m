@@ -15,6 +15,7 @@
 #import "TargetManager.h"
 #import "TargetRecordManager.h"
 #import "UIView+loadFromNib.h"
+#import "UIViewController+AddResignKeyboardGestures.h"
 
 @interface TargetAddRecordViewController ()<UITableViewDelegate, UITableViewDataSource> {
     HcdDateTimePickerView *dateTimePickerView;
@@ -41,6 +42,8 @@
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self addResignKeyboardGestures];
 }
 
 - (void)setupDatas {

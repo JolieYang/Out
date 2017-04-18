@@ -46,7 +46,7 @@
 - (void)setupViews {
     [self setupNavigation];
     self.view.backgroundColor = App_Bg;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight) style: UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight - kTabbarHeight) style: UITableViewStylePlain];
     self.tableView.backgroundColor = App_Bg;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

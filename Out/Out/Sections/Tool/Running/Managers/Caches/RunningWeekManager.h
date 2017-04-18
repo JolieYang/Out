@@ -14,8 +14,5 @@
 + (NSArray *)getRecentTwentyWeekRecords;
 + (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId weekContribution:(NSInteger)weekContribution;
 
-+ (RunningWeek *)getRecentWeekRecord;
-
-+ (void)updateData;
 
 @end

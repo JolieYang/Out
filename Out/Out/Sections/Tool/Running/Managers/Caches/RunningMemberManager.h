@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface RunningMemberManager : NSObject
++ (BOOL)addMemberWithName:(NSString *)name;
 + (NSArray *)getAllMembers;
 @end

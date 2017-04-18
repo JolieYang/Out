@@ -8,7 +8,8 @@
 // [todo] 进入该页面时自动弹出键盘
 
 #import "TargetAddViewController.h"
-#import "TargetAddTableViewCell.h"
+#import "IconTextFieldTableViewCell.h"
+#import "UIViewController+AddResignKeyboardGestures.h"
 #import "UIView+LoadFromNib.h"
 #import "Target.h"
 #import "TargetManager.h"
@@ -46,6 +47,7 @@
     self.configTableView.tableFooterView = [UIView new];
     self.configTableView.scrollEnabled = NO;
     [self.view addSubview:self.configTableView];
+    [self addResignKeyboardGestures];
 }
 
 - (void)addDoneNavigationItem {
@@ -76,7 +78,7 @@
     static NSString *identifier = @"UITableViewCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (indexPath.row == 0) {
-        TargetAddTableViewCell *firstCell = [TargetAddTableViewCell loadFromNib];
+        IconTextFieldTableViewCell *firstCell = [IconTextFieldTableViewCell loadFromNib];
         firstCell.iconImageView.image = Default_Image;
         firstCell.inputTextField.returnKeyType = UIReturnKeyDone;
         firstCell.textFieldReturnBlock = ^(NSString *text) {
@@ -93,7 +95,7 @@
         return firstCell;
     }
     if (!cell) {
-        cell = [TargetAddTableViewCell reusableCellWithTableView:tableView];
+        cell = [IconTextFieldTableViewCell reusableCellWithTableView:tableView];
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:@"tool_icon_01"];
