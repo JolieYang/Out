@@ -6,14 +6,14 @@
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
 //
 
-#import "TargetRecordLogTableViewCell.h"
+#import "TargetRecordAddLogTableViewCell.h"
 #import "UITextView+PlaceHolder.h"
 
-@interface TargetRecordLogTableViewCell ()<UITextViewDelegate>
+@interface TargetRecordAddLogTableViewCell ()<UITextViewDelegate>
 
 @end
 
-@implementation TargetRecordLogTableViewCell
+@implementation TargetRecordAddLogTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TargetRecordLogTableViewCell : UITableViewCell
+@interface TargetRecordAddLogTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *logTextView;
 @end

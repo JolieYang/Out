@@ -24,6 +24,12 @@
 		A05D92161EA5B2440006CB1C /* IconTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92141EA5B2440006CB1C /* IconTextFieldTableViewCell.m */; };
 		A05D92171EA5B2440006CB1C /* IconTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */; };
 		A05D921A1EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92191EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m */; };
+		A05D921F1EA5E7AB0006CB1C /* TargetLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D921D1EA5E7AB0006CB1C /* TargetLogsViewController.m */; };
+		A05D92201EA5E7AB0006CB1C /* TargetLogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D921E1EA5E7AB0006CB1C /* TargetLogsViewController.xib */; };
+		A05D92251EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92231EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m */; };
+		A05D92261EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92241EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib */; };
+		A05D922A1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92281EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m */; };
+		A05D922B1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92291EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib */; };
 		A0643B811E9B17D30005785F /* JYPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B471E9B17D30005785F /* JYPhotoListViewController.m */; };
 		A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643B481E9B17D30005785F /* JYPhotoListViewController.xib */; };
 		A0643B831E9B17D30005785F /* JYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B4B1E9B17D30005785F /* JYPhoto.m */; };
@@ -85,8 +91,8 @@
 		A0643C911EA0799C0005785F /* TargetRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C901EA0799C0005785F /* TargetRecordManager.m */; };
 		A0643C951EA07C7C0005785F /* TargetAddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C931EA07C7C0005785F /* TargetAddRecordViewController.m */; };
 		A0643C961EA07C7C0005785F /* TargetAddRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C941EA07C7C0005785F /* TargetAddRecordViewController.xib */; };
-		A0643C9A1EA087F50005785F /* TargetRecordLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C981EA087F50005785F /* TargetRecordLogTableViewCell.m */; };
-		A0643C9B1EA087F50005785F /* TargetRecordLogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C991EA087F50005785F /* TargetRecordLogTableViewCell.xib */; };
+		A0643C9A1EA087F50005785F /* TargetRecordAddLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C981EA087F50005785F /* TargetRecordAddLogTableViewCell.m */; };
+		A0643C9B1EA087F50005785F /* TargetRecordAddLogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C991EA087F50005785F /* TargetRecordAddLogTableViewCell.xib */; };
 		A0643C9F1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C9D1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m */; };
 		A0643CA01EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C9E1EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib */; };
 		A0643CA41EA09EAD0005785F /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643CA31EA09EAD0005785F /* UITextView+PlaceHolder.m */; };
@@ -134,6 +140,15 @@
 		A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		A05D92181EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AddResignKeyboardGestures.h"; sourceTree = "<group>"; };
 		A05D92191EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AddResignKeyboardGestures.m"; sourceTree = "<group>"; };
+		A05D921C1EA5E7AB0006CB1C /* TargetLogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetLogsViewController.h; sourceTree = "<group>"; };
+		A05D921D1EA5E7AB0006CB1C /* TargetLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetLogsViewController.m; sourceTree = "<group>"; };
+		A05D921E1EA5E7AB0006CB1C /* TargetLogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetLogsViewController.xib; sourceTree = "<group>"; };
+		A05D92221EA5EF7B0006CB1C /* TargetLogShowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetLogShowTableViewCell.h; sourceTree = "<group>"; };
+		A05D92231EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetLogShowTableViewCell.m; sourceTree = "<group>"; };
+		A05D92241EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetLogShowTableViewCell.xib; sourceTree = "<group>"; };
+		A05D92271EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetLogHeaderTableViewCell.h; sourceTree = "<group>"; };
+		A05D92281EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetLogHeaderTableViewCell.m; sourceTree = "<group>"; };
+		A05D92291EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetLogHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		A0643B441E9B17D30005785F /* JYPhotoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoConfig.h; sourceTree = "<group>"; };
 		A0643B461E9B17D30005785F /* JYPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoListViewController.h; sourceTree = "<group>"; };
 		A0643B471E9B17D30005785F /* JYPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoListViewController.m; sourceTree = "<group>"; };
@@ -241,9 +256,9 @@
 		A0643C921EA07C7C0005785F /* TargetAddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetAddRecordViewController.h; sourceTree = "<group>"; };
 		A0643C931EA07C7C0005785F /* TargetAddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetAddRecordViewController.m; sourceTree = "<group>"; };
 		A0643C941EA07C7C0005785F /* TargetAddRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetAddRecordViewController.xib; sourceTree = "<group>"; };
-		A0643C971EA087F50005785F /* TargetRecordLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetRecordLogTableViewCell.h; sourceTree = "<group>"; };
-		A0643C981EA087F50005785F /* TargetRecordLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetRecordLogTableViewCell.m; sourceTree = "<group>"; };
-		A0643C991EA087F50005785F /* TargetRecordLogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetRecordLogTableViewCell.xib; sourceTree = "<group>"; };
+		A0643C971EA087F50005785F /* TargetRecordAddLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetRecordAddLogTableViewCell.h; sourceTree = "<group>"; };
+		A0643C981EA087F50005785F /* TargetRecordAddLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetRecordAddLogTableViewCell.m; sourceTree = "<group>"; };
+		A0643C991EA087F50005785F /* TargetRecordAddLogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetRecordAddLogTableViewCell.xib; sourceTree = "<group>"; };
 		A0643C9C1EA088150005785F /* TargetRecordInsistHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetRecordInsistHoursTableViewCell.h; sourceTree = "<group>"; };
 		A0643C9D1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetRecordInsistHoursTableViewCell.m; sourceTree = "<group>"; };
 		A0643C9E1EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetRecordInsistHoursTableViewCell.xib; sourceTree = "<group>"; };
@@ -318,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				A04C93A81D7EB1860028F2DB /* const.h */,
-				A05266491E7798F90087D861 /* Out-Prefix.pch */,
 				A052664D1E779DAB0087D861 /* AppMacro.h */,
 			);
 			name = Config;
@@ -372,6 +386,19 @@
 				A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		A05D92211EA5EF540006CB1C /* TargetLog */ = {
+			isa = PBXGroup;
+			children = (
+				A05D92271EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.h */,
+				A05D92281EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m */,
+				A05D92291EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib */,
+				A05D92221EA5EF7B0006CB1C /* TargetLogShowTableViewCell.h */,
+				A05D92231EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m */,
+				A05D92241EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib */,
+			);
+			path = TargetLog;
 			sourceTree = "<group>";
 		};
 		A0643B331E9B17D30005785F /* Library */ = {
@@ -488,6 +515,9 @@
 				A0643C921EA07C7C0005785F /* TargetAddRecordViewController.h */,
 				A0643C931EA07C7C0005785F /* TargetAddRecordViewController.m */,
 				A0643C941EA07C7C0005785F /* TargetAddRecordViewController.xib */,
+				A05D921C1EA5E7AB0006CB1C /* TargetLogsViewController.h */,
+				A05D921D1EA5E7AB0006CB1C /* TargetLogsViewController.m */,
+				A05D921E1EA5E7AB0006CB1C /* TargetLogsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -506,12 +536,13 @@
 		A0643BB41E9B17E80005785F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A05D92211EA5EF540006CB1C /* TargetLog */,
 				A0643BB81E9B17E80005785F /* TargetShowTableViewCell.h */,
 				A0643BB91E9B17E80005785F /* TargetShowTableViewCell.m */,
 				A0643BBA1E9B17E80005785F /* TargetShowTableViewCell.xib */,
-				A0643C971EA087F50005785F /* TargetRecordLogTableViewCell.h */,
-				A0643C981EA087F50005785F /* TargetRecordLogTableViewCell.m */,
-				A0643C991EA087F50005785F /* TargetRecordLogTableViewCell.xib */,
+				A0643C971EA087F50005785F /* TargetRecordAddLogTableViewCell.h */,
+				A0643C981EA087F50005785F /* TargetRecordAddLogTableViewCell.m */,
+				A0643C991EA087F50005785F /* TargetRecordAddLogTableViewCell.xib */,
 				A0643C9C1EA088150005785F /* TargetRecordInsistHoursTableViewCell.h */,
 				A0643C9D1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m */,
 				A0643C9E1EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib */,
@@ -771,6 +802,7 @@
 		A067F0571D741FFB003140D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A05266491E7798F90087D861 /* Out-Prefix.pch */,
 				A067F0581D741FFB003140D6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -874,6 +906,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05D922B1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib in Resources */,
 				A0643BEB1E9B17E80005785F /* scan_line@2x.png in Resources */,
 				A0643C641E9F0F020005785F /* ScanViewController.xib in Resources */,
 				A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */,
@@ -889,7 +922,7 @@
 				A0643C2C1E9B68040005785F /* RunningMembers.plist in Resources */,
 				A0643CA01EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib in Resources */,
 				A0643BE71E9B17E80005785F /* TargetShowTableViewCell.xib in Resources */,
-				A0643C9B1EA087F50005785F /* TargetRecordLogTableViewCell.xib in Resources */,
+				A0643C9B1EA087F50005785F /* TargetRecordAddLogTableViewCell.xib in Resources */,
 				A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */,
 				A0643C091E9B229E0005785F /* RunningWeekViewController.xib in Resources */,
 				A0643C461E9E09DA0005785F /* MBProgressHUD+JDragon.bundle in Resources */,
@@ -897,6 +930,8 @@
 				A05D92111EA5AD630006CB1C /* RunningAddMemberViewController.xib in Resources */,
 				A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */,
 				A0643C0F1E9B23350005785F /* RunningMemberRecordTableViewCell.xib in Resources */,
+				A05D92261EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib in Resources */,
+				A05D92201EA5E7AB0006CB1C /* TargetLogsViewController.xib in Resources */,
 				A0643BEA1E9B17E80005785F /* scan@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,7 +994,7 @@
 				A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */,
 				A0409BFE1E7BDCB300D917DC /* KeyedArchiverHelper.m in Sources */,
 				A04C93AC1D7FC5240028F2DB /* OutAPIManager.m in Sources */,
-				A0643C9A1EA087F50005785F /* TargetRecordLogTableViewCell.m in Sources */,
+				A0643C9A1EA087F50005785F /* TargetRecordAddLogTableViewCell.m in Sources */,
 				A0643C781E9F0FF00005785F /* SetOutNameWindow.m in Sources */,
 				A0643C331E9B70AE0005785F /* RunningMember.m in Sources */,
 				A0643B861E9B17D30005785F /* MFLBezierHelper.m in Sources */,
@@ -990,6 +1025,7 @@
 				A0643C1B1E9B2B3A0005785F /* RunningRecord.m in Sources */,
 				A0643B831E9B17D30005785F /* JYPhoto.m in Sources */,
 				A0643CA41EA09EAD0005785F /* UITextView+PlaceHolder.m in Sources */,
+				A05D922A1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m in Sources */,
 				A0643C761E9F0FF00005785F /* OutHomeViewController.m in Sources */,
 				A0643C561E9F0E800005785F /* RunningWeekManager.m in Sources */,
 				A00A3A021EA0B8C6006DC03C /* MXSCycleScrollView.m in Sources */,
@@ -1006,9 +1042,11 @@
 				A0643BE11E9B17E80005785F /* TargetHomeNavigationController.m in Sources */,
 				A00A3A031EA0B8C6006DC03C /* UIColor+HcdCustom.m in Sources */,
 				A0643C801E9F105C0005785F /* DateHelper.m in Sources */,
+				A05D921F1EA5E7AB0006CB1C /* TargetLogsViewController.m in Sources */,
 				A0643C621E9F0F020005785F /* ScanResultViewController.m in Sources */,
 				A0643B871E9B17D30005785F /* MFLHintLabel.m in Sources */,
 				A05D921A1EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m in Sources */,
+				A05D92251EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m in Sources */,
 				A0643C741E9F0FF00005785F /* InputMoodViewController.m in Sources */,
 				A0643C951EA07C7C0005785F /* TargetAddRecordViewController.m in Sources */,
 				A0643BE61E9B17E80005785F /* TargetShowTableViewCell.m in Sources */,

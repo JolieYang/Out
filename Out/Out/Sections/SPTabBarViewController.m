@@ -47,7 +47,7 @@ static NSString *TAB_NORMAL_IMAGE_FORMAT = nil;
     self.tabBar.tintColor = Apple_Gold;
     self.tabBar.barTintColor = System_Black;
     self.tabBar.translucent = NO;
-    self.selectedIndex = 0;
+    self.selectedIndex = 2;
 }
 
 - (void)didReceiveMemoryWarning {

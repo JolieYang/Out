@@ -7,7 +7,8 @@
 //
 
 #import "TargetAddRecordViewController.h"
-#import "TargetRecordLogTableViewCell.h"
+#import "TargetLogsViewController.h"
+#import "TargetRecordAddLogTableViewCell.h"
 #import "HcdDateTimePickerView.h"
 #import "TargetRecordInsistHoursTableViewCell.h"
 #import "Target.h"
@@ -33,6 +34,17 @@
     // Do any additional setup after loading the view from its nib.
     [self setupDatas];
     [self setupViews];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+// 跳转到Log页面
+- (IBAction)logAction:(id)sender {
+    TargetLogsViewController *vc = [[TargetLogsViewController alloc] init];
+    vc.target = self.target;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setupViews {
@@ -83,7 +95,7 @@
     if (indexPath.section == 0) {
         return 44;
     } else if (indexPath.section == 1) {
-        return 140;
+        return 120;
     } else {
         return 0;
     }
@@ -119,7 +131,7 @@
         
         return cell;
     } else if (indexPath.section == 1) {
-         TargetRecordLogTableViewCell *cell = [TargetRecordLogTableViewCell loadFromNib];
+         TargetRecordAddLogTableViewCell *cell = [TargetRecordAddLogTableViewCell loadFromNib];
         
         return cell;
     } else {

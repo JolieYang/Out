@@ -8,6 +8,7 @@
 
 #import "TargetHomeViewController.h"
 #import "TargetAddRecordViewController.h"
+#import "TargetLogsViewController.h"
 #import "TargetShowTableViewCell.h"
 #import "TargetAddViewController.h"
 #import "UIView+LoadFromNib.h"
@@ -88,6 +89,8 @@
         self.targetList[indexPath.section] = target;
     };
     [self.navigationController pushViewController:addRecordVC animated:YES];
+//    TargetLogsViewController *vc = [TargetLogsViewController new];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark UITableViewDataSource
