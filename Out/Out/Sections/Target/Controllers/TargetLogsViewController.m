@@ -9,11 +9,14 @@
 #import "TargetLogsViewController.h"
 #import "TargetLogHeaderTableViewCell.h"
 #import "TargetLogShowTableViewCell.h"
+#import "CenterTitleTableViewCell.h"
 #import "Target.h"
+#import "TargetRecordManager.h"
+#import "TargetRecord.h"
 
 @interface TargetLogsViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray<TargetRecord *> *dataArray;
 @end
 
 @implementation TargetLogsViewController
@@ -37,12 +40,13 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
 }
 
 - (void)setupDatas {
-    self.dataArray = @[@"hello", @"hell"];
+    self.dataArray = [TargetRecordManager getLogRecordWithTargetId:self.target.targetId];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,8 +57,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return 0;
-    } else {
+    } else if (section == 1) {
         return 8;
+    } else if (section == 2) {
+        return 0;
+    } else {
+        return 0;
     }
 }
 
@@ -62,13 +70,9 @@
     if (indexPath.section == 0) {
         return 210;
     } else if (indexPath.section == 1) {
-        if (indexPath.row == self.dataArray.count - 1) {
-            return 38;
-        } else {
-            return 128;
-        }
+        return 128;
     } else {
-        return 44;
+        return 38;
     }
 }
 
@@ -89,22 +93,15 @@
         
         return cell;
     } else if (indexPath.section == 1) {
-        if (indexPath.row == self.dataArray.count - 1) {
-            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            cell.textLabel.text = @"已显示全部内容";
-            
-            return cell;
-        } else {
-            TargetLogShowTableViewCell *cell = [TargetLogShowTableViewCell loadFromNib];
-            
-            return cell;
-        }
+        TargetRecord *record = self.dataArray[indexPath.row];
+        TargetLogShowTableViewCell *cell = [TargetLogShowTableViewCell initWithTargetRecord:record];
+        
+        return cell;
     } else {
-        static NSString *identifier = @"UITableViewCellIdentifier";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
+        CenterTitleTableViewCell *cell = [CenterTitleTableViewCell loadFromNib];
+        cell.titleLabel.text = @"已显示全部内容";
+        cell.titleLabel.textColor = Apple_Silver;
+        cell.titleLabel.font = [UIFont systemFontOfSize:14.0];
         
         return cell;
     }
@@ -115,12 +112,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
+    } else if (section == 1){
+        return self.dataArray.count;
     } else {
-        return self.dataArray.count + 1;
+        return 1;
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 @end

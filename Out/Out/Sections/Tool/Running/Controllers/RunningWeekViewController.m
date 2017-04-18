@@ -8,7 +8,7 @@
 
 #import "RunningWeekViewController.h"
 #import "UIView+LoadFromNib.h"
-#import "RunningRecordTitleTableViewCell.h"
+#import "CenterTitleTableViewCell.h"
 #import "RunningRecordColumnTableViewCell.h"
 #import "RunningMemberRecordTableViewCell.h"
 #import "RunningRecordFundsTableViewCell.h"
@@ -130,7 +130,7 @@ static NSArray *fundsTitleArray = nil;
         NSString *fromDate = [self timeStringFromUnix:self.week.fromUnix];
         NSString *endDate = [self timeStringFromUnix:self.week.endUnix];
         NSString *title = [NSString stringWithFormat:@"%ld月第%ld周(%@~%@)", (long)self.week.month, (long)self.week.weekOfMonth, fromDate, endDate];
-        RunningRecordTitleTableViewCell *cell = [RunningRecordTitleTableViewCell initWithTitle: title];
+        CenterTitleTableViewCell *cell = [CenterTitleTableViewCell initWithTitle: title];
         return cell;
     } else if (indexPath.section == 1) {
         RunningRecordColumnTableViewCell *cell = [RunningRecordColumnTableViewCell loadFromNib];

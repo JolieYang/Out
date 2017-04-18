@@ -13,6 +13,14 @@
 #import "Target.h"
 
 @implementation TargetRecordManager
+
++ (NSArray *)getLogRecordWithTargetId:(NSInteger)targetId {
+    NSString *whereSql = @"WHERE log IS NOT NULL AND targetId = ?";
+    NSArray *arguments = @[[NSNumber numberWithInteger:targetId]];
+    NSArray *records = [TargetRecord objectsWhere:whereSql arguments:arguments];
+    return records;
+}
+
 + (Target *)addTargetRecordAndReturnTargetWithTarget:(Target *)target insistHours:(float)insistHours log:(NSString *)log {
     target.updateUnix = [DateHelper getCurrentTimeInterval];
     target.insistHours += insistHours;

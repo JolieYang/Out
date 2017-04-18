@@ -75,6 +75,9 @@
 
 - (void)rightItemAction {
     // 添加纪录
+    TargetRecordAddLogTableViewCell *cell = self.tableView.visibleCells[1];
+    self.log = cell.logTextView.text;
+    
     self.target = [TargetRecordManager addTargetRecordAndReturnTargetWithTarget:self.target insistHours:self.insistHours log:self.log];
     if (self.updateTargetBlock) {
         self.updateTargetBlock(self.target);
