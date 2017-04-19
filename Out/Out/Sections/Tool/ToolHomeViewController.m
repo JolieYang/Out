@@ -77,8 +77,15 @@ static NSArray *TOOL_TTTLE = nil;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    cell.imageView.image = [UIImage imageNamed:@"tab_icon_01_normal"];
     cell.textLabel.text = TOOL_TTTLE[indexPath.section][indexPath.row];
+    if (indexPath.row == 0) {
+        cell.imageView.image = [UIImage imageNamed:@"scan_icon"];
+    } else if (indexPath.row == 1) {
+        cell.imageView.image = [UIImage imageNamed:@"running_icon"];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"tab_icon_01_normal"];
+    }
+    
     
     return cell;
 }

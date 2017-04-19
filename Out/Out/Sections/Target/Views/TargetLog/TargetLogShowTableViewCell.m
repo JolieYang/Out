@@ -18,7 +18,7 @@
 //    cell.logLabel.text = targetRecord.log;
     [cell.logLabel setText: targetRecord.log lineSpacing:LogShowLineSpacing];
     cell.timeLabel.text = [DateHelper dateStringFromTimeInterval:targetRecord.addUnix dateFormat:@"yyyy.MM.dd HH:ss"];
-    cell.insistHoursLabel.text = [NSString stringWithFormat:@"坚持了%.1f小时", targetRecord.insistHours];
+    cell.insistHoursLabel.text = [NSString stringWithFormat:@"%.1f小时", targetRecord.insistHours];
     
     return cell;
 }
@@ -33,6 +33,7 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 + (CGFloat)heightForCellWithText:(NSString *)text {

@@ -15,7 +15,7 @@
 @implementation TargetRecordManager
 
 + (NSArray *)getLogRecordWithTargetId:(NSInteger)targetId {
-    NSString *whereSql = @"WHERE log IS NOT NULL AND targetId = ?";
+    NSString *whereSql = @"WHERE log IS NOT NULL AND targetId = ? ORDER BY addUnix DESC";
     NSArray *arguments = @[[NSNumber numberWithInteger:targetId]];
     NSArray *records = [TargetRecord objectsWhere:whereSql arguments:arguments];
     return records;

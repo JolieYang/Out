@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -11,20 +11,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017.04.18 16:31" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvL-lZ-p5K">
-                        <rect key="frame" x="20" y="16" width="120" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017.04.18" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvL-lZ-p5K">
+                        <rect key="frame" x="36" y="16" width="98" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="ooi-mB-lzo"/>
+                            <constraint firstAttribute="width" constant="98" id="ooi-mB-lzo"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <color key="textColor" red="0.72398859260000004" green="0.72454649209999999" blue="0.72407501939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbM-HM-3hR">
-                        <rect key="frame" x="8" y="128" width="312" height="1"/>
+                        <rect key="frame" x="20" y="128" width="300" height="1"/>
                         <color key="backgroundColor" red="0.90746539829999995" green="0.89781779049999999" blue="0.89375543589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ugC-O6-bag"/>
@@ -34,32 +34,42 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="假如生活欺骗了你假如生活欺骗了你，不要悲伤，不要心急！忧郁的日子里须要镇静：相信吧，快乐的日子将会来临！心儿永远向往着未来；现在却常是忧郁。一切都是瞬息，一切都将会过去；而那过去了的，就会成为亲切的怀恋。" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eM-If-FmH">
-                        <rect key="frame" x="20" y="55" width="280" height="45"/>
+                        <rect key="frame" x="20" y="43" width="280" height="67"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                         <color key="textColor" red="0.4557875991" green="0.45615345239999999" blue="0.45584422349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="坚持了1小时" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNT-aQ-zbZ">
-                        <rect key="frame" x="160" y="16" width="140" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNT-aQ-zbZ">
+                        <rect key="frame" x="167" y="16" width="118" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="140" id="XZI-wz-Qao"/>
+                            <constraint firstAttribute="width" constant="118" id="XZI-wz-Qao"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <color key="textColor" red="0.72398859260000004" green="0.72454649209999999" blue="0.72407501939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gc-SU-kRk">
+                        <rect key="frame" x="150" y="12" width="14" height="22"/>
+                        <state key="normal" image="time"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miq-FD-bc9">
+                        <rect key="frame" x="20" y="12" width="14" height="22"/>
+                        <state key="normal" image="calendar"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="gbM-HM-3hR" secondAttribute="bottom" constant="-10" id="0LH-HM-wEz"/>
                     <constraint firstItem="4eM-If-FmH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="1k0-Am-blu"/>
-                    <constraint firstItem="wvL-lZ-p5K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="JyK-nQ-gWx"/>
+                    <constraint firstItem="2gc-SU-kRk" firstAttribute="leading" secondItem="wvL-lZ-p5K" secondAttribute="trailing" constant="16" id="DMe-S1-4hR"/>
+                    <constraint firstItem="wvL-lZ-p5K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="28" id="JyK-nQ-gWx"/>
                     <constraint firstItem="GNT-aQ-zbZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="VPj-Rq-qTb"/>
-                    <constraint firstItem="gbM-HM-3hR" firstAttribute="top" secondItem="4eM-If-FmH" secondAttribute="bottom" constant="28" id="Zkt-yR-gzw"/>
-                    <constraint firstItem="4eM-If-FmH" firstAttribute="top" secondItem="GNT-aQ-zbZ" secondAttribute="bottom" constant="24" id="ddh-Y6-4KB"/>
+                    <constraint firstItem="gbM-HM-3hR" firstAttribute="top" secondItem="4eM-If-FmH" secondAttribute="bottom" constant="18" id="Zkt-yR-gzw"/>
+                    <constraint firstItem="GNT-aQ-zbZ" firstAttribute="centerY" secondItem="2gc-SU-kRk" secondAttribute="centerY" id="d6Z-kx-Qda"/>
+                    <constraint firstItem="4eM-If-FmH" firstAttribute="top" secondItem="GNT-aQ-zbZ" secondAttribute="bottom" constant="12" id="ddh-Y6-4KB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gbM-HM-3hR" secondAttribute="trailing" constant="-8" id="fWN-tQ-gre"/>
-                    <constraint firstItem="gbM-HM-3hR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="guH-c4-Pjv"/>
+                    <constraint firstItem="gbM-HM-3hR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="guH-c4-Pjv"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4eM-If-FmH" secondAttribute="trailing" constant="12" id="jDK-6l-XGD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="GNT-aQ-zbZ" secondAttribute="trailing" constant="12" id="q0r-SM-fkM"/>
+                    <constraint firstItem="GNT-aQ-zbZ" firstAttribute="leading" secondItem="2gc-SU-kRk" secondAttribute="trailing" constant="3" id="tId-Q2-0Oc"/>
                     <constraint firstItem="wvL-lZ-p5K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="uFB-5r-sKu"/>
                 </constraints>
             </tableViewCellContentView>
@@ -70,4 +80,8 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="calendar" width="14" height="14"/>
+        <image name="time" width="14" height="14"/>
+    </resources>
 </document>

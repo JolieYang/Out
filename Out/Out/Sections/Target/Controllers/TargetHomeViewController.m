@@ -46,7 +46,7 @@
 - (void)setupViews {
     [self setupNavigation];
     self.view.backgroundColor = App_Bg;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight - kTabbarHeight) style: UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight - kTabbarHeight - kNavigationBarHeight) style: UITableViewStylePlain];
     self.tableView.backgroundColor = App_Bg;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -56,7 +56,7 @@
 
 - (void)setupNavigation {
     [self.navigationController setNavigationBarHidden:NO];
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage: Default_Image style:UIBarButtonItemStylePlain target:self action:@selector(addItemAction)];
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItemAction)];
     self.navigationItem.rightBarButtonItem = addItem;
 }
 
