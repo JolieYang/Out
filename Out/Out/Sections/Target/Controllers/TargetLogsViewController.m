@@ -13,6 +13,7 @@
 #import "Target.h"
 #import "TargetRecordManager.h"
 #import "TargetRecord.h"
+#import "UILabel+JY.h"
 
 @interface TargetLogsViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
@@ -70,9 +71,11 @@
     if (indexPath.section == 0) {
         return 210;
     } else if (indexPath.section == 1) {
-        return 128;
+        TargetRecord *targetRecord = self.dataArray[indexPath.row];
+        CGFloat textHeight = [TargetLogShowTableViewCell heightForCellWithText:targetRecord.log];
+        return textHeight;
     } else {
-        return 38;
+        return 48;
     }
 }
 
@@ -83,10 +86,7 @@
 #pragma mark UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        TargetLogHeaderTableViewCell *cell = [TargetLogHeaderTableViewCell loadFromNib];
-        cell.targetNameLable.text = self.target.targetName;
-        cell.insistHoursLabel.text = [NSString stringWithFormat:@"- 坚持了%d小时 -", (int)self.target.insistHours];
-        cell.remarksLabel.text = self.target.remarks == nil? @"暂无描述" : self.target.remarks;
+        TargetLogHeaderTableViewCell *cell = [TargetLogHeaderTableViewCell initWithTarget:self.target];
         cell.popBlock = ^(){
             [self.navigationController popViewControllerAnimated:YES];
         };
@@ -99,14 +99,16 @@
         return cell;
     } else {
         CenterTitleTableViewCell *cell = [CenterTitleTableViewCell loadFromNib];
-        cell.titleLabel.text = @"已显示全部内容";
+        if (self.dataArray.count > 0) {
+            cell.titleLabel.text = @"已显示全部内容";
+        } else {
+            cell.titleLabel.text = @"过往即浮云";
+        }
         cell.titleLabel.textColor = Apple_Silver;
         cell.titleLabel.font = [UIFont systemFontOfSize:14.0];
         
         return cell;
     }
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

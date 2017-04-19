@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UITextView (JY)
-
+- (void)setPlaceHolder:(NSString *)text;
+- (void)setText:(NSString*)text lineSpacing:(CGFloat)lineSpacing;
 @end

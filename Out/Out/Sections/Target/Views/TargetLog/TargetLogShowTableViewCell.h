@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 @class TargetRecord;
 
+#define LogShowLineSpacing 5.0
+#define LogShowSize 14.0
+#define LeftSpacing 20
+#define RightSpacing 20
+#define TopSpacing 55
+#define BottomSpacing 28
+
 @interface TargetLogShowTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *logLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *insistHoursLabel;
 
 + (instancetype)initWithTargetRecord:(TargetRecord *)targetRecord;
++ (CGFloat)heightForCellWithText:(NSString *)text;
 @end

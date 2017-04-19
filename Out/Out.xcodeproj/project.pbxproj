@@ -30,6 +30,10 @@
 		A05D92261EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92241EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib */; };
 		A05D922A1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92281EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m */; };
 		A05D922B1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92291EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib */; };
+		A05D922F1EA6F5A70006CB1C /* CenterTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D922D1EA6F5A70006CB1C /* CenterTitleTableViewCell.m */; };
+		A05D92301EA6F5A70006CB1C /* CenterTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D922E1EA6F5A70006CB1C /* CenterTitleTableViewCell.xib */; };
+		A05D92331EA6F8C40006CB1C /* UILabel+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92321EA6F8C40006CB1C /* UILabel+JY.m */; };
+		A05D92361EA6FA210006CB1C /* UITextView+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92351EA6FA210006CB1C /* UITextView+JY.m */; };
 		A0643B811E9B17D30005785F /* JYPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B471E9B17D30005785F /* JYPhotoListViewController.m */; };
 		A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643B481E9B17D30005785F /* JYPhotoListViewController.xib */; };
 		A0643B831E9B17D30005785F /* JYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B4B1E9B17D30005785F /* JYPhoto.m */; };
@@ -95,7 +99,6 @@
 		A0643C9B1EA087F50005785F /* TargetRecordAddLogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C991EA087F50005785F /* TargetRecordAddLogTableViewCell.xib */; };
 		A0643C9F1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643C9D1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m */; };
 		A0643CA01EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643C9E1EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib */; };
-		A0643CA41EA09EAD0005785F /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643CA31EA09EAD0005785F /* UITextView+PlaceHolder.m */; };
 		A067F0591D741FFB003140D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F0581D741FFB003140D6 /* main.m */; };
 		A067F05C1D741FFB003140D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A067F05B1D741FFB003140D6 /* AppDelegate.m */; };
 		A067F0621D741FFB003140D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0601D741FFB003140D6 /* Main.storyboard */; };
@@ -149,6 +152,13 @@
 		A05D92271EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetLogHeaderTableViewCell.h; sourceTree = "<group>"; };
 		A05D92281EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetLogHeaderTableViewCell.m; sourceTree = "<group>"; };
 		A05D92291EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetLogHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		A05D922C1EA6F5A70006CB1C /* CenterTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterTitleTableViewCell.h; sourceTree = "<group>"; };
+		A05D922D1EA6F5A70006CB1C /* CenterTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterTitleTableViewCell.m; sourceTree = "<group>"; };
+		A05D922E1EA6F5A70006CB1C /* CenterTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CenterTitleTableViewCell.xib; sourceTree = "<group>"; };
+		A05D92311EA6F8C40006CB1C /* UILabel+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+JY.h"; sourceTree = "<group>"; };
+		A05D92321EA6F8C40006CB1C /* UILabel+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+JY.m"; sourceTree = "<group>"; };
+		A05D92341EA6FA210006CB1C /* UITextView+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+JY.h"; sourceTree = "<group>"; };
+		A05D92351EA6FA210006CB1C /* UITextView+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+JY.m"; sourceTree = "<group>"; };
 		A0643B441E9B17D30005785F /* JYPhotoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoConfig.h; sourceTree = "<group>"; };
 		A0643B461E9B17D30005785F /* JYPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoListViewController.h; sourceTree = "<group>"; };
 		A0643B471E9B17D30005785F /* JYPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoListViewController.m; sourceTree = "<group>"; };
@@ -262,8 +272,6 @@
 		A0643C9C1EA088150005785F /* TargetRecordInsistHoursTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetRecordInsistHoursTableViewCell.h; sourceTree = "<group>"; };
 		A0643C9D1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetRecordInsistHoursTableViewCell.m; sourceTree = "<group>"; };
 		A0643C9E1EA088150005785F /* TargetRecordInsistHoursTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetRecordInsistHoursTableViewCell.xib; sourceTree = "<group>"; };
-		A0643CA21EA09EAD0005785F /* UITextView+PlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+PlaceHolder.h"; sourceTree = "<group>"; };
-		A0643CA31EA09EAD0005785F /* UITextView+PlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+PlaceHolder.m"; sourceTree = "<group>"; };
 		A067F0541D741FFB003140D6 /* Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Out.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067F0581D741FFB003140D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A067F05A1D741FFB003140D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -354,10 +362,12 @@
 			children = (
 				A05266691E77D9480087D861 /* UIView+LoadFromNib.h */,
 				A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */,
-				A0643CA21EA09EAD0005785F /* UITextView+PlaceHolder.h */,
-				A0643CA31EA09EAD0005785F /* UITextView+PlaceHolder.m */,
 				A05D92181EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.h */,
 				A05D92191EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m */,
+				A05D92311EA6F8C40006CB1C /* UILabel+JY.h */,
+				A05D92321EA6F8C40006CB1C /* UILabel+JY.m */,
+				A05D92341EA6FA210006CB1C /* UITextView+JY.h */,
+				A05D92351EA6FA210006CB1C /* UITextView+JY.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -381,6 +391,9 @@
 		A05D92121EA5B1E50006CB1C /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				A05D922C1EA6F5A70006CB1C /* CenterTitleTableViewCell.h */,
+				A05D922D1EA6F5A70006CB1C /* CenterTitleTableViewCell.m */,
+				A05D922E1EA6F5A70006CB1C /* CenterTitleTableViewCell.xib */,
 				A05D92131EA5B2440006CB1C /* IconTextFieldTableViewCell.h */,
 				A05D92141EA5B2440006CB1C /* IconTextFieldTableViewCell.m */,
 				A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */,
@@ -933,6 +946,7 @@
 				A05D92261EA5EF7B0006CB1C /* TargetLogShowTableViewCell.xib in Resources */,
 				A05D92201EA5E7AB0006CB1C /* TargetLogsViewController.xib in Resources */,
 				A0643BEA1E9B17E80005785F /* scan@2x.png in Resources */,
+				A05D92301EA6F5A70006CB1C /* CenterTitleTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,7 +1038,6 @@
 				A0643BE01E9B17E80005785F /* TargetAddViewController.m in Sources */,
 				A0643C1B1E9B2B3A0005785F /* RunningRecord.m in Sources */,
 				A0643B831E9B17D30005785F /* JYPhoto.m in Sources */,
-				A0643CA41EA09EAD0005785F /* UITextView+PlaceHolder.m in Sources */,
 				A05D922A1EA5F03A0006CB1C /* TargetLogHeaderTableViewCell.m in Sources */,
 				A0643C761E9F0FF00005785F /* OutHomeViewController.m in Sources */,
 				A0643C561E9F0E800005785F /* RunningWeekManager.m in Sources */,
@@ -1034,6 +1047,7 @@
 				A0643C551E9F0E800005785F /* RunningRecordManager.m in Sources */,
 				A0643C361E9B76A60005785F /* RunningWeek.m in Sources */,
 				A0F7C2781E7A726400BDA19F /* BaseNavigationController.m in Sources */,
+				A05D92361EA6FA210006CB1C /* UITextView+JY.m in Sources */,
 				A0643C081E9B229E0005785F /* RunningWeekViewController.m in Sources */,
 				A0643C881E9F11900005785F /* JYFileManager.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
@@ -1048,6 +1062,7 @@
 				A05D921A1EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m in Sources */,
 				A05D92251EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m in Sources */,
 				A0643C741E9F0FF00005785F /* InputMoodViewController.m in Sources */,
+				A05D922F1EA6F5A70006CB1C /* CenterTitleTableViewCell.m in Sources */,
 				A0643C951EA07C7C0005785F /* TargetAddRecordViewController.m in Sources */,
 				A0643BE61E9B17E80005785F /* TargetShowTableViewCell.m in Sources */,
 				A0643BDF1E9B17E80005785F /* SPTabBarViewController.m in Sources */,
@@ -1059,6 +1074,7 @@
 				A0643C1F1E9B36A40005785F /* RunningRecordColumnTableViewCell.m in Sources */,
 				A0643C8E1EA0788D0005785F /* TargetRecord.m in Sources */,
 				A0643BF11E9B17E80005785F /* ToolHomeViewController.m in Sources */,
+				A05D92331EA6F8C40006CB1C /* UILabel+JY.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

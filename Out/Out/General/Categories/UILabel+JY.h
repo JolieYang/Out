@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (JY)
-
+// 设置行间距
+- (void)setText:(NSString*)text lineSpacing:(CGFloat)lineSpacing;
+// 计算行高
++ (CGFloat)text:(NSString*)text heightWithFontSize:(CGFloat)fontSize width:(CGFloat)width lineSpacing:(CGFloat)lineSpacing;
 @end

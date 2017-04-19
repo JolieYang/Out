@@ -7,8 +7,18 @@
 //
 
 #import "TargetLogHeaderTableViewCell.h"
+#import "Target.h"
 
 @implementation TargetLogHeaderTableViewCell
+
++ (instancetype)initWithTarget:(Target *)target {
+    TargetLogHeaderTableViewCell *cell = [self loadFromNib];
+    cell.targetNameLable.text = target.targetName;
+    cell.insistHoursLabel.text = [NSString stringWithFormat:@"- 坚持了%.1f小时 -", target.insistHours];
+    cell.remarksLabel.text = target.remarks == nil? @"暂无描述" : target.remarks;
+    
+    return cell;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
