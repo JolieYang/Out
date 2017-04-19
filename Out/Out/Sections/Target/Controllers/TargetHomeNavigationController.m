@@ -19,6 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.viewControllers = @[[TargetHomeViewController new]];
+    
+    self.navigationBar.barTintColor = System_Nav_Black;
+    self.navigationBar.translucent = NO;
+    self.navigationBar.tintColor = System_White;
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: System_White}];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,8 +9,6 @@
 
 #import "TargetAddViewController.h"
 #import "IconTextFieldTableViewCell.h"
-#import "UIViewController+AddResignKeyboardGestures.h"
-#import "UIView+LoadFromNib.h"
 #import "Target.h"
 #import "TargetManager.h"
 #import "DateHelper.h"

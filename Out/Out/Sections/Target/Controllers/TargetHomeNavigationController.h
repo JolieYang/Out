@@ -7,7 +7,8 @@
 //
 
 #import "BaseNavigationController.h"
+#import "KLTNavigationController.h"
 
-@interface TargetHomeNavigationController : BaseNavigationController
+@interface TargetHomeNavigationController :KLTNavigationController
 
 @end

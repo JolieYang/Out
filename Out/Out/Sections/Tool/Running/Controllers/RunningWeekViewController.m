@@ -7,7 +7,6 @@
 //
 
 #import "RunningWeekViewController.h"
-#import "UIView+LoadFromNib.h"
 #import "CenterTitleTableViewCell.h"
 #import "RunningRecordColumnTableViewCell.h"
 #import "RunningMemberRecordTableViewCell.h"

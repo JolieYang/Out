@@ -18,12 +18,10 @@
 		A05266661E77D93D0087D861 /* OutAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266611E77D93D0087D861 /* OutAlertViewController.m */; };
 		A05266671E77D93D0087D861 /* OutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266631E77D93D0087D861 /* OutImageView.m */; };
 		A05266681E77D93D0087D861 /* JYProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A05266651E77D93D0087D861 /* JYProgressHUD.m */; };
-		A052666B1E77D9480087D861 /* UIView+LoadFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */; };
 		A05D92101EA5AD630006CB1C /* RunningAddMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D920E1EA5AD630006CB1C /* RunningAddMemberViewController.m */; };
 		A05D92111EA5AD630006CB1C /* RunningAddMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D920F1EA5AD630006CB1C /* RunningAddMemberViewController.xib */; };
 		A05D92161EA5B2440006CB1C /* IconTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92141EA5B2440006CB1C /* IconTextFieldTableViewCell.m */; };
 		A05D92171EA5B2440006CB1C /* IconTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */; };
-		A05D921A1EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92191EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m */; };
 		A05D921F1EA5E7AB0006CB1C /* TargetLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D921D1EA5E7AB0006CB1C /* TargetLogsViewController.m */; };
 		A05D92201EA5E7AB0006CB1C /* TargetLogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D921E1EA5E7AB0006CB1C /* TargetLogsViewController.xib */; };
 		A05D92251EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92231EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m */; };
@@ -34,6 +32,10 @@
 		A05D92301EA6F5A70006CB1C /* CenterTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D922E1EA6F5A70006CB1C /* CenterTitleTableViewCell.xib */; };
 		A05D92331EA6F8C40006CB1C /* UILabel+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92321EA6F8C40006CB1C /* UILabel+JY.m */; };
 		A05D92361EA6FA210006CB1C /* UITextView+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92351EA6FA210006CB1C /* UITextView+JY.m */; };
+		A05D923C1EA749DC0006CB1C /* AnimationContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92391EA749DC0006CB1C /* AnimationContoller.m */; };
+		A05D923D1EA749DC0006CB1C /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D923B1EA749DC0006CB1C /* KLTNavigationController.m */; };
+		A05D92401EA74B650006CB1C /* UIViewController+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D923F1EA74B650006CB1C /* UIViewController+JY.m */; };
+		A05D92441EA754670006CB1C /* UIView+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92431EA754670006CB1C /* UIView+JY.m */; };
 		A0643B811E9B17D30005785F /* JYPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B471E9B17D30005785F /* JYPhotoListViewController.m */; };
 		A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643B481E9B17D30005785F /* JYPhotoListViewController.xib */; };
 		A0643B831E9B17D30005785F /* JYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B4B1E9B17D30005785F /* JYPhoto.m */; };
@@ -133,16 +135,12 @@
 		A05266631E77D93D0087D861 /* OutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutImageView.m; sourceTree = "<group>"; };
 		A05266641E77D93D0087D861 /* JYProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYProgressHUD.h; sourceTree = "<group>"; };
 		A05266651E77D93D0087D861 /* JYProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYProgressHUD.m; sourceTree = "<group>"; };
-		A05266691E77D9480087D861 /* UIView+LoadFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadFromNib.h"; sourceTree = "<group>"; };
-		A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadFromNib.m"; sourceTree = "<group>"; };
 		A05D920D1EA5AD630006CB1C /* RunningAddMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningAddMemberViewController.h; sourceTree = "<group>"; };
 		A05D920E1EA5AD630006CB1C /* RunningAddMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningAddMemberViewController.m; sourceTree = "<group>"; };
 		A05D920F1EA5AD630006CB1C /* RunningAddMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunningAddMemberViewController.xib; sourceTree = "<group>"; };
 		A05D92131EA5B2440006CB1C /* IconTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		A05D92141EA5B2440006CB1C /* IconTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconTextFieldTableViewCell.xib; sourceTree = "<group>"; };
-		A05D92181EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AddResignKeyboardGestures.h"; sourceTree = "<group>"; };
-		A05D92191EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AddResignKeyboardGestures.m"; sourceTree = "<group>"; };
 		A05D921C1EA5E7AB0006CB1C /* TargetLogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetLogsViewController.h; sourceTree = "<group>"; };
 		A05D921D1EA5E7AB0006CB1C /* TargetLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetLogsViewController.m; sourceTree = "<group>"; };
 		A05D921E1EA5E7AB0006CB1C /* TargetLogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetLogsViewController.xib; sourceTree = "<group>"; };
@@ -159,6 +157,14 @@
 		A05D92321EA6F8C40006CB1C /* UILabel+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+JY.m"; sourceTree = "<group>"; };
 		A05D92341EA6FA210006CB1C /* UITextView+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+JY.h"; sourceTree = "<group>"; };
 		A05D92351EA6FA210006CB1C /* UITextView+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+JY.m"; sourceTree = "<group>"; };
+		A05D92381EA749DC0006CB1C /* AnimationContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContoller.h; sourceTree = "<group>"; };
+		A05D92391EA749DC0006CB1C /* AnimationContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationContoller.m; sourceTree = "<group>"; };
+		A05D923A1EA749DC0006CB1C /* KLTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTNavigationController.h; sourceTree = "<group>"; };
+		A05D923B1EA749DC0006CB1C /* KLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTNavigationController.m; sourceTree = "<group>"; };
+		A05D923E1EA74B650006CB1C /* UIViewController+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JY.h"; sourceTree = "<group>"; };
+		A05D923F1EA74B650006CB1C /* UIViewController+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JY.m"; sourceTree = "<group>"; };
+		A05D92421EA754670006CB1C /* UIView+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JY.h"; sourceTree = "<group>"; };
+		A05D92431EA754670006CB1C /* UIView+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JY.m"; sourceTree = "<group>"; };
 		A0643B441E9B17D30005785F /* JYPhotoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoConfig.h; sourceTree = "<group>"; };
 		A0643B461E9B17D30005785F /* JYPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoListViewController.h; sourceTree = "<group>"; };
 		A0643B471E9B17D30005785F /* JYPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoListViewController.m; sourceTree = "<group>"; };
@@ -360,14 +366,14 @@
 		A052665E1E77D93D0087D861 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				A05266691E77D9480087D861 /* UIView+LoadFromNib.h */,
-				A052666A1E77D9480087D861 /* UIView+LoadFromNib.m */,
-				A05D92181EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.h */,
-				A05D92191EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m */,
 				A05D92311EA6F8C40006CB1C /* UILabel+JY.h */,
 				A05D92321EA6F8C40006CB1C /* UILabel+JY.m */,
 				A05D92341EA6FA210006CB1C /* UITextView+JY.h */,
 				A05D92351EA6FA210006CB1C /* UITextView+JY.m */,
+				A05D923E1EA74B650006CB1C /* UIViewController+JY.h */,
+				A05D923F1EA74B650006CB1C /* UIViewController+JY.m */,
+				A05D92421EA754670006CB1C /* UIView+JY.h */,
+				A05D92431EA754670006CB1C /* UIView+JY.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -414,9 +420,21 @@
 			path = TargetLog;
 			sourceTree = "<group>";
 		};
+		A05D92371EA749DC0006CB1C /* KLTAnimateNav */ = {
+			isa = PBXGroup;
+			children = (
+				A05D92381EA749DC0006CB1C /* AnimationContoller.h */,
+				A05D92391EA749DC0006CB1C /* AnimationContoller.m */,
+				A05D923A1EA749DC0006CB1C /* KLTNavigationController.h */,
+				A05D923B1EA749DC0006CB1C /* KLTNavigationController.m */,
+			);
+			path = KLTAnimateNav;
+			sourceTree = "<group>";
+		};
 		A0643B331E9B17D30005785F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A05D92371EA749DC0006CB1C /* KLTAnimateNav */,
 				A00A39FA1EA0B8C6006DC03C /* HcdDateTimePicker */,
 				A0643C421E9E09DA0005785F /* MBProgressHUD+JDragon */,
 				A0643B421E9B17D30005785F /* JYPhoto */,
@@ -1017,7 +1035,6 @@
 				A05266671E77D93D0087D861 /* OutImageView.m in Sources */,
 				A0643C631E9F0F020005785F /* ScanViewController.m in Sources */,
 				A0643C771E9F0FF00005785F /* SetOutNameViewController.m in Sources */,
-				A052666B1E77D9480087D861 /* UIView+LoadFromNib.m in Sources */,
 				A0643C4B1E9E12600005785F /* Target.m in Sources */,
 				A05266661E77D93D0087D861 /* OutAlertViewController.m in Sources */,
 				A0643C241E9B5A080005785F /* RunningRecordTitleTableViewCell.m in Sources */,
@@ -1025,12 +1042,15 @@
 				A00A3A011EA0B8C6006DC03C /* HcdDateTimePickerView.m in Sources */,
 				A0643BE21E9B17E80005785F /* TargetHomeViewController.m in Sources */,
 				A0643C471E9E09DA0005785F /* MBProgressHUD+JDragon.m in Sources */,
+				A05D92441EA754670006CB1C /* UIView+JY.m in Sources */,
 				A0643C751E9F0FF00005785F /* OutHomeNavigationController.m in Sources */,
 				A0643B881E9B17D30005785F /* UILabel+Lines.m in Sources */,
 				A0643C821E9F105C0005785F /* TextViewHelper.m in Sources */,
 				A0643C611E9F0F020005785F /* ScanDemoViewController.m in Sources */,
 				A0643C061E9B229E0005785F /* RunningViewController.m in Sources */,
 				A0643C911EA0799C0005785F /* TargetRecordManager.m in Sources */,
+				A05D923C1EA749DC0006CB1C /* AnimationContoller.m in Sources */,
+				A05D923D1EA749DC0006CB1C /* KLTNavigationController.m in Sources */,
 				A05D92161EA5B2440006CB1C /* IconTextFieldTableViewCell.m in Sources */,
 				A0643C0E1E9B23350005785F /* RunningMemberRecordTableViewCell.m in Sources */,
 				A0F7C27B1E7A728D00BDA19F /* BaseTableView.m in Sources */,
@@ -1053,13 +1073,13 @@
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
 				A05266681E77D93D0087D861 /* JYProgressHUD.m in Sources */,
 				A0643B841E9B17D30005785F /* JYPhotoData.m in Sources */,
+				A05D92401EA74B650006CB1C /* UIViewController+JY.m in Sources */,
 				A0643BE11E9B17E80005785F /* TargetHomeNavigationController.m in Sources */,
 				A00A3A031EA0B8C6006DC03C /* UIColor+HcdCustom.m in Sources */,
 				A0643C801E9F105C0005785F /* DateHelper.m in Sources */,
 				A05D921F1EA5E7AB0006CB1C /* TargetLogsViewController.m in Sources */,
 				A0643C621E9F0F020005785F /* ScanResultViewController.m in Sources */,
 				A0643B871E9B17D30005785F /* MFLHintLabel.m in Sources */,
-				A05D921A1EA5B93D0006CB1C /* UIViewController+AddResignKeyboardGestures.m in Sources */,
 				A05D92251EA5EF7B0006CB1C /* TargetLogShowTableViewCell.m in Sources */,
 				A0643C741E9F0FF00005785F /* InputMoodViewController.m in Sources */,
 				A05D922F1EA6F5A70006CB1C /* CenterTitleTableViewCell.m in Sources */,

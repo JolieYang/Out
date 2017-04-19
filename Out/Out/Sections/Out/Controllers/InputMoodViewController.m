@@ -33,11 +33,11 @@
 #import "JYProgressHUD.h"
 #import "StringHelper.h"
 #import "OutAPIManager.h"
-#import "const.h"
+#import "UITextView+JY.h"
 
 #define YLog(formatString, ...) NSLog((@"%s" formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
 
-@interface InputMoodViewController ()<UITextViewDelegate>
+@interface InputMoodViewController ()<UITextViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextView;
 @property (weak, nonatomic) IBOutlet UILabel *textLengthLB;
 @property (nonatomic, strong) UILabel *placeHolderLB;
@@ -50,8 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupNavigation];
-    [self setupTextView];
+    [self setupViews];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,36 +59,56 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)setupViews {
+    [self setupNavigation];
+    [self setupTextView];
+}
 - (void)setupNavigation {
-    self.navigationItem.title = @"InputMood";
-    // 设置导航栏返回(左边)按钮
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = backItem;
+    [self setupNavTitle];
+    [self addNavBackItem];
+    [self addNavRightItem];
+}
+
+- (void)setupNavTitle {
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    titleLabel.text = @"添加Mood";
+    titleLabel.textColor = Birthday_Icon_Gray;
+    self.navigationItem.titleView = titleLabel;
+}
+
+
+- (void)addNavBackItem {
+    [self customBackItemWithImageName:Gray_Nav_Back_Icon_Name action:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+// 设置导航栏右边按钮
+- (void)addNavRightItem {
+    UIButton *checkBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    checkBtn.frame = CGRectMake(0, 0, 25,25);
+    [checkBtn setBackgroundImage:[UIImage imageNamed:@"nav_check"] forState:UIControlStateNormal];
+    [checkBtn addTarget:self action:@selector(didEndEdit) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:checkBtn];
+    [self hideNavRightItem:YES];
 }
 
 - (void)setupTextView {
+    self.inputTextView.scrollEnabled = NO;
     self.inputTextView.delegate = self;
     self.inputTextView.contentMode = UIViewContentModeTop;
     [self addInputTextViewPlaceHolder];
 }
 - (void)addInputTextViewPlaceHolder {
-    self.placeHolderLB = [[UILabel alloc] initWithFrame:CGRectMake(5, 8, [[UIScreen mainScreen] bounds].size.width - 20, 36)];
-    self.placeHolderLB.text = @"想说点什么呢?";
-    self.placeHolderLB.textColor = [UIColor grayColor];
-    self.placeHolderLB.alpha = 0.5f;
-    self.placeHolderLB.font = self.inputTextView.font;
-    [self.placeHolderLB sizeToFit];
-    [self.inputTextView addSubview: self.placeHolderLB];
-}
-
-- (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.inputTextView setPlaceHolder:@"想说点什么呢?"];
 }
 
 // 发布mood
 - (void)didEndEdit {
     // 超出100字限制
-    if ([StringHelper length:self.inputTextView.text] > 100) {
+    if (self.inputTextView.text.length == 0) {
+        [OutAlertViewController showWithTitle:@"请输入文本" actionTitle:@"知道了"];
+    } else if ([StringHelper length:self.inputTextView.text] > 100) {
         UIAlertController *alertController = [OutAlertViewController lenghtExceedLimit];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
@@ -137,33 +156,12 @@
             self.textLengthLB.text = [NSString stringWithFormat:@"%d/%d", length, LIMIT_TEXT_LENGTH];
         });
     }
-    if (length == 1) {
+    if (length >= 1) {
         [self didEnterText];
     } else if (newText.length == 0 && self.inputTextView.text.length == 0) {
         [self didEnterEmpty];
     }
 }
-
-#pragma mark Tool
-
-// 隐藏或显示导航栏右边按钮
-- (void)hideNavRightItem:(BOOL)hide {
-    // 显示导航栏右边按钮
-    if (hide == NO && !self.hasAddedNavRight) {
-        [self addNavRightItem];
-    }
-    NSArray *subviews = self.navigationController.navigationBar.subviews;
-    if (subviews.count < 5) return;
-    UIView *navRightItem = [subviews objectAtIndex:3];// 0 1 是固定的 ,然后显示UINavigationButton，根据加入的顺序，viewDidload中添加了导航栏左边按钮(index为2), 添加了右边按钮则index为3
-    [navRightItem setHidden:hide];
-}
-// 设置导航栏右边按钮
-- (void)addNavRightItem {
-    UIBarButtonItem *checkItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_check"] style:UIBarButtonItemStylePlain target:self action:@selector(didEndEdit)];
-    self.navigationItem.rightBarButtonItem = checkItem;
-    self.hasAddedNavRight = YES;
-}
-
 
 #pragma mark UI
 // 输入文字隐藏placeHolder与显示发布按钮
@@ -175,6 +173,10 @@
 - (void)didEnterEmpty {
     self.placeHolderLB.hidden = NO;
     [self hideNavRightItem:YES];
+}
+
+- (void)hideNavRightItem:(BOOL)hided {
+    self.navigationItem.rightBarButtonItem.customView.hidden = hided;
 }
 
 @end

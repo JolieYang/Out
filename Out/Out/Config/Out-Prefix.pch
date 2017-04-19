@@ -14,5 +14,6 @@
 #import "const.h"
 #import "AppMacro.h"
 #import "JYProgressHUD.h"
-#import "UIView+LoadFromNib.h"
+#import "UIView+JY.h"
+#import "UIViewController+JY.h"
 #endif /* Out_Prefix_pch */

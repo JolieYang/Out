@@ -39,6 +39,7 @@
     
     return alertController;
 }
+
 + (UIAlertController *)spaceOutName {
     UIAlertController *alertController = [OutAlertViewController showWithTitle:@"OutName不可全为空格" actionTitle:@"知道了"];
     

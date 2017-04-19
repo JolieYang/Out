@@ -7,7 +7,6 @@
 //
 
 #import "RunningRecordFundsTableViewCell.h"
-#import "UIView+loadFromNib.h"
 
 @implementation RunningRecordFundsTableViewCell
 

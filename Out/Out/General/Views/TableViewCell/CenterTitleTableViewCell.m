@@ -7,7 +7,6 @@
 //
 
 #import "CenterTitleTableViewCell.h"
-#import "UIView+loadFromNib.h"
 
 @implementation CenterTitleTableViewCell
 

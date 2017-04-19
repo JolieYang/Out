@@ -7,7 +7,6 @@
 //
 
 #import "RunningMemberRecordTableViewCell.h"
-#import "UIView+LoadFromNib.h"
 #import "RunningRecordManager.h"
 #import "RunningRecord.h"
 

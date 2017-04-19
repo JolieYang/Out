@@ -127,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-64-Ubd">
-                                <rect key="frame" x="-4" y="280" width="328" height="34"/>
+                                <rect key="frame" x="0.0" y="280" width="320" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-Yk-xkl">
                                         <rect key="frame" x="280" y="8" width="40" height="18"/>
@@ -140,7 +140,7 @@
                                 <constraints>
                                     <constraint firstItem="YMN-Yk-xkl" firstAttribute="centerY" secondItem="b8R-64-Ubd" secondAttribute="centerY" id="ITu-5O-DUs"/>
                                     <constraint firstAttribute="height" constant="34" id="QoX-CC-4hZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="YMN-Yk-xkl" secondAttribute="trailing" constant="8" id="eZR-Us-qnj"/>
+                                    <constraint firstAttribute="trailing" secondItem="YMN-Yk-xkl" secondAttribute="trailing" id="eZR-Us-qnj"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Jp-zxK">
@@ -164,10 +164,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="top" secondItem="d5F-BU-5C3" secondAttribute="bottom" constant="8" id="Dhb-VD-nDZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="b8R-64-Ubd" secondAttribute="trailing" constant="-20" id="IGp-C2-ssB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b8R-64-Ubd" secondAttribute="trailing" constant="-16" id="IGp-C2-ssB"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="trailing" secondItem="1yM-qr-RiJ" secondAttribute="trailingMargin" id="IWI-aM-gyw"/>
                             <constraint firstItem="b8R-64-Ubd" firstAttribute="top" secondItem="wSo-Jp-zxK" secondAttribute="bottom" id="TAJ-lY-20P"/>
-                            <constraint firstItem="b8R-64-Ubd" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" constant="-20" id="gBV-Ut-lYw"/>
+                            <constraint firstItem="b8R-64-Ubd" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" constant="-16" id="gBV-Ut-lYw"/>
                             <constraint firstItem="1tM-1Q-M8j" firstAttribute="top" secondItem="b8R-64-Ubd" secondAttribute="bottom" constant="254" id="i0g-hJ-oT2"/>
                             <constraint firstItem="wSo-Jp-zxK" firstAttribute="leading" secondItem="1yM-qr-RiJ" secondAttribute="leadingMargin" id="kCU-3Y-gXT"/>
                         </constraints>

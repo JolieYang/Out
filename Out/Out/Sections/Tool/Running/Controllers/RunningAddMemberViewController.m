@@ -8,8 +8,6 @@
 
 #import "RunningAddMemberViewController.h"
 #import "IconTextFieldTableViewCell.h"
-#import "UIView+loadFromNib.h"
-#import "UIViewController+AddResignKeyboardGestures.h"
 #import "RunningMemberManager.h"
 
 @interface RunningAddMemberViewController ()<UITableViewDelegate, UITableViewDataSource>

@@ -7,7 +7,6 @@
 //
 
 #import "RunningRecordTitleTableViewCell.h"
-#import "UIView+loadFromNib.h"
 
 @implementation RunningRecordTitleTableViewCell
 

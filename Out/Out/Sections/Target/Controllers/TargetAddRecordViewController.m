@@ -15,8 +15,7 @@
 #import "TargetRecord.h"
 #import "TargetManager.h"
 #import "TargetRecordManager.h"
-#import "UIView+loadFromNib.h"
-#import "UIViewController+AddResignKeyboardGestures.h"
+#import "UIViewController+JY.h"
 
 @interface TargetAddRecordViewController ()<UITableViewDelegate, UITableViewDataSource> {
     HcdDateTimePickerView *dateTimePickerView;
@@ -49,6 +48,9 @@
 
 - (void)setupViews {
     self.title = self.target.targetName;
+    [self customBackItemWithImageName:White_Nav_Back_Icon_Name action:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     [self addNavRightItem];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -159,7 +161,7 @@
 - (void)showHourMinutePickerView {
     if (!dateTimePickerView) {
         dateTimePickerView = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerHourMinuteMode defaultDateTime:[[NSDate alloc]initWithTimeIntervalSinceNow:0]];
-        dateTimePickerView.topViewColor = Navigation_Black;
+        dateTimePickerView.topViewColor = HourMinute_Bg;
     }
     __weak typeof(self) weakSelf = self;
     dateTimePickerView.clickedOkBtn = ^(NSString *datetimeStr) {// 00:38

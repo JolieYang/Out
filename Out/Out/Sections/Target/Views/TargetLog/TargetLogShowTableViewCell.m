@@ -8,7 +8,6 @@
 
 #import "TargetLogShowTableViewCell.h"
 #import "TargetRecord.h"
-#import "UIView+loadFromNib.h"
 #import "UILabel+JY.h"
 #import "DateHelper.h"
 
