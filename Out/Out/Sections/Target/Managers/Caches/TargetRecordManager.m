@@ -34,7 +34,12 @@
     record.addUnix = target.updateUnix;
     record.recordUnix = target.updateUnix;// ps: todo
     record.insistHours = insistHours;
-    record.log = log;
+    NSString *trimWhitespaceAndNewlineLog = [log stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (trimWhitespaceAndNewlineLog.length > 0) {
+        // 去除首尾换行
+        NSString *trimNewlineLog = [log stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        record.log = trimNewlineLog;
+    }
     [record save];
     
     return target;

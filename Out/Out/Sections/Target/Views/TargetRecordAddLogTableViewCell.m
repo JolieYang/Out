@@ -18,7 +18,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.logTextView setPlaceHolder:@"输入你想说的"];
     self.logTextView.delegate = self;
 }
 

@@ -23,8 +23,11 @@
 @implementation TargetHomeViewController
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self.tableView reloadData];
     self.title = @"Target";
+    self.navigationController.navigationBar.barTintColor = System_Nav_Black;
+    [self setNavigationBarTitleColor:System_Nav_White];
 }
 
 - (void)viewDidLoad {
@@ -34,6 +37,9 @@
     [self setupData];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -46,7 +52,8 @@
 - (void)setupViews {
     [self setupNavigation];
     self.view.backgroundColor = App_Bg;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight - kTabbarHeight - kNavigationBarHeight) style: UITableViewStylePlain];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kAppWidth, kAppHeight - kTabbarHeight - kNavigationBarHeight - kStatusHeight) style: UITableViewStylePlain];
     self.tableView.backgroundColor = App_Bg;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -85,7 +92,8 @@
     addRecordVC.hidesBottomBarWhenPushed = YES;
     addRecordVC.target = self.targetList[indexPath.section];
     addRecordVC.updateTargetBlock = ^(Target *target) {
-        self.targetList[indexPath.section] = target;
+        [self.targetList removeObjectAtIndex:indexPath.section];
+        [self.targetList insertObject:target atIndex:0];
     };
     [self.navigationController pushViewController:addRecordVC animated:YES];
 }

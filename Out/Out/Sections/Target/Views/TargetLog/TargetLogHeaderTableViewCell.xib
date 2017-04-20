@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,19 +11,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="209.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_girl" translatesAutoresizingMaskIntoConstraints="NO" id="Fc0-1j-gL0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
+                    </imageView>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmd-O9-I9M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VP5-Mg-lPJ">
-                        <rect key="frame" x="8" y="94" width="304" height="27"/>
+                        <rect key="frame" x="8" y="91" width="304" height="27"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                        <color key="textColor" red="0.99963909390000005" green="1" blue="0.99975615740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- 坚持了100小时 -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qic-BA-KHR">
-                        <rect key="frame" x="8" y="132" width="304" height="15"/>
+                        <rect key="frame" x="8" y="129" width="304" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.72398859262466431" green="0.72454649209976196" blue="0.72407501935958862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYk-0N-GFp">
@@ -43,15 +51,26 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="暂无描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akg-X0-26D">
                         <rect key="frame" x="15" y="172" width="297" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.45578759908676147" green="0.45615345239639282" blue="0.4558442234992981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.86936372520000005" green="0.87350147960000002" blue="0.87294548750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" red="0.1580955982208252" green="0.16767153143882751" blue="0.20991310477256775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="Fc0-1j-gL0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="5tE-Et-yWj"/>
+                    <constraint firstItem="fmd-O9-I9M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TeH-Qq-Eee"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Fc0-1j-gL0" secondAttribute="bottom" constant="-8" id="XvW-34-8fV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Fc0-1j-gL0" secondAttribute="trailing" constant="-8" id="fuU-I4-aIW"/>
+                    <constraint firstItem="fmd-O9-I9M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="m9u-kd-N8g"/>
+                    <constraint firstAttribute="bottom" secondItem="fmd-O9-I9M" secondAttribute="bottom" id="nr7-9e-hb9"/>
+                    <constraint firstAttribute="trailing" secondItem="fmd-O9-I9M" secondAttribute="trailing" id="upv-bM-lBD"/>
+                    <constraint firstItem="Fc0-1j-gL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="wF4-uW-DkF"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="insistHoursLabel" destination="Qic-BA-KHR" id="xoH-XW-8k0"/>
                 <outlet property="remarksLabel" destination="Akg-X0-26D" id="udn-vM-PdA"/>
+                <outlet property="targetBgImageView" destination="Fc0-1j-gL0" id="091-bA-1s7"/>
                 <outlet property="targetNameLable" destination="VP5-Mg-lPJ" id="ppy-qb-jlW"/>
             </connections>
             <point key="canvasLocation" x="280" y="334"/>
@@ -59,5 +78,6 @@
     </objects>
     <resources>
         <image name="picture_back" width="22" height="22"/>
+        <image name="yellow_girl" width="450" height="531"/>
     </resources>
 </document>

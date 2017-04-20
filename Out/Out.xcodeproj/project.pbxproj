@@ -36,6 +36,10 @@
 		A05D923D1EA749DC0006CB1C /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D923B1EA749DC0006CB1C /* KLTNavigationController.m */; };
 		A05D92401EA74B650006CB1C /* UIViewController+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D923F1EA74B650006CB1C /* UIViewController+JY.m */; };
 		A05D92441EA754670006CB1C /* UIView+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92431EA754670006CB1C /* UIView+JY.m */; };
+		A05D92481EA883F60006CB1C /* MonoTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D92461EA883F60006CB1C /* MonoTextViewTableViewCell.m */; };
+		A05D92491EA883F60006CB1C /* MonoTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D92471EA883F60006CB1C /* MonoTextViewTableViewCell.xib */; };
+		A05D924D1EA88E540006CB1C /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D924B1EA88E540006CB1C /* TextFieldTableViewCell.m */; };
+		A05D924E1EA88E540006CB1C /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A05D924C1EA88E540006CB1C /* TextFieldTableViewCell.xib */; };
 		A0643B811E9B17D30005785F /* JYPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B471E9B17D30005785F /* JYPhotoListViewController.m */; };
 		A0643B821E9B17D30005785F /* JYPhotoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0643B481E9B17D30005785F /* JYPhotoListViewController.xib */; };
 		A0643B831E9B17D30005785F /* JYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A0643B4B1E9B17D30005785F /* JYPhoto.m */; };
@@ -165,6 +169,12 @@
 		A05D923F1EA74B650006CB1C /* UIViewController+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JY.m"; sourceTree = "<group>"; };
 		A05D92421EA754670006CB1C /* UIView+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JY.h"; sourceTree = "<group>"; };
 		A05D92431EA754670006CB1C /* UIView+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JY.m"; sourceTree = "<group>"; };
+		A05D92451EA883F60006CB1C /* MonoTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonoTextViewTableViewCell.h; sourceTree = "<group>"; };
+		A05D92461EA883F60006CB1C /* MonoTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonoTextViewTableViewCell.m; sourceTree = "<group>"; };
+		A05D92471EA883F60006CB1C /* MonoTextViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonoTextViewTableViewCell.xib; sourceTree = "<group>"; };
+		A05D924A1EA88E540006CB1C /* TextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldTableViewCell.h; sourceTree = "<group>"; };
+		A05D924B1EA88E540006CB1C /* TextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldTableViewCell.m; sourceTree = "<group>"; };
+		A05D924C1EA88E540006CB1C /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		A0643B441E9B17D30005785F /* JYPhotoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoConfig.h; sourceTree = "<group>"; };
 		A0643B461E9B17D30005785F /* JYPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhotoListViewController.h; sourceTree = "<group>"; };
 		A0643B471E9B17D30005785F /* JYPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhotoListViewController.m; sourceTree = "<group>"; };
@@ -403,6 +413,12 @@
 				A05D92131EA5B2440006CB1C /* IconTextFieldTableViewCell.h */,
 				A05D92141EA5B2440006CB1C /* IconTextFieldTableViewCell.m */,
 				A05D92151EA5B2440006CB1C /* IconTextFieldTableViewCell.xib */,
+				A05D924A1EA88E540006CB1C /* TextFieldTableViewCell.h */,
+				A05D924B1EA88E540006CB1C /* TextFieldTableViewCell.m */,
+				A05D924C1EA88E540006CB1C /* TextFieldTableViewCell.xib */,
+				A05D92451EA883F60006CB1C /* MonoTextViewTableViewCell.h */,
+				A05D92461EA883F60006CB1C /* MonoTextViewTableViewCell.m */,
+				A05D92471EA883F60006CB1C /* MonoTextViewTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -910,7 +926,7 @@
 				TargetAttributes = {
 					A067F0531D741FFB003140D6 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = M332A6N2P3;
+						DevelopmentTeam = 5STM2R5485;
 					};
 				};
 			};
@@ -944,6 +960,7 @@
 				A0643C251E9B5A080005785F /* RunningRecordTitleTableViewCell.xib in Resources */,
 				A05D92171EA5B2440006CB1C /* IconTextFieldTableViewCell.xib in Resources */,
 				A0643C961EA07C7C0005785F /* TargetAddRecordViewController.xib in Resources */,
+				A05D924E1EA88E540006CB1C /* TextFieldTableViewCell.xib in Resources */,
 				A0643C171E9B269D0005785F /* check_selected@2x.png in Resources */,
 				A0643C071E9B229E0005785F /* RunningViewController.xib in Resources */,
 				A0643C201E9B36A40005785F /* RunningRecordColumnTableViewCell.xib in Resources */,
@@ -956,6 +973,7 @@
 				A0643C9B1EA087F50005785F /* TargetRecordAddLogTableViewCell.xib in Resources */,
 				A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */,
 				A0643C091E9B229E0005785F /* RunningWeekViewController.xib in Resources */,
+				A05D92491EA883F60006CB1C /* MonoTextViewTableViewCell.xib in Resources */,
 				A0643C461E9E09DA0005785F /* MBProgressHUD+JDragon.bundle in Resources */,
 				A0643C2A1E9B621F0005785F /* RunningRecordFundsTableViewCell.xib in Resources */,
 				A05D92111EA5AD630006CB1C /* RunningAddMemberViewController.xib in Resources */,
@@ -1035,6 +1053,7 @@
 				A05266671E77D93D0087D861 /* OutImageView.m in Sources */,
 				A0643C631E9F0F020005785F /* ScanViewController.m in Sources */,
 				A0643C771E9F0FF00005785F /* SetOutNameViewController.m in Sources */,
+				A05D92481EA883F60006CB1C /* MonoTextViewTableViewCell.m in Sources */,
 				A0643C4B1E9E12600005785F /* Target.m in Sources */,
 				A05266661E77D93D0087D861 /* OutAlertViewController.m in Sources */,
 				A0643C241E9B5A080005785F /* RunningRecordTitleTableViewCell.m in Sources */,
@@ -1045,6 +1064,7 @@
 				A05D92441EA754670006CB1C /* UIView+JY.m in Sources */,
 				A0643C751E9F0FF00005785F /* OutHomeNavigationController.m in Sources */,
 				A0643B881E9B17D30005785F /* UILabel+Lines.m in Sources */,
+				A05D924D1EA88E540006CB1C /* TextFieldTableViewCell.m in Sources */,
 				A0643C821E9F105C0005785F /* TextViewHelper.m in Sources */,
 				A0643C611E9F0F020005785F /* ScanDemoViewController.m in Sources */,
 				A0643C061E9B229E0005785F /* RunningViewController.m in Sources */,
@@ -1226,7 +1246,7 @@
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jolieyang.out;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joliey.zfb-scanPay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1243,7 +1263,7 @@
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jolieyang.out;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joliey.zfb-scanPay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

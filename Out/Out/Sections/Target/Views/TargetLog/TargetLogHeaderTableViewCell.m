@@ -25,6 +25,7 @@
     // Initialization code
     self.backgroundColor = Apple_Black;
     self.remarksLabel.numberOfLines = 0;
+    self.targetBgImageView.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

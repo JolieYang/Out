@@ -45,6 +45,7 @@
 #define Apple_SpaceGray UIColorFromRGB(0xA4A4A8)
 #define Apple_RoseGold UIColorFromRGB(0xCBB0A9)
 #define Apple_Black UIColorFromRGB(0x383A3E)
+#define Swift_Orange UIColorFromRGB(0xE38D46)
 
 #define Birthday_Bg_Gray UIColorFromRGB(0x5E5E5E)
 #define Birthday_Icon_Gray UIColorFromRGB(0x737373)
@@ -59,13 +60,23 @@
 #define Running_Record_Not_Achieve UIColorFromRGB(0xFFFE3C)
 #define Running_Record_Take_Leave UIColorFromRGB(0x62A14E)
 
-#define System_Nav_Black Black2
+#define System_Sub_Tone Swift_Orange
+#define System_Main_Tone Black2
+#define System_Nav_Black System_Main_Tone
 #define System_Nav_White System_White
+#define System_Nav_Gray Birthday_Icon_Gray
 #define HourMinute_Bg Black1
 
+#define White_Icon_Color UIColorFromRGB(0xFFFFFF)
+#define Gray_Icon_Color UIColorFromRGB(0xFFFFFF)
+
 // 图片
-#define White_Nav_Back_Icon_Name @"picture_back"
+#define White_Back_Icon_Name @"picture_back"
+#define White_Check_Icon_Name @"picture_ok"
+#define White_Camera_Icon_Name @"picture_camera"
+#define White_Detail_Icon_Name @"detail_icon"
 #define Gray_Nav_Back_Icon_Name @"nav_back"
+#define Gray_Nav_Check_Icon_Name @"nav_check"
 
 #define Default_Image [UIImage imageNamed: @"tab_icon_01_normal"]
 #endif /* AppMacro_h */

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *targetNameLable;
 @property (weak, nonatomic) IBOutlet UILabel *insistHoursLabel;
 @property (weak, nonatomic) IBOutlet UILabel *remarksLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *targetBgImageView;
 
 + (instancetype)initWithTarget:(Target *)target;
 @property (nonatomic, copy) void (^popBlock)();

@@ -5,6 +5,8 @@
 //  Created by Jolie_Yang on 16/8/29.
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
+//  com.joliey.zfb-scanPay jolie_yang@163.com
+//  com.jolieyang.out ehealthscience@163.com
 
 #import "AppDelegate.h"
 #import "SetOutNameWindow.h"

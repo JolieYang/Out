@@ -16,6 +16,7 @@
 #import "TargetManager.h"
 #import "TargetRecordManager.h"
 #import "UIViewController+JY.h"
+#import "UITextView+JY.h"
 
 @interface TargetAddRecordViewController ()<UITableViewDelegate, UITableViewDataSource> {
     HcdDateTimePickerView *dateTimePickerView;
@@ -37,6 +38,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
+    self.title = self.target.targetName;
+    [self customBackItemWithImageName:White_Back_Icon_Name action:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [self addNavRightItem];
 }
 
 // 跳转到Log页面
@@ -47,11 +53,6 @@
 }
 
 - (void)setupViews {
-    self.title = self.target.targetName;
-    [self customBackItemWithImageName:White_Nav_Back_Icon_Name action:^{
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    [self addNavRightItem];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
@@ -70,8 +71,12 @@
 }
 
 - (void)addNavRightItem {
-    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithTitle:@"添加纪录" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
-    self.navigationItem.rightBarButtonItem = titleItem;
+    [self customRightItemsWithFirstImageName:White_Detail_Icon_Name action:^{
+        // 详情页面
+    } secondImageName:White_Check_Icon_Name action:^{
+        // 添加
+        [self rightItemAction];
+    }];
     [self enabledRightItem:NO];
 }
 
@@ -137,6 +142,7 @@
         return cell;
     } else if (indexPath.section == 1) {
          TargetRecordAddLogTableViewCell *cell = [TargetRecordAddLogTableViewCell loadFromNib];
+        [cell.logTextView setPlaceHolder:@"输入你想说的"];
         
         return cell;
     } else {
@@ -176,7 +182,7 @@
         } else {
             [weakSelf enabledRightItem:NO];
         }
-        [weakSelf.tableView reloadData];
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     };
     [self.view addSubview:dateTimePickerView];
     [dateTimePickerView showHcdDateTimePicker];

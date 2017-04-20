@@ -16,9 +16,19 @@
 @implementation UIViewController (JY)
 static char *backActionBlockKey = "backActionBlockKey";
 static char *rightActinBlockKey = "rightActinBlockKey";
+static char *firstRightActionBlockKey = "firstRightActionBlockKey";
+static char *secondRightActionBlockKey = "secondRightActionBlockKey";
+
 
 #pragma mark -- UINavigationController
-- (void)customBackItemWithImageName:(NSString *)imageName action:(void (^)(void))actionBlock {
+
+- (void)setNavigationBarTitleColor:(UIColor *)color {
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:color}];
+}
+
+- (void)customBackItemWithImageName:(NSString *)imageName
+                             action:(void (^)(void))actionBlock
+{
     self.backActionBlock = [actionBlock copy];
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     leftBtn.frame = CGRectMake(0, 0, 25,25);
@@ -34,8 +44,50 @@ static char *rightActinBlockKey = "rightActinBlockKey";
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
-- (void)customRightItemWithImageName:(NSString *)imageName action:(void (^)(void))actionBlock {
+- (void)customRightItemWithImageName:(NSString *)imageName
+                              action:(void (^)(void))actionBlock
+{
+    self.rightActionBlock = [actionBlock copy];
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    rightBtn.frame = CGRectMake(0, 0, 25,25);
+    [rightBtn setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(rightItemAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];;
+    self.navigationItem.rightBarButtonItems = @[rightBarBtn];
+}
+
+- (void)systemRightItemWithImageName:(NSString *)imageName
+                              action:(void (^)(void))actionBlock {
+    self.rightActionBlock = [actionBlock copy];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:imageName] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
+    self.navigationItem.rightBarButtonItem = rightItem;
     
+   }
+
+// 顺序从左到右
+- (void)customRightItemsWithFirstImageName:(NSString *)firstImageName
+                                   action:(void (^)(void))firstActionBlock
+                          secondImageName:(NSString *)secondImageName
+                                   action:(void (^)(void))secondActionBlock
+{
+    self.firstRightActionBlock = [firstActionBlock copy];
+    self.secondRightActionBlock = [secondActionBlock copy];
+    
+    UIBarButtonItem *firstItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:firstImageName] style:UIBarButtonItemStylePlain target:self action:@selector(firstRightItemAction)];
+    UIBarButtonItem *secondItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:secondImageName] style:UIBarButtonItemStylePlain target:self action:@selector(secondRightItemAction)];
+    self.navigationItem.rightBarButtonItems = @[secondItem, firstItem];
+}
+
+- (void)firstRightItemAction {
+    if (self.firstRightActionBlock) {
+        self.firstRightActionBlock();
+    }
+}
+
+- (void)secondRightItemAction {
+    if (self.secondRightActionBlock) {
+        self.secondRightActionBlock();
+    }
 }
 
 - (void)backAction {
@@ -64,6 +116,21 @@ static char *rightActinBlockKey = "rightActinBlockKey";
 
 - (void (^)())rightActionBlock {
     return  objc_getAssociatedObject(self, rightActinBlockKey);
+}
+
+- (void)setFirstRightActionBlock:(void (^)())backActionBlock {
+    objc_setAssociatedObject(self, firstRightActionBlockKey, backActionBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void (^)())firstRightActionBlock {
+    return  objc_getAssociatedObject(self, firstRightActionBlockKey);
+}
+- (void)setSecondRightActionBlock:(void (^)())backActionBlock {
+    objc_setAssociatedObject(self, secondRightActionBlockKey, backActionBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void (^)())secondRightActionBlock {
+    return  objc_getAssociatedObject(self, secondRightActionBlockKey);
 }
 
 #pragma mark -- UIGestureRecognizer
