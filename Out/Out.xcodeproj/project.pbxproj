@@ -112,6 +112,7 @@
 		A067F0671D741FFB003140D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067F0651D741FFB003140D6 /* LaunchScreen.storyboard */; };
 		A079C49A1D93B4BB00612F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C4991D93B4BB00612F08 /* CoreGraphics.framework */; };
 		A079C49C1D93B4D300612F08 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C49B1D93B4D300612F08 /* Photos.framework */; };
+		A091446E1EAF3BFA0035A84F /* UIColor+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A091446D1EAF3BFA0035A84F /* UIColor+JY.m */; };
 		A0F7C2781E7A726400BDA19F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F7C2771E7A726400BDA19F /* BaseNavigationController.m */; };
 		A0F7C27B1E7A728D00BDA19F /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F7C27A1E7A728D00BDA19F /* BaseTableView.m */; };
 /* End PBXBuildFile section */
@@ -298,6 +299,8 @@
 		A067F0681D741FFB003140D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A079C4991D93B4BB00612F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A079C49B1D93B4D300612F08 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		A091446C1EAF3BFA0035A84F /* UIColor+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JY.h"; sourceTree = "<group>"; };
+		A091446D1EAF3BFA0035A84F /* UIColor+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JY.m"; sourceTree = "<group>"; };
 		A0F7C2761E7A726400BDA19F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		A0F7C2771E7A726400BDA19F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		A0F7C2791E7A728D00BDA19F /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				A05D923F1EA74B650006CB1C /* UIViewController+JY.m */,
 				A05D92421EA754670006CB1C /* UIView+JY.h */,
 				A05D92431EA754670006CB1C /* UIView+JY.m */,
+				A091446C1EAF3BFA0035A84F /* UIColor+JY.h */,
+				A091446D1EAF3BFA0035A84F /* UIColor+JY.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				A0F7C2781E7A726400BDA19F /* BaseNavigationController.m in Sources */,
 				A05D92361EA6FA210006CB1C /* UITextView+JY.m in Sources */,
 				A0643C081E9B229E0005785F /* RunningWeekViewController.m in Sources */,
+				A091446E1EAF3BFA0035A84F /* UIColor+JY.m in Sources */,
 				A0643C881E9F11900005785F /* JYFileManager.m in Sources */,
 				A067F0591D741FFB003140D6 /* main.m in Sources */,
 				A05266681E77D93D0087D861 /* JYProgressHUD.m in Sources */,

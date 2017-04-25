@@ -19,12 +19,12 @@
 + (instancetype)AnimationControllerWithOperation:(UINavigationControllerOperation)operation NavigationController:(UINavigationController *)navigationController;
 
 @property(nonatomic,assign)UINavigationControllerOperation  navigationOperation;
-@property(nonatomic,weak)UINavigationController * navigationController;
+@property(nonatomic,weak)UINavigationController *navigationController;
 
 /**
  导航栏Pop时删除了多少张截图（调用PopToViewController时，计算要删除的截图的数量）
  */
-@property(nonatomic,assign)NSInteger  removeCount;
+@property(nonatomic,assign)NSInteger removeCount;
 
 /**
  调用此方法删除数组最后一张截图 (调用pop手势或一次pop多个控制器时使用)
