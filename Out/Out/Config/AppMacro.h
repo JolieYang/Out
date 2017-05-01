@@ -68,7 +68,7 @@
 #define HourMinute_Bg Black1
 
 #define White_Icon_Color UIColorFromRGB(0xFFFFFF)
-#define Gray_Icon_Color UIColorFromRGB(0xFFFFFF)
+#define Gray_Icon_Color UIColorFromRGB(0xECECED)
 
 // 图片
 #define White_Back_Icon_Name @"picture_back"

@@ -28,6 +28,10 @@
     [self setupDatas];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateWeekList];
+}
+
 - (void)setupViews {
     self.title = @"跑团";
     [self addNavRightItem];
@@ -46,6 +50,10 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)setupDatas {
+    [self updateWeekList];
+}
+
+- (void)updateWeekList {
     self.weeksList = [NSMutableArray arrayWithArray:[RunningWeekManager getRecentTwentyWeekRecords]];
 }
 

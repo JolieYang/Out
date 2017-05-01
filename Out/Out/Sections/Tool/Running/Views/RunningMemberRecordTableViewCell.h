@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RunningRecord.h"
+@class RunningWeek;
 
 @interface RunningMemberRecordTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *memberNameLabel;
@@ -20,6 +21,8 @@
 - (instancetype)initWithDataModel:(RunningRecord *)model;
 
 @property (nonatomic, copy) void (^updateContributionBlock)(NSInteger preContributionMoney, NSInteger contributionMoney);
+@property (nonatomic, copy) void (^updateWeekRecordContributionBlock)(RunningWeek *week);
+
 @property (nonatomic, copy) void (^checkBtnClickBlock)(BOOL checked);
 @property (nonatomic, copy) void (^keyboardWillShowBlock)(UITextField *tf);
 @end

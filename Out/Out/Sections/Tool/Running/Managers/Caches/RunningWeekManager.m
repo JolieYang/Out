@@ -93,13 +93,13 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
     return weekRecord;
 }
 
-+ (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId weekContribution:(NSInteger)weekContribution {
+// recordContribution 为正值则代表添加金额，负值则代表将输入金额去除
++ (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId recordContribution:(NSInteger)recordContribution {
     RunningWeek *weekRecord = [self getWeekRecordWithWeekId:weekId];
-    weekRecord.weekContribution = weekContribution;
-    if (weekId == 1) {
-        weekRecord.preSumContribution = SumContributionFromJolie;
-    }
-    weekRecord.sumContribution = weekRecord.preSumContribution + weekRecord.weekContribution;
+    NSInteger beforeWeekContribution = weekRecord.sumContribution;
+    NSInteger currentWeekContribution = beforeWeekContribution + recordContribution;
+    weekRecord.weekContribution = weekRecord.weekContribution + recordContribution;
+    weekRecord.sumContribution = currentWeekContribution;
     [weekRecord save];
     
     NSString *whereSql = @"WHERE weekId > ?";

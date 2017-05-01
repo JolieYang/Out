@@ -9,6 +9,8 @@
 #import "RunningMemberRecordTableViewCell.h"
 #import "RunningRecordManager.h"
 #import "RunningRecord.h"
+#import "RunningWeek.h"
+#import "RunningWeekManager.h"
 
 @interface RunningMemberRecordTableViewCell ()<UITextFieldDelegate>
 
@@ -81,11 +83,20 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSInteger contributeMoney = textField.text.length > 0 ? [textField.text integerValue] : 0;
     if (textField == self.contributionMoneyTF && [textField.text integerValue] < 1000) {// 粗略过滤中文值
-        if (self.dataModel.contributionMoney != [textField.text integerValue] && self.updateContributionBlock) {
-            self.updateContributionBlock(self.dataModel.contributionMoney, [textField.text integerValue]);
+        if (self.updateWeekRecordContributionBlock) {
+            // 更新前的这条记录的贡献金额
+            NSInteger preWeekRecordContributeMoney = self.dataModel.contributionMoney;
+            // 当前这条记录的贡献金额
+            NSInteger currentWeekRecordContributeMoney = contributeMoney;
+            RunningWeek *week = [RunningWeekManager updateContributionWithWeekId:self.dataModel.weekId recordContribution:currentWeekRecordContributeMoney - preWeekRecordContributeMoney];
+            self.updateWeekRecordContributionBlock(week);
+//            RunningWeek *week = [RunningWeekManager updateContributionWithWeekId:self.dataModel.weekId weekContribution:contributeMoney];
+            
+//            self.updateContributionBlock(self.dataModel.contributionMoney, contributeMoney);
         }
-        self.dataModel.contributionMoney = [textField.text integerValue] ;
+        self.dataModel.contributionMoney = contributeMoney ;
     } else if (textField == self.remarksTF) {
         self.dataModel.remarks = textField.text;
     }

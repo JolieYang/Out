@@ -12,7 +12,7 @@
 @interface RunningWeekManager : NSObject
 + (NSArray *)addWeekRecord;// 返回添加的记录
 + (NSArray *)getRecentTwentyWeekRecords;
-+ (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId weekContribution:(NSInteger)weekContribution;
++ (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId recordContribution:(NSInteger)recordContribution;
 
 
 @end

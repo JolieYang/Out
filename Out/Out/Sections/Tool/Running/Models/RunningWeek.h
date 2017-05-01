@@ -15,7 +15,7 @@
 @property (nonatomic, assign) NSInteger year;
 @property (nonatomic, assign) NSInteger month;
 @property (nonatomic, assign) NSInteger weekOfMonth;// 第几周，原生的不是很符合需求
-@property (nonatomic, assign) NSInteger preSumContribution;
-@property (nonatomic, assign) NSInteger weekContribution;
-@property (nonatomic, assign) NSInteger sumContribution;
+@property (nonatomic, assign) NSInteger preSumContribution;// 上期经费
+@property (nonatomic, assign) NSInteger weekContribution;// 当期经费
+@property (nonatomic, assign) NSInteger sumContribution;// 累计经费
 @end

@@ -136,9 +136,13 @@ static NSArray *fundsTitleArray = nil;
         return cell;
     } else if (indexPath.section == 2) {
         RunningMemberRecordTableViewCell *cell = [[RunningMemberRecordTableViewCell alloc] initWithDataModel:self.recordsArray[indexPath.row]];
-        cell.updateContributionBlock = ^(NSInteger preContributionMoney, NSInteger contributionMoney) {
-            NSInteger currentWeekContribution = self.week.weekContribution + (contributionMoney - preContributionMoney);
-            self.week = [RunningWeekManager updateContributionWithWeekId:self.week.weekId weekContribution: currentWeekContribution];
+//        cell.updateContributionBlock = ^(NSInteger preContributionMoney, NSInteger contributionMoney) {
+//            NSInteger currentWeekContribution = self.week.weekContribution + (contributionMoney - preContributionMoney);
+//            self.week = [RunningWeekManager updateContributionWithWeekId:self.week.weekId weekContribution: currentWeekContribution];
+//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+//        };
+        cell.updateWeekRecordContributionBlock = ^(RunningWeek *week) {
+            self.week = week;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         };
         cell.checkBtnClickBlock = ^(BOOL checkted) {
