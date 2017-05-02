@@ -9,6 +9,7 @@
 #import "RunningAddMemberViewController.h"
 #import "IconTextFieldTableViewCell.h"
 #import "RunningMemberManager.h"
+#import "StringHelper.h"
 
 @interface RunningAddMemberViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSString *memberName;
@@ -51,11 +52,12 @@
 }
 
 - (void)doneItemAction {
+    BOOL successAdd = [self addRunningMember];
     // 添加项目
-    if (self.successAddRunningMemberBlock) {
+    if (self.successAddRunningMemberBlock && successAdd) {
         self.successAddRunningMemberBlock();
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,7 +105,11 @@
 }
 
 - (BOOL)addRunningMember {
-    return [RunningMemberManager addMemberWithName: self.memberName];
+    NSString *memberName = [StringHelper trim:self.memberName];
+    if (memberName.length > 0) {
+        return [RunningMemberManager addMemberWithName: memberName];
+    }
+    return NO;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

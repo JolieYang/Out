@@ -14,7 +14,7 @@
 
 @implementation RunningRecordManager
 + (NSArray *)addAllMembersRecordWithWeekId:(NSInteger)weekId {
-    NSArray *members = [RunningMemberManager getAllMembers];
+    NSArray *members = [RunningMemberManager getAllNotExitMembers];
     NSMutableArray *recordsArray = [NSMutableArray arrayWithCapacity:members.count];
     for (int i = 0; i < members.count; i++) {
         RunningMember *member = members[i];

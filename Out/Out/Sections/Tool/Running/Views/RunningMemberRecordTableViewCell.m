@@ -11,6 +11,7 @@
 #import "RunningRecord.h"
 #import "RunningWeek.h"
 #import "RunningWeekManager.h"
+#import "RunningMemberManager.h"
 
 @interface RunningMemberRecordTableViewCell ()<UITextFieldDelegate>
 
@@ -99,6 +100,10 @@
         self.dataModel.contributionMoney = contributeMoney ;
     } else if (textField == self.remarksTF) {
         self.dataModel.remarks = textField.text;
+        if ([self.dataModel.remarks isEqualToString:@"退群"]) {
+            // 删除成员
+            [RunningMemberManager exitMemberForId:self.dataModel.memerId];
+        }
     }
     [self updateCellBgColor];
     [self.dataModel save];

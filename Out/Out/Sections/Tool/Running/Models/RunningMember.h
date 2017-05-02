@@ -11,4 +11,5 @@
 @interface RunningMember : GYModelObject
 @property (nonatomic, assign) NSInteger memberId;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) BOOL exit;
 @end

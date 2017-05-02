@@ -26,9 +26,20 @@
     if (!propertis) {
         propertis = @[
                       @"memberId",
-                      @"name"
+                      @"name",
+                      @"exit"
                       ];
     }
     return propertis;
+}
+
++ (NSDictionary *)defaultValues {
+    static  NSDictionary *defaultValues = nil;
+    if (!defaultValues) {
+        defaultValues = @{
+                          @"exit" : @NO
+                          };
+    }
+    return defaultValues;
 }
 @end
