@@ -6,44 +6,12 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
-// 界面分析:
-// 无遮罩效果
-// TextView,背景图片通过textView addSubview添加imageView
-
-// 界面特点:
-// 覆盖状态栏
-// 提供4张图片供充当背景图片，也提供从相册选择图片充当背景
-
-// 交互:
-// 1. 点击左上角按钮离开编辑界面， 但会弹窗提醒  提示  “是否放弃编辑?" “是的” “取消”
-// 2. 点击右上角图片发布mood, 涉及到网络方面，需显示”发布中..." ，发布成功离开该页面
-// 3. 可点击右下角按钮 从本地相册选择图片充当文字背景
-
-
-// TODO LIST:
-// 1.[done] 点击右下角按钮相关处理:选择相册图片
-// 2.[done] 修改背景图片
-// 3.[done] 输入文本,文本是居中显示 Q1:[done] 第一行是居中显示，但距离上面的距离是固定的，也就是计算textView的高度时，高度不会随着行数的改变而改变
-// 4.[done] 隐藏导航栏
-// 5.[done] textView编辑状态的光标颜色设为白色
-// 6.[done] textView编辑状态的光标调整成跟placeHolder同一水平线
-// 7. 进入该页面，是从底下往上显示，即show detail效果
-// 8.[done] 点击左上角按钮相关处理
-// 9.[done] 点击右上角按钮逻辑处理
-// 10.[done] 图标替换
-// 11.[done][ing] 回收键盘: version1: 点击return按钮
-// 12. 使用应用提供图片，则不做图片上传处理，直接获取图片id。
-
-// Questin LIST:
-// ?1. 进入该页面使用的是"show detail"相当于什么，不是push,present. 离开该页面是应该如何. Answer: 模态 presentViewController:animated:completion。所以是present，只是之前是将[self.navigationController 调用该方法所以失败，应该是将本身的控制器发消息给presentViewController。 资料：https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/UsingSegues.html
-// ?2. 手势方向只能支持上下或者左右，不能同时支持上下左右，但没道理啊，不知道哪里出了问题.
-// UI:
-// 按钮图标  44 @2x #fff
 #import "InputMoodPictureViewController.h"
 #import "OutHomeViewController.h"
 #import "OutAlertViewController.h"
 #import "JYProgressHUD.h"
-#import "OutAPIManager.h"
+#import "OutMoodManager.h"
+#import "OutMood.h"
 #import "StringHelper.h"
 #import "TextViewHelper.h"
 #import "DateHelper.h"
@@ -112,38 +80,31 @@
 - (IBAction)didEndEditAction:(id)sender {
     // 判断字数是否超出限制
     if ([StringHelper length:self.inputTextView.text] > 100) {
-        [JYProgressHUD showTextHUDWithDetailString:@"文字超出100字限制" AddedTo:self.view];
+        [JYProgressHUD showNormalTextHUDWithDetailContent:@"文字超出100字限制" AddedTo:self.view completion: nil];
         return;
     }
     // 判断字符非空
     if ([StringHelper length:self.inputTextView.text] == 0) {
         // 正常是不会进入这里
-        [JYProgressHUD showTextHUDWithDetailString:@"程序跑到火星去了吧" AddedTo:self.view];
+        [JYProgressHUD showNormalTextHUDWithDetailContent:@"程序跑到火星去了吧" AddedTo:self.view completion: nil];
         return;
     }
     // 回收键盘
     [self.inputTextView resignFirstResponder];
-    [JYProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
-    [OutAPIManager uploadImage:self.inputImageView.image succeed:^(NSString *photoId) {
-        NSString *apiName = @"mind";
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        [params setValue:self.inputTextView.text forKey:@"content"];
-        [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
-        [params setValue:photoId forKey:@"photoId"];
-        [OutAPIManager startRequestWithApiName:apiName params:params successed:^(NSDictionary *response) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (_finishPictureMoodBlock) {
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    _finishPictureMoodBlock(response);
-                }
-                [self dismissViewControllerAnimated:YES completion:nil];
-            });
-        } failed:^(NSString *errMsg) {
-            [JYProgressHUD changeToTextHUDWithDetailString:@"发布失败" AddedTo:self.view];
+    
+    [self addMood];
+}
+
+- (void)addMood {
+    if (!ENABLE_SERVER) {
+        OutMood *mood = [OutMoodManager addOutMoodWithContent:self.inputTextView.text image:self.inputImageView.image];
+        [JYProgressHUD showQuicklyTextHUDWithDetailContent:@"发布成功" AddedTo:self.view completion:^{
+            if (_finishPictureMoodBlock) {
+                _finishPictureMoodBlock(mood);
+            }
+            [self dismissViewControllerAnimated:YES completion:nil];
         }];
-    } failed:^(NSString *errMsg) {
-        [JYProgressHUD changeToTextHUDWithDetailString:@"上传图片失败" AddedTo:self.view];
-    }];
+    }
 }
 
 // 从系统相册选择背景图片
@@ -152,7 +113,7 @@
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     if (status == PHAuthorizationStatusDenied || status == PHAuthorizationStatusRestricted) {
         // 无图片访问权限 "请在iPhone的“设置-隐私-照片"选项中，允许微信访问你的手机相册"
-        [JYProgressHUD showLongerTextHUDWithString:@"请在iPhone的“设置-隐私-照片“选项中，允许Out访问你的手机相册" AddedTo:self.view];
+        [JYProgressHUD showLongerTextHUDWithContent:@"请在iPhone的“设置-隐私-照片“选项中，允许Out访问你的手机相册" AddedTo:self.view completion: nil];
     } else {
         [self presentViewController:self.imagePickerController animated:YES completion:nil];
     }
@@ -304,31 +265,15 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
         self.inputImageView.image = info[UIImagePickerControllerEditedImage];
-        //压缩图片
-//        NSData *fileData = UIImageJPEGRepresentation(self.inputImageView.image, 1.0);
-        //保存图片至相册
-//        UIImageWriteToSavedPhotosAlbum(self.inputImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
-        //上传图片
-//        [self uploadImageWithData:fileData];
-        
     }else{
-        //如果是视频
         NSURL *url = info[UIImagePickerControllerMediaURL];
-        //播放视频
-//        _moviePlayer.contentURL = url;
-//        [_moviePlayer play];
-        //保存视频至相册（异步线程）
+
         NSString *urlStr = [url path];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(urlStr)) {
-                
-//                UISaveVideoAtPathToSavedPhotosAlbum(urlStr, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
             }
         });
-//        NSData *videoData = [NSData dataWithContentsOfURL:url];
-        //视频上传
-//        [self uploadVideoWithData:videoData];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

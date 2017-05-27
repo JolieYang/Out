@@ -211,13 +211,12 @@ static CGFloat SCAN_HEIGHT = 0;
     
     // 判断是否有数据
     if ([metadataObjects count] >0) {
-        [JYProgressHUD showTextHUDWithDetailString:@"识别" AddedTo:self.view];
-//        [self stopScan];
-//        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
-//        stringValue = metadataObject.stringValue;
-//        ScanResultViewController *vc = [ScanResultViewController new];
-//        vc.resultString = stringValue;
-//        [self.navigationController pushViewController:vc animated:YES];
+        [self stopScan];
+        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
+        stringValue = metadataObject.stringValue;
+        ScanResultViewController *vc = [ScanResultViewController new];
+        vc.resultString = stringValue;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {

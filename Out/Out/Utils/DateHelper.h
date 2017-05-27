@@ -20,6 +20,7 @@
 + (NSDateComponents *)dateComponentsFromTimeInterval:(NSTimeInterval)timeInterval;
 + (NSDateComponents *)currentDateComponents;
 // 汉化
++ (NSString *)ChineseYearMonthDayWithTimeInterval:(NSTimeInterval)timeInterval;
 + (NSString *)customeDateStr:(NSString *)timeStr;
 
 + (NSString *)chineseWithArabString:(NSString *)arabStr;

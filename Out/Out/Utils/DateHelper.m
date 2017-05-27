@@ -62,24 +62,42 @@
     return dateComponents;
 }
 
-#pragma 年月日转汉语
-+ (NSString *)customeDateStr:(NSString *)timeStr {
-    NSString *customeStr = [timeStr substringToIndex:10];
+// TimeInterval转汉语年月日
++ (NSString *)ChineseYearMonthDayWithTimeInterval:(NSTimeInterval)timeInterval {
+    NSString *customStr = @"";
     
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd"];
-    NSDate *date = [df dateFromString:customeStr];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     if (!date) {
         return @""; // 不合法的时间字符
     }
     // 系统语言是否为中文
     if ([self Chinese]) {// 系统语言为中文
-        customeStr = [self defaultChineseFromDate:date];
+        customStr = [self defaultChineseFromDate:date];
     } else {
-        customeStr = [self customeChineseFromDate:date];
+        customStr = [self customeChineseFromDate:date];
     }
     
-    return customeStr;
+    return customStr;
+}
+
+#pragma 年月日转汉语
++ (NSString *)customeDateStr:(NSString *)timeStr {
+    NSString *customStr = [timeStr substringToIndex:10];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [df dateFromString:customStr];
+    if (!date) {
+        return @""; // 不合法的时间字符
+    }
+    // 系统语言是否为中文
+    if ([self Chinese]) {// 系统语言为中文
+        customStr = [self defaultChineseFromDate:date];
+    } else {
+        customStr = [self customeChineseFromDate:date];
+    }
+    
+    return customStr;
 }
 
 #pragma mark 系统语言为中文

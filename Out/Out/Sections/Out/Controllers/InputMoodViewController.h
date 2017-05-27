@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OutMood;
 
 @interface InputMoodViewController : UIViewController
 
-@property (nonatomic, strong) void (^finishMoodBlock)(NSDictionary *data);
+@property (nonatomic, strong) void (^finishMoodBlock)(OutMood *mood);
 
 @end

@@ -100,24 +100,6 @@
         failedResponse(@"网络无法连接"); // 网络出问题了
         return;
     }
-    // m1 31.4MB 33.7-34.1
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration: configuration];
-//    
-//    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kPHOTO_URL, photoId];
-//    NSURL *URL = [NSURL URLWithString:urlStr];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-//    
-//    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-//        NSURL *documentDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-//        return [documentDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-//    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-//        UIImage *image = [UIImage imageWithContentsOfFile:[filePath path]];
-//        imageResponse(image);
-//    }];
-//    [downloadTask resume];
-    
-    // m2 31.1-9MB 35.4-8
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(globalQueue, ^{
         [self loadImageWithPhotoID:photoId completionHandler:^(UIImage *image) {

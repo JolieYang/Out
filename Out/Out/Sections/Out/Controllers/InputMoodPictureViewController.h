@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OutMood;
 
 @interface InputMoodPictureViewController : UIViewController
-@property (nonatomic, strong) void (^finishPictureMoodBlock)(NSDictionary *data);
+@property (nonatomic, strong) void (^finishPictureMoodBlock)(OutMood *mood);
+
 @end

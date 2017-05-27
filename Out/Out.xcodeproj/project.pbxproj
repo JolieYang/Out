@@ -11,6 +11,8 @@
 		A00A3A011EA0B8C6006DC03C /* HcdDateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00A39FC1EA0B8C6006DC03C /* HcdDateTimePickerView.m */; };
 		A00A3A021EA0B8C6006DC03C /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A00A39FE1EA0B8C6006DC03C /* MXSCycleScrollView.m */; };
 		A00A3A031EA0B8C6006DC03C /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00A3A001EA0B8C6006DC03C /* UIColor+HcdCustom.m */; };
+		A022B4261ED9507F0038E066 /* OutMood.m in Sources */ = {isa = PBXBuildFile; fileRef = A022B4251ED9507F0038E066 /* OutMood.m */; };
+		A022B42A1ED954880038E066 /* OutMoodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A022B4291ED954880038E066 /* OutMoodManager.m */; };
 		A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03779281E1E3934009D3DE6 /* Target.storyboard */; };
 		A0409BFE1E7BDCB300D917DC /* KeyedArchiverHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A0409BFD1E7BDCB300D917DC /* KeyedArchiverHelper.m */; };
 		A0409C021E7BDE8000D917DC /* BaseKeyedArchiverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0409C011E7BDE8000D917DC /* BaseKeyedArchiverModel.m */; };
@@ -124,6 +126,10 @@
 		A00A39FE1EA0B8C6006DC03C /* MXSCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSCycleScrollView.m; sourceTree = "<group>"; };
 		A00A39FF1EA0B8C6006DC03C /* UIColor+HcdCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HcdCustom.h"; sourceTree = "<group>"; };
 		A00A3A001EA0B8C6006DC03C /* UIColor+HcdCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HcdCustom.m"; sourceTree = "<group>"; };
+		A022B4241ED9507F0038E066 /* OutMood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutMood.h; sourceTree = "<group>"; };
+		A022B4251ED9507F0038E066 /* OutMood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutMood.m; sourceTree = "<group>"; };
+		A022B4281ED954880038E066 /* OutMoodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutMoodManager.h; sourceTree = "<group>"; };
+		A022B4291ED954880038E066 /* OutMoodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutMoodManager.m; sourceTree = "<group>"; };
 		A03779291E1E3934009D3DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Out/Base.lproj/Target.storyboard; sourceTree = "<group>"; };
 		A0409BFC1E7BDCB300D917DC /* KeyedArchiverHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyedArchiverHelper.h; sourceTree = "<group>"; };
 		A0409BFD1E7BDCB300D917DC /* KeyedArchiverHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyedArchiverHelper.m; sourceTree = "<group>"; };
@@ -337,6 +343,32 @@
 			path = HcdDateTimePicker;
 			sourceTree = "<group>";
 		};
+		A022B4221ED950540038E066 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A022B4271ED9546B0038E066 /* Managers */,
+				A022B4241ED9507F0038E066 /* OutMood.h */,
+				A022B4251ED9507F0038E066 /* OutMood.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A022B4231ED950600038E066 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A022B4271ED9546B0038E066 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A022B4281ED954880038E066 /* OutMoodManager.h */,
+				A022B4291ED954880038E066 /* OutMoodManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		A0409BFB1E7BDBF600D917DC /* CacheManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +571,8 @@
 		A0643B9A1E9B17E80005785F /* Out */ = {
 			isa = PBXGroup;
 			children = (
+				A022B4221ED950540038E066 /* Models */,
+				A022B4231ED950600038E066 /* Views */,
 				A0643C661E9F0FF00005785F /* Controllers */,
 			);
 			path = Out;
@@ -547,7 +581,6 @@
 		A0643BA91E9B17E80005785F /* Target */ = {
 			isa = PBXGroup;
 			children = (
-				A0643C571E9F0ED30005785F /* Managers */,
 				A0643BB11E9B17E80005785F /* Models */,
 				A0643BAA1E9B17E80005785F /* Controllers */,
 				A0643BB41E9B17E80005785F /* Views */,
@@ -577,6 +610,7 @@
 		A0643BB11E9B17E80005785F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0643C581E9F0ED30005785F /* Managers */,
 				A0643C491E9E12600005785F /* Target.h */,
 				A0643C4A1E9E12600005785F /* Target.m */,
 				A0643C8C1EA0788D0005785F /* TargetRecord.h */,
@@ -636,7 +670,6 @@
 		A0643BFD1E9B229E0005785F /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				A0643C4C1E9F0E800005785F /* Managers */,
 				A0643C0A1E9B22B00005785F /* Models */,
 				A0643BFE1E9B229E0005785F /* Controllers */,
 				A0643C051E9B229E0005785F /* Views */,
@@ -683,6 +716,7 @@
 		A0643C0A1E9B22B00005785F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0643C4D1E9F0E800005785F /* Managers */,
 				A0643C341E9B76A60005785F /* RunningWeek.h */,
 				A0643C351E9B76A60005785F /* RunningWeek.m */,
 				A0643C191E9B2B3A0005785F /* RunningRecord.h */,
@@ -713,15 +747,7 @@
 			path = "MBProgressHUD+JDragon";
 			sourceTree = "<group>";
 		};
-		A0643C4C1E9F0E800005785F /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				A0643C4D1E9F0E800005785F /* Caches */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		A0643C4D1E9F0E800005785F /* Caches */ = {
+		A0643C4D1E9F0E800005785F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				A0643C4E1E9F0E800005785F /* RunningMemberManager.h */,
@@ -731,18 +757,11 @@
 				A0643C521E9F0E800005785F /* RunningWeekManager.h */,
 				A0643C531E9F0E800005785F /* RunningWeekManager.m */,
 			);
-			path = Caches;
+			name = Managers;
+			path = ../Managers/Caches;
 			sourceTree = "<group>";
 		};
-		A0643C571E9F0ED30005785F /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				A0643C581E9F0ED30005785F /* Caches */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		A0643C581E9F0ED30005785F /* Caches */ = {
+		A0643C581E9F0ED30005785F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				A0643C891EA069F40005785F /* TargetManager.h */,
@@ -750,7 +769,8 @@
 				A0643C8F1EA0799C0005785F /* TargetRecordManager.h */,
 				A0643C901EA0799C0005785F /* TargetRecordManager.m */,
 			);
-			path = Caches;
+			name = Managers;
+			path = ../Managers/Caches;
 			sourceTree = "<group>";
 		};
 		A0643C591E9F0F020005785F /* Controllers */ = {
@@ -778,14 +798,14 @@
 		A0643C661E9F0FF00005785F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A0643C671E9F0FF00005785F /* InputMoodPictureViewController.h */,
-				A0643C681E9F0FF00005785F /* InputMoodPictureViewController.m */,
-				A0643C691E9F0FF00005785F /* InputMoodViewController.h */,
-				A0643C6A1E9F0FF00005785F /* InputMoodViewController.m */,
 				A0643C6B1E9F0FF00005785F /* OutHomeNavigationController.h */,
 				A0643C6C1E9F0FF00005785F /* OutHomeNavigationController.m */,
 				A0643C6D1E9F0FF00005785F /* OutHomeViewController.h */,
 				A0643C6E1E9F0FF00005785F /* OutHomeViewController.m */,
+				A0643C671E9F0FF00005785F /* InputMoodPictureViewController.h */,
+				A0643C681E9F0FF00005785F /* InputMoodPictureViewController.m */,
+				A0643C691E9F0FF00005785F /* InputMoodViewController.h */,
+				A0643C6A1E9F0FF00005785F /* InputMoodViewController.m */,
 				A0643C6F1E9F0FF00005785F /* SetOutNameViewController.h */,
 				A0643C701E9F0FF00005785F /* SetOutNameViewController.m */,
 				A0643C711E9F0FF00005785F /* SetOutNameWindow.h */,
@@ -1089,6 +1109,7 @@
 				A00A3A021EA0B8C6006DC03C /* MXSCycleScrollView.m in Sources */,
 				A0643C9F1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m in Sources */,
 				A0643C811E9F105C0005785F /* StringHelper.m in Sources */,
+				A022B4261ED9507F0038E066 /* OutMood.m in Sources */,
 				A0643C551E9F0E800005785F /* RunningRecordManager.m in Sources */,
 				A0643C361E9B76A60005785F /* RunningWeek.m in Sources */,
 				A0F7C2781E7A726400BDA19F /* BaseNavigationController.m in Sources */,
@@ -1119,6 +1140,7 @@
 				A0643C541E9F0E800005785F /* RunningMemberManager.m in Sources */,
 				A0643C1F1E9B36A40005785F /* RunningRecordColumnTableViewCell.m in Sources */,
 				A0643C8E1EA0788D0005785F /* TargetRecord.m in Sources */,
+				A022B42A1ED954880038E066 /* OutMoodManager.m in Sources */,
 				A0643BF11E9B17E80005785F /* ToolHomeViewController.m in Sources */,
 				A05D92331EA6F8C40006CB1C /* UILabel+JY.m in Sources */,
 			);

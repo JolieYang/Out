@@ -57,8 +57,9 @@
 - (IBAction)setOutNameAction:(id)sender {
     [self resignKeyboard];
     if ([StringHelper isEmpty:self.outNameTF.text]) {
-        [JYProgressHUD showTextHUDWithDetailString:@"请输入昵称" AddedTo:self.view];
-        [self.outNameTF becomeFirstResponder];
+        [JYProgressHUD showQuicklyTextHUDWithDetailContent:@"请输入昵称" AddedTo:self.view completion:^{
+            [self.outNameTF becomeFirstResponder];
+        }];
         
         return;
     }
@@ -69,7 +70,7 @@
         [params setValue:self.outNameTF.text forKey:@"nickname"];
     } else {
         if ([StringHelper isEmpty:self.outPasswdTF.text]) {
-            [JYProgressHUD showTextHUDWithDetailString:@"请输入密码" AddedTo:self.view];
+            [JYProgressHUD showQuicklyTextHUDWithDetailContent:@"请输入密码" AddedTo:self.view completion: nil];
             return;
         }
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:self.outNameTF.text,@"email",self.outPasswdTF.text, @"password", nil];
@@ -88,7 +89,7 @@
         [[SetOutNameWindow shareInstance] hide];
     } failed:^(NSString *errMsg) {
         NSLog(@"error:%@", errMsg);
-        [JYProgressHUD showTextHUDWithDetailString:@"登录失败" AddedTo:self.view];
+        [JYProgressHUD showQuicklyTextHUDWithDetailContent:@"登录失败" AddedTo:self.view completion:nil];
     }];
     
 }

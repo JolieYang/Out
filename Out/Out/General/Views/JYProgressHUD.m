@@ -13,7 +13,6 @@
 
 @implementation JYProgressHUD
 
-
 + (instancetype)showIndicatorHUDWithDetailString:(NSString *)detailString AddedTo:(UIView *)view animated:(BOOL)animated {
     JYProgressHUD *hud = [super showHUDAddedTo:view animated:animated];
     hud.detailsLabel.text = detailString;
@@ -22,7 +21,7 @@
     return hud;
 }
 
-+ (void)changeToTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view {
++ (void)changeToTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion {
     MBProgressHUD *hud = [self HUDForView:view];
     if (!hud) {
         hud = [super showHUDAddedTo:view animated:YES];
@@ -34,29 +33,46 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
         [super hideHUDForView:view animated:YES];
+        completion();
     });
 }
 
+// 显示HUD不会自动消失
 + (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view {
-    JYProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 1.0];
+    JYProgressHUD *hud = [self showTextHUDWithDetailContent:string AddedTo:view Duration:0.0 Completion:nil];
+    
+    return hud;
+}
++ (instancetype)showNormalTextHUDWithDetailContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion {
+    JYProgressHUD *hud = [self showTextHUDWithDetailContent:content AddedTo:view Duration:1.0 Completion:completion];
+    
+    return hud;
+}
++ (instancetype)showQuicklyTextHUDWithDetailContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion {
+    JYProgressHUD *hud = [self showTextHUDWithDetailContent:content AddedTo:view Duration:0.2 Completion:completion];
     
     return hud;
 }
 
-+ (instancetype)showLongerTextHUDWithString:(NSString *)string AddedTo:(UIView *)view {
-    JYProgressHUD *hud = [self showTextHUDWithDetailString:string AddedTo:view After: 3.0];
++ (instancetype)showLongerTextHUDWithContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion {
+    JYProgressHUD *hud = [self showTextHUDWithDetailContent:content AddedTo:view Duration:3.0 Completion:completion];
     
     return hud;
 }
 
-+ (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view After:(float)afterTime {
++ (instancetype)showTextHUDWithDetailContent:(NSString *)content AddedTo:(UIView *)view Duration:(NSTimeInterval)duration Completion:(void (^)())completion {
     JYProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
-    hud.detailsLabel.text = string;
+    hud.detailsLabel.text = content;
     [self configTextHUD:hud];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, afterTime * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^{
-        [super hideHUDForView:view animated:YES];
-    });
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC);
+    if (popTime) {
+        dispatch_after(popTime, dispatch_get_main_queue(), ^{
+            [super hideHUDForView:view animated:YES];
+            if (completion) {
+                completion();
+            }
+        });
+    }
     
     return hud;
 }

@@ -8,9 +8,15 @@
 
 #import "MBProgressHUD.h"
 
+typedef void(^JYProgressHUDCompletion)();
+
 @interface JYProgressHUD : MBProgressHUD
-+ (void)changeToTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view; // 已显示HUD再改为显示textHUD
-+ (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view; // text,1s后会消失
-+ (instancetype)showLongerTextHUDWithString:(NSString *)string AddedTo:(UIView *)view;
++ (instancetype)showTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view;
++ (void)changeToTextHUDWithDetailString:(NSString *)string AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion;
+
++ (instancetype)showQuicklyTextHUDWithDetailContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion; // text,1s后会消失
++ (instancetype)showNormalTextHUDWithDetailContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion; // text,1s后会消失
++ (instancetype)showLongerTextHUDWithContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion;
+
 + (instancetype)showIndicatorHUDWithDetailString:(NSString *)detailString AddedTo:(UIView *)view animated:(BOOL)animated;
 @end

@@ -32,6 +32,11 @@
 
 #define LIMIT_TEXT_LENGTH 100
 
+// Out请求
+#define ENABLE_SERVER 0 // 是否开启服务器请求
+#define OUT_MOOD_BG_IMAGENAME @"yellow_girl"
+#define OUT_DEFAULT_BGIMAGE [UIImage imageNamed:OUT_MOOD_BG_IMAGENAME]
+
 // 颜色
 #define Black1 UIColorFromRGB(0x474749)
 #define Black2 UIColorFromRGB(0x24252C)

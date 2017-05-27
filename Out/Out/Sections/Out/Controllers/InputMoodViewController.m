@@ -6,34 +6,14 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
-// 问题列表:
-// ?1.[ok] 预输入时打印textView s s s。 字符为ssss时，打印长度为4，而微博是按2来算。Reply: 只是一个约定而已，将字母，数字等按两个字符为一个长度而已。
-// ?2.去除空格失败
-// ?3. 主页面进入该页面是会有点卡顿
-
-// BUG:
-// 1. 字数统计还是有bug,比如 中文输入法时，输入'u'，长度为0, 
-
-// TODO:
-// 1.[done] #隐藏导航栏右边按钮#TextView里有文本就显示导航栏勾选，无则不显示 1) 第一次进入界面是默认隐藏还是等输入后再添加导航栏右边按钮呢
-// 2. TextView明明设置距离上边是2，运行后则调到下面去了。字数多的时候又会顶到之前设置的约束上
-// 3. 主页面进入该页面是会有点卡顿
-// 4. 上网看到资料说在textViewDidChange统计会导致输入时卡卡的，有待进一步测试看看是否这样
-// 5.[done] 计算字数时特殊情况处理: 1) emoji 使用length为2 ,通过[str lengthOfBytesUsingEncoding:NSUTF32StringEncoding] / 4 为1； 2) 英文字母字符数字为两个代表一个长度。
-// 6.[done] 输入文字后去除placeholder
-// 7.[done] 输入文字时textView是垂直居中左对齐，而不是顶部左对齐  [new]默认为顶部左对齐，之前在textView区域拖了一个Label，设置完约束后就是这样了。
-// 8.[done] 更改导航栏返回图标和右边图标
-// 9.[done] 字数统计时超过100字符时统计的字符数显示为红色
-// 10.[done]  字数统计超过100字符弹框显示“超出100字限制”
-
-//  UI:
-// 1. 导航栏图标尺寸 58 @2x  #757575
 #import "InputMoodViewController.h"
 #import "OutAlertViewController.h"
-#import "JYProgressHUD.h"
-#import "StringHelper.h"
 #import "OutAPIManager.h"
+#import "OutMoodManager.h"
+#import "OutMood.h"
+#import "JYProgressHUD.h"
 #import "UITextView+JY.h"
+#import "StringHelper.h"
 
 #define YLog(formatString, ...) NSLog((@"%s" formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
 
@@ -113,26 +93,20 @@
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     }
-    [JYProgressHUD showIndicatorHUDWithDetailString:@"正在发布" AddedTo:self.view animated:YES];
-    NSString *apiName = @"mind";
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:self.inputTextView.text forKey:@"content"];
-    [params setValue:[[NSUserDefaults standardUserDefaults] valueForKey:OUT_TOKEN] forKey:@"token"];
-    [OutAPIManager startRequestWithApiName:apiName params: params successed:^(NSDictionary *response) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+    
+    [self addMood];
+}
+
+- (void)addMood {
+    if (!ENABLE_SERVER) {
+        OutMood *mood = [OutMoodManager addOutMoodWithContent:self.inputTextView.text image:nil];
+        [JYProgressHUD showQuicklyTextHUDWithDetailContent:@"发布成功" AddedTo:self.view completion:^{
             if (_finishMoodBlock) {
-                [JYProgressHUD hideHUDForView:self.view animated:YES];
-                _finishMoodBlock(response);
+                _finishMoodBlock(mood);
             }
             [self.navigationController popViewControllerAnimated:YES];
-        });
-    } failed:^(NSString *errMsg) {
-        // 弹窗显示 发布失败
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [JYProgressHUD changeToTextHUDWithDetailString:errMsg AddedTo:self.view];
-        });
-        return ;
-    }];
+        }];
+    }
 }
 
 #pragma mark UITextViewDelegate
@@ -140,7 +114,6 @@
     // markedTextRange currently marked 预输入分为两种情况: 一种是点击字母的预输入；另一种是默认的预输入字符。
     UITextRange *selectedRange = [textView markedTextRange];
     NSString *newText = [textView textInRange:selectedRange];
-    NSLog(@"textView:%@ newText:%@", textView.text, newText);
     NSString *text = [textView.text copy];
     text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
     int length = (int)[StringHelper length:text];
