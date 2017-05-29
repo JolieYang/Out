@@ -14,26 +14,31 @@
 + (OutMood *)addOutMoodWithContent:(NSString *)content image:(UIImage *)image {
     OutMood *mood = [[OutMood alloc] init];
     mood.content = content;
-    mood.backgroundImage = image;
+    if (image) {
+        mood.backgroundImage = image;
+    }
     mood.createTime = [DateHelper getCurrentTimeInterval];
     
     [mood save];
-    OutMood *randomMood = [self getRandomOutMood];
     
     return mood;
 }
 
 + (OutMood *)getRandomOutMood {
-    NSString *whereSql = @"WHERE moodId >= ?";
-    NSArray *arguments = @[[NSNumber numberWithInteger:0]];
-    NSArray *ids = [OutMood idsWhere:whereSql arguments:arguments];
-    NSArray *objects = [OutMood objectsWhere:whereSql arguments:nil];
-    if (ids.count == 0) return nil;
+    NSArray *moods = [self getOutMoodList];
+    if (moods.count == 0) return nil;
+    if (moods.count == 1) return moods[0];
     
-    NSInteger randomNumber = arc4random() % [ids count];
-    NSInteger randomId = (NSInteger)ids[randomNumber];
-    OutMood *mood = (OutMood *)[OutMood objectForId:[NSNumber numberWithInteger: randomId]];
+    NSInteger randomNumber = arc4random() % ([moods count] - 1);
+    OutMood *mood = (OutMood *)moods[randomNumber];
     
     return mood;
+}
+
++ (NSArray *)getOutMoodList {
+    NSString *whereSql = @"ORDER BY moodId";
+    NSArray *arguments = nil;
+    NSArray *moodList = [OutMood objectsWhere:whereSql arguments:arguments];
+    return moodList;
 }
 @end

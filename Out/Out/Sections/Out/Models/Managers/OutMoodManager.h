@@ -11,5 +11,6 @@
 
 @interface OutMoodManager : NSObject
 + (OutMood *)addOutMoodWithContent:(NSString *)content image:(UIImage *)image;
++ (NSArray *)getOutMoodList;
 + (OutMood *)getRandomOutMood;
 @end

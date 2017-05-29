@@ -31,6 +31,7 @@ static CGFloat const WIND_DELAY = 37.0;
 @property (nonatomic, strong) MFLHintLabel *timeLB;
 @property (nonatomic, strong) MFLHintLabel *contentLB;
 @property (nonatomic, strong) UILabel *defaultTimeLB;
+@property (nonatomic, strong) OutMood *randomMood;
 
 @end
 
@@ -39,7 +40,24 @@ static CGFloat const WIND_DELAY = 37.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self addObserver:self forKeyPath:@"randomMood" options:NSKeyValueObservingOptionNew context:nil];
     [self setupViews];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"randomMood"]) {
+        [self showRandomMood];
+    }
+}
+// 更新随机心情数据--避免随机更新时与上次相同
+- (void)updateRandomMood {
+    OutMood *beforeMood = self.randomMood;
+    OutMood *randomMood;
+    do {
+        randomMood = [OutMoodManager getRandomOutMood];
+    } while (randomMood.moodId == beforeMood.moodId);
+    
+    self.randomMood = randomMood;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +76,7 @@ static CGFloat const WIND_DELAY = 37.0;
     inputMoodVC.hidesBottomBarWhenPushed = YES;
     __weak typeof(self) weakSelf = self;
     inputMoodVC.finishMoodBlock = ^(OutMood *mood){
-        [weakSelf showRandomMood:mood];
+        [weakSelf updateRandomMood];
     };
     [self.navigationController pushViewController:inputMoodVC animated:YES];
 }
@@ -69,15 +87,14 @@ static CGFloat const WIND_DELAY = 37.0;
     
     __weak typeof(self) weakSelf = self;
     inputPictureVC.finishPictureMoodBlock = ^(OutMood *mood) {
-        [weakSelf showRandomMood:mood];
+        [weakSelf updateRandomMood];
     };
     [self presentViewController:inputPictureVC animated:YES completion:nil];
 }
 
 // Gone With The Wind
 - (IBAction)testAnimationAction:(id)sender {
-    OutMood *mood = [OutMoodManager getRandomOutMood];
-    [self showRandomMood:mood];
+    [self updateRandomMood];
 }
 
 #pragma mark UI-Config
@@ -91,7 +108,12 @@ static CGFloat const WIND_DELAY = 37.0;
 }
 
 #pragma mark UI-Update
-- (void)showRandomMood:(OutMood *)mood {
+
+- (void)showRandomMood {
+    [self showRandomMoodWithMood:self.randomMood];
+}
+
+- (void)showRandomMoodWithMood:(OutMood *)mood {
     if (!mood) {
         [JYProgressHUD showNormalTextHUDWithDetailContent:@"你还没跟心情树洞说过话，快去说说吧" AddedTo:self.view completion:nil];
         return;

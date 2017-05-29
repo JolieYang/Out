@@ -10,7 +10,7 @@
 
 @implementation OutMood
 + (NSString *)dbName {
-    return @"OutMoodDB";
+    return @"OutDB";
 }
 
 + (NSString *)tableName {
@@ -23,7 +23,7 @@
 
 + (NSArray *)persistentProperties {
     static NSArray *properties = nil;
-    if (properties) {
+    if (!properties) {
         properties = @[
                        @"moodId",
                        @"content",

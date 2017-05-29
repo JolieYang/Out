@@ -11,8 +11,8 @@
 @interface OutMood : GYModelObject
 
 @property (nonatomic, assign) NSInteger moodId;
-@property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) NSString *content;
 @property (nonatomic, assign) NSTimeInterval createTime;
-@property (nonatomic, assign) UIImage *backgroundImage;
+@property (nonatomic, strong) UIImage *backgroundImage;
 
 @end

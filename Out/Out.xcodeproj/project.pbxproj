@@ -951,7 +951,7 @@
 				TargetAttributes = {
 					A067F0531D741FFB003140D6 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 5STM2R5485;
+						DevelopmentTeam = M332A6N2P3;
 					};
 				};
 			};
@@ -1274,7 +1274,7 @@
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joliey.zfb-scanPay";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jolieyang.out;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1291,7 +1291,7 @@
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joliey.zfb-scanPay";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jolieyang.out;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

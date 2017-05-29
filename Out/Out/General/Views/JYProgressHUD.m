@@ -49,7 +49,7 @@
     return hud;
 }
 + (instancetype)showQuicklyTextHUDWithDetailContent:(NSString *)content AddedTo:(UIView *)view completion:(JYProgressHUDCompletion)completion {
-    JYProgressHUD *hud = [self showTextHUDWithDetailContent:content AddedTo:view Duration:0.2 Completion:completion];
+    JYProgressHUD *hud = [self showTextHUDWithDetailContent:content AddedTo:view Duration:0.6 Completion:completion];
     
     return hud;
 }

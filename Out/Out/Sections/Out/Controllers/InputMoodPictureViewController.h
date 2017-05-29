@@ -11,5 +11,4 @@
 
 @interface InputMoodPictureViewController : UIViewController
 @property (nonatomic, strong) void (^finishPictureMoodBlock)(OutMood *mood);
-
 @end
