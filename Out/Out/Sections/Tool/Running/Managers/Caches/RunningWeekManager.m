@@ -93,6 +93,14 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
     return weekRecord;
 }
 
++ (RunningWeek *)updateWeekRecordWithWeekId:(NSInteger)weekId partyCost:(NSInteger)partyCost {
+    RunningWeek *weekRecord = [self getWeekRecordWithWeekId:weekId];
+    weekRecord.isParty = YES;
+    weekRecord.partyCost = partyCost;
+    weekRecord.sumContribution = weekRecord.preSumContribution + weekRecord.weekContribution - weekRecord.partyCost;
+    [weekRecord save];
+    return weekRecord;
+}
 // recordContribution 为正值则代表添加金额，负值则代表将输入金额去除
 + (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId recordContribution:(NSInteger)recordContribution {
     RunningWeek *weekRecord = [self getWeekRecordWithWeekId:weekId];

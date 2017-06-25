@@ -7,6 +7,7 @@
 //
 
 #import "RunningWeekViewController.h"
+#import "RunningAddPartyViewController.h"
 #import "CenterTitleTableViewCell.h"
 #import "RunningRecordColumnTableViewCell.h"
 #import "RunningMemberRecordTableViewCell.h"
@@ -18,10 +19,10 @@
 
 static NSString *recordTitleTableViewCellIdentifier = @"RunningMemberRecordColumnTitleTableViewCell";
 static NSString *recordTableViewCellIdentifier = @"RunningMemberRecordTableViewCell";
-static NSArray *fundsTitleArray = nil;
 
 @interface RunningWeekViewController ()<UITableViewDataSource,UITableViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *fundsTitle;
 @property (nonatomic, strong) NSMutableArray *recordsArray;
 @end
 
@@ -45,25 +46,39 @@ static NSArray *fundsTitleArray = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-
-
 - (void)setupDatas {
-    fundsTitleArray = @[@"当期经费", @"上期经费", @"累计经费"];
+    self.fundsTitle = [NSMutableArray arrayWithArray:[self defaultFoundsTitle]];
+    [self updateFoundsTitle];
     NSArray *recordsArray = [RunningRecordManager getRecordsWithWeekId:self.week.weekId];
     if (recordsArray.count == 0) {
         recordsArray = [RunningRecordManager addAllMembersRecordWithWeekId:self.week.weekId];
     }
     self.recordsArray = [NSMutableArray arrayWithArray:recordsArray];
 }
-
+    
+- (void)updateFoundsTitle {
+    if (self.week.isParty) {
+        [self.fundsTitle insertObject:@"腐败花销" atIndex:2];
+    }
+}
+- (NSArray *)defaultFoundsTitle {
+    return @[@"当期经费", @"上期经费", @"累计经费"];
+}
+    
 - (void)addNavRightItem {
-    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithTitle:@"截图" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
-    self.navigationItem.rightBarButtonItem = titleItem;
+    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithTitle:@"截图" style:UIBarButtonItemStylePlain target:self action:@selector(sreenShotTableView)];
+    UIBarButtonItem *partyItem = [[UIBarButtonItem alloc] initWithTitle:@"腐败" style:UIBarButtonItemStylePlain target:self action:@selector(partyCost)];
+    self.navigationItem.rightBarButtonItems = @[titleItem,partyItem];
 }
 
-- (void)rightItemAction {
-    // 截图--自定义截屏位置大小
-    [self sreenShotTableView];
+- (void)partyCost {
+    RunningAddPartyViewController *vc = [[RunningAddPartyViewController alloc] initWithNibName:NSStringFromClass([RunningAddPartyViewController class]) bundle:nil];
+    vc.weekId = self.week.weekId;
+    vc.successAddPartyCostBlock = ^(RunningWeek *week) {
+        self.week = week;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)sreenShotTableView {
@@ -136,13 +151,9 @@ static NSArray *fundsTitleArray = nil;
         return cell;
     } else if (indexPath.section == 2) {
         RunningMemberRecordTableViewCell *cell = [[RunningMemberRecordTableViewCell alloc] initWithDataModel:self.recordsArray[indexPath.row]];
-//        cell.updateContributionBlock = ^(NSInteger preContributionMoney, NSInteger contributionMoney) {
-//            NSInteger currentWeekContribution = self.week.weekContribution + (contributionMoney - preContributionMoney);
-//            self.week = [RunningWeekManager updateContributionWithWeekId:self.week.weekId weekContribution: currentWeekContribution];
-//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
-//        };
         cell.updateWeekRecordContributionBlock = ^(RunningWeek *week) {
             self.week = week;
+            [self updateFoundsTitle];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
         };
         cell.checkBtnClickBlock = ^(BOOL checkted) {
@@ -155,10 +166,16 @@ static NSArray *fundsTitleArray = nil;
             sum = self.week.weekContribution;
         } else if (indexPath.row == 1) {
             sum = self.week.preSumContribution;
+        } else if (indexPath.row == 2) {
+            if (self.week.isParty) {
+                sum = self.week.partyCost;
+            } else {
+                sum = self.week.sumContribution;
+            }
         } else {
             sum = self.week.sumContribution;
         }
-        RunningRecordFundsTableViewCell *cell = [[RunningRecordFundsTableViewCell alloc] initWithTitle:fundsTitleArray[indexPath.row] sum:sum];
+        RunningRecordFundsTableViewCell *cell = [[RunningRecordFundsTableViewCell alloc] initWithTitle:self.fundsTitle[indexPath.row] sum:sum];
         return cell;
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -175,7 +192,7 @@ static NSArray *fundsTitleArray = nil;
     } else if (section == 2) {
         return self.recordsArray.count;
     } else if (section == 3) {
-        return fundsTitleArray.count;
+        return self.fundsTitle.count;
     }else {
         return 0;
     }

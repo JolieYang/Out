@@ -33,7 +33,9 @@
                       @"weekOfMonth",
                       @"preSumContribution",
                       @"weekContribution",
-                      @"sumContribution"
+                      @"sumContribution",
+                      @"isParty",
+                      @"partyCost"
                       ];
     }
     return propertis;

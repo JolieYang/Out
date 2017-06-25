@@ -23,8 +23,8 @@ static NSString *TAB_NORMAL_IMAGE_FORMAT = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    TAB_BAR_TITLE_ARRAY = @[@"Tool", @"Out", @"Target", @"我的"];
-    TAB_BAR_CONTROLLER_CLASS_ARRAY = @[@"ToolHomeNavigationController",@"OutHomeNavigationController", @"TargetHomeNavigationController"];
+    TAB_BAR_TITLE_ARRAY = @[@"Spider", @"Out", @"Tool"];
+    TAB_BAR_CONTROLLER_CLASS_ARRAY = @[@"TargetHomeNavigationController",@"OutHomeNavigationController", @"ToolHomeNavigationController"];
     TAB_NORMAL_IMAGE_FORMAT = @"tab_icon_0%i_normal";
     
     [self setupTabBar];

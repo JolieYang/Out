@@ -12,4 +12,5 @@
 + (BOOL)addMemberWithName:(NSString *)name;
 + (NSArray *)getAllNotExitMembers;// 获取所有未退出的成员
 + (BOOL)exitMemberForId:(NSInteger)memberId;
+
 @end

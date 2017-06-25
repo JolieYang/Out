@@ -115,6 +115,8 @@
 		A079C49A1D93B4BB00612F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C4991D93B4BB00612F08 /* CoreGraphics.framework */; };
 		A079C49C1D93B4D300612F08 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079C49B1D93B4D300612F08 /* Photos.framework */; };
 		A091446E1EAF3BFA0035A84F /* UIColor+JY.m in Sources */ = {isa = PBXBuildFile; fileRef = A091446D1EAF3BFA0035A84F /* UIColor+JY.m */; };
+		A09460D31EFFC09A0047AA81 /* RunningAddPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09460D11EFFC09A0047AA81 /* RunningAddPartyViewController.m */; };
+		A09460D41EFFC09A0047AA81 /* RunningAddPartyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A09460D21EFFC09A0047AA81 /* RunningAddPartyViewController.xib */; };
 		A0F7C2781E7A726400BDA19F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F7C2771E7A726400BDA19F /* BaseNavigationController.m */; };
 		A0F7C27B1E7A728D00BDA19F /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F7C27A1E7A728D00BDA19F /* BaseTableView.m */; };
 /* End PBXBuildFile section */
@@ -307,6 +309,9 @@
 		A079C49B1D93B4D300612F08 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		A091446C1EAF3BFA0035A84F /* UIColor+JY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JY.h"; sourceTree = "<group>"; };
 		A091446D1EAF3BFA0035A84F /* UIColor+JY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JY.m"; sourceTree = "<group>"; };
+		A09460D01EFFC09A0047AA81 /* RunningAddPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningAddPartyViewController.h; sourceTree = "<group>"; };
+		A09460D11EFFC09A0047AA81 /* RunningAddPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningAddPartyViewController.m; sourceTree = "<group>"; };
+		A09460D21EFFC09A0047AA81 /* RunningAddPartyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunningAddPartyViewController.xib; sourceTree = "<group>"; };
 		A0F7C2761E7A726400BDA19F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		A0F7C2771E7A726400BDA19F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		A0F7C2791E7A728D00BDA19F /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
@@ -689,6 +694,9 @@
 				A05D920D1EA5AD630006CB1C /* RunningAddMemberViewController.h */,
 				A05D920E1EA5AD630006CB1C /* RunningAddMemberViewController.m */,
 				A05D920F1EA5AD630006CB1C /* RunningAddMemberViewController.xib */,
+				A09460D01EFFC09A0047AA81 /* RunningAddPartyViewController.h */,
+				A09460D11EFFC09A0047AA81 /* RunningAddPartyViewController.m */,
+				A09460D21EFFC09A0047AA81 /* RunningAddPartyViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -952,6 +960,7 @@
 					A067F0531D741FFB003140D6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = M332A6N2P3;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -999,6 +1008,7 @@
 				A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */,
 				A0643C091E9B229E0005785F /* RunningWeekViewController.xib in Resources */,
 				A05D92491EA883F60006CB1C /* MonoTextViewTableViewCell.xib in Resources */,
+				A09460D41EFFC09A0047AA81 /* RunningAddPartyViewController.xib in Resources */,
 				A0643C461E9E09DA0005785F /* MBProgressHUD+JDragon.bundle in Resources */,
 				A0643C2A1E9B621F0005785F /* RunningRecordFundsTableViewCell.xib in Resources */,
 				A05D92111EA5AD630006CB1C /* RunningAddMemberViewController.xib in Resources */,
@@ -1093,6 +1103,7 @@
 				A0643C821E9F105C0005785F /* TextViewHelper.m in Sources */,
 				A0643C611E9F0F020005785F /* ScanDemoViewController.m in Sources */,
 				A0643C061E9B229E0005785F /* RunningViewController.m in Sources */,
+				A09460D31EFFC09A0047AA81 /* RunningAddPartyViewController.m in Sources */,
 				A0643C911EA0799C0005785F /* TargetRecordManager.m in Sources */,
 				A05D923C1EA749DC0006CB1C /* AnimationContoller.m in Sources */,
 				A05D923D1EA749DC0006CB1C /* KLTNavigationController.m in Sources */,
@@ -1268,6 +1279,7 @@
 			baseConfigurationReference = AA632544259D3190284EB771 /* Pods-Out.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Out/Config/Out-Prefix.pch";
@@ -1277,6 +1289,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jolieyang.out;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1285,6 +1299,7 @@
 			baseConfigurationReference = EBE2AC9EFA7F9C44D9FD0E7F /* Pods-Out.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Out/Config/Out-Prefix.pch";
@@ -1294,6 +1309,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jolieyang.out;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

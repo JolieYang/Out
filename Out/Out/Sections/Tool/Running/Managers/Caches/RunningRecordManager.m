@@ -44,5 +44,6 @@
 + (void)updateRecordWithPrimaryId:(NSInteger)recordId set:(NSDictionary *)set {
     [[GYDataContext sharedInstance] updateObject:[RunningRecord class] set:set primaryKey:[NSNumber numberWithInteger:recordId]];
 }
+    
 
 @end

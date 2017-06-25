@@ -18,4 +18,6 @@
 @property (nonatomic, assign) NSInteger preSumContribution;// 上期经费
 @property (nonatomic, assign) NSInteger weekContribution;// 当期经费
 @property (nonatomic, assign) NSInteger sumContribution;// 累计经费
+@property (nonatomic, assign) BOOL isParty;
+@property (nonatomic, assign) NSInteger partyCost;
 @end
