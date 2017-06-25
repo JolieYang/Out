@@ -105,7 +105,7 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
 + (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId recordContribution:(NSInteger)recordContribution {
     RunningWeek *weekRecord = [self getWeekRecordWithWeekId:weekId];
     NSInteger beforeWeekContribution = weekRecord.sumContribution;
-    NSInteger currentWeekContribution = beforeWeekContribution + recordContribution;
+    NSInteger currentWeekContribution = beforeWeekContribution + recordContribution - weekRecord.partyCost;
     weekRecord.weekContribution = weekRecord.weekContribution + recordContribution;
     weekRecord.sumContribution = currentWeekContribution;
     [weekRecord save];
@@ -118,7 +118,7 @@ static NSTimeInterval timeIntervalFromJolie = 1491148800;
         for (int i = 0; i < needToUpdateRecords.count; i++) {
             RunningWeek *nextWeekRecord = needToUpdateRecords[i];
             nextWeekRecord.preSumContribution = preSumContribution;
-            nextWeekRecord.sumContribution = nextWeekRecord.preSumContribution + nextWeekRecord.weekContribution;
+            nextWeekRecord.sumContribution = nextWeekRecord.preSumContribution + nextWeekRecord.weekContribution - nextWeekRecord.partyCost;
             preSumContribution = nextWeekRecord.sumContribution;
             [nextWeekRecord save];
         }
