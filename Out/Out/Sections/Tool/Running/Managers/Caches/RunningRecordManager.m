@@ -21,9 +21,15 @@
         RunningRecord *newRecord = [[RunningRecord alloc] init];
         newRecord.memerId = member.memberId;
         newRecord.memberName = member.name;
-        newRecord.isAchieve = NO;
         newRecord.weekId = weekId;
+        if (member.suspend) {
+            newRecord.isAchieve = YES;
+            newRecord.remarks = @"暂停跑步";
+        } else {
+            newRecord.isAchieve = NO;
+        }
         [newRecord save];
+        
         [recordsArray addObject:newRecord];
     }
     return recordsArray;

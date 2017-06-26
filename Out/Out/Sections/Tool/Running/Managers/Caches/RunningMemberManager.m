@@ -56,6 +56,19 @@
     
     return YES;
 }
+    
++ (BOOL)suspendMemeberForId:(NSInteger)memberId {
+    RunningMember *member = (RunningMember *)[RunningMember objectForId:[NSNumber numberWithInteger:memberId]];
+    if (member == nil) {
+        return NO;
+    }
+    if (member.suspend == NO) {
+        member.suspend = YES;
+        [member save];
+    }
+    
+    return YES;
+}
 
 + (NSArray *)addDefaultMembers {
    NSArray *defaultRunningMembers = @[@"孙宇翔", @"沈聪维", @"陈炜枫",@"陈明智",@"陈双",@"黄佳萍",@"杨巧伶",@"范本清",@"李旭东",@"苏忠伟",@"林思颖",@"叶金新",@"唐尧",@"曾佑杰",@"陈文静",@"刘文迪",@"赵赫",@"张波",@"林善统",@"池如海",@"王丽仙"];

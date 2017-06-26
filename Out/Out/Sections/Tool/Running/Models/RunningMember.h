@@ -12,4 +12,5 @@
 @property (nonatomic, assign) NSInteger memberId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) BOOL exit;
+@property (nonatomic, assign) BOOL suspend;// 暂停跑步
 @end

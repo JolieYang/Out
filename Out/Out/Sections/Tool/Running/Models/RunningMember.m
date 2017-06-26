@@ -27,7 +27,8 @@
         propertis = @[
                       @"memberId",
                       @"name",
-                      @"exit"
+                      @"exit",
+                      @"suspend"
                       ];
     }
     return propertis;
@@ -37,7 +38,8 @@
     static  NSDictionary *defaultValues = nil;
     if (!defaultValues) {
         defaultValues = @{
-                          @"exit" : @NO
+                          @"exit" : @NO,
+                          @"suspend": @NO
                           };
     }
     return defaultValues;

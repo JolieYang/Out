@@ -103,6 +103,8 @@
         if ([self.dataModel.remarks isEqualToString:@"退群"]) {
             // 删除成员
             [RunningMemberManager exitMemberForId:self.dataModel.memerId];
+        } else if ([self.dataModel.remarks isEqualToString:@"暂停跑步"]) {
+            [RunningMemberManager suspendMemeberForId:self.dataModel.memerId];
         }
     }
     [self updateCellBgColor];
