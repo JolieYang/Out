@@ -13,4 +13,5 @@
 + (NSArray *)getAllNotExitMembers;// 获取所有未退出的成员
 + (BOOL)exitMemberForId:(NSInteger)memberId;
 + (BOOL)suspendMemeberForId:(NSInteger)memberId;
++ (BOOL)goonMemberForId:(NSInteger)memberId;
 @end

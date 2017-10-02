@@ -40,4 +40,15 @@
     }
     return propertis;
 }
+
++ (NSDictionary *)defaultValues {
+    static  NSDictionary *defaultValues = nil;
+    if (!defaultValues) {
+        defaultValues = @{
+                          @"weekContribution" : @0,
+                          @"partyCost": @0
+                          };
+    }
+    return defaultValues;
+}
 @end

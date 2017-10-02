@@ -8,29 +8,40 @@
 
 #import "RunningMemberManager.h"
 #import "RunningMember.h"
+#import "RunningRecordManager.h"
+#import "RunningWeek.h"
+#import "RunningWeekManager.h"
 
 @implementation RunningMemberManager
 
 + (BOOL)addMemberWithName:(NSString *)name {
+    RunningMember *newMember;
     NSArray *existMembers = [self getAllNotExitMembers];
     for (RunningMember *member in existMembers) {
         if ([member.name isEqualToString:name]) {
             if (member.exit == NO) {
-                return NO;// 该成员已存在
+                NSLog(@"该成员已存在");// 该成员已存在
             } else {
                 member.exit = NO;
                 [member save];
-                return YES;
             }
+            newMember = member;
+        } else {
+            // 不存在该成员，则添加
+            RunningMember *member = [RunningMember new];
+            member.name = name;
+            [member save];
+            newMember = member;
         }
     }
     
-    // 不存在该成员，则添加
-    RunningMember *member = [RunningMember new];
-    member.name = name;
-    [member save];
+    // 添加跑步记录
+    RunningWeek *lastRecord = [RunningWeekManager getDBLatestWeekRecord];
+    [RunningRecordManager addRecordWithWeekId:lastRecord.weekId memberId:newMember.memberId memberName:newMember.name];
+    
     return YES;
 }
+
 
 + (NSArray *)getAllNotExitMembers {
     NSString *whereSql = @"WHERE exit = ? ORDER BY memberId";
@@ -65,6 +76,19 @@
     if (member.suspend == NO) {
         member.suspend = YES;
         [member save];
+    }
+    
+    return YES;
+}
+
++ (BOOL)goonMemberForId:(NSInteger)memberId {
+    RunningMember *memeber = (RunningMember *)[RunningMember objectForId:[NSNumber numberWithInteger: memberId]];
+    if (memeber == nil) {
+        return NO;
+    }
+    if (memeber.suspend == YES) {
+        memeber.suspend = NO;
+        [memeber save];
     }
     
     return YES;

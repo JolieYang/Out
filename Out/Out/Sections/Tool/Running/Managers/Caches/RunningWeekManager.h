@@ -14,5 +14,6 @@
 + (NSArray *)getRecentTwentyWeekRecords;
 + (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId recordContribution:(NSInteger)recordContribution;
 + (RunningWeek *)updateWeekRecordWithWeekId:(NSInteger)weekId partyCost:(NSInteger)partyCost;
++ (RunningWeek *)getDBLatestWeekRecord;
 
 @end

@@ -83,7 +83,8 @@ static NSString *recordTableViewCellIdentifier = @"RunningMemberRecordTableViewC
 
 - (BOOL)sreenShotTableView {
     UIImage* image = nil;
-    UIGraphicsBeginImageContext(self.tableView.contentSize);
+    CGSize tableViewContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height+56);// tip: apple's bug
+    UIGraphicsBeginImageContext(tableViewContentSize);
     
     //保存tableView当前的偏移量
     CGPoint savedContentOffset = self.tableView.contentOffset;
@@ -91,18 +92,18 @@ static NSString *recordTableViewCellIdentifier = @"RunningMemberRecordTableViewC
     
     //将tableView的偏移量设置为(0,0)
     self.tableView.contentOffset = CGPointZero;
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.contentSize.width, self.tableView.contentSize.height);
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, tableViewContentSize.width, tableViewContentSize.height);
     
     //在当前上下文中渲染出tableView
     [self.tableView.layer renderInContext: UIGraphicsGetCurrentContext()];
     //截取当前上下文生成Image
     image = UIGraphicsGetImageFromCurrentImageContext();
     
+    UIGraphicsEndImageContext();
     //恢复tableView的偏移量
     self.tableView.contentOffset = savedContentOffset;
     self.tableView.frame = saveFrame;
     
-    UIGraphicsEndImageContext();
     
     if (image != nil) {
         UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);

@@ -53,9 +53,7 @@
 
 - (void)doneItemAction {
     BOOL successAdd = [self addRunningMember];
-    // 添加项目
-    if (self.successAddRunningMemberBlock && successAdd) {
-        self.successAddRunningMemberBlock();
+    if (successAdd) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

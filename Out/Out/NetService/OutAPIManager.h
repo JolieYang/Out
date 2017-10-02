@@ -7,16 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APIManager.h"
 
-typedef void (^SuccessedResponse)(NSDictionary *response);
-typedef void (^FailedResponse)(NSString *errMsg);
-
-// photo
-typedef void (^UploadImageResponse)(NSString *photoId);
-typedef void (^DownloadImageResponse)(UIImage *image);
-
-
-@interface OutAPIManager : NSObject
+@interface OutAPIManager :APIManager
 + (void)startRequestWithApiName:(NSString *)apiName params:(NSDictionary *)params successed:(void (^)(NSDictionary *response))successResponse failed:(void (^)(NSString *errMsg))failedResponse;
 + (void)uploadImage:(UIImage *)image  succeed:(UploadImageResponse)successUploadImageResponse failed:(FailedResponse)failedResponse;
 + (void)downloadImageWithPhotoID:(NSString *)photoId succeed:(DownloadImageResponse)successDownloadImageResponse failed:(FailedResponse)failedResponse;

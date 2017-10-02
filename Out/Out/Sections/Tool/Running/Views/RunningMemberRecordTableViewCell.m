@@ -105,6 +105,8 @@
             [RunningMemberManager exitMemberForId:self.dataModel.memerId];
         } else if ([self.dataModel.remarks isEqualToString:@"暂停跑步"]) {
             [RunningMemberManager suspendMemeberForId:self.dataModel.memerId];
+        } else if ([self.dataModel.remarks isEqualToString:@"继续跑步"]) {
+            [RunningMemberManager goonMemberForId:self.dataModel.memerId];
         }
     }
     [self updateCellBgColor];

@@ -13,6 +13,8 @@
 		A00A3A031EA0B8C6006DC03C /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A00A3A001EA0B8C6006DC03C /* UIColor+HcdCustom.m */; };
 		A022B4261ED9507F0038E066 /* OutMood.m in Sources */ = {isa = PBXBuildFile; fileRef = A022B4251ED9507F0038E066 /* OutMood.m */; };
 		A022B42A1ED954880038E066 /* OutMoodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A022B4291ED954880038E066 /* OutMoodManager.m */; };
+		A03663BC1F81E50700393FA9 /* RunningAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03663BB1F81E50700393FA9 /* RunningAPIManager.m */; };
+		A03663BF1F81E52F00393FA9 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03663BE1F81E52F00393FA9 /* APIManager.m */; };
 		A037792A1E1E3934009D3DE6 /* Target.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03779281E1E3934009D3DE6 /* Target.storyboard */; };
 		A0409BFE1E7BDCB300D917DC /* KeyedArchiverHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A0409BFD1E7BDCB300D917DC /* KeyedArchiverHelper.m */; };
 		A0409C021E7BDE8000D917DC /* BaseKeyedArchiverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0409C011E7BDE8000D917DC /* BaseKeyedArchiverModel.m */; };
@@ -132,6 +134,10 @@
 		A022B4251ED9507F0038E066 /* OutMood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutMood.m; sourceTree = "<group>"; };
 		A022B4281ED954880038E066 /* OutMoodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutMoodManager.h; sourceTree = "<group>"; };
 		A022B4291ED954880038E066 /* OutMoodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutMoodManager.m; sourceTree = "<group>"; };
+		A03663BA1F81E50700393FA9 /* RunningAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunningAPIManager.h; path = NetService/RunningAPIManager.h; sourceTree = "<group>"; };
+		A03663BB1F81E50700393FA9 /* RunningAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RunningAPIManager.m; path = NetService/RunningAPIManager.m; sourceTree = "<group>"; };
+		A03663BD1F81E52F00393FA9 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIManager.h; path = NetService/APIManager.h; sourceTree = "<group>"; };
+		A03663BE1F81E52F00393FA9 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIManager.m; path = NetService/APIManager.m; sourceTree = "<group>"; };
 		A03779291E1E3934009D3DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Out/Base.lproj/Target.storyboard; sourceTree = "<group>"; };
 		A0409BFC1E7BDCB300D917DC /* KeyedArchiverHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyedArchiverHelper.h; sourceTree = "<group>"; };
 		A0409BFD1E7BDCB300D917DC /* KeyedArchiverHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyedArchiverHelper.m; sourceTree = "<group>"; };
@@ -891,8 +897,12 @@
 		A068C3001D7820C500E844F1 /* NetService */ = {
 			isa = PBXGroup;
 			children = (
+				A03663BD1F81E52F00393FA9 /* APIManager.h */,
+				A03663BE1F81E52F00393FA9 /* APIManager.m */,
 				A04C93AA1D7FC5240028F2DB /* OutAPIManager.h */,
 				A04C93AB1D7FC5240028F2DB /* OutAPIManager.m */,
+				A03663BA1F81E50700393FA9 /* RunningAPIManager.h */,
+				A03663BB1F81E50700393FA9 /* RunningAPIManager.m */,
 			);
 			name = NetService;
 			sourceTree = "<group>";
@@ -1120,6 +1130,7 @@
 				A00A3A021EA0B8C6006DC03C /* MXSCycleScrollView.m in Sources */,
 				A0643C9F1EA088150005785F /* TargetRecordInsistHoursTableViewCell.m in Sources */,
 				A0643C811E9F105C0005785F /* StringHelper.m in Sources */,
+				A03663BF1F81E52F00393FA9 /* APIManager.m in Sources */,
 				A022B4261ED9507F0038E066 /* OutMood.m in Sources */,
 				A0643C551E9F0E800005785F /* RunningRecordManager.m in Sources */,
 				A0643C361E9B76A60005785F /* RunningWeek.m in Sources */,
@@ -1154,6 +1165,7 @@
 				A022B42A1ED954880038E066 /* OutMoodManager.m in Sources */,
 				A0643BF11E9B17E80005785F /* ToolHomeViewController.m in Sources */,
 				A05D92331EA6F8C40006CB1C /* UILabel+JY.m in Sources */,
+				A03663BC1F81E50700393FA9 /* RunningAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1282,6 +1294,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = M332A6N2P3;
 				GCC_PREFIX_HEADER = "Out/Config/Out-Prefix.pch";
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1302,6 +1315,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = M332A6N2P3;
 				GCC_PREFIX_HEADER = "Out/Config/Out-Prefix.pch";
 				INFOPLIST_FILE = Out/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
