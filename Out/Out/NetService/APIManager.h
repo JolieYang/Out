@@ -17,5 +17,5 @@ typedef void (^UploadImageResponse)(NSString *photoId);
 typedef void (^DownloadImageResponse)(UIImage *image);
 
 @interface APIManager : NSObject
-+ (void)startRequestWithApiName:(NSString *)apiName params:(NSDictionary *)params successed:(SuccessedResponse)successResponse failed:(FailedResponse)failedResponse;
++ (void)startRequestWithMethod:(NSString *)method BaseUrl:(NSString *)baseUrl ApiName:(NSString *)apiName params:(NSDictionary *)params successed:(SuccessedResponse)successResponse failed:(FailedResponse)failedResponse;
 @end

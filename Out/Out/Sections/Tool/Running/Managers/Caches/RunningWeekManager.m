@@ -18,6 +18,12 @@
 static NSTimeInterval timeIntervalFromJolie = 1491148800;
 
 @implementation RunningWeekManager
++ (NSArray *)getAllWeekRecords {
+    NSString *whereSql = @"ORDER BY fromUnix DESC";
+    NSArray *weekRecords = [RunningWeek objectsWhere:whereSql arguments:@[]];
+    
+    return weekRecords;
+}
 // 限制一次只拉取最新的二十条记录
 + (NSArray *)getRecentTwentyWeekRecords {
     // 获取之前先判断是否需要添加新一周的纪录

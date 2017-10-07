@@ -37,6 +37,12 @@
 #define OUT_MOOD_BG_IMAGENAME @"yellow_girl"
 #define OUT_DEFAULT_BGIMAGE [UIImage imageNamed:OUT_MOOD_BG_IMAGENAME]
 
+// Running
+#define Running_Base_URL @"http://121.41.41.41:17179/api/"
+#define Running_Add_Member @"running-members"
+#define Running_Add_Week @"running-weeks"
+#define Running_Add_Record @"running-records"
+
 // 颜色
 #define Black1 UIColorFromRGB(0x474749)
 #define Black2 UIColorFromRGB(0x24252C)

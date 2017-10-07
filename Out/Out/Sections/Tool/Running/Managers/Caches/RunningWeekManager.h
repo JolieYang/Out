@@ -11,6 +11,7 @@
 
 @interface RunningWeekManager : NSObject
 + (NSArray *)addWeekRecord;// 返回添加的记录
++ (NSArray *)getAllWeekRecords;
 + (NSArray *)getRecentTwentyWeekRecords;
 + (RunningWeek *)updateContributionWithWeekId:(NSInteger)weekId recordContribution:(NSInteger)recordContribution;
 + (RunningWeek *)updateWeekRecordWithWeekId:(NSInteger)weekId partyCost:(NSInteger)partyCost;

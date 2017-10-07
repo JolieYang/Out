@@ -40,6 +40,24 @@
     return newRecord;
 }
 
++ (nullable RunningRecord *)addRecordWithWeekId:(NSInteger)weekId memeberName:(NSString *)memberName {
+    NSArray *members = [RunningMemberManager getAllNotExitMembers];
+    for (int i = 0; i < members.count; i++) {
+        RunningMember *member = members[i];
+        if ([member.name isEqualToString:memberName]) {
+            RunningRecord *record = [self addRecordWithWeekId:weekId memberId:member.memberId memberName:memberName];
+            return record;
+        }
+    }
+    return nil;
+}
+
++ (NSArray *)getAllRecords {
+    NSArray *records = [RunningRecord objectsWhere:@"" arguments:@[]];
+    
+    return records;
+}
+
 + (NSArray *)getRecordsWithWeekId:(NSInteger)weekId {
     // 获取指定weekId的所有记录
     NSString *whereSql = @"WHERE weekId = ?";

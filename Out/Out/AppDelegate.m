@@ -13,6 +13,9 @@
 #import "const.h"
 #import "AFNetworking.h"
 #import "SPTabBarViewController.h"
+#import "RunningWeekManager.h"
+#import "RunningRecordManager.h"
+#import "RunningAPIManager.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) AFNetworkReachabilityManager *manager;
@@ -79,10 +82,12 @@
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
                 NSLog(@"AFNetworkReachabilityStatusReachableViaWWAN");
+                [self uploadData];
                 // 通知有网络
                 //            [operationQueue setSuspended:NO];
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
+                [self uploadData];
                 NSLog(@"AFNetworkReachabilityStatusReachableViaWiFi");
                 //            [operationQueue setSuspended:NO];
                 break;
@@ -92,9 +97,19 @@
  
     }];
     
+//    NSArray *members = [RunningWeekManager getAllWeekRecords];
+//    NSLog(@"members count:%lu", (unsigned long)members.count);
+    
+    
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)uploadData {
+//    [RunningAPIManager uploadMemeberList];
+//    [RunningAPIManager uploadWeekList];
+    [RunningAPIManager uploadRecordList];
 }
 
 - (void)reachabilityStatusDidChanged:(NSNotification *)notification {

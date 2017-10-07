@@ -11,7 +11,7 @@
 
 @implementation APIManager
 
-+ (void)startRequestWithApiName:(NSString *)apiName params:(NSDictionary *)params successed:(SuccessedResponse)successResponse failed:(FailedResponse)failedResponse {
++ (void)startRequestWithMethod:(NSString *)method BaseUrl:(NSString *)baseUrl ApiName:(NSString *)apiName params:(NSDictionary *)params successed:(SuccessedResponse)successResponse failed:(FailedResponse)failedResponse {
     NSLog(@"send:%@", params);
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     if (!manager.reachable) {
@@ -19,8 +19,8 @@
         return;
     }
     NSError *error;
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", kSERVER_URL, apiName];
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:params error:&error];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", baseUrl, apiName];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlString parameters:params error:&error];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     configuration.timeoutIntervalForRequest = 7.0;
@@ -28,7 +28,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration: configuration];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"failed:%@", error.localizedDescription);
+            NSLog(@"failed id111:%@", error.localizedDescription);
             failedResponse(error.localizedDescription);
             return ;
         }

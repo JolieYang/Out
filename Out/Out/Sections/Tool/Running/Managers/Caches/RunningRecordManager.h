@@ -12,6 +12,7 @@
 @interface RunningRecordManager : NSObject
 + (NSArray *)addAllMembersRecordWithWeekId:(NSInteger)weekId;
 + (RunningRecord *)addRecordWithWeekId:(NSInteger)weekId memberId:(NSInteger)memberId memberName:(NSString *)memberName;
++ (NSArray *)getAllRecords;
 + (NSArray *)getRecordsWithWeekId:(NSInteger)weekId;
 + (void)updateRecordWithPrimaryId:(NSInteger)recordId set:(NSDictionary *)set;
 @end

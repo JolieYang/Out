@@ -26,13 +26,16 @@
                 [member save];
             }
             newMember = member;
-        } else {
-            // 不存在该成员，则添加
-            RunningMember *member = [RunningMember new];
-            member.name = name;
-            [member save];
-            newMember = member;
+            break;
         }
+    }
+    
+    if (!newMember) {
+        // 不存在该成员，则添加
+        RunningMember *member = [RunningMember new];
+        member.name = name;
+        [member save];
+        newMember = member;
     }
     
     // 添加跑步记录
@@ -42,6 +45,13 @@
     return YES;
 }
 
++ (NSArray *)getAllMembers {
+    NSString *whereSql = @"ORDER BY memberId";
+    NSArray *arguments = @[];
+    NSArray *members = [RunningMember objectsWhere:whereSql arguments:arguments];
+    
+    return members;
+}
 
 + (NSArray *)getAllNotExitMembers {
     NSString *whereSql = @"WHERE exit = ? ORDER BY memberId";
@@ -104,5 +114,19 @@
         [membersArray addObject:member];
     }
     return membersArray;
+}
+
+// 删除数据
+// 赵熙 卢丽樱
++ (void)deleteSomeMembers {
+    NSArray *members = [self getAllMembers];
+    NSLog(@"members count:%lu", (unsigned long)members.count);
+    NSString *whereSql = @"WHERE name = '赵熙'";
+    NSArray *arguments = @[];
+ 
+    [RunningMember deleteObjectsWhere:whereSql arguments:arguments];
+    members = [self getAllMembers];
+    
+    NSLog(@"members count:%lu", (unsigned long)members.count);
 }
 @end

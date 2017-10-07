@@ -10,9 +10,9 @@
 #import "APIManager.h"
 
 @interface RunningAPIManager :APIManager
-+ (NSDictionary *)getMemberList;
-+ (NSDictionary *)getRecordList;
-+ (NSDictionary *)getWeekList;
+//+ (NSDictionary *)getMemberList;
+//+ (NSDictionary *)getRecordList;
+//+ (NSDictionary *)getWeekList;
 
 + (void)uploadMemeberList;
 + (void)uploadRecordList;
